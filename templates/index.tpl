@@ -1,5 +1,7 @@
 {include file="header.tpl"}
 
+{include file="menu.tpl"}
+
 <div class="well">Welcome to {$title}</div>
 
 <div class="panel panel-body text-center">
