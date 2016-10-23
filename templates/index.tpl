@@ -6,10 +6,10 @@
 {include file="menu.tpl"}
 
 <a href="index.php">
-    <img src="{$logo}" alt="{$title}" class="logo img-responsive center-block" />
+    <img src="{$logo}" alt="{$msg_title}" class="logo img-responsive center-block" />
 </a>
 
-<div class="alert alert-success">Welcome to {$title}</div>
+<div class="alert alert-success">{$msg_welcome}</div>
 
 </div>
 </div>

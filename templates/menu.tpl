@@ -9,12 +9,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="index.php"><i class="fa fa-home"></i> {$title}</a>
+              <a class="navbar-brand" href="index.php"><i class="fa fa-home"></i> {$msg_title}</a>
             </div>
             <div class="navbar-collapse collapse">
               <form class="navbar-form navbar-right" role="search">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search">
+                  <input type="text" class="form-control" placeholder="{$msg_search}">
                   <span class="input-group-btn">
                     <button class="btn btn-default" type="button">&nbsp;<i class="fa fa-search"></i></button>
                   </span>
