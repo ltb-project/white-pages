@@ -40,6 +40,7 @@ $smarty->assign('logo',$logo);
 $smarty->assign('background_image',$background_image);
 
 # Assign messages
+$smarty->assign('lang',$lang);
 foreach ($messages as $key => $message) {
     $smarty->assign('msg_'.$key,$message);
 }
@@ -47,6 +48,7 @@ foreach ($messages as $key => $message) {
 #==============================================================================
 # Route to page
 #==============================================================================
+$result = "";
 $page = "welcome";
 if (isset($_GET["page"]) and $_GET["page"]) { $page = $_GET["page"]; }
 if ( file_exists($page.".php") ) { require_once($page.".php"); }
@@ -54,6 +56,8 @@ $smarty->assign('page',$page);
 
 if ($result) {
     $smarty->assign('error',$messages[$result]);
+} else {
+    $smarty->assign('error',"");
 }
 
 # Display
