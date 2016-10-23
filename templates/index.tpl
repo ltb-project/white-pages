@@ -1,11 +1,17 @@
 {include file="header.tpl"}
 
+<div class="panel panel-success">
+<div class="panel-body">
+
 {include file="menu.tpl"}
 
-<div class="well">Welcome to {$title}</div>
+<a href="index.php">
+    <img src="{$logo}" alt="{$title}" class="logo img-responsive center-block" />
+</a>
 
-<div class="panel panel-body text-center">
-    <img src="{$logo}" alt="{$title}" />
+<div class="alert alert-success">Welcome to {$title}</div>
+
+</div>
 </div>
 
 {include file="footer.tpl"}
