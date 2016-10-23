@@ -45,7 +45,15 @@ foreach ($messages as $key => $message) {
     $smarty->assign('msg_'.$key,$message);
 }
 
-# Display page
+
+#==============================================================================
+# Route to page
+#==============================================================================
+$page = "welcome";
+if (isset($_GET["page"]) and $_GET["page"]) { $page = $_GET["page"]; }
+
+# Display
+$smarty->assign('page',$page);
 $smarty->display('index.tpl');
 
 ?>
