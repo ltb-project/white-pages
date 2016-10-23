@@ -29,6 +29,8 @@ $ldap_binddn = "cn=manager,dc=example,dc=com";
 $ldap_bindpw = "secret";
 $ldap_base = "dc=example,dc=com";
 $ldap_user_base = "ou=users,".$ldap_base;
+$ldap_user_filter = "(objectClass=inetOrgPerson)";
+$ldap_user_search_attributes = array('uid', 'cn', 'mail');
 
 # Language
 $lang ="en";

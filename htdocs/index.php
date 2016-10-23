@@ -50,9 +50,13 @@ foreach ($messages as $key => $message) {
 $page = "welcome";
 if (isset($_GET["page"]) and $_GET["page"]) { $page = $_GET["page"]; }
 if ( file_exists($page.".php") ) { require_once($page.".php"); }
+$smarty->assign('page',$page);
+
+if ($result) {
+    $smarty->assign('error',$messages[$result]);
+}
 
 # Display
-$smarty->assign('page',$page);
 $smarty->display('index.tpl');
 
 ?>

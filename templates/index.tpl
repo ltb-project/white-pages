@@ -5,7 +5,13 @@
 
 {include file="menu.tpl"}
 
+{if $error}
+<div class="alert alert-danger">
+    <i class="fa fa-exclamation-circle"></i> {$error}
+</div>
+{else}
 {include file="$page.tpl"}
+{/if}
 
 </div>
 </div>
