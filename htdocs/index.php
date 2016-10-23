@@ -35,7 +35,6 @@ $smarty->setConfigDir('../configs/');
 $smarty->setCacheDir('../cache/');
 $smarty->debugging = $debug;
 
-
 # Assign configuration variables
 $smarty->assign('logo',$logo);
 $smarty->assign('background_image',$background_image);
@@ -45,12 +44,12 @@ foreach ($messages as $key => $message) {
     $smarty->assign('msg_'.$key,$message);
 }
 
-
 #==============================================================================
 # Route to page
 #==============================================================================
 $page = "welcome";
 if (isset($_GET["page"]) and $_GET["page"]) { $page = $_GET["page"]; }
+if ( file_exists($page.".php") ) { require_once($page.".php"); }
 
 # Display
 $smarty->assign('page',$page);
