@@ -63,6 +63,7 @@ if ($result === "") {
                     $result = "noentriesfound";
                 } else {
                     $entries = ldap_get_entries($ldap, $search);
+                    unset($entries["count"]);
                 }
             }
         }
@@ -70,5 +71,6 @@ if ($result === "") {
 }
 
 $smarty->assign("nb_entries", $nb_entries);
+$smarty->assign("entries", $entries);
 
 ?>
