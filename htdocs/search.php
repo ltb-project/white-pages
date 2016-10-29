@@ -40,11 +40,11 @@ if ($result === "") {
         } else {
 
             # Search filter
-            $ldap_filter = "(&".$ldap_user_filter;
+            $ldap_filter = "(&".$ldap_user_filter."(|";
             foreach ($ldap_user_search_attributes as $lusa) {
                 $ldap_filter .= "($lusa=*$search_query*)";
             }
-            $ldap_filter .= ")";
+            $ldap_filter .= "))";
 
             # Search for users
             $search = ldap_search($ldap, $ldap_user_base, $ldap_filter);
