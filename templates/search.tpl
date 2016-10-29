@@ -9,23 +9,23 @@
         <div class="panel panel-info">
             <div class="panel-heading text-center">
                 <p class="panel-title">
-                    <i class="fa fa-{$search_result_map.{$search_result_title_id}.faclass}"></i>
-                     {$entry.{$search_result_map.{$search_result_title_id}.attribute}.0}
+                    <i class="fa fa-{$attributes_map.{$search_result_title}.faclass}"></i>
+                     {$entry.{$attributes_map.{$search_result_title}.attribute}.0}
                 </p>
             </div>
             <div class="panel-body">
-            {foreach $search_result_map as $id => $props}
-                {if $id eq $search_result_title_id}
+            {foreach $search_result_items as $item}
+                {$attribute=$attributes_map.{$item}.attribute}
+                {$type=$attributes_map.{$item}.type}
+                {$faclass=$attributes_map.{$item}.faclass}
+                {if !({$entry.$attribute.0})}
                     {continue}
                 {/if}
-                {if !({$entry.{$props.attribute}.0})}
-                    {continue}
+                {if $type eq 'text'}
+                <p><i class="fa fa-{$faclass}"></i> {$entry.{$attribute}.0}</p>
                 {/if}
-                {if $props.type eq 'text'}
-                <p><i class="fa fa-{$props.faclass}"></i> {$entry.{$props.attribute}.0}</p>
-                {/if}
-                {if $props.type eq 'mailto'}
-                <p><i class="fa fa-{$props.faclass}"></i> {mailto address="{$entry.{$props.attribute}.0}" encode="javascript"}</p>
+                {if $type eq 'mailto'}
+                <p><i class="fa fa-{$faclass}"></i> {mailto address="{$entry.{$attribute}.0}" encode="javascript"}</p>
                 {/if}
             {/foreach}
             </div>
