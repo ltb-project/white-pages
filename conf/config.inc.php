@@ -32,6 +32,16 @@ $ldap_user_base = "ou=users,".$ldap_base;
 $ldap_user_filter = "(objectClass=inetOrgPerson)";
 $ldap_user_search_attributes = array('uid', 'cn', 'mail');
 
+$search_result_map = array(
+    'fullname' => array( 'attribute' => 'cn', 'faclass' => 'user-circle', 'type' => 'text' ),
+    'identifier' => array( 'attribute' => 'uid', 'faclass' => 'user-o', 'type' => 'text' ),
+    'mail' => array( 'attribute' => 'mail', 'faclass' => 'envelope-o', 'type' => 'mailto' ),
+    'phone' => array( 'attribute' => 'telephoneNumber', 'faclass' => 'phone', 'type' => 'text' ),
+    'mobile' => array( 'attribute' => 'mobile', 'faclass' => 'mobile', 'type' => 'text' ),
+);
+
+$search_result_title_id = "fullname";
+
 # Language
 $lang ="en";
 

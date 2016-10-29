@@ -38,6 +38,8 @@ $smarty->debugging = $debug;
 # Assign configuration variables
 $smarty->assign('logo',$logo);
 $smarty->assign('background_image',$background_image);
+$smarty->assign('search_result_map',$search_result_map);
+$smarty->assign('search_result_title_id',$search_result_title_id);
 
 # Assign messages
 $smarty->assign('lang',$lang);
