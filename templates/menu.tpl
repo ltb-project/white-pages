@@ -14,7 +14,7 @@
             <div class="navbar-collapse collapse">
               <form class="navbar-form navbar-right" role="search" action="index.php?page=search" method="post">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="{$msg_search}" name="search" />
+                  <input type="text" class="form-control" placeholder="{$msg_search}" name="search" value="{$search}" />
                   <span class="input-group-btn">
                     <button class="btn btn-default" type="submit">&nbsp;<i class="fa fa-search"></i></button>
                   </span>

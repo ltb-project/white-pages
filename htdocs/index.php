@@ -47,6 +47,11 @@ foreach ($messages as $key => $message) {
     $smarty->assign('msg_'.$key,$message);
 }
 
+# Other assignations
+$search = "";
+if (isset($_POST["search"]) and $_POST["search"]) { $search = htmlentities($_POST["search"]); }
+$smarty->assign('search',$search);
+
 #==============================================================================
 # Route to page
 #==============================================================================
