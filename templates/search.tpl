@@ -19,7 +19,8 @@
                 {$type=$attributes_map.{$item}.type}
                 {$faclass=$attributes_map.{$item}.faclass}
                 {if !({$entry.$attribute.0})}
-                    {continue}
+                <p><i class="fa fa-{$faclass}"></i> <i>{$msg_notdefined}</i></p>
+                {continue}
                 {/if}
                 {if $type eq 'text'}
                 <p><i class="fa fa-{$faclass}"></i> {$entry.{$attribute}.0}</p>

@@ -20,6 +20,7 @@ $messages['label_organizationalunit'] = "Service";
 $messages['label_phone'] = "Téléphone";
 $messages['ldaperror'] = "Erreur de communication avec l'annuaire LDAP";
 $messages['noentriesfound'] = "Aucune entrée trouvée";
+$messages['notdefined'] = "Non renseigné";
 $messages['search'] = "Rechercher";
 $messages['searchrequired'] = "Veuillez saisir votre recherche";
 $messages['title'] = "Pages blanches";
