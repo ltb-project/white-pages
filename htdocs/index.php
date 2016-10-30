@@ -41,6 +41,8 @@ $smarty->assign('background_image',$background_image);
 $smarty->assign('attributes_map',$attributes_map);
 $smarty->assign('search_result_items',$search_result_items);
 $smarty->assign('search_result_title',$search_result_title);
+$smarty->assign('display_items',$display_items);
+$smarty->assign('display_title',$display_title);
 
 # Assign messages
 $smarty->assign('lang',$lang);

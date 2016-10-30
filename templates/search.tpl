@@ -29,6 +29,9 @@
                 {/if}
             {/foreach}
             </div>
+            <div class="panel-footer text-center">
+                <a href="index.php?page=display&dn={$entry.dn|escape:'url'}" class="btn btn-info" role="button"><i class="fa fa-id-card"></i> {$msg_displayentry}</a>
+            </div>
         </div>
     </div>
 

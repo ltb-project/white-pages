@@ -41,7 +41,6 @@ $attributes_map = array(
     'lastname' => array( 'attribute' => 'sn', 'faclass' => 'user-o', 'type' => 'text' ),
     'mail' => array( 'attribute' => 'mail', 'faclass' => 'envelope-o', 'type' => 'mailto' ),
     'mobile' => array( 'attribute' => 'mobile', 'faclass' => 'mobile', 'type' => 'text' ),
-    'fullname' => array( 'attribute' => 'cn', 'faclass' => 'user-circle', 'type' => 'text' ),
     'organization' => array( 'attribute' => 'o', 'faclass' => 'building', 'type' => 'text' ),
     'organizationalunit' => array( 'attribute' => 'ou', 'faclass' => 'building-o', 'type' => 'text' ),
     'phone' => array( 'attribute' => 'telephonenumber', 'faclass' => 'phone', 'type' => 'text' ),
@@ -50,6 +49,10 @@ $attributes_map = array(
 # Quick search results
 $search_result_items = array('mail', 'phone', 'mobile');
 $search_result_title = "fullname";
+
+# Full dislpay
+$display_items = array('firstname', 'lastname', 'mail', 'phone', 'mobile', 'organizationalunit', 'organization');
+$display_title = "fullname";
 
 # Language
 $lang ="en";
