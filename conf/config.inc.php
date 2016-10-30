@@ -49,6 +49,7 @@ $attributes_map = array(
 # Quick search results
 $search_result_items = array('mail', 'phone', 'mobile');
 $search_result_title = "fullname";
+$search_result_sortby = "lastname";
 
 # Full dislpay
 $display_items = array('firstname', 'lastname', 'mail', 'phone', 'mobile', 'organizationalunit', 'organization');
