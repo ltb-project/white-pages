@@ -17,6 +17,7 @@
 
             <hr />
 
+            <div class="table-responsive">
             <table class="table table-striped">
             {foreach $display_items as $item}
                 {$attribute=$attributes_map.{$item}.attribute}
@@ -41,6 +42,7 @@
                 </tr>
             {/foreach}
             </table>
+            </div>
 
         </div>
 
