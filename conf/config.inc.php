@@ -50,10 +50,16 @@ $attributes_map = array(
 $search_result_items = array('mail', 'phone', 'mobile');
 $search_result_title = "fullname";
 $search_result_sortby = "lastname";
+$search_result_show_undefined = true;
+#$search_result_box_height = "150px";
+$search_result_truncate_value_after = "20";
 
 # Full dislpay
 $display_items = array('firstname', 'lastname', 'mail', 'phone', 'mobile', 'organizationalunit', 'organization');
 $display_title = "fullname";
+
+# Photo
+$default_photo = "images/240px-PICA.jpg";
 
 # Language
 $lang ="en";

@@ -13,22 +13,31 @@
                      {$entry.{$attributes_map.{$search_result_title}.attribute}.0}
                 </p>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" style="height: {$search_result_box_height}">
+            <div class="row">
+            <div class="col-sm-4">
+                <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$display_title}.attribute}.0}" class="img-responsive img-thumbnail center-block" />
+            </div>
+            <div class="col-sm-8">
             {foreach $search_result_items as $item}
                 {$attribute=$attributes_map.{$item}.attribute}
                 {$type=$attributes_map.{$item}.type}
                 {$faclass=$attributes_map.{$item}.faclass}
                 {if !({$entry.$attribute.0})}
-                <p><i class="fa fa-{$faclass}"></i> <i>{$msg_notdefined}</i></p>
+                    {if {$search_result_show_undefined}}
+                    <p><i class="fa fa-{$faclass}"></i> <i>{$msg_notdefined}</i></p>
+                    {/if}
                 {continue}
                 {/if}
                 {if $type eq 'text'}
-                <p><i class="fa fa-{$faclass}"></i> {$entry.{$attribute}.0}</p>
+                <p><i class="fa fa-{$faclass}"></i> {$entry.{$attribute}.0|truncate:{$search_result_truncate_value_after}}</p>
                 {/if}
                 {if $type eq 'mailto'}
-                <p><i class="fa fa-{$faclass}"></i> {mailto address="{$entry.{$attribute}.0}" encode="javascript"}</p>
+                <p><i class="fa fa-{$faclass}"></i> {mailto address="{$entry.{$attribute}.0}" encode="javascript" text="{$entry.{$attribute}.0|truncate:{$search_result_truncate_value_after}}"}</p>
                 {/if}
             {/foreach}
+            </div>
+            </div>
             </div>
             <div class="panel-footer text-center">
                 <a href="index.php?page=display&dn={$entry.dn|escape:'url'}" class="btn btn-info" role="button"><i class="fa fa-id-card"></i> {$msg_displayentry}</a>

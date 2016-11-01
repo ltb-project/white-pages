@@ -41,6 +41,9 @@ $smarty->assign('background_image',$background_image);
 $smarty->assign('attributes_map',$attributes_map);
 $smarty->assign('search_result_items',$search_result_items);
 $smarty->assign('search_result_title',$search_result_title);
+$smarty->assign('search_result_show_undefined',$search_result_show_undefined);
+$smarty->assign('search_result_box_height',$search_result_box_height);
+$smarty->assign('search_result_truncate_value_after',$search_result_truncate_value_after);
 $smarty->assign('display_items',$display_items);
 $smarty->assign('display_title',$display_title);
 
