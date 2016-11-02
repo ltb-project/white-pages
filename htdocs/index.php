@@ -56,7 +56,7 @@ foreach ($messages as $key => $message) {
 
 # Other assignations
 $search = "";
-if (isset($_POST["search"]) and $_POST["search"]) { $search = htmlentities($_POST["search"]); }
+if (isset($_REQUEST["search"]) and $_REQUEST["search"]) { $search = htmlentities($_REQUEST["search"]); }
 $smarty->assign('search',$search);
 
 #==============================================================================
