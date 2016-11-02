@@ -57,6 +57,7 @@ $search_result_truncate_value_after = "20";
 # Full dislpay
 $display_items = array('firstname', 'lastname', 'mail', 'phone', 'mobile', 'organizationalunit', 'organization');
 $display_title = "fullname";
+#$display_photo_height = "200px";
 
 # Photo
 $default_photo = "images/240px-PICA.jpg";
