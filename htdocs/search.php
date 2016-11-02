@@ -46,8 +46,16 @@ if ($result === "") {
             }
             $ldap_filter .= "))";
 
+            # Search attributes
+            $attributes = array();
+            foreach( $search_result_items as $item ) {
+                $attributes[] = $attributes_map[$item]['attribute'];
+            }
+            $attributes[] = $attributes_map[$search_result_title]['attribute'];
+            $attributes[] = $attributes_map[$search_result_sortby]['attribute'];
+
             # Search for users
-            $search = ldap_search($ldap, $ldap_user_base, $ldap_filter);
+            $search = ldap_search($ldap, $ldap_user_base, $ldap_filter, $attributes);
 
             $errno = ldap_errno($ldap);
 
