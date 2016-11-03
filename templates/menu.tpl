@@ -13,7 +13,9 @@
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li><a href="index.php?page=gallery"><i class="fa fa-th"></i> {$msg_gallery}</a></li>
+                <li {if $page=="gallery"}class="active"{/if}>
+                  <a href="index.php?page=gallery"><i class="fa fa-th"></i> {$msg_gallery}</a>
+                </li>
               </ul>
               <form class="navbar-form navbar-right" role="search" action="index.php?page=search" method="post">
                 <div class="input-group">
