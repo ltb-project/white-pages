@@ -14,71 +14,55 @@ if (isset($_POST["search"]) and $_POST["search"]) { $search_query = $_POST["sear
 if ($result === "") {
 
     require_once("../conf/config.inc.php");
+    require_once("../lib/ldap.inc.php");
 
     # Connect to LDAP
-    $ldap = ldap_connect($ldap_url);
-    ldap_set_option($ldap, LDAP_OPT_PROTOCOL_VERSION, 3);
-    ldap_set_option($ldap, LDAP_OPT_REFERRALS, 0);
+    $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw);
 
-    if ( $ldap_starttls && !ldap_start_tls($ldap) ) {
-        $result = "ldaperror";
-        error_log("LDAP - Unable to use StartTLS");
-    } else {
+    $ldap = $ldap_connection[0];
+    $result = $ldap_connection[1];
 
-        # Bind
-        if ( isset($ldap_binddn) && isset($ldap_bindpw) ) {
-            $bind = ldap_bind($ldap, $ldap_binddn, $ldap_bindpw);
-        } else {
-            $bind = ldap_bind($ldap);
+    if ($ldap) {
+
+        # Search filter
+        $ldap_filter = "(&".$ldap_user_filter."(|";
+        foreach ($ldap_user_search_attributes as $lusa) {
+            $ldap_filter .= "($lusa=*$search_query*)";
         }
+        $ldap_filter .= "))";
+
+        # Search attributes
+        $attributes = array();
+        foreach( $search_result_items as $item ) {
+            $attributes[] = $attributes_map[$item]['attribute'];
+        }
+        $attributes[] = $attributes_map[$search_result_title]['attribute'];
+        $attributes[] = $attributes_map[$search_result_sortby]['attribute'];
+
+        # Search for users
+        $search = ldap_search($ldap, $ldap_user_base, $ldap_filter, $attributes);
 
         $errno = ldap_errno($ldap);
 
         if ( $errno ) {
             $result = "ldaperror";
-            error_log("LDAP - Bind error $errno  (".ldap_error($ldap).")");
+            error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
         } else {
 
-            # Search filter
-            $ldap_filter = "(&".$ldap_user_filter."(|";
-            foreach ($ldap_user_search_attributes as $lusa) {
-                $ldap_filter .= "($lusa=*$search_query*)";
+            # Sort entries
+            if (isset($search_result_sortby)) {
+                $sortby = $attributes_map[$search_result_sortby]['attribute'];
+                ldap_sort($ldap, $search, $sortby);
             }
-            $ldap_filter .= "))";
 
-            # Search attributes
-            $attributes = array();
-            foreach( $search_result_items as $item ) {
-                $attributes[] = $attributes_map[$item]['attribute'];
-            }
-            $attributes[] = $attributes_map[$search_result_title]['attribute'];
-            $attributes[] = $attributes_map[$search_result_sortby]['attribute'];
+            # Get search results
+            $nb_entries = ldap_count_entries($ldap, $search);
 
-            # Search for users
-            $search = ldap_search($ldap, $ldap_user_base, $ldap_filter, $attributes);
-
-            $errno = ldap_errno($ldap);
-
-            if ( $errno ) {
-                $result = "ldaperror";
-                error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
+            if ($nb_entries === 0) {
+                $result = "noentriesfound";
             } else {
-
-                # Sort entries
-                if (isset($search_result_sortby)) {
-                    $sortby = $attributes_map[$search_result_sortby]['attribute'];
-                    ldap_sort($ldap, $search, $sortby);
-                }
-
-                # Get search results
-                $nb_entries = ldap_count_entries($ldap, $search);
-
-                if ($nb_entries === 0) {
-                    $result = "noentriesfound";
-                } else {
-                    $entries = ldap_get_entries($ldap, $search);
-                    unset($entries["count"]);
-                }
+                $entries = ldap_get_entries($ldap, $search);
+                unset($entries["count"]);
             }
         }
     }
