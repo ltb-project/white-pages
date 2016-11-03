@@ -47,6 +47,9 @@ $smarty->assign('search_result_truncate_value_after',$search_result_truncate_val
 $smarty->assign('display_items',$display_items);
 $smarty->assign('display_title',$display_title);
 $smarty->assign('display_photo_height',$display_photo_height);
+$smarty->assign('gallery_title',$gallery_title);
+$smarty->assign('gallery_bootstrap_column_class',$gallery_bootstrap_column_class);
+$smarty->assign('gallery_box_height',$gallery_box_height);
 
 # Assign messages
 $smarty->assign('lang',$lang);

@@ -62,6 +62,12 @@ $display_title = "fullname";
 # Photo
 $default_photo = "images/240px-PICA.jpg";
 
+# Gallery
+$gallery_title = "fullname";
+$gallery_sortby = "lastname";
+$gallery_bootstrap_column_class = "col-xs-6 col-sm-4 col-md-3";
+#$gallery_box_height = "150px";
+
 # Language
 $lang ="en";
 

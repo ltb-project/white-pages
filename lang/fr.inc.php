@@ -8,6 +8,7 @@ $messages['displayentry'] = "Afficher l'entrée";
 $messages['dnrequired'] = "L'identifiant de l'entrée est requis";
 $messages['entriesfound'] = "entrées trouvées";
 $messages['entryfound'] = "entrée trouvée";
+$messages['gallery'] = "Trombinoscope";
 $messages['label_displayname'] = "Nom d'affichage";
 $messages['label_firstname'] = "Prénom";
 $messages['label_fullname'] = "Nom complet";
