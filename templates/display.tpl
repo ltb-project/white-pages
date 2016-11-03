@@ -30,12 +30,9 @@
                         <th class="hidden-xs">
                             {$msg_label_{$item}}
                         </th>
-                        {if $type eq 'text'}
-                        <td>{$entry.{$attribute}.0}</td>
-                        {/if}
-                        {if $type eq 'mailto'}
-                        <td>{mailto address="{$entry.{$attribute}.0}" encode="javascript"}</td>
-                        {/if}
+                        <td>
+                            {include 'value_displayer.tpl' value=$entry.{$attribute}.0 type=$type truncate_value_after=10000}
+                        </td>
                     </tr>
                 {/foreach}
                 </table>

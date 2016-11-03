@@ -29,12 +29,10 @@
                     {/if}
                 {continue}
                 {/if}
-                {if $type eq 'text'}
-                <p><i class="fa fa-{$faclass}"></i> {$entry.{$attribute}.0|truncate:{$search_result_truncate_value_after}}</p>
-                {/if}
-                {if $type eq 'mailto'}
-                <p><i class="fa fa-{$faclass}"></i> {mailto address="{$entry.{$attribute}.0}" encode="javascript" text="{$entry.{$attribute}.0|truncate:{$search_result_truncate_value_after}}"}</p>
-                {/if}
+                <p>
+                    <i class="fa fa-{$faclass}"></i> 
+                    {include 'value_displayer.tpl' value=$entry.{$attribute}.0 type=$type truncate_value_after=$search_result_truncate_value_after}
+                </p>
             {/foreach}
             </div>
             </div>
