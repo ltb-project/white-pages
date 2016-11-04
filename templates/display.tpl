@@ -31,7 +31,7 @@
                             {$msg_label_{$item}}
                         </th>
                         <td>
-                            {include 'value_displayer.tpl' value=$entry.{$attribute}.0 type=$type truncate_value_after=10000}
+                            {include 'value_displayer.tpl' value=$entry.{$attribute}.0 type=$type truncate_value_after=10000 ldap_params=$ldap_params}
                         </td>
                     </tr>
                 {/foreach}

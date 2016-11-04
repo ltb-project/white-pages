@@ -40,10 +40,12 @@ $attributes_map = array(
     'identifier' => array( 'attribute' => 'uid', 'faclass' => 'user-o', 'type' => 'text' ),
     'lastname' => array( 'attribute' => 'sn', 'faclass' => 'user-o', 'type' => 'text' ),
     'mail' => array( 'attribute' => 'mail', 'faclass' => 'envelope-o', 'type' => 'mailto' ),
+    'manager' => array( 'attribute' => 'manager', 'faclass' => 'user-circle-o', 'type' => 'dn_link' ),
     'mobile' => array( 'attribute' => 'mobile', 'faclass' => 'mobile', 'type' => 'text' ),
     'organization' => array( 'attribute' => 'o', 'faclass' => 'building', 'type' => 'text' ),
     'organizationalunit' => array( 'attribute' => 'ou', 'faclass' => 'building-o', 'type' => 'text' ),
     'phone' => array( 'attribute' => 'telephonenumber', 'faclass' => 'phone', 'type' => 'text' ),
+    'secretary' => array( 'attribute' => 'secretary', 'faclass' => 'user-circle-o', 'type' => 'dn_link' ),
 );
 
 # Quick search results
@@ -55,7 +57,7 @@ $search_result_show_undefined = true;
 $search_result_truncate_value_after = "20";
 
 # Full dislpay
-$display_items = array('firstname', 'lastname', 'mail', 'phone', 'mobile', 'organizationalunit', 'organization');
+$display_items = array('firstname', 'lastname', 'mail', 'phone', 'mobile', 'manager', 'secretary', 'organizationalunit', 'organization');
 $display_title = "fullname";
 #$display_photo_height = "200px";
 

@@ -31,7 +31,7 @@
                 {/if}
                 <p>
                     <i class="fa fa-{$faclass}"></i> 
-                    {include 'value_displayer.tpl' value=$entry.{$attribute}.0 type=$type truncate_value_after=$search_result_truncate_value_after}
+                    {include 'value_displayer.tpl' value=$entry.{$attribute}.0 type=$type truncate_value_after=$search_result_truncate_value_after ldap_params=$ldap_params}
                 </p>
             {/foreach}
             </div>

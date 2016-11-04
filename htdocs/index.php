@@ -36,6 +36,7 @@ $smarty->setCacheDir('../cache/');
 $smarty->debugging = $debug;
 
 # Assign configuration variables
+$smarty->assign('ldap_params',array('ldap_url' => $ldap_url, 'ldap_starttls' => $ldap_starttls, 'ldap_binddn' => $ldap_binddn, 'ldap_bindpw' => $ldap_bindpw, 'ldap_user_base' => $ldap_user_base, 'ldap_user_filter' => $ldap_user_filter));
 $smarty->assign('logo',$logo);
 $smarty->assign('background_image',$background_image);
 $smarty->assign('attributes_map',$attributes_map);
@@ -61,6 +62,10 @@ foreach ($messages as $key => $message) {
 $search = "";
 if (isset($_REQUEST["search"]) and $_REQUEST["search"]) { $search = htmlentities($_REQUEST["search"]); }
 $smarty->assign('search',$search);
+
+# Register plugins
+require_once("../lib/smarty.inc.php");
+$smarty->registerPlugin("function", "dn_link", "print_dn_link");
 
 #==============================================================================
 # Route to page
