@@ -7,6 +7,7 @@ $result = "";
 $search_query = "";
 $nb_entries = 0;
 $entries = array();
+$size_limit_reached = false;
 
 if (isset($_POST["search"]) and $_POST["search"]) { $search_query = $_POST["search"]; }
  else { $result = "searchrequired"; }
@@ -40,11 +41,14 @@ if ($result === "") {
         $attributes[] = $attributes_map[$search_result_sortby]['attribute'];
 
         # Search for users
-        $search = ldap_search($ldap, $ldap_user_base, $ldap_filter, $attributes);
+        $search = ldap_search($ldap, $ldap_user_base, $ldap_filter, $attributes, 0, $ldap_size_limit);
 
         $errno = ldap_errno($ldap);
 
-        if ( $errno ) {
+        if ( $errno == 4) {
+            $size_limit_reached = true;
+        }
+        if ( $errno > 0 and $errno !=4 ) {
             $result = "ldaperror";
             error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
         } else {
@@ -70,5 +74,6 @@ if ($result === "") {
 
 $smarty->assign("nb_entries", $nb_entries);
 $smarty->assign("entries", $entries);
+$smarty->assign("size_limit_reached", $size_limit_reached);
 
 ?>

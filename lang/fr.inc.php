@@ -26,6 +26,7 @@ $messages['noentriesfound'] = "Aucune entrée trouvée";
 $messages['notdefined'] = "Non renseigné";
 $messages['search'] = "Rechercher";
 $messages['searchrequired'] = "Veuillez saisir votre recherche";
+$messages['sizelimit'] = "La limite de recherche a été atteinte, certaines entrées n'ont pas pu être affichées";
 $messages['title'] = "Pages blanches";
 $messages['welcome'] = "Bienvenue sur les pages blanches LDAP Tool Box";
 

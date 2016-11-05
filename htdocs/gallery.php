@@ -6,6 +6,7 @@
 $result = "";
 $nb_entries = 0;
 $entries = array();
+$size_limit_reached = false;
 
 require_once("../conf/config.inc.php");
 require_once("../lib/ldap.inc.php");
@@ -23,11 +24,14 @@ if ($ldap) {
     $attributes[] = $attributes_map[$gallery_sortby]['attribute'];
 
     # Search for users
-    $search = ldap_search($ldap, $ldap_user_base, $ldap_user_filter, $attributes);
+    $search = ldap_search($ldap, $ldap_user_base, $ldap_user_filter, $attributes, 0, $ldap_size_limit);
 
     $errno = ldap_errno($ldap);
 
-    if ( $errno ) {
+    if ( $errno == 4) {
+        $size_limit_reached = true;
+    }
+    if ( $errno > 0 and $errno != 4 ) {
         $result = "ldaperror";
         error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
     } else {
@@ -52,5 +56,6 @@ if ($ldap) {
 
 $smarty->assign("nb_entries", $nb_entries);
 $smarty->assign("entries", $entries);
+$smarty->assign("size_limit_reached", $size_limit_reached);
 
 ?>

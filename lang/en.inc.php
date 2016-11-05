@@ -26,6 +26,7 @@ $messages['noentriesfound'] = "No entries found";
 $messages['notdefined'] = "Not defined";
 $messages['search'] = "Search";
 $messages['searchrequired'] = "Please enter your search";
+$messages['sizelimit'] = "Size limit has been reached, some entries could not be displayed";
 $messages['title'] = "White Pages";
 $messages['welcome'] = "Welcome to LDAP Tool Box White Pages";
 

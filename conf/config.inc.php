@@ -31,6 +31,7 @@ $ldap_base = "dc=example,dc=com";
 $ldap_user_base = "ou=users,".$ldap_base;
 $ldap_user_filter = "(objectClass=inetOrgPerson)";
 $ldap_user_search_attributes = array('uid', 'cn', 'mail');
+$ldap_size_limit = 0;
 
 # How display attributes
 $attributes_map = array(
