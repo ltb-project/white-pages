@@ -35,18 +35,31 @@ $ldap_size_limit = 0;
 
 # How display attributes
 $attributes_map = array(
+    'businesscategory' => array( 'attribute' => 'businesscategory', 'faclass' => 'briefcase', 'type' => 'text' ),
+    'carlicense' => array( 'attribute' => 'carlicense', 'faclass' => 'car', 'type' => 'text' ),
+    'description' => array( 'attribute' => 'description', 'faclass' => 'info-circle', 'type' => 'text' ),
     'displayname' => array( 'attribute' => 'displayname', 'faclass' => 'user-circle', 'type' => 'text' ),
+    'employeenumber' => array( 'attribute' => 'employeenumber', 'faclass' => 'hashtag', 'type' => 'text' ),
+    'employeetype' => array( 'attribute' => 'employeetype', 'faclass' => 'id-badge', 'type' => 'text' ),
+    'fax' => array( 'attribute' => 'facsimiletelephonenumber', 'faclass' => 'fax', 'type' => 'text' ),
     'firstname' => array( 'attribute' => 'givenname', 'faclass' => 'user-o', 'type' => 'text' ),
     'fullname' => array( 'attribute' => 'cn', 'faclass' => 'user-circle', 'type' => 'text' ),
     'identifier' => array( 'attribute' => 'uid', 'faclass' => 'user-o', 'type' => 'text' ),
+    'l' => array( 'attribute' => 'l', 'faclass' => 'globe', 'type' => 'text' ),
     'lastname' => array( 'attribute' => 'sn', 'faclass' => 'user-o', 'type' => 'text' ),
     'mail' => array( 'attribute' => 'mail', 'faclass' => 'envelope-o', 'type' => 'mailto' ),
     'manager' => array( 'attribute' => 'manager', 'faclass' => 'user-circle-o', 'type' => 'dn_link' ),
     'mobile' => array( 'attribute' => 'mobile', 'faclass' => 'mobile', 'type' => 'text' ),
     'organization' => array( 'attribute' => 'o', 'faclass' => 'building', 'type' => 'text' ),
     'organizationalunit' => array( 'attribute' => 'ou', 'faclass' => 'building-o', 'type' => 'text' ),
+    'pager' => array( 'attribute' => 'pager', 'faclass' => 'mobile', 'type' => 'text' ),
     'phone' => array( 'attribute' => 'telephonenumber', 'faclass' => 'phone', 'type' => 'text' ),
+    'postaladdress' => array( 'attribute' => 'postaladdress', 'faclass' => 'map-marker', 'type' => 'text' ),
+    'postalcode' => array( 'attribute' => 'postalcode', 'faclass' => 'globe', 'type' => 'text' ),
     'secretary' => array( 'attribute' => 'secretary', 'faclass' => 'user-circle-o', 'type' => 'dn_link' ),
+    'state' => array( 'attribute' => 'st', 'faclass' => 'globe', 'type' => 'text' ),
+    'street' => array( 'attribute' => 'street', 'faclass' => 'map-marker', 'type' => 'text' ),
+    'title' => array( 'attribute' => 'businesscategory', 'faclass' => 'certificate', 'type' => 'text' ),
 );
 
 # Quick search results
@@ -58,7 +71,7 @@ $search_result_show_undefined = true;
 $search_result_truncate_value_after = "20";
 
 # Full dislpay
-$display_items = array('firstname', 'lastname', 'mail', 'phone', 'mobile', 'manager', 'secretary', 'organizationalunit', 'organization');
+$display_items = array('firstname', 'lastname', 'title', 'businesscategory', 'employeenumber', 'employeetype', 'mail', 'phone', 'mobile', 'fax', 'postaladdress', 'street', 'postalcode', 'l', 'manager', 'secretary', 'organizationalunit', 'organization', 'description' );
 $display_title = "fullname";
 #$display_photo_height = "200px";
 
