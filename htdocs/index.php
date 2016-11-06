@@ -64,7 +64,7 @@ $smarty->assign('search',$search);
 
 # Register plugins
 require_once("../lib/smarty.inc.php");
-$smarty->registerPlugin("function", "dn_link", "print_dn_link");
+$smarty->registerPlugin("function", "get_attribute", "get_attribute");
 
 #==============================================================================
 # Route to page

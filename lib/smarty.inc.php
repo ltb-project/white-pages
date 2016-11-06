@@ -3,11 +3,11 @@
 
 require_once("ldap.inc.php");
 
-function print_dn_link($params, $smarty) {
+function get_attribute($params, $smarty) {
 
-    $html = "";
+    $return = "";
     $dn = $params["dn"];
-    $display = $params["display"];
+    $attribute = $params["attribute"];
     $ldap_url = $params["ldap_url"];
     $ldap_starttls = $params["ldap_starttls"];
     $ldap_binddn = $params["ldap_binddn"];
@@ -23,7 +23,7 @@ function print_dn_link($params, $smarty) {
     if ($ldap) {
 
         # Search entry
-        $search = ldap_read($ldap, $dn, $ldap_user_filter, array($display));
+        $search = ldap_read($ldap, $dn, $ldap_user_filter, array($attribute));
 
         $errno = ldap_errno($ldap);
 
@@ -32,13 +32,11 @@ function print_dn_link($params, $smarty) {
         } else {
             $entry = ldap_get_entries($ldap, $search);
 
-            $html  = "<a href=\"index.php?page=display&dn=".urlencode($entry[0]["dn"])."\">";
-            $html .= $entry[0][$display][0];
-            $html .= "</a>";
+            $return = $entry[0][$attribute][0];
         }
     }
 
-    return $html;
+    return $return;
 }
 
 ?>
