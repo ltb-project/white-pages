@@ -24,7 +24,7 @@
                         {continue}
                     {/if}
                     <tr>
-                        <th>
+                        <th class="text-center">
                             <i class="fa fa-{$faclass}"></i>
                         </th>
                         <th class="hidden-xs">
