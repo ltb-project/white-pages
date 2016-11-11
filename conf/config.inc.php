@@ -59,7 +59,7 @@ $attributes_map = array(
     'secretary' => array( 'attribute' => 'secretary', 'faclass' => 'user-circle-o', 'type' => 'dn_link' ),
     'state' => array( 'attribute' => 'st', 'faclass' => 'globe', 'type' => 'text' ),
     'street' => array( 'attribute' => 'street', 'faclass' => 'map-marker', 'type' => 'text' ),
-    'title' => array( 'attribute' => 'businesscategory', 'faclass' => 'certificate', 'type' => 'text' ),
+    'title' => array( 'attribute' => 'title', 'faclass' => 'certificate', 'type' => 'text' ),
 );
 
 # Quick search results
