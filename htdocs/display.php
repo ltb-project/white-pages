@@ -7,8 +7,13 @@ $result = "";
 $dn = "";
 $entry = "";
 
-if (isset($_GET["dn"]) and $_GET["dn"]) { $dn = $_GET["dn"]; }
- else { $result = "dnrequired"; }
+if (isset($_GET["dn"]) and $_GET["dn"]) {
+    $dn = $_GET["dn"];
+} elseif (isset($entry_dn)) {
+    $dn = $entry_dn;
+} else {
+    $result = "dnrequired";
+}
 
 if ($result === "") {
 

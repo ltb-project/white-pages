@@ -65,9 +65,10 @@ if ($result === "") {
             if ($nb_entries === 0) {
                 $result = "noentriesfound";
             } elseif ($nb_entries === 1) {
-                $page = "display";
                 $entries = ldap_get_entries($ldap, $search);
-                $smarty->assign("entry",$entries[0]);
+                $entry_dn = $entries[0]["dn"];
+                $page = "display";
+                include("display.php");
             } else {
                 $entries = ldap_get_entries($ldap, $search);
                 unset($entries["count"]);
