@@ -64,16 +64,19 @@ if ($result === "") {
 
             if ($nb_entries === 0) {
                 $result = "noentriesfound";
+            } elseif ($nb_entries === 1) {
+                $page = "display";
+                $entries = ldap_get_entries($ldap, $search);
+                $smarty->assign("entry",$entries[0]);
             } else {
                 $entries = ldap_get_entries($ldap, $search);
                 unset($entries["count"]);
+                $smarty->assign("nb_entries", $nb_entries);
+                $smarty->assign("entries", $entries);
+                $smarty->assign("size_limit_reached", $size_limit_reached);
             }
         }
     }
 }
-
-$smarty->assign("nb_entries", $nb_entries);
-$smarty->assign("entries", $entries);
-$smarty->assign("size_limit_reached", $size_limit_reached);
 
 ?>
