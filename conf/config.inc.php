@@ -71,7 +71,7 @@ $search_result_show_undefined = true;
 $search_result_truncate_value_after = "20";
 
 # Full dislpay
-$display_items = array('firstname', 'lastname', 'title', 'businesscategory', 'employeenumber', 'employeetype', 'mail', 'phone', 'mobile', 'fax', 'postaladdress', 'street', 'postalcode', 'l', 'manager', 'secretary', 'organizationalunit', 'organization', 'description' );
+$display_items = array('firstname', 'lastname', 'title', 'businesscategory', 'employeenumber', 'employeetype', 'mail', 'phone', 'mobile', 'fax', 'postaladdress', 'street', 'postalcode', 'l', 'state', 'manager', 'secretary', 'organizationalunit', 'organization', 'description' );
 $display_title = "fullname";
 #$display_photo_height = "200px";
 
