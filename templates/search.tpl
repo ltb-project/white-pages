@@ -9,7 +9,7 @@
 
 {foreach $entries as $entry}
 
-    <div class="col-sm-4">
+    <div class="col-sm-4 hvr-grow">
         <div class="panel panel-info">
             <div class="panel-heading text-center">
                 <p class="panel-title">
