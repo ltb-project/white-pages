@@ -13,10 +13,13 @@
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
+                {if $use_gallery}
                 <li {if $page=="gallery"}class="active"{/if}>
                   <a href="index.php?page=gallery"><i class="fa fa-th"></i> {$msg_gallery}</a>
                 </li>
+                {/if}
               </ul>
+              {if $use_quick_search}
               <form class="navbar-form navbar-right" role="search" action="index.php?page=search" method="post">
                 <div class="input-group">
                   <input type="text" class="form-control" placeholder="{$msg_search}" name="search" value="{$search}" />
@@ -25,6 +28,7 @@
                   </span>
                 </div>
               </form>
+              {/if}
             </div>
           </div>
         </div>

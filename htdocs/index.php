@@ -42,6 +42,7 @@ $smarty->assign('ldap_params',array('ldap_url' => $ldap_url, 'ldap_starttls' => 
 $smarty->assign('logo',$logo);
 $smarty->assign('background_image',$background_image);
 $smarty->assign('attributes_map',$attributes_map);
+$smarty->assign('use_quick_search',$use_quick_search);
 $smarty->assign('search_result_items',$search_result_items);
 $smarty->assign('search_result_title',$search_result_title);
 $smarty->assign('search_result_show_undefined',$search_result_show_undefined);
@@ -50,6 +51,7 @@ $smarty->assign('search_result_truncate_value_after',$search_result_truncate_val
 $smarty->assign('display_items',$display_items);
 $smarty->assign('display_title',$display_title);
 $smarty->assign('display_photo_height',$display_photo_height);
+$smarty->assign('use_gallery',$use_gallery);
 $smarty->assign('gallery_title',$gallery_title);
 $smarty->assign('gallery_bootstrap_column_class',$gallery_bootstrap_column_class);
 $smarty->assign('gallery_box_height',$gallery_box_height);
@@ -75,6 +77,8 @@ $smarty->registerPlugin("function", "get_attribute", "get_attribute");
 $result = "";
 $page = "welcome";
 if (isset($_GET["page"]) and $_GET["page"]) { $page = $_GET["page"]; }
+if ( $page === "search" and !$use_quick_search ) { $page = "welcome"; }
+if ( $page === "gallery" and !$use_gallery ) { $page = "welcome"; }
 if ( file_exists($page.".php") ) { require_once($page.".php"); }
 $smarty->assign('page',$page);
 

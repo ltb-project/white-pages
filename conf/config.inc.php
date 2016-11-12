@@ -63,6 +63,7 @@ $attributes_map = array(
 );
 
 # Quick search results
+$use_quick_search = true;
 $search_result_items = array('mail', 'phone', 'mobile');
 $search_result_title = "fullname";
 $search_result_sortby = "lastname";
@@ -79,6 +80,7 @@ $display_title = "fullname";
 $default_photo = "images/240px-PICA.jpg";
 
 # Gallery
+$use_gallery = true;
 $gallery_title = "fullname";
 $gallery_sortby = "lastname";
 $gallery_bootstrap_column_class = "col-xs-6 col-sm-4 col-md-3";
