@@ -4,6 +4,7 @@
 # English
 #==============================================================================
 
+$messages['advancedsearch'] = "Advanced search";
 $messages['displayentry'] = "Display entry";
 $messages['dnrequired'] = "Entry identifier required";
 $messages['entriesfound'] = "entries found";

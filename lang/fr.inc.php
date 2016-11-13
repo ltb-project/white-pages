@@ -4,6 +4,7 @@
 # French
 #==============================================================================
 
+$messages['advancedsearch'] = "Recherche avancée";
 $messages['displayentry'] = "Afficher l'entrée";
 $messages['dnrequired'] = "L'identifiant de l'entrée est requis";
 $messages['entriesfound'] = "entrées trouvées";

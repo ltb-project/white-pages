@@ -13,6 +13,11 @@
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
+                {if $use_advanced_search}
+                <li {if $page=="advancedsearch"}class="active"{/if}>
+                  <a href="index.php?page=advancedsearch"><i class="fa fa-search-plus"></i> {$msg_advancedsearch}</a>
+                </li>
+                {/if}
                 {if $use_gallery}
                 <li {if $page=="gallery"}class="active"{/if}>
                   <a href="index.php?page=gallery"><i class="fa fa-th"></i> {$msg_gallery}</a>

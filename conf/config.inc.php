@@ -71,6 +71,10 @@ $search_result_show_undefined = true;
 #$search_result_box_height = "150px";
 $search_result_truncate_value_after = "20";
 
+# Advanced search
+$use_advanced_search = true;
+$advanced_search_criteria = array('firstname', 'lastname', 'mail', 'title', 'businesscategory', 'employeetype');
+
 # Full dislpay
 $display_items = array('firstname', 'lastname', 'title', 'businesscategory', 'employeenumber', 'employeetype', 'mail', 'phone', 'mobile', 'fax', 'postaladdress', 'street', 'postalcode', 'l', 'state', 'manager', 'secretary', 'organizationalunit', 'organization', 'description' );
 $display_title = "fullname";
