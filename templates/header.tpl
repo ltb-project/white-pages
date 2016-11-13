@@ -8,6 +8,9 @@
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/font-awesome.min.css" />
+{if $hover_effect}
+    <link rel="stylesheet" type="text/css" href="vendor/hover/css/hover-min.css" />
+{/if}
     <link rel="stylesheet" type="text/css" href="css/white-pages.css" />
     <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
     <link href="images/favicon.ico" rel="shortcut icon" />

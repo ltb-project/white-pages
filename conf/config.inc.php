@@ -93,11 +93,10 @@ $gallery_bootstrap_column_class = "col-xs-6 col-sm-4 col-md-3";
 # Language
 $lang ="en";
 
-# Logo
+# Graphics
 $logo = "images/ltb-logo.png";
-
-# Background image
 $background_image = "images/unsplash-space.jpeg";
+$hover_effect = "grow";
 
 # Debug mode
 $debug = false;

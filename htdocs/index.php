@@ -41,6 +41,7 @@ $smarty->debugging = $debug;
 $smarty->assign('ldap_params',array('ldap_url' => $ldap_url, 'ldap_starttls' => $ldap_starttls, 'ldap_binddn' => $ldap_binddn, 'ldap_bindpw' => $ldap_bindpw, 'ldap_user_base' => $ldap_user_base, 'ldap_user_filter' => $ldap_user_filter));
 $smarty->assign('logo',$logo);
 $smarty->assign('background_image',$background_image);
+$smarty->assign('hover_effect',$hover_effect);
 $smarty->assign('attributes_map',$attributes_map);
 $smarty->assign('use_quick_search',$use_quick_search);
 $smarty->assign('search_result_items',$search_result_items);
