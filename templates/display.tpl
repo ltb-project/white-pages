@@ -5,7 +5,7 @@
         <div class="panel panel-info">
             <div class="panel-heading text-center">
                 <p class="panel-title">
-                    <i class="fa fa-{$attributes_map.{$display_title}.faclass}"></i>
+                    <i class="fa fa-fw fa-{$attributes_map.{$display_title}.faclass}"></i>
                     {$entry.{$attributes_map.{$display_title}.attribute}.0}
                 </p>
             </div>
@@ -25,7 +25,7 @@
                     {/if}
                     <tr>
                         <th class="text-center">
-                            <i class="fa fa-{$faclass}"></i>
+                            <i class="fa fa-fw fa-{$faclass}"></i>
                         </th>
                         <th class="hidden-xs">
                             {$msg_label_{$item}}

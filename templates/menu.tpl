@@ -9,18 +9,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="index.php"><i class="fa fa-home"></i> {$msg_title}</a>
+              <a class="navbar-brand" href="index.php"><i class="fa fa-fw fa-home"></i> {$msg_title}</a>
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 {if $use_advanced_search}
                 <li {if $page=="advancedsearch"}class="active"{/if}>
-                  <a href="index.php?page=advancedsearch"><i class="fa fa-search-plus"></i> {$msg_advancedsearch}</a>
+                  <a href="index.php?page=advancedsearch"><i class="fa fa-fw fa-search-plus"></i> {$msg_advancedsearch}</a>
                 </li>
                 {/if}
                 {if $use_gallery}
                 <li {if $page=="gallery"}class="active"{/if}>
-                  <a href="index.php?page=gallery"><i class="fa fa-th"></i> {$msg_gallery}</a>
+                  <a href="index.php?page=gallery"><i class="fa fa-fw fa-th"></i> {$msg_gallery}</a>
                 </li>
                 {/if}
               </ul>
@@ -29,7 +29,7 @@
                 <div class="input-group">
                   <input type="text" class="form-control" placeholder="{$msg_search}" name="search" value="{$search}" />
                   <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit">&nbsp;<i class="fa fa-search"></i></button>
+                    <button class="btn btn-default" type="submit">&nbsp;<i class="fa fa-fw fa-search"></i></button>
                   </span>
                 </div>
               </form>

@@ -2,7 +2,7 @@
 <div class="alert alert-success">{$nb_entries} {if $nb_entries==1}{$msg_entryfound}{else}{$msg_entriesfound}{/if}</div>
 
 {if {$size_limit_reached}}
-<div class="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> {$msg_sizelimit}</div>
+<div class="alert alert-warning"><i class="fa fa-fw fa-exclamation-triangle"></i> {$msg_sizelimit}</div>
 {/if}
 
 <div class="row">
@@ -13,7 +13,7 @@
         <div class="panel panel-info">
             <div class="panel-heading text-center">
                 <p class="panel-title">
-                    <i class="fa fa-{$attributes_map.{$search_result_title}.faclass}"></i>
+                    <i class="fa fa-fw fa-{$attributes_map.{$search_result_title}.faclass}"></i>
                      {$entry.{$attributes_map.{$search_result_title}.attribute}.0}
                 </p>
             </div>
@@ -29,12 +29,12 @@
                 {$faclass=$attributes_map.{$item}.faclass}
                 {if !({$entry.$attribute.0})}
                     {if {$search_result_show_undefined}}
-                    <p><i class="fa fa-{$faclass}"></i> <i>{$msg_notdefined}</i></p>
+                    <p><i class="fa fa-fw fa-{$faclass}"></i> <i>{$msg_notdefined}</i></p>
                     {/if}
                 {continue}
                 {/if}
                 <p>
-                    <i class="fa fa-{$faclass}"></i> 
+                    <i class="fa fa-fw fa-{$faclass}"></i> 
                     {include 'value_displayer.tpl' value=$entry.{$attribute}.0 type=$type truncate_value_after=$search_result_truncate_value_after ldap_params=$ldap_params search={$search}}
                 </p>
             {/foreach}
@@ -42,7 +42,7 @@
             </div>
             </div>
             <div class="panel-footer text-center">
-                <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}" class="btn btn-info" role="button"><i class="fa fa-id-card"></i> {$msg_displayentry}</a>
+                <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}" class="btn btn-info" role="button"><i class="fa fa-fw fa-id-card"></i> {$msg_displayentry}</a>
             </div>
         </div>
     </div>
