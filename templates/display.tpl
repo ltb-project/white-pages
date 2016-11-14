@@ -31,7 +31,11 @@
                             {$msg_label_{$item}}
                         </th>
                         <td>
-                            {include 'value_displayer.tpl' value=$entry.{$attribute}.0 type=$type truncate_value_after=10000 ldap_params=$ldap_params}
+                            {foreach $entry.{$attribute} as $value}
+                            {if $value@index ne 0}
+                            {include 'value_displayer.tpl' value=$value type=$type truncate_value_after=10000 ldap_params=$ldap_params}<br />
+                            {/if}
+                            {/foreach}
                         </td>
                     </tr>
                 {/foreach}

@@ -34,8 +34,12 @@
                 {continue}
                 {/if}
                 <p>
+                    {foreach $entry.{$attribute} as $value}
+                    {if $value@index ne 0}
                     <i class="fa fa-fw fa-{$faclass}"></i> 
-                    {include 'value_displayer.tpl' value=$entry.{$attribute}.0 type=$type truncate_value_after=$search_result_truncate_value_after ldap_params=$ldap_params search={$search}}
+                    {include 'value_displayer.tpl' value=$value type=$type truncate_value_after=$search_result_truncate_value_after ldap_params=$ldap_params search={$search}}<br />
+                    {/if}
+                    {/foreach}
                 </p>
             {/foreach}
             </div>
