@@ -9,6 +9,7 @@ $messages['displayentry'] = "Display entry";
 $messages['dnrequired'] = "Entry identifier required";
 $messages['entriesfound'] = "entries found";
 $messages['entryfound'] = "entry found";
+$messages['false'] = "No";
 $messages['gallery'] = "Gallery";
 $messages['label_businesscategory'] = "Business category";
 $messages['label_carlicense'] = "Car license";
@@ -42,6 +43,7 @@ $messages['search'] = "Search";
 $messages['searchrequired'] = "Please enter your search";
 $messages['sizelimit'] = "Size limit has been reached, some entries could not be displayed";
 $messages['title'] = "White Pages";
+$messages['true'] = "Yes";
 $messages['welcome'] = "Welcome to LDAP Tool Box White Pages";
 
 ?>

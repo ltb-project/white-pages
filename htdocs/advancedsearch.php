@@ -29,7 +29,11 @@ if ($result === "") {
         foreach ($advanced_search_criteria as $item) {
             if (isset($_POST[$item]) and $_POST[$item]) {
                 $attribute = $attributes_map[$item]['attribute'];
-                $ldap_filter .= "($attribute=*".$_POST[$item]."*)";
+                if ( $attributes_map[$item]['type'] == "boolean") {
+                    $ldap_filter .= "($attribute=".$_POST[$item].")";
+                } else {
+                    $ldap_filter .= "($attribute=*".$_POST[$item]."*)";
+                }
             }
         }
         $ldap_filter .= "))";
