@@ -16,3 +16,8 @@
     {if $value=="TRUE"}{$msg_true|truncate:{$truncate_value_after}}{/if}
     {if $value=="FALSE"}{$msg_false|truncate:{$truncate_value_after}}{/if}
 {/if}
+
+
+{if $type eq 'date'}
+    {convert_ldap_date($value)|date_format:{$date_specifiers}|truncate:{$truncate_value_after}}
+{/if}

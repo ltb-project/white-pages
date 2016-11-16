@@ -58,6 +58,7 @@ $smarty->assign('use_gallery',$use_gallery);
 $smarty->assign('gallery_title',$gallery_title);
 $smarty->assign('gallery_bootstrap_column_class',$gallery_bootstrap_column_class);
 $smarty->assign('gallery_box_height',$gallery_box_height);
+$smarty->assign('date_specifiers',$date_specifiers);
 
 # Assign messages
 $smarty->assign('lang',$lang);
@@ -73,6 +74,7 @@ $smarty->assign('search',$search);
 # Register plugins
 require_once("../lib/smarty.inc.php");
 $smarty->registerPlugin("function", "get_attribute", "get_attribute");
+$smarty->registerPlugin("function", "convert_ldap_date", "convert_ldap_date");
 
 #==============================================================================
 # Route to page

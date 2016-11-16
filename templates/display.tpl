@@ -33,7 +33,7 @@
                         <td>
                             {foreach $entry.{$attribute} as $value}
                             {if $value@index ne 0}
-                            {include 'value_displayer.tpl' value=$value type=$type truncate_value_after=10000 ldap_params=$ldap_params}<br />
+                            {include 'value_displayer.tpl' value=$value type=$type truncate_value_after=10000 ldap_params=$ldap_params date_specifiers=$date_specifiers}<br />
                             {/if}
                             {/foreach}
                         </td>

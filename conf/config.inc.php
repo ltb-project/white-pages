@@ -92,6 +92,7 @@ $gallery_bootstrap_column_class = "col-xs-6 col-sm-4 col-md-3";
 
 # Language
 $lang ="en";
+$date_specifiers = "%Y-%m-%d %H:%M:%S (%Z)";
 
 # Graphics
 $logo = "images/ltb-logo.png";

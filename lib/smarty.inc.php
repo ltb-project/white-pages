@@ -2,6 +2,7 @@
 # Smarty functions
 
 require_once("ldap.inc.php");
+require_once("date.inc.php");
 
 function get_attribute($params, $smarty) {
 
@@ -37,6 +38,12 @@ function get_attribute($params, $smarty) {
     }
 
     return $return;
+}
+
+function convert_ldap_date($date, $smarty) {
+
+    return ldapDate2phpDate( $date );
+
 }
 
 ?>
