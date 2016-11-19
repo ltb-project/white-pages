@@ -15,6 +15,7 @@ if ($result === "") {
 
     require_once("../conf/config.inc.php");
     require_once("../lib/ldap.inc.php");
+    require_once("../lib/date.inc.php");
 
     # Connect to LDAP
     $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw);
@@ -27,11 +28,25 @@ if ($result === "") {
         # Search filter
         $ldap_filter = "(&".$ldap_user_filter."(&";
         foreach ($advanced_search_criteria as $item) {
-            if (isset($_POST[$item]) and $_POST[$item]) {
-                $attribute = $attributes_map[$item]['attribute'];
-                if ( $attributes_map[$item]['type'] == "boolean") {
+            $attribute = $attributes_map[$item]['attribute'];
+            $type = $attributes_map[$item]['type'];
+            if ( $type == "date") {
+                if (isset($_POST[$item."from"]) and $_POST[$item."from"]) {
+                    $value = string2ldapDate($_POST[$item."from"]);
+                    $ldap_filter .= "($attribute>=$value)";
+                }
+                if (isset($_POST[$item."to"]) and $_POST[$item."to"]) {
+                    $value = string2ldapDate($_POST[$item."to"]);
+                    $ldap_filter .= "($attribute<=$value)";
+                }
+            }
+            elseif ( $type == "boolean") {
+                if (isset($_POST[$item]) and $_POST[$item]) {
                     $ldap_filter .= "($attribute=".$_POST[$item].")";
-                } else {
+                }
+            } 
+            else {
+                if (isset($_POST[$item]) and $_POST[$item]) {
                     $ldap_filter .= "($attribute=*".$_POST[$item]."*)";
                 }
             }

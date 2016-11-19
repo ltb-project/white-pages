@@ -71,3 +71,14 @@ function ldapDate2phpDate($string) {
         return false;
     }
 }
+
+function string2ldapDate($string) {
+    $values = explode("/",$string);
+    $day = $values[0];
+    $month = $values[1];
+    $year = $values[2];
+
+    $ldapdate = $year.$month.$day."000000Z";
+
+    return $ldapdate;
+}

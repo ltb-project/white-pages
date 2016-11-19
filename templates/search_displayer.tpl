@@ -9,6 +9,11 @@
                 <option value="TRUE">{$msg_true}</option>
                 <option value="FALSE">{$msg_false}</option>
             </select>
+            {elseif $type eq 'date'}
+            <span class="input-group-addon">{$msg_fromdate}</span>
+            <input type="text" class="form-control" id="{$item}from" name="{$item}from" data-provide="datepicker" data-date-language="{$lang}">
+            <span class="input-group-addon">{$msg_todate}</span>
+            <input type="text" class="form-control" id="{$item}to" name="{$item}to" data-provide="datepicker" data-date-language="{$lang}">
             {else}
             <input type="text" class="form-control" id="{$item}" name="{$item}" placeholder="{$label}">
             {/if}

@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap-datepicker/css/bootstrap-datepicker3.standalone.min.css" />
 {if $hover_effect}
     <link rel="stylesheet" type="text/css" href="vendor/hover/css/hover-min.css" />
 {/if}
