@@ -1,0 +1,31 @@
+Format-Specification: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?op=file&rev=135
+Name: white-pages
+Maintainer: Clement Oudot <clem@ltb-project.org>
+Source: http://ltb-project.org/wiki/documentation/white-pages
+
+Files: htdocs/vendor/bootstrap
+Copyright: 2011-2014 Twitter, Inc.
+
+Files: htdocs/vendor/bootstrap-datepicker
+Copyright: 2012 Stefan Petre
+
+Files: htdocs/vendor/font-awesome
+Copyright: @davegandy - http://fontawesome.io - @fontawesome
+
+Files: htdocs/vendor/hover
+Copyright: 2014 Ian Lunn
+
+Files: htdocs/vendor/jquery
+Copyright: 2005, 2013 jQuery Foundation, Inc.
+
+Files: *
+Copyright: 2009-2016 LTB-Project, Clement Oudot
+
+License: GPL
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 1, or (at your option)
+    any later version.
+    On Debian GNU/Linux systems, the complete text of the GNU General
+    Public License can be found in `/usr/share/common-licenses/GPL'
+

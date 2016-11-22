@@ -1,0 +1,9 @@
+# Program files
+../conf/*      usr/share/white-pages/conf/
+../htdocs/*    usr/share/white-pages/htdocs/
+../lang/*      usr/share/white-pages/lang/
+../lib/*       usr/share/white-pages/lib/
+../templates/* usr/share/white-pages/templates/
+
+# Apache configuration
+debian/conf/* etc/apache2/sites-available/
