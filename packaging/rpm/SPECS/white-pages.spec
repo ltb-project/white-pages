@@ -35,7 +35,7 @@ Source1: white-pages-apache.conf
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 Prereq: coreutils
-Requires: php, php-ldap, php-Smarty
+Requires: php, php-ldap, php-Smarty, php-gd
 
 %description
 White Pages is a PHP application that allows users to search and display data stored in an LDAP directory. 
