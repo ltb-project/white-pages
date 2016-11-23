@@ -6,3 +6,7 @@ export DH_COMPAT=7
 %:
 	dh $@
 
+override_dh_fixperms:
+	dh_fixperms
+	chown www-data:www-data debian/white-pages/usr/share/white-pages/cache
+	chown www-data:www-data debian/white-pages/usr/share/white-pages/templates_c

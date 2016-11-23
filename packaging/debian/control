@@ -2,7 +2,6 @@ Source: ltb-project-white-pages
 Section: web
 Priority: extra
 Maintainer: Clement Oudot <clem@ltb-project.org>
-Uploaders: Felix Bartels <felix@host-consultants.de>
 Build-Depends: debhelper (>= 7)
 Standards-Version: 3.8.3
 Homepage: http://ltb-project.org/wiki/documentation/white-pages
