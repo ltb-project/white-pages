@@ -47,6 +47,7 @@ $smarty->assign('use_quick_search',$use_quick_search);
 $smarty->assign('search_result_items',$search_result_items);
 $smarty->assign('search_result_title',$search_result_title);
 $smarty->assign('search_result_show_undefined',$search_result_show_undefined);
+$smarty->assign('search_result_bootstrap_column_class',$search_result_bootstrap_column_class);
 $smarty->assign('search_result_box_height',$search_result_box_height);
 $smarty->assign('search_result_truncate_value_after',$search_result_truncate_value_after);
 $smarty->assign('use_advanced_search',$use_advanced_search);

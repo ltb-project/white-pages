@@ -9,7 +9,7 @@
 
 {foreach $entries as $entry}
 
-    <div class="col-sm-4{if $hover_effect} hvr-{$hover_effect}{/if}">
+    <div class="{$search_result_bootstrap_column_class}{if $hover_effect} hvr-{$hover_effect}{/if}">
         <div class="panel panel-info">
             <div class="panel-heading text-center">
                 <p class="panel-title">
