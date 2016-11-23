@@ -71,7 +71,6 @@ $search_result_title = "fullname";
 $search_result_sortby = "lastname";
 $search_result_show_undefined = true;
 $search_result_bootstrap_column_class = "col-md-4";
-#$search_result_box_height = "150px";
 $search_result_truncate_value_after = "20";
 
 # Advanced search
@@ -81,7 +80,6 @@ $advanced_search_criteria = array('firstname', 'lastname', 'mail', 'title', 'bus
 # Full dislpay
 $display_items = array('firstname', 'lastname', 'title', 'businesscategory', 'employeenumber', 'employeetype', 'mail', 'phone', 'mobile', 'fax', 'postaladdress', 'street', 'postalcode', 'l', 'state', 'manager', 'secretary', 'organizationalunit', 'organization', 'description' );
 $display_title = "fullname";
-#$display_photo_height = "200px";
 
 # Photo
 $default_photo = "images/240px-PICA.jpg";
@@ -91,7 +89,6 @@ $use_gallery = true;
 $gallery_title = "fullname";
 $gallery_sortby = "lastname";
 $gallery_bootstrap_column_class = "col-xs-6 col-sm-4 col-md-3";
-#$gallery_box_height = "150px";
 
 # Language
 $lang ="en";

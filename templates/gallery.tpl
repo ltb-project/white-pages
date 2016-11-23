@@ -11,7 +11,7 @@
 
     <div class="gallery {$gallery_bootstrap_column_class}{if $hover_effect} hvr-{$hover_effect}{/if}">
         <div class="panel panel-info">
-            <div class="panel-body" style="height: {$gallery_box_height}">
+            <div class="panel-body">
                 <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}">
                     <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$gallery_title}.attribute}.0}" class="img-responsive img-thumbnail center-block" />
                 </a>

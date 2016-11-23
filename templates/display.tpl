@@ -12,7 +12,7 @@
 
             <div class="panel-body">
 
-                <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$display_title}.attribute}.0}" class="img-responsive img-thumbnail center-block" style="margin-bottom: 20px; height: {$display_photo_height};" />
+                <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$display_title}.attribute}.0}" class="img-responsive img-thumbnail center-block" />
 
                 <div class="table-responsive">
                 <table class="table table-striped table-hover">

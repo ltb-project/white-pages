@@ -48,17 +48,14 @@ $smarty->assign('search_result_items',$search_result_items);
 $smarty->assign('search_result_title',$search_result_title);
 $smarty->assign('search_result_show_undefined',$search_result_show_undefined);
 $smarty->assign('search_result_bootstrap_column_class',$search_result_bootstrap_column_class);
-$smarty->assign('search_result_box_height',$search_result_box_height);
 $smarty->assign('search_result_truncate_value_after',$search_result_truncate_value_after);
 $smarty->assign('use_advanced_search',$use_advanced_search);
 $smarty->assign('advanced_search_criteria',$advanced_search_criteria);
 $smarty->assign('display_items',$display_items);
 $smarty->assign('display_title',$display_title);
-$smarty->assign('display_photo_height',$display_photo_height);
 $smarty->assign('use_gallery',$use_gallery);
 $smarty->assign('gallery_title',$gallery_title);
 $smarty->assign('gallery_bootstrap_column_class',$gallery_bootstrap_column_class);
-$smarty->assign('gallery_box_height',$gallery_box_height);
 $smarty->assign('date_specifiers',$date_specifiers);
 
 # Assign messages

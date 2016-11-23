@@ -17,7 +17,7 @@
                      {$entry.{$attributes_map.{$search_result_title}.attribute}.0}
                 </p>
             </div>
-            <div class="panel-body" style="height: {$search_result_box_height}">
+            <div class="panel-body">
             <div class="row">
             <div class="col-sm-4">
                 <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$display_title}.attribute}.0}" class="img-responsive img-thumbnail center-block" />
