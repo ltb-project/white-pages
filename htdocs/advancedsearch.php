@@ -47,7 +47,7 @@ if ($result === "") {
             } 
             else {
                 if (isset($_POST[$item]) and $_POST[$item]) {
-                    $ldap_filter .= "($attribute=*".$_POST[$item]."*)";
+                    $ldap_filter .= "($attribute=".$_POST[$item].")";
                 }
             }
         }
