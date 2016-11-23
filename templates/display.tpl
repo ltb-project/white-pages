@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-2 hidden-xs"></div>
-    <div class="col-md-8 col-xs-12">
+    <div class="display col-md-8 col-xs-12">
 
         <div class="panel panel-info">
             <div class="panel-heading text-center">
