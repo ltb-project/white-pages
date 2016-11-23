@@ -23,7 +23,7 @@
 Summary: LDAP white pages web interface
 Name: %{wp_name}
 Version: %{wp_version}
-Release: 2%{?dist}
+Release: 1%{?dist}
 License: GPL
 BuildArch: noarch
 
@@ -55,15 +55,17 @@ rm -rf %{buildroot}
 
 # Create directories
 mkdir -p %{buildroot}/%{wp_destdir}
+mkdir -p %{buildroot}/%{wp_destdir}/cache
 mkdir -p %{buildroot}/%{wp_destdir}/conf
 mkdir -p %{buildroot}/%{wp_destdir}/htdocs
 mkdir -p %{buildroot}/%{wp_destdir}/lang
 mkdir -p %{buildroot}/%{wp_destdir}/lib
 mkdir -p %{buildroot}/%{wp_destdir}/templates
+mkdir -p %{buildroot}/%{wp_destdir}/templates_c
 mkdir -p %{buildroot}/etc/httpd/conf.d
 
 # Copy files
-## PHP
+## Program
 install -m 644 conf/*         %{buildroot}/%{wp_destdir}/conf
 install -m 644 htdocs/*.php   %{buildroot}/%{wp_destdir}/htdocs
 cp -a          htdocs/css     %{buildroot}/%{wp_destdir}/htdocs
@@ -71,9 +73,12 @@ cp -a          htdocs/images  %{buildroot}/%{wp_destdir}/htdocs
 cp -a          htdocs/vendor  %{buildroot}/%{wp_destdir}/htdocs
 install -m 644 lang/*         %{buildroot}/%{wp_destdir}/lang
 install -m 644 lib/*          %{buildroot}/%{wp_destdir}/lib
-install -m 644 templates/*    %{buildroot}/%{wp_destdir}/lib
+install -m 644 templates/*    %{buildroot}/%{wp_destdir}/templates
 ## Apache configuration
 install -m 644 %{SOURCE1}     %{buildroot}/etc/httpd/conf.d/white-pages.conf
+
+# Adapt Smarty path
+sed -i 's:/usr/share/php/smarty3:/usr/share/php/Smarty:' %{buildroot}%{wp_destdir}/conf/config.inc.php
 
 %post
 #=================================================
@@ -81,7 +86,8 @@ install -m 644 %{SOURCE1}     %{buildroot}/etc/httpd/conf.d/white-pages.conf
 #=================================================
 
 # Change owner
-/bin/chown -R apache:apache %{wp_destdir}
+/bin/chown apache:apache %{wp_destdir}/cache
+/bin/chown apache:apache %{wp_destdir}/templates_c
 
 #=================================================
 # Cleaning
