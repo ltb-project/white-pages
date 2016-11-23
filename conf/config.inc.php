@@ -98,6 +98,7 @@ $date_specifiers = "%Y-%m-%d %H:%M:%S (%Z)";
 $logo = "images/ltb-logo.png";
 $background_image = "images/unsplash-space.jpeg";
 $hover_effect = "grow";
+$custom_css = "";
 
 # Debug mode
 $debug = false;

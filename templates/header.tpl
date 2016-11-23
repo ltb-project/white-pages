@@ -13,6 +13,9 @@
     <link rel="stylesheet" type="text/css" href="vendor/hover/css/hover-min.css" />
 {/if}
     <link rel="stylesheet" type="text/css" href="css/white-pages.css" />
+{if $custom_css}
+    <link rel="stylesheet" type="text/css" href="{$custom_css}" />
+{/if}
     <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
     <link href="images/favicon.ico" rel="shortcut icon" />
 {if $background_image}

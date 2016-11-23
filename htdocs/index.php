@@ -42,6 +42,7 @@ $smarty->assign('ldap_params',array('ldap_url' => $ldap_url, 'ldap_starttls' => 
 $smarty->assign('logo',$logo);
 $smarty->assign('background_image',$background_image);
 $smarty->assign('hover_effect',$hover_effect);
+$smarty->assign('custom_css',$custom_css);
 $smarty->assign('attributes_map',$attributes_map);
 $smarty->assign('use_quick_search',$use_quick_search);
 $smarty->assign('search_result_items',$search_result_items);
