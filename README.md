@@ -1,9 +1,29 @@
-White Pages
-===========
+# White Pages
 
 [![Build Status](https://travis-ci.org/ltb-project/white-pages.svg?branch=master)](https://travis-ci.org/ltb-project/white-pages)
 
-This application read entries from an LDAP directory and display them nicely.
+## Presentation
 
-This is a work in progress.
+White Pages is a PHP application that allows users to search and display data stored in an LDAP directory.
 
+The application can be used on standard LDAPv3 directories and Active Directory, as all searched attributes can be set in configuration.
+
+It has the following features:
+* Quick search: a simple input in menu bar searching on some classic attributes
+* Advanced search: a full form to search on several attributes
+* Gallery: display of all entries with their photo
+
+## Prerequisite
+
+* PHP extensions required:
+  * php-ldap
+  * php-gd
+* Smarty 3
+
+## Documentation
+
+Documentation is available on http://ltb-project.org/wiki/documentation/white-pages
+
+## Download
+
+Tarballs and packages for Debian and Red Hat are available on http://ltb-project.org/wiki/download#white_pages
