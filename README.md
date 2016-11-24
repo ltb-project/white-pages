@@ -8,6 +8,8 @@ White Pages is a PHP application that allows users to search and display data st
 
 The application can be used on standard LDAPv3 directories and Active Directory, as all searched attributes can be set in configuration.
 
+![Screenshot](http://ltb-project.org/wiki/_media/documentation/white-pages/0.1/wp_0_1_full_display.png?w=800&h=666&tok=d5e203)
+
 It has the following features:
 * Quick search: a simple input in menu bar searching on some classic attributes
 * Advanced search: a full form to search on several attributes
