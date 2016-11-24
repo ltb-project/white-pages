@@ -30,8 +30,7 @@ $ldap_bindpw = "secret";
 $ldap_base = "dc=example,dc=com";
 $ldap_user_base = "ou=users,".$ldap_base;
 $ldap_user_filter = "(objectClass=inetOrgPerson)";
-$ldap_user_search_attributes = array('uid', 'cn', 'mail');
-$ldap_size_limit = 0;
+$ldap_size_limit = 100;
 
 # How display attributes
 $attributes_map = array(
@@ -66,6 +65,7 @@ $attributes_map = array(
 
 # Quick search results
 $use_quick_search = true;
+$quick_search_attributes = array('uid', 'cn', 'mail');
 $search_result_items = array('mail', 'phone', 'mobile');
 $search_result_title = "fullname";
 $search_result_sortby = "lastname";
@@ -81,9 +81,6 @@ $advanced_search_criteria = array('firstname', 'lastname', 'mail', 'title', 'bus
 $display_items = array('firstname', 'lastname', 'title', 'businesscategory', 'employeenumber', 'employeetype', 'mail', 'phone', 'mobile', 'fax', 'postaladdress', 'street', 'postalcode', 'l', 'state', 'manager', 'secretary', 'organizationalunit', 'organization', 'description' );
 $display_title = "fullname";
 
-# Photo
-$default_photo = "images/240px-PICA.jpg";
-
 # Gallery
 $use_gallery = true;
 $gallery_title = "fullname";
@@ -97,6 +94,7 @@ $date_specifiers = "%Y-%m-%d %H:%M:%S (%Z)";
 # Graphics
 $logo = "images/ltb-logo.png";
 $background_image = "images/unsplash-space.jpeg";
+$default_photo = "images/240px-PICA.jpg";
 $hover_effect = "grow";
 $custom_css = "";
 

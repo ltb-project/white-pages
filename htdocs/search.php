@@ -27,8 +27,8 @@ if ($result === "") {
 
         # Search filter
         $ldap_filter = "(&".$ldap_user_filter."(|";
-        foreach ($ldap_user_search_attributes as $lusa) {
-            $ldap_filter .= "($lusa=*$search_query*)";
+        foreach ($quick_search_attributes as $attr) {
+            $ldap_filter .= "($attr=*$search_query*)";
         }
         $ldap_filter .= "))";
 
