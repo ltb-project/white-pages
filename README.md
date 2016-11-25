@@ -15,6 +15,10 @@ It has the following features:
 * Advanced search: a full form to search on several attributes
 * Gallery: display of all entries with their photo
 
+## Demonstration
+
+Check [Star Pages](http://ltb-project.org/star-pages/), an online demonstration of LDAP Tool Box White Pages.
+
 ## Prerequisite
 
 * PHP extensions required:
