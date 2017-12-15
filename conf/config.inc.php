@@ -87,6 +87,10 @@ $gallery_title = "fullname";
 $gallery_sortby = "lastname";
 $gallery_bootstrap_column_class = "col-xs-6 col-sm-4 col-md-3";
 
+# CSV
+$use_csv = true;
+$csv_filename = "white_pages_export_" . date("Y-m-d") . ".csv";
+
 # Language
 $lang ="en";
 $date_specifiers = "%Y-%m-%d %H:%M:%S (%Z)";

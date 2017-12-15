@@ -7,6 +7,7 @@
 $messages['advancedsearch'] = "Advanced search";
 $messages['displayentry'] = "Display entry";
 $messages['dnrequired'] = "Entry identifier required";
+$messages['downloadcsv'] = "Download results as CSV";
 $messages['entriesfound'] = "entries found";
 $messages['entryfound'] = "entry found";
 $messages['false'] = "No";
