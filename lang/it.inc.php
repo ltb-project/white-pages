@@ -8,6 +8,7 @@ $messages['advancedsearch'] = "Ricerca avanzata";
 $messages['displayentry'] = "Visualizza";
 $messages['dnrequired'] = "Necessario identificativo record";
 $messages['downloadcsv'] = "Download results as CSV";
+$messages['downloadvcard'] = "Download as VCard";
 $messages['entriesfound'] = "records trovati";
 $messages['entryfound'] = "record trovato";
 $messages['false'] = "No";

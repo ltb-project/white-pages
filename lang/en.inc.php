@@ -8,6 +8,7 @@ $messages['advancedsearch'] = "Advanced search";
 $messages['displayentry'] = "Display entry";
 $messages['dnrequired'] = "Entry identifier required";
 $messages['downloadcsv'] = "Download results as CSV";
+$messages['downloadvcard'] = "Download as VCard";
 $messages['entriesfound'] = "entries found";
 $messages['entryfound'] = "entry found";
 $messages['false'] = "No";

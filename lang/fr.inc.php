@@ -8,6 +8,7 @@ $messages['advancedsearch'] = "Recherche avancée";
 $messages['displayentry'] = "Afficher l'entrée";
 $messages['dnrequired'] = "L'identifiant de l'entrée est requis";
 $messages['downloadcsv'] = "Télécharger les résultats en CSV";
+$messages['downloadvcard'] = "Télécharger au format VCard";
 $messages['entriesfound'] = "entrées trouvées";
 $messages['entryfound'] = "entrée trouvée";
 $messages['false'] = "Non";

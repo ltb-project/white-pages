@@ -46,6 +46,13 @@ if ($result === "") {
         } else {
             $entry = ldap_get_entries($ldap, $search);
         }
+
+	if ($use_vcard and $_GET["vcard"]) {
+            require_once("../lib/vcard.inc.php");
+            download_vcard_send_headers("$dn.vcard");
+            echo print_vcard($entry[0], $attributes_map, $vcard_map, $vcard_version);
+            die;
+        }
     }
 }
 

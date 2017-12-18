@@ -91,6 +91,11 @@ $gallery_bootstrap_column_class = "col-xs-6 col-sm-4 col-md-3";
 $use_csv = true;
 $csv_filename = "white_pages_export_" . date("Y-m-d") . ".csv";
 
+# VCARD
+$use_vcard = true;
+$vcard_version = "4.0";
+$vcard_map = array('FN' => 'fullname', 'N' => 'fullname', 'EMAIL' => 'mail', 'CATEGORIES' => 'businesscategory', 'ORG' => 'organization', 'ROLE' => 'employeetype', 'TEL;TYPE=work' => 'telephonenumber', 'TEL;TYPE=cell' => 'mobile', 'UID' => 'identifer');
+
 # Language
 $lang ="en";
 $date_specifiers = "%Y-%m-%d %H:%M:%S (%Z)";

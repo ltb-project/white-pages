@@ -59,6 +59,7 @@ $smarty->assign('gallery_title',$gallery_title);
 $smarty->assign('gallery_bootstrap_column_class',$gallery_bootstrap_column_class);
 $smarty->assign('date_specifiers',$date_specifiers);
 $smarty->assign('use_csv',$use_csv);
+$smarty->assign('use_vcard',$use_vcard);
 
 # Assign messages
 $smarty->assign('lang',$lang);
