@@ -35,7 +35,11 @@ if ($result === "") {
         }
         $attributes[] = $attributes_map[$display_title]['attribute'];
 
-        # Search entry
+        if ($use_vcard and $_GET["vcard"] and $vcard_file_identifier) {
+            $attributes[] = $attributes_map[$vcard_file_identifier]['attribute'];
+	}
+
+	# Search entry
         $search = ldap_read($ldap, $dn, $ldap_user_filter, $attributes);
 
         $errno = ldap_errno($ldap);
@@ -49,7 +53,8 @@ if ($result === "") {
 
 	if ($use_vcard and $_GET["vcard"]) {
             require_once("../lib/vcard.inc.php");
-            download_vcard_send_headers("$dn.vcard");
+            $vcard_file = $entry[0][$attributes_map[$vcard_file_identifier]['attribute']][0].".".$vcard_file_extension;
+            download_vcard_send_headers($vcard_file);
             echo print_vcard($entry[0], $attributes_map, $vcard_map, $vcard_version);
             die;
         }

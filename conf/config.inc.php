@@ -91,10 +91,12 @@ $gallery_bootstrap_column_class = "col-xs-6 col-sm-4 col-md-3";
 $use_csv = true;
 $csv_filename = "white_pages_export_" . date("Y-m-d") . ".csv";
 
-# VCARD
+# vCard
 $use_vcard = true;
+$vcard_file_extension = "vcf";
+$vcard_file_identifier = "identifier";
 $vcard_version = "4.0";
-$vcard_map = array('FN' => 'fullname', 'N' => 'fullname', 'EMAIL' => 'mail', 'CATEGORIES' => 'businesscategory', 'ORG' => 'organization', 'ROLE' => 'employeetype', 'TEL;TYPE=work' => 'telephonenumber', 'TEL;TYPE=cell' => 'mobile', 'UID' => 'identifer');
+$vcard_map = array('FN' => 'fullname', 'N' => 'fullname', 'EMAIL' => 'mail', 'CATEGORIES' => 'businesscategory', 'ORG' => 'organization', 'ROLE' => 'employeetype', 'TEL;TYPE=work,voice;VALUE=uri:tel' => 'phone', 'TEL;TYPE=cell,voice;VALUE=uri:tel' => 'mobile', 'UID' => 'identifier');
 
 # Language
 $lang ="en";
