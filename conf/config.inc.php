@@ -7,7 +7,7 @@
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
-# as published by the Free Software Foundation; either version 2
+# as published by the FreeSoftware Foundation; either version 2
 # of the License, or (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful,
@@ -25,14 +25,20 @@
 # LDAP
 $ldap_url = "ldap://localhost";
 $ldap_starttls = false;
-$ldap_binddn = "cn=manager,dc=example,dc=com";
+$ldap_binddn = "cn=admin,dc=example";
 $ldap_bindpw = "secret";
-$ldap_base = "dc=example,dc=com";
-$ldap_user_base = "ou=users,".$ldap_base;
+$ldap_base = "dc=example";
+$ldap_user_base = "ou=usres,".$ldap_base;
 $ldap_user_filter = "(objectClass=inetOrgPerson)";
+
+##################
+$ldap_group_base = "ou=groups,".$ldap_base;
+$ldap_group_filter = "(objectClass=groupOfNames)";
+##################
+
 $ldap_size_limit = 100;
 
-# How display attributes
+# How display users attributes
 $attributes_map = array(
     'businesscategory' => array( 'attribute' => 'businesscategory', 'faclass' => 'briefcase', 'type' => 'text' ),
     'carlicense' => array( 'attribute' => 'carlicense', 'faclass' => 'car', 'type' => 'text' ),
@@ -87,19 +93,42 @@ $gallery_title = "fullname";
 $gallery_sortby = "lastname";
 $gallery_bootstrap_column_class = "col-xs-6 col-sm-4 col-md-3";
 
-# CSV
-$use_csv = true;
-$csv_filename = "white_pages_export_" . date("Y-m-d") . ".csv";
+###########################################################
+# How display groups attributes
+$attributes_group_map = array(
+    'description' => array( 'attribute' => 'description', 'faclass' => 'info-circle', 'type' => 'text' ),
+    'name' => array( 'attribute' => 'cn', 'faclass' => 'handshake-o', 'type' => 'text' ),
+    'member' => array( 'attribute' => 'member', 'faclass' => 'group', 'type' => 'dn_link' ),
+    'related' => array( 'attribute' => 'seealso', 'faclass' => 'external-link', 'type' => 'text' ),    
+);
 
-# vCard
-$use_vcard = true;
-$vcard_file_extension = "vcf";
-$vcard_file_identifier = "identifier";
-$vcard_version = "4.0";
-$vcard_map = array('FN' => 'fullname', 'N' => 'fullname', 'EMAIL' => 'mail', 'CATEGORIES' => 'businesscategory', 'ORG' => 'organization', 'ROLE' => 'employeetype', 'TEL;TYPE=work,voice;VALUE=uri:tel' => 'phone', 'TEL;TYPE=cell,voice;VALUE=uri:tel' => 'mobile', 'UID' => 'identifier');
+# Quick search results
+$use_group_quick_search = true;
+$quick_group_search_attributes = array('description', 'cn', 'member');
+$search_group_result_items = array('description', 'member', 'seealso');
+$search_group_result_title = "name";
+$search_group_result_sortby = "name";
+$search_group_result_show_undefined = true;
+$search_group_result_bootstrap_column_class = "col-md-4";
+$search_group_result_truncate_value_after = "20";
+
+# Advanced search
+$use_group_advanced_search = true;
+$advanced_group_search_criteria = array('name', 'description', 'member', 'created', 'modified');
+
+# Full dislpay
+$display_group_items = array('description', 'cn', 'member', 'seealso' );
+$display_group_title = "name";
+
+# Group
+$use_group = true;
+$group_title = "name";
+$group_sortby = "name";
+$group_bootstrap_column_class = "col-xs-6 col-sm-4 col-md-3";
+######################################################################
 
 # Language
-$lang ="en";
+$lang = "fr";
 $date_specifiers = "%Y-%m-%d %H:%M:%S (%Z)";
 
 # Graphics

@@ -6,8 +6,7 @@
     {/foreach}
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-9">
-            <button type="submit" name="submit" value="search" class="btn btn-success"><i class="fa fa-fw fa-search"></i> {$msg_search}</button>
-            {if {$use_csv}}<button type="submit" name="submit" value="csv" class="btn btn-info"><i class="fa fa-fw fa-download"></i> {$msg_downloadcsv}</button>{/if}
+            <button type="submit" name="submit" class="btn btn-success"><i class="fa fa-fw fa-search"></i> {$msg_search}</button>
         </div>
     </div>
 </form>

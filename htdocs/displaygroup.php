@@ -30,13 +30,13 @@ if ($result === "") {
 
         # Search attributes
         $attributes = array();
-        foreach( $display_items as $item ) {
-            $attributes[] = $attributes_map[$item]['attribute'];
+        foreach( $display_group_items as $item ) {
+            $attributes[] = $attributes_group_map[$item]['attribute'];
         }
-        $attributes[] = $attributes_map[$display_title]['attribute'];
+        $attributes[] = $attributes_group_map[$display_group_title]['attribute'];
 
         # Search entry
-        $search = ldap_read($ldap, $dn, $ldap_user_filter, $attributes);
+        $search = ldap_read($ldap, $dn, $ldap_group_filter, $attributes);
 
         $errno = ldap_errno($ldap);
 

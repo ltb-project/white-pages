@@ -23,17 +23,26 @@
                   <a href="index.php?page=gallery"><i class="fa fa-fw fa-th"></i> {$msg_gallery}</a>
                 </li>
                 {/if}
+                {if $use_group}
+		{if $page!="gallery"}
+		<li {if $page=="group"}class="active"{/if}>
+		  <a href="index.php?page=group"><i class="fa fa-fw fa-users"></i> {$msg_group}</a>
+		</li>
+		{/if}
+		{/if}
               </ul>
               {if $use_quick_search}
+	      {if $page=="gallery"}
               <form class="navbar-form navbar-right" role="search" action="index.php?page=search" method="post">
-                <div class="input-group">
+	          <div class="input-group">
                   <input type="text" class="form-control" placeholder="{$msg_search}" name="search" value="{$search}" />
                   <span class="input-group-btn">
                     <button class="btn btn-default" type="submit">&nbsp;<i class="fa fa-fw fa-search"></i></button>
                   </span>
                 </div>
               </form>
-              {/if}
+	      {/if}
+	      {/if}
             </div>
           </div>
         </div>
