@@ -104,9 +104,9 @@ $vcard_map = array('FN' => 'fullname', 'N' => 'fullname', 'EMAIL' => 'mail', 'CA
 # How display groupofnames attributes
 $attributes_group_map = array(
     'description' => array( 'attribute' => 'description', 'faclass' => 'info-circle', 'type' => 'text' ),
-    'name' => array( 'attribute' => 'cn', 'faclass' => 'users', 'type' => 'text' ),
+    'name' => array( 'attribute' => 'cn', 'faclass' => 'group', 'type' => 'text' ),
     'owner' => array( 'attribute' => 'owner', 'faclass' => 'user-plus', 'type' => 'dn_link' ),    
-    'member' => array( 'attribute' => 'member', 'faclass' => 'group', 'type' => 'dn_link' ),
+    'member' => array( 'attribute' => 'member', 'faclass' => 'list', 'type' => 'dn_link' ),
     'related' => array( 'attribute' => 'seealso', 'faclass' => 'external-link', 'type' => 'text' ),    
 );
 
@@ -126,7 +126,7 @@ $advanced_group_search_criteria = array('name', 'description', 'member', 'create
 
 # Full groupofmembers dislpay
 $display_group_items = array('description', "owner", 'member', 'seealso' );
-$display_group_title = "description";
+$display_group_title = "name";
 
 # Groupofnames
 $use_group = true;
