@@ -1,6 +1,6 @@
 <?php
 /*
- * Display an entry 
+ * Display a groupofname entry 
  */ 
 
 $result = "";

@@ -83,6 +83,26 @@ if ($result === "") {
             # Get search results
             $nb_entries = ldap_count_entries($ldap, $search);
 
+            # CSV
+            if ( $use_csv and $_POST["submit"] == "csv" and $nb_entries >0 ) {
+                require_once("../lib/csv.inc.php");
+                $entries = ldap_get_entries($ldap, $search);
+                unset($entries["count"]);
+                $csv_headers = $attributes;
+                sort($csv_headers);
+                    $csv_array[] = $csv_headers;
+                    foreach ( $entries as $entry ) {
+                        $csv_entry = array();
+                        foreach ($csv_headers as $attribute) {
+                            $csv_entry[$attribute] = $entry[$attribute][0];
+                        }
+                        $csv_array[] = $csv_entry;
+                }
+                download_send_headers($csv_filename);
+                echo array2csv($csv_array);
+                die();
+            }
+
             if ($nb_entries === 0) {
                 $result = "noentriesfound";
             } elseif ($nb_entries === 1) {

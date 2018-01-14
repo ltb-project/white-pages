@@ -1,6 +1,6 @@
 <?php
 /*
- * Display all entries like a yearbook
+ * Display all groupofnames entries like a yearbook
  */
 
 $result = "";

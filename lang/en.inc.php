@@ -1,55 +1,57 @@
 <?php
 
 #==============================================================================
-# French
+# English
 #==============================================================================
 
-$messages['advancedsearch'] = "Recherche avancée";
-$messages['displayentry'] = "Afficher l'entrée";
-$messages['dnrequired'] = "L'identifiant de l'entrée est requis";
-$messages['entriesfound'] = "entrées trouvées";
-$messages['entryfound'] = "entrée trouvée";
-$messages['false'] = "Non";
-$messages['fromdate'] = "Depuis le";
-$messages['gallery'] = "Trombinoscope";
-$messages['group'] = "groups";
-$messages['label_businesscategory'] = "Catégorie";
-$messages['label_carlicense'] = "Permis de conduire";
-$messages["label_created"] = "Créé";
+$messages['advancedsearch'] = "Advanced search";
+$messages['displayentry'] = "Display entry";
+$messages['dnrequired'] = "Entry identifier required";
+$messages['downloadcsv'] = "Download results as CSV";
+$messages['downloadvcard'] = "Download as vCard";
+$messages['entriesfound'] = "entries found";
+$messages['entryfound'] = "entry found";
+$messages['false'] = "No";
+$messages['fromdate'] = "From";
+$messages['gallery'] = "Gallery";
+$messages['group'] = "Groups";
+$messages['label_businesscategory'] = "Business category";
+$messages['label_carlicense'] = "Car license";
+$messages["label_created"] = "Created";
 $messages['label_description'] = "Description";
-$messages['label_displayname'] = "Nom d'affichage";
-$messages['label_employeenumber'] = "Numéro d'employé";
-$messages['label_employeetype'] = "Type d'employé";
-$messages['label_fax'] = "Télécopie";
-$messages['label_firstname'] = "Prénom";
-$messages['label_fullname'] = "Nom complet";
-$messages['label_identifier'] = "Identifiant";
-$messages['label_l'] = "Ville";
-$messages['label_lastname'] = "Nom";
-$messages['label_mail'] = "Courriel";
-$messages['label_manager'] = "Responsable";
-$messages['label_mobile'] = "Portable";
-$messages["label_modified"] = "Modifié";
-$messages['label_organization'] = "Organisation";
-$messages['label_organizationalunit'] = "Service";
-$messages['label_pager'] = "Messagerie";
-$messages['label_phone'] = "Téléphone";
-$messages['label_postaladdress'] = "Adresse";
-$messages['label_postalcode'] = "Code postal";
-$messages['label_secretary'] = "Secrétaire";
-$messages['label_state'] = "État";
-$messages['label_street'] = "Voie";
-$messages['label_title'] = "Titre";
-$messages['label_group'] = "group";
-$messages['ldaperror'] = "Erreur de communication avec l'annuaire LDAP";
-$messages['noentriesfound'] = "Aucune entrée trouvée";
-$messages['notdefined'] = "Non renseigné";
-$messages['search'] = "Rechercher";
-$messages['searchrequired'] = "Veuillez saisir votre recherche";
-$messages['sizelimit'] = "La limite de recherche a été atteinte, certaines entrées n'ont pas pu être affichées";
-$messages['title'] = "Pages blanches";
-$messages['todate'] = "Jusqu'au";
-$messages['true'] = "Oui";
-$messages['welcome'] = "Bienvenue sur les pages blanches LDAP Tool Box";
+$messages['label_displayname'] = "Display name";
+$messages['label_employeenumber'] = "Employee number";
+$messages['label_employeetype'] = "Employee type";
+$messages['label_fax'] = "Fax";
+$messages['label_firstname'] = "First name";
+$messages['label_fullname'] = "Full name";
+$messages['label_identifier'] = "Identifier";
+$messages['label_l'] = "Locality";
+$messages['label_lastname'] = "Last name";
+$messages['label_mail'] = "Mail";
+$messages['label_manager'] = "Manager";
+$messages['label_mobile'] = "Mobile";
+$messages["label_modified"] = "Modified";
+$messages['label_organization'] = "Organization";
+$messages['label_organizationalunit'] = "Organizational Unit";
+$messages['label_pager'] = "Pager";
+$messages['label_phone'] = "Phone";
+$messages['label_postaladdress'] = "Address";
+$messages['label_postalcode'] = "Postal code";
+$messages['label_secretary'] = "Secretary";
+$messages['label_state'] = "State";
+$messages['label_street'] = "Street";
+$messages['label_title'] = "Title";
+$messages['label_group'] = "Group";
+$messages['ldaperror'] = "LDAP communication error";
+$messages['noentriesfound'] = "No entries found";
+$messages['notdefined'] = "Not defined";
+$messages['search'] = "Search";
+$messages['searchrequired'] = "Please enter your search";
+$messages['sizelimit'] = "Size limit has been reached, some entries could not be displayed";
+$messages['title'] = "White Pages";
+$messages['todate'] = "To";
+$messages['true'] = "Yes";
+$messages['welcome'] = "Welcome to LDAP Tool Box White Pages";
 
 ?>
