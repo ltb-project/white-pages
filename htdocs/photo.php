@@ -28,7 +28,7 @@ if ($result === "") {
     if ($ldap) {
 
         # Search entry
-        $search = ldap_read($ldap, $dn, $ldap_user_filter, array('jpegPhoto'));
+        $search = ldap_read($ldap, $dn, $ldap_user_filter, array('jpegPhoto','uid'));
 
         $errno = ldap_errno($ldap);
 
@@ -47,9 +47,27 @@ if ($result === "") {
     }
 }
 
-# Display default photo if any error
+# Display jpeg photo file if exist and Display default photo if any error
 if ( !$photo ) {
-    $photo = imagecreatefromjpeg($default_photo);
+	$userphotofilename="images/trombinoscope/".$entry[0]["uid"][0].".jpg";
+	if (file_exists($userphotofilename))
+	{
+	$size = getimagesize($userphotofilename);
+	$ratio = $size[0]/$size[1]; // width/height
+	if( $ratio > 1) {
+    	$width = 240;
+    	$height = 240/$ratio;
+	}
+	else {
+    	$width = 240*$ratio;
+    	$height = 240;
+	}
+	$src = imagecreatefromjpeg($userphotofilename);
+	$dst = imagecreatetruecolor($width,$height);
+	imagecopyresampled($dst,$src,0,0,0,0,$width,$height,$size[0],$size[1]);
+	$photo = $dst;
+	}
+	else { $photo = imagecreatefromjpeg($default_photo);}
 }
 
 header('Content-Type: image/jpeg');
