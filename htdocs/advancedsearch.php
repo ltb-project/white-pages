@@ -88,15 +88,19 @@ if ($result === "") {
                 require_once("../lib/csv.inc.php");
                 $entries = ldap_get_entries($ldap, $search);
                 unset($entries["count"]);
-                $csv_headers = $attributes;
-                sort($csv_headers);
-                    $csv_array[] = $csv_headers;
-                    foreach ( $entries as $entry ) {
-                        $csv_entry = array();
-                        foreach ($csv_headers as $attribute) {
-                            $csv_entry[$attribute] = $entry[$attribute][0];
-                        }
-                        $csv_array[] = $csv_entry;
+                $csv_headers = $search_result_items;
+                $csv_headers[] = $search_result_title;
+                $csv_headers[] = $search_result_sortby;
+                foreach ( $csv_headers as $csv_header) {
+                    $csv_headers_label[] = $messages["label_".$csv_header];
+                }
+                $csv_array[] = $csv_headers_label;
+                foreach ( $entries as $entry ) {
+                    $csv_entry = array();
+                    foreach ($attributes as $attribute) {
+                        $csv_entry[$attribute] = $entry[$attribute][0];
+                    }
+                    $csv_array[] = $csv_entry;
                 }
                 download_send_headers($csv_filename);
                 echo array2csv($csv_array);
