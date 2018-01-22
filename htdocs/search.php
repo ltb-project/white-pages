@@ -48,7 +48,7 @@ if ($result === "") {
         if ( $errno == 4) {
             $size_limit_reached = true;
         }
-        if ( $errno > 0 and $errno !=4 ) {
+        if ( $errno != 0 and $errno !=4 ) {
             $result = "ldaperror";
             error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
         } else {
