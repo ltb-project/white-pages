@@ -13,7 +13,8 @@ The application can be used on standard LDAPv3 directories and Active Directory,
 It has the following features:
 * Quick search: a simple input in menu bar searching on some classic attributes
 * Advanced search: a full form to search on several attributes
-* Gallery: display of all entries with their photo
+* Gallery: display of all user entries with their photo
+* Groups: display of all group entries
 
 ## Demonstration
 

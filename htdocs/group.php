@@ -1,6 +1,6 @@
 <?php
 /*
- * Display all entries like a yearbook
+ * Display all groupofnames entries like a yearbook
  */
 
 $result = "";
@@ -20,25 +20,25 @@ $result = $ldap_connection[1];
 if ($ldap) {
 
     # Search attributes
-    $attributes[] = $attributes_map[$gallery_title]['attribute'];
-    $attributes[] = $attributes_map[$gallery_sortby]['attribute'];
+    $attributes[] = $attributes_group_map[$group_title]['attribute'];
+    $attributes[] = $attributes_group_map[$group_sortby]['attribute'];
 
     # Search for users
-    $search = ldap_search($ldap, $ldap_user_base, $ldap_user_filter, $attributes, 0, $ldap_size_limit);
+    $search = ldap_search($ldap, $ldap_group_base, $ldap_group_filter, $attributes, 0, $ldap_size_limit);
 
     $errno = ldap_errno($ldap);
 
     if ( $errno == 4) {
         $size_limit_reached = true;
     }
-    if ( $errno != 0 and $errno != 4 ) {
+    if ( $errno > 0 and $errno != 4 ) {
         $result = "ldaperror";
         error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
     } else {
 
         # Sort entries
         if (isset($search_result_sortby)) {
-            $sortby = $attributes_map[$gallery_sortby]['attribute'];
+            $sortby = $attributes_group_map[$group_sortby]['attribute'];
             ldap_sort($ldap, $search, $sortby);
         }
 
@@ -54,7 +54,7 @@ if ($ldap) {
     }
 }
 
-$smarty->assign('ldap_params',array('ldap_url' => $ldap_url, 'ldap_starttls' => $ldap_starttls, 'ldap_binddn' => $ldap_binddn, 'ldap_bindpw' => $ldap_bindpw, 'ldap_user_base' => $ldap_user_base, 'ldap_user_filter' => $ldap_user_filter));
+$smarty->assign('ldap_params',array('ldap_url' => $ldap_url, 'ldap_starttls' => $ldap_starttls, 'ldap_binddn' => $ldap_binddn, 'ldap_bindpw' => $ldap_bindpw, 'ldap_group_base' => $ldap_group_base, 'ldap_group_filter' => $ldap_group_filter));
 $smarty->assign("nb_entries", $nb_entries);
 $smarty->assign("entries", $entries);
 $smarty->assign("size_limit_reached", $size_limit_reached);
