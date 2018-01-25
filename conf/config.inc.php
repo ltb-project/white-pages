@@ -90,6 +90,7 @@ $gallery_bootstrap_column_class = "col-xs-6 col-sm-4 col-md-3";
 # CSV
 $use_csv = true;
 $csv_filename = "white_pages_export_" . date("Y-m-d") . ".csv";
+$csv_items = array('firstname', 'lastname', 'mail','organization');
 
 # vCard
 $use_vcard = true;

@@ -54,12 +54,18 @@ if ($result === "") {
         $ldap_filter .= "))";
 
         # Search attributes
-        $attributes = array();
-        foreach( $search_result_items as $item ) {
-            $attributes[] = $attributes_map[$item]['attribute'];
+	$attributes = array();
+	if ( $use_csv and $_POST["submit"] == "csv" ) {
+            foreach( $csv_items as $item ) {
+                $attributes[] = $attributes_map[$item]['attribute'];
+            }
+	} else {
+            foreach( $search_result_items as $item ) {
+                $attributes[] = $attributes_map[$item]['attribute'];
+            }
+            $attributes[] = $attributes_map[$search_result_title]['attribute'];
+            $attributes[] = $attributes_map[$search_result_sortby]['attribute'];
         }
-        $attributes[] = $attributes_map[$search_result_title]['attribute'];
-        $attributes[] = $attributes_map[$search_result_sortby]['attribute'];
 
         # Search for users
         $search = ldap_search($ldap, $ldap_user_base, $ldap_filter, $attributes, 0, $ldap_size_limit);
@@ -88,17 +94,15 @@ if ($result === "") {
                 require_once("../lib/csv.inc.php");
                 $entries = ldap_get_entries($ldap, $search);
                 unset($entries["count"]);
-                $csv_headers = $search_result_items;
-                $csv_headers[] = $search_result_title;
-                $csv_headers[] = $search_result_sortby;
-                foreach ( $csv_headers as $csv_header) {
-                    $csv_headers_label[] = $messages["label_".$csv_header];
+                $csv_headers_label = array();
+                foreach ( $csv_items as $csv_item) {
+                    $csv_headers_label[] = $messages["label_".$csv_item];
                 }
                 $csv_array[] = $csv_headers_label;
                 foreach ( $entries as $entry ) {
                     $csv_entry = array();
-                    foreach ($attributes as $attribute) {
-                        $csv_entry[$attribute] = $entry[$attribute][0];
+                    foreach ($csv_items as $csv_item) {
+                        $csv_entry[$csv_item] = $entry[$attributes_map[$csv_item]['attribute']][0];
                     }
                     $csv_array[] = $csv_entry;
                 }
