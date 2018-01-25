@@ -37,6 +37,9 @@ $smarty->setCompileDir('../templates_c/');
 $smarty->setCacheDir('../cache/');
 $smarty->debugging = $debug;
 
+# Default configuration values
+if (!isset($results_display_mode)) { $results_display_mode = "boxes"; }
+
 # Assign configuration variables
 $smarty->assign('ldap_params',array('ldap_url' => $ldap_url, 'ldap_starttls' => $ldap_starttls, 'ldap_binddn' => $ldap_binddn, 'ldap_bindpw' => $ldap_bindpw, 'ldap_user_base' => $ldap_user_base, 'ldap_user_filter' => $ldap_user_filter));
 $smarty->assign('logo',$logo);
@@ -52,6 +55,7 @@ $smarty->assign('search_result_bootstrap_column_class',$search_result_bootstrap_
 $smarty->assign('search_result_truncate_value_after',$search_result_truncate_value_after);
 $smarty->assign('use_advanced_search',$use_advanced_search);
 $smarty->assign('advanced_search_criteria',$advanced_search_criteria);
+$smarty->assign('results_display_mode',$results_display_mode);
 $smarty->assign('display_items',$display_items);
 $smarty->assign('display_title',$display_title);
 $smarty->assign('use_gallery',$use_gallery);

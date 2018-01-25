@@ -5,6 +5,7 @@
 <div class="alert alert-warning"><i class="fa fa-fw fa-exclamation-triangle"></i> {$msg_sizelimit}</div>
 {/if}
 
+{if $results_display_mode=="boxes"}
 <div class="row">
 
 {foreach $entries as $entry}
@@ -54,3 +55,39 @@
 {/foreach}
 
 </div>
+{/if}
+
+{if $results_display_mode=="rows"}
+<table class="table table-striped table-condensed">
+  <thead>
+    <tr>
+{foreach $search_result_items as $item}
+      <th>{$msg_label_{$item}}</th>
+{/foreach}
+    </tr>
+  </thead>
+  <tbody>
+{foreach $entries as $entry}
+    <tr>
+{foreach $search_result_items as $item}
+    {$attribute=$attributes_map.{$item}.attribute}
+    {$type=$attributes_map.{$item}.type}
+      <td>
+                {if !({$entry.$attribute.0})}
+                    {if {$search_result_show_undefined}}
+                    <i>{$msg_notdefined}</i>
+                    {/if}
+                {continue}
+                {/if}
+                {foreach $entry.{$attribute} as $value}
+                    {if $value@index ne 0}
+                    {include 'value_displayer.tpl' value=$value type=$type truncate_value_after=$search_result_truncate_value_after ldap_params=$ldap_params search={$search} date_specifiers=$date_specifiers}<br />
+                    {/if}
+                {/foreach}
+      </td>
+{/foreach}
+    </tr>
+{/foreach}
+  </tbody>
+</table>
+{/if}
