@@ -33,21 +33,27 @@ if ($result === "") {
             if ( $type == "date") {
                 if (isset($_POST[$item."from"]) and $_POST[$item."from"]) {
                     $value = string2ldapDate($_POST[$item."from"]);
+                    $value = ldap_escape($value, null, LDAP_ESCAPE_FILTER);
                     $ldap_filter .= "($attribute>=$value)";
                 }
                 if (isset($_POST[$item."to"]) and $_POST[$item."to"]) {
                     $value = string2ldapDate($_POST[$item."to"]);
+                    $value = ldap_escape($value, null, LDAP_ESCAPE_FILTER);
                     $ldap_filter .= "($attribute<=$value)";
                 }
             }
             elseif ( $type == "boolean") {
                 if (isset($_POST[$item]) and $_POST[$item]) {
-                    $ldap_filter .= "($attribute=".$_POST[$item].")";
+                    $value = $_POST[$item];
+                    $value = ldap_escape($value, null, LDAP_ESCAPE_FILTER);
+                    $ldap_filter .= "($attribute=$value)";
                 }
             } 
             else {
                 if (isset($_POST[$item]) and $_POST[$item]) {
-                    $ldap_filter .= "($attribute=".$_POST[$item].")";
+                    $value = $_POST[$item];
+                    $value = ldap_escape($value, "*", LDAP_ESCAPE_FILTER);
+                    $ldap_filter .= "($attribute=$value)";
                 }
             }
         }

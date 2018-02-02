@@ -9,7 +9,7 @@ $nb_entries = 0;
 $entries = array();
 $size_limit_reached = false;
 
-if (isset($_POST["search"]) and $_POST["search"]) { $search_query = $_POST["search"]; }
+if (isset($_POST["search"]) and $_POST["search"]) { $search_query = ldap_escape($_POST["search"], null, LDAP_ESCAPE_FILTER); }
  else { $result = "searchrequired"; }
 
 if ($result === "") {
