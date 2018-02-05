@@ -21,6 +21,7 @@ Check [Star Pages](http://ltb-project.org/star-pages/), an online demonstration 
 
 ## Prerequisite
 
+* PHP >= 5.6 (for ldap_escape function)
 * PHP extensions required:
   * php-ldap
   * php-gd
