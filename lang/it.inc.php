@@ -13,6 +13,7 @@ $messages['entriesfound'] = "records trovati";
 $messages['entryfound'] = "record trovato";
 $messages['false'] = "No";
 $messages['fromdate'] = "Da";
+$messages['directory'] = "Elenco";
 $messages['gallery'] = "Galleria";
 $messages['label_businesscategory'] = "Categoria attivit&aacute;";
 $messages['label_carlicense'] = "Patente";
