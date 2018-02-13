@@ -47,6 +47,7 @@ $messages['notdefined'] = "Not defined";
 $messages['search'] = "Search";
 $messages['searchrequired'] = "Please enter your search";
 $messages['sizelimit'] = "Size limit has been reached, some entries could not be displayed";
+$messages['submatch'] = "contains";
 $messages['title'] = "White Pages";
 $messages['todate'] = "To";
 $messages['true'] = "Yes";
