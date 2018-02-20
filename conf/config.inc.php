@@ -72,6 +72,7 @@ $search_result_sortby = "lastname";
 $search_result_show_undefined = true;
 $search_result_bootstrap_column_class = "col-md-4";
 $search_result_truncate_value_after = "20";
+$search_result_truncate_title_after = "30";
 
 # Advanced search
 $use_advanced_search = true;
@@ -89,6 +90,7 @@ $use_gallery = true;
 $gallery_title = "fullname";
 $gallery_sortby = "lastname";
 $gallery_bootstrap_column_class = "col-xs-6 col-sm-4 col-md-3";
+$gallery_truncate_title_after = "25";
 
 # Directory
 $use_directory = true;

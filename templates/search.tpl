@@ -15,7 +15,7 @@
             <div class="panel-heading text-center">
                 <p class="panel-title">
                     <i class="fa fa-fw fa-{$attributes_map.{$search_result_title}.faclass}"></i>
-                     {$entry.{$attributes_map.{$search_result_title}.attribute}.0}
+                     {$entry.{$attributes_map.{$search_result_title}.attribute}.0|truncate:{$search_result_truncate_title_after}}
                 </p>
             </div>
             <div class="panel-body">

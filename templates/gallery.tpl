@@ -17,7 +17,7 @@
                 </a>
             </div>
             <div class="panel-footer text-center">
-                {$entry.{$attributes_map.{$gallery_title}.attribute}.0}
+                {$entry.{$attributes_map.{$gallery_title}.attribute}.0|truncate:{$gallery_truncate_title_after}}
             </div>
         </div>
     </div>
