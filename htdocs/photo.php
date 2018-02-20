@@ -55,6 +55,17 @@ if ( !$photo ) {
     $photo = imagecreatefromjpeg($default_photo);
 }
 
+# Resize photo if needed
+if ($photo_fixed_width or $photo_fixed_height) {
+    $ratio = imagesx($photo)/imagesy($photo);
+    $width = $photo_fixed_width ? $photo_fixed_width : $photo_fixed_height * $ratio;
+    $height = $photo_fixed_height ? $photo_fixed_height : $photo_fixed_width / $ratio;
+    $src = $photo;
+    $photo = imagecreatetruecolor($width,$height);
+    imagecopyresampled($photo,$src,0,0,0,0,$width,$height,imagesx($src),imagesy($src));
+    imagedestroy($src);
+}
+
 header('Content-Type: image/jpeg');
 imagejpeg($photo);
 imagedestroy($photo);

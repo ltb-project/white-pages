@@ -112,6 +112,8 @@ $vcard_map = array('FN' => 'fullname', 'N' => 'fullname', 'EMAIL' => 'mail', 'CA
 # Photo
 $default_photo = "images/240px-PICA.jpg";
 $photo_ldap_attribute = "jpegPhoto";
+$photo_fixed_width = 240;
+$photo_fixed_height = 240;
 
 # Language
 $lang ="en";
