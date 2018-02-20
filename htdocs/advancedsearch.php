@@ -52,7 +52,11 @@ if ($result === "") {
             else {
                 if (isset($_POST[$item]) and $_POST[$item]) {
                     $value = $_POST[$item];
-                    $value = ldap_escape($value, "*", LDAP_ESCAPE_FILTER);
+                    if (isset($_POST[$item."match"]) and ($_POST[$item."match"] == 'sub')) {
+                        $value = '*' . ldap_escape($value, "", LDAP_ESCAPE_FILTER) . '*';
+                    } else {
+                        $value = ldap_escape($value, "*", LDAP_ESCAPE_FILTER);
+                    }
                     $ldap_filter .= "($attribute=$value)";
                 }
             }

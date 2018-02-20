@@ -16,6 +16,7 @@
             <input type="text" class="form-control" id="{$item}to" name="{$item}to" data-provide="datepicker" data-date-language="{$lang}">
             {else}
             <input type="text" class="form-control" id="{$item}" name="{$item}" placeholder="{$label}">
+            <span class="input-group-addon"><label><input type="checkbox" name="{$item}match" value="sub"> {$msg_submatch}</label></span>
             {/if}
         </div>
     </div>

@@ -27,3 +27,7 @@ img.logo {
   margin-bottom: 20px;
 }
 
+.input-group-addon label {
+  margin: 0;
+  font-weight: normal;
+}
