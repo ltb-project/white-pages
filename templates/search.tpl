@@ -61,6 +61,7 @@
 <table class="table table-striped table-condensed">
   <thead>
     <tr>
+      <th></th>
 {foreach $search_result_items as $item}
       <th>{$msg_label_{$item}}</th>
 {/foreach}
@@ -69,6 +70,7 @@
   <tbody>
 {foreach $entries as $entry}
     <tr>
+      <th><a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}" class="btn btn-info btn-sm" role="button" title="{$msg_displayentry}"><i class="fa fa-fw fa-id-card"></i></a></th>
 {foreach $search_result_items as $item}
     {$attribute=$attributes_map.{$item}.attribute}
     {$type=$attributes_map.{$item}.type}
