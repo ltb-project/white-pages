@@ -107,6 +107,10 @@ $vcard_file_identifier = "identifier";
 $vcard_version = "4.0";
 $vcard_map = array('FN' => 'fullname', 'N' => 'fullname', 'EMAIL' => 'mail', 'CATEGORIES' => 'businesscategory', 'ORG' => 'organization', 'ROLE' => 'employeetype', 'TEL;TYPE=work,voice;VALUE=uri:tel' => 'phone', 'TEL;TYPE=cell,voice;VALUE=uri:tel' => 'mobile', 'UID' => 'identifier');
 
+# Photo
+$default_photo = "images/240px-PICA.jpg";
+$photo_ldap_attribute = "jpegPhoto";
+
 # Language
 $lang ="en";
 $date_specifiers = "%Y-%m-%d %H:%M:%S (%Z)";
@@ -114,7 +118,6 @@ $date_specifiers = "%Y-%m-%d %H:%M:%S (%Z)";
 # Graphics
 $logo = "images/ltb-logo.png";
 $background_image = "images/unsplash-space.jpeg";
-$default_photo = "images/240px-PICA.jpg";
 $hover_effect = "grow";
 $custom_css = "";
 
