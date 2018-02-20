@@ -90,6 +90,11 @@ $gallery_title = "fullname";
 $gallery_sortby = "lastname";
 $gallery_bootstrap_column_class = "col-xs-6 col-sm-4 col-md-3";
 
+# Directory
+$use_directory = true;
+$directory_items = array('firstname', 'lastname', 'mail', 'organization');
+$directory_sortby = "lastname";
+
 # CSV
 $use_csv = true;
 $csv_filename = "white_pages_export_" . date("Y-m-d") . ".csv";

@@ -58,6 +58,7 @@ $smarty->assign('advanced_search_criteria',$advanced_search_criteria);
 $smarty->assign('results_display_mode',$results_display_mode);
 $smarty->assign('display_items',$display_items);
 $smarty->assign('display_title',$display_title);
+$smarty->assign('use_directory',$use_directory);
 $smarty->assign('use_gallery',$use_gallery);
 $smarty->assign('gallery_title',$gallery_title);
 $smarty->assign('gallery_bootstrap_column_class',$gallery_bootstrap_column_class);
