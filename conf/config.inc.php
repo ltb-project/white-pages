@@ -95,7 +95,9 @@ $gallery_truncate_title_after = "25";
 # Directory
 $use_directory = true;
 $directory_items = array('firstname', 'lastname', 'mail', 'organization');
+$directory_linkto = array('firstname', 'lastname');
 $directory_sortby = "lastname";
+$default_page_length = 10;  // 10, 25, 50, 100 or -1 for all
 
 # CSV
 $use_csv = true;

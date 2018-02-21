@@ -58,6 +58,7 @@ $smarty->assign("nb_entries", $nb_entries);
 $smarty->assign("entries", $entries);
 $smarty->assign("size_limit_reached", $size_limit_reached);
 $smarty->assign("columns", $directory_items);
+$smarty->assign("linkto", $directory_linkto);
 $smarty->assign("sortby", $sortidx);
 
 ?>

@@ -31,3 +31,20 @@ img.logo {
   margin: 0;
   font-weight: normal;
 }
+
+table.dataTable thead .sorting::after,
+table.dataTable thead .sorting_asc::after,
+table.dataTable thead .sorting_desc::after,
+table.dataTable thead .sorting_asc_disabled::after,
+table.dataTable thead .sorting_desc_disabled::after {
+  position: initial;
+  display:  inline;
+  margin-left: 8px;
+}
+
+@media print {
+  a[href]:after {
+  /*content: " (" attr(href) ")";*/
+    content: none;
+  }
+}
