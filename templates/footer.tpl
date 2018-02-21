@@ -19,7 +19,7 @@
           "processing":   true,
           "pageLength":   {/literal}{$default_page_length|default:10}{literal},
           "lengthMenu": [
-            [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]
+            [10, 25, 50, 100, -1], [10, 25, 50, 100, "{/literal}{$msg_pager_all}{literal}"]
           ],
           "order": [
             [ {/literal}{$sortby|default:0 + 1}{literal}, "asc" ]
