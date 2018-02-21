@@ -42,3 +42,9 @@ table.dataTable thead .sorting_desc_disabled::after {
   margin-left: 8px;
 }
 
+@media print {
+  a[href]:after {
+  /*content: " (" attr(href) ")";*/
+    content: none;
+  }
+}
