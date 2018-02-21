@@ -1,5 +1,4 @@
 
-
 {
 	"sEmptyTable":     "Nessun dato presente nella tabella",
 	"sInfo":           "Vista da _START_ a _END_ di _TOTAL_ elementi",
@@ -10,7 +9,7 @@
 	"sLengthMenu":     "Visualizza _MENU_ elementi",
 	"sLoadingRecords": "Caricamento...",
 	"sProcessing":     "Elaborazione...",
-	"sSearch":         "Cerca:",
+	"sSearch":         "Filtro:",
 	"sZeroRecords":    "La ricerca non ha portato alcun risultato.",
 	"oPaginate": {
 		"sFirst":      "Inizio",

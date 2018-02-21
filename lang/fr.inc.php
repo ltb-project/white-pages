@@ -15,6 +15,7 @@ $messages['false'] = "Non";
 $messages['fromdate'] = "Depuis le";
 $messages['directory'] = "Répertoire";
 $messages['gallery'] = "Trombinoscope";
+$messages['pager_all'] = "Tout";
 $messages['label_businesscategory'] = "Catégorie";
 $messages['label_carlicense'] = "Permis de conduire";
 $messages["label_created"] = "Créé";
