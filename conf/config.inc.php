@@ -95,6 +95,7 @@ $gallery_truncate_title_after = "25";
 # Directory
 $use_directory = true;
 $directory_items = array('firstname', 'lastname', 'mail', 'organization');
+$directory_linkto = array('firstname', 'lastname');
 $directory_sortby = "lastname";
 
 # CSV

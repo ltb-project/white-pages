@@ -20,11 +20,17 @@
         {if !({$entry.$attribute.0})}
             &mdash;{continue}
         {/if}
+        {if in_array($column, $linkto)}
+             <a href="index.php?page=display&dn={$entry.dn|escape:'url'}" title="{$msg_displayentry}">
+        {/if}
         {foreach $entry.{$attribute} as $value}
             {if $value@index eq 0}{continue}{/if}
             {$type=$attributes_map.{$column}.type}
             {include 'value_displayer.tpl' value=$value type=$type truncate_value_after=$search_result_truncate_value_after ldap_params=$ldap_params date_specifiers=$date_specifiers}<br />
         {/foreach}
+        {if in_array($column, $linkto)}
+             </a>
+        {/if}
         </td>
     {/foreach}
     </tr>
