@@ -57,6 +57,7 @@ $smarty->assign('search_result_truncate_title_after',$search_result_truncate_tit
 $smarty->assign('use_advanced_search',$use_advanced_search);
 $smarty->assign('advanced_search_criteria',$advanced_search_criteria);
 $smarty->assign('results_display_mode',$results_display_mode);
+$smarty->assign('default_page_length',$default_page_length);
 $smarty->assign('display_items',$display_items);
 $smarty->assign('display_title',$display_title);
 $smarty->assign('use_directory',$use_directory);
@@ -92,6 +93,7 @@ $page = "welcome";
 if (isset($_GET["page"]) and $_GET["page"]) { $page = $_GET["page"]; }
 if ( $page === "search" and !$use_quick_search ) { $page = "welcome"; }
 if ( $page === "advancedsearch" and !$use_advanced_search ) { $page = "welcome"; }
+if ( $page === "directory" and !$use_directory ) { $page = "welcome"; }
 if ( $page === "gallery" and !$use_gallery ) { $page = "welcome"; }
 if ( file_exists($page.".php") ) { require_once($page.".php"); }
 $smarty->assign('page',$page);

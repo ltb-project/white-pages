@@ -17,14 +17,18 @@
           "paging":       true,
           "info":         true,
           "processing":   true,
+          "pageLength":   {/literal}{$default_page_length|default:10}{literal},
+          "lengthMenu": [
+            [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]
+          ],
           "order": [
-            [ {/literal}{$sortby + 1}{literal}, "asc" ]
+            [ {/literal}{$sortby|default:0 + 1}{literal}, "asc" ]
           ],
           "aoColumnDefs": [
             { "bSortable": false, "aTargets": ['nosort'] },
           ],
           "language": {
-            "url": "vendor/datatables/i18n/{/literal}{$lang}{literal}.json"
+            "url": "vendor/datatables/i18n/{/literal}{$lang|default:'en'}{literal}.json"
           }
         });
       });
