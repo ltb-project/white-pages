@@ -13,9 +13,19 @@
 <tbody>
 {foreach $entries as $entry}
     <tr>
-        <th><a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}" class="btn btn-info btn-sm" role="button" title="{$msg_displayentry}"><i class="fa fa-fw fa-id-card"></i></a></th>
+        <th><a href="index.php?page=display&dn={$entry.dn|escape:'url'}" class="btn btn-info btn-sm" role="button" title="{$msg_displayentry}"><i class="fa fa-fw fa-id-card"></i></a></th>
     {foreach $columns as $column}
-        <td>{$entry.{$attributes_map.{$column}.attribute}.0}</td>
+        <td>
+        {$attribute=$attributes_map.{$column}.attribute}
+        {if !({$entry.$attribute.0})}
+            &mdash;{continue}
+        {/if}
+        {foreach $entry.{$attribute} as $value}
+            {if $value@index eq 0}{continue}{/if}
+            {$type=$attributes_map.{$column}.type}
+            {include 'value_displayer.tpl' value=$value type=$type truncate_value_after=$search_result_truncate_value_after ldap_params=$ldap_params date_specifiers=$date_specifiers}<br />
+        {/foreach}
+        </td>
     {/foreach}
     </tr>
 {/foreach}
