@@ -10,7 +10,7 @@
 	"sLengthMenu":     "Visualizza _MENU_ elementi",
 	"sLoadingRecords": "Caricamento...",
 	"sProcessing":     "Elaborazione...",
-	"sSearch":         "Cerca:",
+	"sSearch":         "Filtro&nbsp;:",
 	"sZeroRecords":    "La ricerca non ha portato alcun risultato.",
 	"oPaginate": {
 		"sFirst":      "Inizio",
