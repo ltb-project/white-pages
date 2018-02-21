@@ -114,6 +114,9 @@ $default_photo = "images/240px-PICA.jpg";
 $photo_ldap_attribute = "jpegPhoto";
 $photo_fixed_width = 240;
 $photo_fixed_height = 240;
+#$photo_local_directory = "../photos/";
+#$photo_local_ldap_attribute = "uid";
+#$photo_local_extension = ".jpg";
 
 # Language
 $lang ="en";

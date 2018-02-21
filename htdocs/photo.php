@@ -21,6 +21,8 @@ if ($result === "") {
 
     # Defauft value for LDAP photo attribute
     if (!isset($photo_ldap_attribute)) { $photo_ldap_attribute = "jpegPhoto"; }
+    $photo_attributes[] = $photo_ldap_attribute;
+    if (isset($photo_local_ldap_attribute)) { $photo_attributes[] = $photo_local_ldap_attribute; }
 
     # Connect to LDAP
     $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw);
@@ -31,7 +33,7 @@ if ($result === "") {
     if ($ldap) {
 
         # Search entry
-        $search = ldap_read($ldap, $dn, $ldap_user_filter, array($photo_ldap_attribute));
+        $search = ldap_read($ldap, $dn, $ldap_user_filter, $photo_attributes);
 
         $errno = ldap_errno($ldap);
 
@@ -41,7 +43,12 @@ if ($result === "") {
         } else {
             $entry = ldap_get_entries($ldap, $search);
             if ( !isset($entry[0][strtolower($photo_ldap_attribute)]) ) {
-                $result = "photonotfound";
+                if ( $photo_local_ldap_attribute and isset($entry[0][strtolower($photo_local_ldap_attribute)]) ) {
+                    $filephoto = $photo_local_directory . $entry[0][strtolower($photo_local_ldap_attribute)][0] . $photo_local_extension;
+                    if ( file_exists($filephoto) ) {
+                        $photo = imagecreatefromjpeg($filephoto);
+                    }
+                }
             } else {
                 $ldapphoto = $entry[0][strtolower($photo_ldap_attribute)][0];
                 $photo = imagecreatefromstring($ldapphoto);
