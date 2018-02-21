@@ -10,7 +10,7 @@
 	"sLengthMenu":     "Show _MENU_ entries",
 	"sLoadingRecords": "Loading...",
 	"sProcessing":     "Processing...",
-	"sSearch":         "Search:",
+	"sSearch":         "Filter&nbsp;:",
 	"sZeroRecords":    "No matching records found",
 	"oPaginate": {
 		"sFirst":    "First",
