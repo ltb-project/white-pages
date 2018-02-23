@@ -134,18 +134,12 @@ if ($result === "") {
                 $smarty->assign("nb_entries", $nb_entries);
                 $smarty->assign("entries", $entries);
                 $smarty->assign("size_limit_reached", $size_limit_reached);
-                /*
-                if (! in_array($search_result_title, $search_result_item)) {
-                    array_unshift($search_result_items, $search_result_title);
-                }
+
+                if (! in_array($search_result_title, $search_result_item)) array_unshift($search_result_items, $search_result_title);
                 $smarty->assign("columns", $search_result_items);
                 $smarty->assign("linkto",  $search_result_linkto);
                 $smarty->assign("sortby",  array_search($search_result_sortby, $search_result_items));
-                */
-                $smarty->assign("columns", $directory_items);
-                $smarty->assign("linkto", $directory_linkto);
-                $smarty->assign("sortby", array_search($directory_sortby, $directory_items));
-                $page = ($results_display_mode == "table") ? "directory" : "search";
+                $page = "search";
             }
         }
     }

@@ -10,7 +10,7 @@
     <script src="vendor/datatables/datatables.min.js"></script>
     <script type="text/javascript">
       $(document).ready( function() {
-        var itemlist = $('#directory-listing').DataTable({
+        var itemlist = $('table.dataTable').DataTable({
           "stateSave":    true,
           "searching":    true,
           "paging":       true,
