@@ -3,11 +3,11 @@
 {/if}
 
 {if $type eq 'mailto'}
-    {mailto address="{$value}" encode="javascript" text="{$value|truncate:{$truncate_value_after}}"}
+    {mailto address="{$value}" encode="javascript" text="{$value|truncate:{$truncate_value_after}}" extra='class="link-email" title="'|cat:$msg_tooltip_emailto:'"'}
 {/if}
 
 {if $type eq 'tel'}
-    <a href="tel:{$value}" rel="nofollow">{$value|truncate:{$truncate_value_after}}</a>
+    <a href="tel:{$value}" rel="nofollow" class="link-phone" title="{$msg_tooltip_phoneto}">{$value|truncate:{$truncate_value_after}}</a>
 {/if}
 
 {if $type eq 'dn_link'}
