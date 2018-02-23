@@ -79,7 +79,7 @@ $use_advanced_search = true;
 $advanced_search_criteria = array('firstname', 'lastname', 'mail', 'title', 'businesscategory', 'employeetype', 'created', 'modified');
 
 # Results display
-$results_display_mode = "boxes";
+$results_display_mode = "table";  // boxes or table
 
 # Full dislpay
 $display_items = array('firstname', 'lastname', 'title', 'businesscategory', 'employeenumber', 'employeetype', 'mail', 'phone', 'mobile', 'fax', 'postaladdress', 'street', 'postalcode', 'l', 'state', 'manager', 'secretary', 'organizationalunit', 'organization', 'description' );

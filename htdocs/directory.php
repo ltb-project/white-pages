@@ -38,7 +38,6 @@ if ($ldap) {
         # Sort entries
         if (isset($search_result_sortby)) {
             $sortby = $attributes_map[$directory_sortby]['attribute'];
-            $sortidx = array_search($directory_sortby, $directory_items);
             ldap_sort($ldap, $search, $sortby);
         }
 
@@ -59,6 +58,6 @@ $smarty->assign("entries", $entries);
 $smarty->assign("size_limit_reached", $size_limit_reached);
 $smarty->assign("columns", $directory_items);
 $smarty->assign("linkto", $directory_linkto);
-$smarty->assign("sortby", $sortidx);
+$smarty->assign("sortby", array_search($directory_sortby, $directory_items));
 
 ?>
