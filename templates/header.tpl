@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap-datepicker/css/bootstrap-datepicker3.standalone.min.css" />
 {if $use_directory}
-    <link rel="stylesheet" type="text/css" href="vendor/datatables/dataTables.bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/datatables/datatables.min.css" />
 {/if}
 {if $hover_effect}
     <link rel="stylesheet" type="text/css" href="vendor/hover/css/hover-min.css" />

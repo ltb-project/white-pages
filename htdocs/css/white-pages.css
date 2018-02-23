@@ -42,9 +42,33 @@ table.dataTable thead .sorting_desc_disabled::after {
   margin-left: 8px;
 }
 
+
 @media print {
+
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    width: 100%;
+  }
+
   a[href]:after {
-  /*content: " (" attr(href) ")";*/
     content: none;
   }
+
+  .row.ft-head,
+  .dataTables_length,
+  .dataTables_filter,
+  .dataTables_paginate,
+/*.dataTables_info,*/
+  .dt-buttons,
+  table.dataTable thead .sorting::after,
+  table.dataTable thead .sorting_asc::after,
+  table.dataTable thead .sorting_desc::after,
+  table.dataTable thead .sorting_asc_disabled::after,
+  table.dataTable thead .sorting_desc_disabled::after {
+    display: none;
+  }
+
 }

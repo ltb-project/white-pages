@@ -8,12 +8,19 @@
 
 <table id="directory-listing" class="table table-striped table-hover table-condensed dataTable">
 <thead>
-    <tr><th class="nosort">&nbsp;</th>{foreach $columns as $item}<th>{$msg_label_{$item}}</th>{/foreach}</tr>
+    <tr>
+        <th class="hidden-print nosort">&nbsp;</th>
+       {foreach $columns as $item}<th>{$msg_label_{$item}}</th>{/foreach}
+    </tr>
 </thead>
 <tbody>
 {foreach $entries as $entry}
     <tr>
-        <th><a href="index.php?page=display&dn={$entry.dn|escape:'url'}" class="btn btn-info btn-sm" role="button" title="{$msg_displayentry}"><i class="fa fa-fw fa-id-card"></i></a></th>
+        <th class="hidden-print">
+            <a href="index.php?page=display&dn={$entry.dn|escape:'url'}" class="btn btn-info btn-sm" role="button" title="{$msg_displayentry}">
+                <i class="fa fa-fw fa-id-card"></i>
+            </a>
+        </th>
     {foreach $columns as $column}
         <td>
         {$attribute=$attributes_map.{$column}.attribute}
