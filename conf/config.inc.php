@@ -76,6 +76,7 @@ $results_display_mode = "boxes";  // boxes or table
 $search_result_items = array('mail', 'phone', 'mobile');
 $search_result_title = "fullname";
 $search_result_sortby = "lastname";
+$search_result_linkto = array("fullname");
 $search_result_show_undefined = true;
 $search_result_bootstrap_column_class = "col-md-4";
 $search_result_truncate_value_after = 20;

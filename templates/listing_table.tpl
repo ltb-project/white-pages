@@ -7,9 +7,9 @@
 </thead>
 <tbody>
 {foreach $entries as $entry}
-    <tr>
+    <tr{if ! $listing_linkto|is_array} class="clickable" title="{$msg_displayentry}"{/if}>
         <th class="hidden-print">
-            <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}" class="btn btn-info btn-sm" role="button" title="{$msg_displayentry}">
+            <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}" class="btn btn-info btn-sm{if $listing_linkto===false} hidden{/if}" role="button" title="{$msg_displayentry}">
                 <i class="fa fa-fw fa-id-card"></i>
             </a>
         </th>
@@ -17,7 +17,7 @@
         <td>
         {$attribute=$attributes_map.{$column}.attribute}
         {if ({$entry.$attribute.0})}
-            {if in_array($column, $listing_linkto)}
+            {if $listing_linkto|is_array && in_array($column, $listing_linkto)}
                  <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}" title="{$msg_displayentry}">
             {/if}
             {foreach $entry.{$attribute} as $value}
@@ -25,7 +25,7 @@
                 {$type=$attributes_map.{$column}.type}
                 {include 'value_displayer.tpl' value=$value type=$type}<br />
             {/foreach}
-            {if in_array($column, $listing_linkto)}
+            {if $listing_linkto|is_array && in_array($column, $listing_linkto)}
                  </a>
             {/if}
         {else}
