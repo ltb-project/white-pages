@@ -56,8 +56,11 @@ if ($ldap) {
 $smarty->assign("nb_entries", $nb_entries);
 $smarty->assign("entries", $entries);
 $smarty->assign("size_limit_reached", $size_limit_reached);
-$smarty->assign("columns", $directory_items);
-$smarty->assign("linkto", $directory_linkto);
-$smarty->assign("sortby", array_search($directory_sortby, $directory_items));
 
+$smarty->assign("listing_columns", $directory_items);
+$smarty->assign("listing_linkto", $directory_linkto);
+$smarty->assign("listing_sortby", array_search($directory_sortby, $directory_items));
+
+$smarty->assign("show_undef", $directory_show_undefined);
+$smarty->assign("truncate_value_after", $directory_truncate_value_after);
 ?>

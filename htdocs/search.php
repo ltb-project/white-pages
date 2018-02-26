@@ -76,10 +76,20 @@ if ($result === "") {
                 $smarty->assign("entries", $entries);
                 $smarty->assign("size_limit_reached", $size_limit_reached);
 
-                if (! in_array($search_result_title, $search_result_item)) array_unshift($search_result_items, $search_result_title);
-                $smarty->assign("columns", $search_result_items);
-                $smarty->assign("linkto",  $search_result_linkto);
-                $smarty->assign("sortby",  array_search($search_result_sortby, $search_result_items));
+                if ($results_display_mode == 'table') {
+                    $columns = $search_result_items;
+                    if (! in_array($search_result_title, $columns)) array_unshift($columns, $search_result_title);
+                    $smarty->assign("listing_columns", $columns);
+                    $smarty->assign("listing_linkto",  isset($search_result_linkto) ? $search_result_linkto : array($search_result_title));
+                    $smarty->assign("listing_sortby",  array_search($search_result_sortby, $columns));
+                } else {
+                    $smarty->assign("card_title", $search_result_title);
+                    $smarty->assign("card_items", $search_result_items);
+                    $smarty->assign("truncate_title_after", $search_result_truncate_title_after);
+                    $smarty->assign("bootstrap_column_class", $search_result_bootstrap_column_class);
+                }
+                $smarty->assign("show_undef", $search_result_show_undefined);
+                $smarty->assign("truncate_value_after", $search_result_truncate_value_after);
             }
         }
     }

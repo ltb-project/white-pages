@@ -9,7 +9,7 @@
 {/if}
 
 
-{if $results_display_mode == "table"}
+{if isset($listing_columns)}
 <table id="search-listing" class="table table-striped table-hover table-condensed dataTable">
     {include 'listing_table.tpl'}
 </table>
