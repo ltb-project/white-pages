@@ -32,7 +32,7 @@
     {/if}
     {literal}
           "dom":
-            "<'row ft-head'<'col-sm-6'l><'col-sm-6'<'pull-right'B>f>>" +
+            "<'row ft-head'<'col-sm-6'{/literal}{if $datatables_page_length_choices}l{/if}{literal}><'col-sm-6'<'pull-right'B>f>>" +
             "<'row dt-main'<'col-sm-12'tr>>" +
             "<'row dt-foot'<'col-sm-6'i><'col-sm-6'p>>",
           "buttons": [

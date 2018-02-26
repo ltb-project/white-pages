@@ -57,7 +57,8 @@ $smarty->assign('use_csv',$use_csv);
 $smarty->assign('use_vcard',$use_vcard);
 $smarty->assign('use_datatables', $use_datatables);
 if ($use_datatables) {
-    $smarty->assign('datatables_page_length_choices', is_array($datatables_page_length_choices) ? implode(', ', $datatables_page_length_choices) : '');
+    if (is_array($datatables_page_length_choices)) $datatables_page_length_choices = implode(', ', $datatables_page_length_choices);
+    $smarty->assign('datatables_page_length_choices', $datatables_page_length_choices);
     $smarty->assign('datatables_page_length_default', $datatables_page_length_default);
 }
 
