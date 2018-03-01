@@ -20,7 +20,8 @@
 #==============================================================================
 
 #==============================================================================
-# Configuration
+# All the default values are kept here, you should not modify it but use
+# config.inc.local.php file instead to override the settings from here.
 #==============================================================================
 # LDAP
 $ldap_url = "ldap://localhost";
@@ -143,5 +144,10 @@ $debug = false;
 
 # Smarty
 define("SMARTY", "/usr/share/php/smarty3/Smarty.class.php");
+
+# Allow to override current settings with local configuration
+if (file_exists (dirname (__FILE__) . '/config.inc.local.php')) {
+    include dirname (__FILE__) . '/config.inc.local.php';
+}
 
 ?>
