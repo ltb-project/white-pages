@@ -38,7 +38,8 @@ $smarty->setCacheDir('../cache/');
 $smarty->debugging = $debug;
 
 # Default configuration values
-if (!isset($results_display_mode)) { $results_display_mode = "boxes"; }
+if (!isset($results_display_mode)) $results_display_mode = "boxes";
+if (!isset($use_datatables)) $use_datatables = true;
 
 # Assign configuration variables
 $smarty->assign('ldap_params',array('ldap_url' => $ldap_url, 'ldap_starttls' => $ldap_starttls, 'ldap_binddn' => $ldap_binddn, 'ldap_bindpw' => $ldap_bindpw, 'ldap_user_base' => $ldap_user_base, 'ldap_user_filter' => $ldap_user_filter));
@@ -47,27 +48,19 @@ $smarty->assign('background_image',$background_image);
 $smarty->assign('hover_effect',$hover_effect);
 $smarty->assign('custom_css',$custom_css);
 $smarty->assign('attributes_map',$attributes_map);
-$smarty->assign('use_quick_search',$use_quick_search);
-$smarty->assign('search_result_items',$search_result_items);
-$smarty->assign('search_result_title',$search_result_title);
-$smarty->assign('search_result_show_undefined',$search_result_show_undefined);
-$smarty->assign('search_result_bootstrap_column_class',$search_result_bootstrap_column_class);
-$smarty->assign('search_result_truncate_value_after',$search_result_truncate_value_after);
-$smarty->assign('search_result_truncate_title_after',$search_result_truncate_title_after);
-$smarty->assign('use_advanced_search',$use_advanced_search);
-$smarty->assign('advanced_search_criteria',$advanced_search_criteria);
-$smarty->assign('results_display_mode',$results_display_mode);
-$smarty->assign('default_page_length',$default_page_length);
-$smarty->assign('display_items',$display_items);
-$smarty->assign('display_title',$display_title);
-$smarty->assign('use_directory',$use_directory);
-$smarty->assign('use_gallery',$use_gallery);
-$smarty->assign('gallery_title',$gallery_title);
-$smarty->assign('gallery_bootstrap_column_class',$gallery_bootstrap_column_class);
-$smarty->assign('gallery_truncate_title_after',$gallery_truncate_title_after);
 $smarty->assign('date_specifiers',$date_specifiers);
+$smarty->assign('use_quick_search',$use_quick_search);
+$smarty->assign('use_advanced_search',$use_advanced_search);
+$smarty->assign('use_gallery',$use_gallery);
+$smarty->assign('use_directory',$use_directory);
 $smarty->assign('use_csv',$use_csv);
 $smarty->assign('use_vcard',$use_vcard);
+$smarty->assign('use_datatables', $use_datatables);
+if ($use_datatables) {
+    if (is_array($datatables_page_length_choices)) $datatables_page_length_choices = implode(', ', $datatables_page_length_choices);
+    $smarty->assign('datatables_page_length_choices', $datatables_page_length_choices);
+    $smarty->assign('datatables_page_length_default', $datatables_page_length_default);
+}
 
 # Assign messages
 $smarty->assign('lang',$lang);

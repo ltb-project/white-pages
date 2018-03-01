@@ -5,24 +5,25 @@
         <div class="panel panel-info">
             <div class="panel-heading text-center">
                 <p class="panel-title">
-                    <i class="fa fa-fw fa-{$attributes_map.{$display_title}.faclass}"></i>
-                    {$entry.{$attributes_map.{$display_title}.attribute}.0}
+                    <i class="fa fa-fw fa-{$attributes_map.{$card_title}.faclass}"></i>
+                    {$entry.{$attributes_map.{$card_title}.attribute}.0}
                 </p>
             </div>
 
             <div class="panel-body">
 
-                <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$display_title}.attribute}.0}" class="img-responsive img-thumbnail center-block" />
+                <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$card_title}.attribute}.0}" class="img-responsive img-thumbnail center-block" />
 
                 <div class="table-responsive">
                 <table class="table table-striped table-hover">
-                {foreach $display_items as $item}
+                {foreach $card_items as $item}
                 {$attribute=$attributes_map.{$item}.attribute}
                 {$type=$attributes_map.{$item}.type}
                 {$faclass=$attributes_map.{$item}.faclass}
-                    {if !({$entry.$attribute.0})}
-                        {continue}
-                    {/if}
+
+                {if !({$entry.$attribute.0}) && ! $show_undef}
+                    {continue}
+                {/if}
                     <tr>
                         <th class="text-center">
                             <i class="fa fa-fw fa-{$faclass}"></i>
@@ -31,11 +32,15 @@
                             {$msg_label_{$item}}
                         </th>
                         <td>
+                        {if ({$entry.$attribute.0})}
                             {foreach $entry.{$attribute} as $value}
                             {if $value@index ne 0}
-                            {include 'value_displayer.tpl' value=$value type=$type truncate_value_after=10000 ldap_params=$ldap_params date_specifiers=$date_specifiers}<br />
+                            {include 'value_displayer.tpl' value=$value type=$type truncate_value_after=10000}<br />
                             {/if}
                             {/foreach}
+                        {else}
+                            <i>{$msg_notdefined}</i><br />
+                        {/if}
                         </td>
                     </tr>
                 {/foreach}

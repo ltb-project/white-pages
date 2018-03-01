@@ -42,6 +42,32 @@ table.dataTable thead .sorting_desc_disabled::after {
   margin-left: 8px;
 }
 
+table.dataTable tbody tr:hover th,
+table.dataTable tbody tr:hover td {
+  background-color: #fec;
+}
+table.dataTable tbody tr.clickable th,
+table.dataTable tbody tr.clickable td {
+  cursor: pointer;
+}
+
+a.link-email,
+a.link-phone {
+  text-decoration: none;
+  border-bottom: 1px dotted #999;
+  cursor: crosshair;
+}
+table.dataTable a.link-email:hover::after {
+  font: normal normal normal 14px/1 FontAwesome;
+  margin-left: 0.5em;
+  content: "\f003";
+}
+table.dataTable a.link-phone:hover::after {
+  font: normal normal normal 14px/1 FontAwesome;
+  margin-left: 0.5em;
+  content: "\f095";
+}
+
 
 @media print {
 

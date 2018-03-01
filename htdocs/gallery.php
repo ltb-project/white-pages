@@ -58,4 +58,7 @@ $smarty->assign("nb_entries", $nb_entries);
 $smarty->assign("entries", $entries);
 $smarty->assign("size_limit_reached", $size_limit_reached);
 
+$smarty->assign("card_title", $gallery_title);
+$smarty->assign("bootstrap_column_class", $gallery_bootstrap_column_class);
+$smarty->assign("truncate_title_after", $gallery_truncate_title_after);
 ?>

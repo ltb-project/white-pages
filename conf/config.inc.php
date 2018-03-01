@@ -41,7 +41,7 @@ $attributes_map = array(
     'displayname' => array( 'attribute' => 'displayname', 'faclass' => 'user-circle', 'type' => 'text' ),
     'employeenumber' => array( 'attribute' => 'employeenumber', 'faclass' => 'hashtag', 'type' => 'text' ),
     'employeetype' => array( 'attribute' => 'employeetype', 'faclass' => 'id-badge', 'type' => 'text' ),
-    'fax' => array( 'attribute' => 'facsimiletelephonenumber', 'faclass' => 'fax', 'type' => 'text' ),
+    'fax' => array( 'attribute' => 'facsimiletelephonenumber', 'faclass' => 'fax', 'type' => 'tel' ),
     'firstname' => array( 'attribute' => 'givenname', 'faclass' => 'user-o', 'type' => 'text' ),
     'fullname' => array( 'attribute' => 'cn', 'faclass' => 'user-circle', 'type' => 'text' ),
     'identifier' => array( 'attribute' => 'uid', 'faclass' => 'user-o', 'type' => 'text' ),
@@ -63,41 +63,49 @@ $attributes_map = array(
     'title' => array( 'attribute' => 'title', 'faclass' => 'certificate', 'type' => 'text' ),
 );
 
-# Quick search results
+# Quick search
 $use_quick_search = true;
 $quick_search_attributes = array('uid', 'cn', 'mail');
-$search_result_items = array('mail', 'phone', 'mobile');
-$search_result_title = "fullname";
-$search_result_sortby = "lastname";
-$search_result_show_undefined = true;
-$search_result_bootstrap_column_class = "col-md-4";
-$search_result_truncate_value_after = "20";
-$search_result_truncate_title_after = "30";
 
 # Advanced search
 $use_advanced_search = true;
 $advanced_search_criteria = array('firstname', 'lastname', 'mail', 'title', 'businesscategory', 'employeetype', 'created', 'modified');
 
 # Results display
-$results_display_mode = "boxes";
+$results_display_mode = "boxes";  // boxes or table
+$search_result_items = array('mail', 'phone', 'mobile');
+$search_result_title = "fullname";
+$search_result_sortby = "lastname";
+$search_result_linkto = array("fullname");
+$search_result_show_undefined = true;
+$search_result_bootstrap_column_class = "col-md-4";
+$search_result_truncate_value_after = 20;
+$search_result_truncate_title_after = 30;
 
-# Full dislpay
+# Listing display (search results with 'table' & directory)
+$use_datatables = true;
+$datatables_page_length_choices = array(10, 25, 50, 100, -1);
+$datatables_page_length_default = 10;
+
+# Full display
 $display_items = array('firstname', 'lastname', 'title', 'businesscategory', 'employeenumber', 'employeetype', 'mail', 'phone', 'mobile', 'fax', 'postaladdress', 'street', 'postalcode', 'l', 'state', 'manager', 'secretary', 'organizationalunit', 'organization', 'description' );
 $display_title = "fullname";
+$display_show_undefined = false;
 
 # Gallery
 $use_gallery = true;
 $gallery_title = "fullname";
 $gallery_sortby = "lastname";
 $gallery_bootstrap_column_class = "col-xs-6 col-sm-4 col-md-3";
-$gallery_truncate_title_after = "25";
+$gallery_truncate_title_after = 25;
 
 # Directory
 $use_directory = true;
 $directory_items = array('firstname', 'lastname', 'mail', 'organization');
 $directory_linkto = array('firstname', 'lastname');
 $directory_sortby = "lastname";
-$default_page_length = 10;  // 10, 25, 50, 100 or -1 for all
+$directory_show_undefined = false;
+$directory_truncate_value_after = 30;
 
 # CSV
 $use_csv = true;

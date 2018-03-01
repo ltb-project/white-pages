@@ -63,4 +63,7 @@ if ($result === "") {
 
 $smarty->assign("entry", $entry[0]);
 
+$smarty->assign("card_title", $display_title);
+$smarty->assign("card_items", $display_items);
+$smarty->assign("show_undef", $display_show_undefined);
 ?>
