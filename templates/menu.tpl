@@ -25,7 +25,7 @@
                 {/if}
                 {if $use_gallery}
                 <li {if $page=="gallery"}class="active"{/if}>
-                  <a href="index.php?page=gallery"><i class="fa fa-fw fa-th"></i> {$msg_gallery}</a>
+                  <a href="index.php?page=gallery"><i class="fa fa-fw fa-user-circle"></i> {$msg_gallery}</a>
                 </li>
                 {/if}
               </ul>
