@@ -19,6 +19,11 @@ img.logo {
   margin-bottom: 20px;
 }
 
+img.menu-logo {
+  display: inline;
+  height: 25px;
+}
+
 .table {
   margin-bottom: 0;
 }

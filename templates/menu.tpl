@@ -9,7 +9,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="index.php"><i class="fa fa-fw fa-home"></i> {$msg_title}</a>
+              <a class="navbar-brand" href="index.php">
+                <img src="{$logo}" alt="{$msg_title}" class="menu-logo img-responsive" />
+                {$msg_title}
+              </a>
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
