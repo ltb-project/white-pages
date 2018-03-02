@@ -60,6 +60,7 @@ if ($use_datatables) {
     if (is_array($datatables_page_length_choices)) $datatables_page_length_choices = implode(', ', $datatables_page_length_choices);
     $smarty->assign('datatables_page_length_choices', $datatables_page_length_choices);
     $smarty->assign('datatables_page_length_default', $datatables_page_length_default);
+    $smarty->assign('datatables_auto_print', $datatables_auto_print);
 }
 
 # Assign messages
