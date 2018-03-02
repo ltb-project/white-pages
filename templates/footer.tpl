@@ -36,8 +36,8 @@
             "<'row dt-main'<'col-sm-12'tr>>" +
             "<'row dt-foot'<'col-sm-6'i><'col-sm-6'p>>",
           "buttons": [
-            { extend: 'print', autoPrint: true,                                              text: "{/literal}{$msg_print_all}{literal}" },
-            { extend: 'print', autoPrint: true, exportOptions: {modifier:{page: 'current'}}, text: "{/literal}{$msg_print_page}{literal}" },
+            { extend: 'print', autoPrint: true,                                              text: "{/literal}<i class=\"fa fa-print\"></i> {$msg_print_all}{literal}", className: "btn-info" },
+            { extend: 'print', autoPrint: true, exportOptions: {modifier:{page: 'current'}}, text: "{/literal}<i class=\"fa fa-print\"></i> {$msg_print_page}{literal}", className: "btn-info" },
           ],
           "order": [
             [ {/literal}{$listing_sortby|default:0 + 1}{literal}, "asc" ]
