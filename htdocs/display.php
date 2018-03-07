@@ -6,6 +6,7 @@
 $result = "";
 $dn = "";
 $entry = "";
+$type = "";
 
 if (isset($_GET["dn"]) and $_GET["dn"]) {
     $dn = $_GET["dn"];
@@ -26,6 +27,10 @@ if ($result === "") {
     $ldap = $ldap_connection[0];
     $result = $ldap_connection[1];
 
+    # Find object type
+    if ( preg_match( '/'.$ldap_group_base.'$/', $dn) ) { $type = "group"; }
+    else { $type = "user"; }
+
     if ($ldap) {
 
         # Search attributes
@@ -39,8 +44,12 @@ if ($result === "") {
             $attributes[] = $attributes_map[$vcard_file_identifier]['attribute'];
 	}
 
-	# Search entry
-        $search = ldap_read($ldap, $dn, $ldap_user_filter, $attributes);
+        # Search entry
+        $ldap_filter = $ldap_user_filter;
+        if ($type === "group" ) {
+            $ldap_filter = $ldap_group_filter;
+        }
+        $search = ldap_read($ldap, $dn, $ldap_filter, $attributes);
 
         $errno = ldap_errno($ldap);
 
@@ -66,4 +75,5 @@ $smarty->assign("entry", $entry[0]);
 $smarty->assign("card_title", $display_title);
 $smarty->assign("card_items", $display_items);
 $smarty->assign("show_undef", $display_show_undefined);
+$smarty->assign("type", $type);
 ?>

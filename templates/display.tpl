@@ -12,7 +12,9 @@
 
             <div class="panel-body">
 
+                {if $type === "user"}
                 <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$card_title}.attribute}.0}" class="img-responsive img-thumbnail center-block" />
+                {/if}
 
                 <div class="table-responsive">
                 <table class="table table-striped table-hover">

@@ -13,7 +13,7 @@ function get_attribute($params, $smarty) {
     $ldap_starttls = $params["ldap_starttls"];
     $ldap_binddn = $params["ldap_binddn"];
     $ldap_bindpw = $params["ldap_bindpw"];
-    $ldap_user_filter = $params["ldap_user_filter"];
+    $ldap_filter = $params["ldap_filter"];
 
     # Connect to LDAP
     $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw);
@@ -24,7 +24,7 @@ function get_attribute($params, $smarty) {
     if ($ldap) {
 
         # Search entry
-        $search = ldap_read($ldap, $dn, $ldap_user_filter, array($attribute));
+        $search = ldap_read($ldap, $dn, $ldap_filter, explode(",", $attribute));
 
         $errno = ldap_errno($ldap);
 
@@ -33,7 +33,13 @@ function get_attribute($params, $smarty) {
         } else {
             $entry = ldap_get_entries($ldap, $search);
 
-            $return = $entry[0][$attribute][0];
+	    # Loop over attribute
+	    foreach ( explode(",", $attribute) as $ldap_attribute ) {
+                if ( isset ($entry[0][$ldap_attribute]) ) {
+		     $return = $entry[0][$ldap_attribute][0];
+		     break;
+	        }
+	    }
         }
     }
 

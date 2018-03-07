@@ -31,6 +31,8 @@ $ldap_bindpw = "secret";
 $ldap_base = "dc=example,dc=com";
 $ldap_user_base = "ou=users,".$ldap_base;
 $ldap_user_filter = "(objectClass=inetOrgPerson)";
+$ldap_group_base = "ou=groups,".$ldap_base;
+$ldap_group_filter = "(|(objectClass=groupOfNames)(objectClass=groupOfUniqueNames))";
 $ldap_size_limit = 100;
 
 # How display attributes
@@ -50,6 +52,8 @@ $attributes_map = array(
     'lastname' => array( 'attribute' => 'sn', 'faclass' => 'user-o', 'type' => 'text' ),
     'mail' => array( 'attribute' => 'mail', 'faclass' => 'envelope-o', 'type' => 'mailto' ),
     'manager' => array( 'attribute' => 'manager', 'faclass' => 'user-circle-o', 'type' => 'dn_link' ),
+    'member' => array( 'attribute' => 'member', 'faclass' => 'user', 'type' => 'usergroup_dn_link' ),
+    'memberof' => array( 'attribute' => 'memberof', 'faclass' => 'users', 'type' => 'group_dn_link' ),
     'mobile' => array( 'attribute' => 'mobile', 'faclass' => 'mobile', 'type' => 'tel' ),
     'modified' => array( 'attribute' => 'modifytimestamp', 'faclass' => 'clock-o', 'type' => 'date' ),
     'organization' => array( 'attribute' => 'o', 'faclass' => 'building', 'type' => 'text' ),
@@ -62,6 +66,7 @@ $attributes_map = array(
     'state' => array( 'attribute' => 'st', 'faclass' => 'globe', 'type' => 'text' ),
     'street' => array( 'attribute' => 'street', 'faclass' => 'map-marker', 'type' => 'text' ),
     'title' => array( 'attribute' => 'title', 'faclass' => 'certificate', 'type' => 'text' ),
+    'uniquemember' => array( 'attribute' => 'uniquemember', 'faclass' => 'user', 'type' => 'usergroup_dn_link' ),
 );
 
 # Quick search
@@ -90,7 +95,7 @@ $datatables_page_length_default = 10;
 $datatables_auto_print = true;
 
 # Full display
-$display_items = array('firstname', 'lastname', 'title', 'businesscategory', 'employeenumber', 'employeetype', 'mail', 'phone', 'mobile', 'fax', 'postaladdress', 'street', 'postalcode', 'l', 'state', 'manager', 'secretary', 'organizationalunit', 'organization', 'description' );
+$display_items = array('firstname', 'lastname', 'title', 'businesscategory', 'employeenumber', 'employeetype', 'mail', 'phone', 'mobile', 'fax', 'postaladdress', 'street', 'postalcode', 'l', 'state', 'manager', 'secretary', 'organizationalunit', 'organization', 'description', 'member', 'uniquemember', 'memberof');
 $display_title = "fullname";
 $display_show_undefined = false;
 
