@@ -28,6 +28,7 @@ $messages['label_employeetype'] = "Type d'employé";
 $messages['label_fax'] = "Télécopie";
 $messages['label_firstname'] = "Prénom";
 $messages['label_fullname'] = "Nom complet";
+$messages['label_guid'] = "Object GUID";
 $messages['label_identifier'] = "Identifiant";
 $messages['label_l'] = "Ville";
 $messages['label_lastname'] = "Nom";

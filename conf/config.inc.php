@@ -47,6 +47,7 @@ $attributes_map = array(
     'fax' => array( 'attribute' => 'facsimiletelephonenumber', 'faclass' => 'fax', 'type' => 'tel' ),
     'firstname' => array( 'attribute' => 'givenname', 'faclass' => 'user-o', 'type' => 'text' ),
     'fullname' => array( 'attribute' => 'cn', 'faclass' => 'user-circle', 'type' => 'text' ),
+    'guid' => array( 'attribute' => 'objectguid', 'faclass' => 'user', 'type' => 'guid' ),
     'identifier' => array( 'attribute' => 'uid', 'faclass' => 'user-o', 'type' => 'text' ),
     'l' => array( 'attribute' => 'l', 'faclass' => 'globe', 'type' => 'text' ),
     'lastname' => array( 'attribute' => 'sn', 'faclass' => 'user-o', 'type' => 'text' ),
