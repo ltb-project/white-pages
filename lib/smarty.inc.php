@@ -4,7 +4,7 @@
 require_once("ldap.inc.php");
 require_once("date.inc.php");
 
-function get_attribute($params, $smarty) {
+function get_attribute($params) {
 
     $return = "";
     $dn = $params["dn"];
@@ -46,7 +46,7 @@ function get_attribute($params, $smarty) {
     return $return;
 }
 
-function convert_ldap_date($date, $smarty) {
+function convert_ldap_date($date) {
 
     return ldapDate2phpDate( $date );
 
