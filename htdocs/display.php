@@ -35,7 +35,10 @@ if ($result === "") {
 
         # Search attributes
         $attributes = array();
-        foreach( $display_items as $item ) {
+        $search_items = array();
+        if ( $type === "user" ) { $search_items = $display_items;  }
+        if ( $type === "group" ) { $search_items = $display_group_items;  }
+        foreach( $search_items as $item ) {
             $attributes[] = $attributes_map[$item]['attribute'];
         }
         $attributes[] = $attributes_map[$display_title]['attribute'];
@@ -73,7 +76,7 @@ if ($result === "") {
 $smarty->assign("entry", $entry[0]);
 
 $smarty->assign("card_title", $display_title);
-$smarty->assign("card_items", $display_items);
+$smarty->assign("card_items", $search_items);
 $smarty->assign("show_undef", $display_show_undefined);
 $smarty->assign("type", $type);
 ?>

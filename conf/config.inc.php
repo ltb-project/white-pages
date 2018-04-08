@@ -97,9 +97,10 @@ $datatables_page_length_default = 10;
 $datatables_auto_print = true;
 
 # Full display
-$display_items = array('firstname', 'lastname', 'title', 'businesscategory', 'employeenumber', 'employeetype', 'mail', 'phone', 'mobile', 'fax', 'postaladdress', 'street', 'postalcode', 'l', 'state', 'manager', 'secretary', 'organizationalunit', 'organization', 'description', 'member', 'uniquemember', 'memberof');
+$display_items = array('firstname', 'lastname', 'title', 'businesscategory', 'employeenumber', 'employeetype', 'mail', 'phone', 'mobile', 'fax', 'postaladdress', 'street', 'postalcode', 'l', 'state', 'manager', 'secretary', 'organizationalunit', 'organization', 'description', 'memberof');
 $display_title = "fullname";
 $display_show_undefined = false;
+$display_group_items = array('fullname', 'description', 'member', 'uniquemember', 'memberof');
 
 # Gallery
 $use_gallery = true;
