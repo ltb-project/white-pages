@@ -78,6 +78,7 @@ $quick_search_use_substring_match = false;
 # Advanced search
 $use_advanced_search = true;
 $advanced_search_criteria = array('firstname', 'lastname', 'mail', 'title', 'businesscategory', 'employeetype', 'created', 'modified');
+$advanded_search_display_search_objects = true;
 
 # Results display
 $results_display_mode = "boxes";  // boxes or table

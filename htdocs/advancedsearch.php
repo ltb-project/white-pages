@@ -8,10 +8,28 @@ $result = "";
 $nb_entries = 0;
 $entries = array();
 $size_limit_reached = false;
+$type = "user";
+$ldap_search_base = "";
+$ldap_search_filter = "";
 
 if (!isset($_POST["submit"])) {
-	$smarty->assign('advanced_search_criteria', $advanced_search_criteria);
-	$result = "displayform";
+    $smarty->assign('advanced_search_criteria', $advanced_search_criteria);
+    $smarty->assign('advanded_search_display_search_objects', $advanded_search_display_search_objects);
+    $result = "displayform";
+}
+
+if (isset($_POST["type"])) {
+    $type = $_POST["type"];
+}
+
+if ( $type === "user" ) {
+    $ldap_search_base = $ldap_user_base;
+    $ldap_search_filter = $ldap_user_filter;
+}
+
+if ( $type === "group" ) {
+    $ldap_search_base = $ldap_group_base;
+    $ldap_search_filter = $ldap_group_filter;
 }
 
 if ($result === "") {
@@ -29,7 +47,7 @@ if ($result === "") {
     if ($ldap) {
 
         # Search filter
-        $ldap_filter = "(&".$ldap_user_filter."(&";
+        $ldap_filter = "(&".$ldap_search_filter."(&";
         foreach ($advanced_search_criteria as $item) {
             $attribute = $attributes_map[$item]['attribute'];
             $type = $attributes_map[$item]['type'];
@@ -81,7 +99,7 @@ if ($result === "") {
         }
 
         # Search for users
-        $search = ldap_search($ldap, $ldap_user_base, $ldap_filter, $attributes, 0, $ldap_size_limit);
+        $search = ldap_search($ldap, $ldap_search_base, $ldap_filter, $attributes, 0, $ldap_size_limit);
 
         $errno = ldap_errno($ldap);
 
