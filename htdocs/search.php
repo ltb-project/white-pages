@@ -8,8 +8,10 @@ $search_query = "";
 $nb_entries = 0;
 $entries = array();
 $size_limit_reached = false;
+$filter_escape_chars = null;
+if (!$quick_search_use_substring_match) { $filter_escape_chars = "*"; }
 
-if (isset($_POST["search"]) and $_POST["search"]) { $search_query = ldap_escape($_POST["search"], null, LDAP_ESCAPE_FILTER); }
+if (isset($_POST["search"]) and $_POST["search"]) { $search_query = ldap_escape($_POST["search"], $filter_escape_chars, LDAP_ESCAPE_FILTER); }
  else { $result = "searchrequired"; }
 
 if ($result === "") {
@@ -28,7 +30,11 @@ if ($result === "") {
         # Search filter
         $ldap_filter = "(&".$ldap_user_filter."(|";
         foreach ($quick_search_attributes as $attr) {
-            $ldap_filter .= "($attr=*$search_query*)";
+            $ldap_filter .= "($attr=";
+            if ($quick_search_use_substring_match) { $ldap_filter .= "*"; }
+            $ldap_filter .= $search_query;
+            if ($quick_search_use_substring_match) { $ldap_filter .= "*"; }
+            $ldap_filter .= ")";
         }
         $ldap_filter .= "))";
 
