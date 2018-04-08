@@ -15,6 +15,7 @@ $messages['false'] = "No";
 $messages['fromdate'] = "From";
 $messages['directory'] = "Directory";
 $messages['gallery'] = "Gallery";
+$messages['group_object'] = "Groups";
 $messages['pager_all'] = "All";
 $messages['print_all'] = "Print all results";
 $messages['print_page'] = "Print this page";
@@ -55,6 +56,7 @@ $messages['ldaperror'] = "LDAP communication error";
 $messages['noentriesfound'] = "No entries found";
 $messages['notdefined'] = "Not defined";
 $messages['search'] = "Search";
+$messages['search_object'] = "Objects to search";
 $messages['searchrequired'] = "Please enter your search";
 $messages['sizelimit'] = "Size limit has been reached, some entries could not be displayed";
 $messages['submatch'] = "contains";
@@ -63,6 +65,7 @@ $messages['title_search'] = "Search results:";
 $messages['title_directory'] = "Directory entries:";
 $messages['todate'] = "To";
 $messages['true'] = "Yes";
+$messages['user_object'] = "Users";
 $messages['welcome'] = "Welcome to LDAP Tool Box White Pages";
 
 ?>

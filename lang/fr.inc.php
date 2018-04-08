@@ -15,6 +15,7 @@ $messages['false'] = "Non";
 $messages['fromdate'] = "Depuis le";
 $messages['directory'] = "Répertoire";
 $messages['gallery'] = "Trombinoscope";
+$messages['group_object'] = "Groupes";
 $messages['pager_all'] = "Tout";
 $messages['print_all'] = "Imprimer tous les résultats";
 $messages['print_page'] = "Imprimer cette page";
@@ -55,6 +56,7 @@ $messages['ldaperror'] = "Erreur de communication avec l'annuaire LDAP";
 $messages['noentriesfound'] = "Aucune entrée trouvée";
 $messages['notdefined'] = "Non renseigné";
 $messages['search'] = "Rechercher";
+$messages['search_object'] = "Objets à rechercher";
 $messages['searchrequired'] = "Veuillez saisir votre recherche";
 $messages['sizelimit'] = "La limite de recherche a été atteinte, certaines entrées n'ont pas pu être affichées";
 $messages['submatch'] = "contient";
@@ -63,6 +65,7 @@ $messages['title_search'] = "Résultats de la recherche :";
 $messages['title_directory'] = "Contenu du répertoire :";
 $messages['todate'] = "Jusqu'au";
 $messages['true'] = "Oui";
+$messages['user_object'] = "Utilisateurs";
 $messages['welcome'] = "Bienvenue sur les pages blanches LDAP Tool Box";
 
 ?>
