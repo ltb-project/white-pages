@@ -14,6 +14,8 @@
             <input type="text" class="form-control" id="{$item}from" name="{$item}from" data-provide="datepicker" data-date-language="{$lang}">
             <span class="input-group-addon">{$msg_todate}</span>
             <input type="text" class="form-control" id="{$item}to" name="{$item}to" data-provide="datepicker" data-date-language="{$lang}">
+            {elseif $type eq 'guid' or $type eq 'dn_link' or $type eq 'group_dn_link' or $type eq 'usergroup_dn_link' }
+            <input type="text" class="form-control" id="{$item}" name="{$item}" placeholder="{$label}">
             {else}
             <input type="text" class="form-control" id="{$item}" name="{$item}" placeholder="{$label}">
             <span class="input-group-addon"><input type="checkbox" name="{$item}match" value="sub" title="{$msg_submatch}"></span>
