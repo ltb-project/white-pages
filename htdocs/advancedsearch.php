@@ -25,11 +25,13 @@ if (isset($_POST["type"])) {
 if ( $type === "user" ) {
     $ldap_search_base = $ldap_user_base;
     $ldap_search_filter = $ldap_user_filter;
+    $result_items = $search_result_items;
 }
 
 if ( $type === "group" ) {
     $ldap_search_base = $ldap_group_base;
     $ldap_search_filter = $ldap_group_filter;
+    $result_items = $search_result_group_items;
 }
 
 if ($result === "") {
@@ -91,7 +93,7 @@ if ($result === "") {
                 $attributes[] = $attributes_map[$item]['attribute'];
             }
 	} else {
-            foreach( $search_result_items as $item ) {
+            foreach( $result_items as $item ) {
                 $attributes[] = $attributes_map[$item]['attribute'];
             }
             $attributes[] = $attributes_map[$search_result_title]['attribute'];
@@ -155,15 +157,16 @@ if ($result === "") {
                 $smarty->assign("nb_entries", $nb_entries);
                 $smarty->assign("entries", $entries);
                 $smarty->assign("size_limit_reached", $size_limit_reached);
+                $smarty->assign("type", $type);
 
                 if ($results_display_mode == 'table') {
-                    $columns = $search_result_items;
+                    $columns = $result_items;
                     if (! in_array($search_result_title, $columns)) array_unshift($columns, $search_result_title);
                     $smarty->assign("listing_columns", $columns);
                     $smarty->assign("listing_linkto",  isset($search_result_linkto) ? $search_result_linkto : array($search_result_title));
                     $smarty->assign("listing_sortby",  array_search($search_result_sortby, $columns));
                 } else {
-                    $smarty->assign("card_items", $search_result_items);
+                    $smarty->assign("card_items", $result_items);
                     $smarty->assign("card_title", $search_result_title);
                     $smarty->assign("truncate_title_after", $search_result_truncate_title_after);
                     $smarty->assign("bootstrap_column_class", $search_result_bootstrap_column_class);

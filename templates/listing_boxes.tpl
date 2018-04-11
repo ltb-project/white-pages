@@ -11,7 +11,7 @@
             <div class="panel-body">
             <div class="row">
             <div class="col-sm-4">
-                <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$card_title}.attribute}.0}" class="img-responsive img-thumbnail center-block" />
+                {if {$type}==="user"}<img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$card_title}.attribute}.0}" class="img-responsive img-thumbnail center-block" />{/if}
             </div>
             <div class="col-sm-8">
             {foreach $card_items as $item}

@@ -83,6 +83,7 @@ $advanded_search_display_search_objects = true;
 # Results display
 $results_display_mode = "boxes";  // boxes or table
 $search_result_items = array('mail', 'phone', 'mobile');
+$search_result_group_items = array('fullname','description');
 $search_result_title = "fullname";
 $search_result_sortby = "lastname";
 $search_result_linkto = array("fullname");
