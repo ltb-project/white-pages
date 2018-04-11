@@ -18,7 +18,7 @@
             <input type="text" class="form-control" id="{$item}" name="{$item}" placeholder="{$label}">
             {else}
             <input type="text" class="form-control" id="{$item}" name="{$item}" placeholder="{$label}">
-            <span class="input-group-addon"><input type="checkbox" name="{$item}match" value="sub" title="{$msg_submatch}"></span>
+            <span class="input-group-addon"><input type="checkbox" name="{$item}match" value="sub" data-toggle="popover" data-content="{$msg_submatch}"></span>
             {/if}
         </div>
     </div>
