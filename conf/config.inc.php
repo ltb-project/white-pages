@@ -73,7 +73,7 @@ $attributes_map = array(
 # Quick search
 $use_quick_search = true;
 $quick_search_attributes = array('uid', 'cn', 'mail');
-$quick_search_use_substring_match = false;
+$quick_search_use_substring_match = true;
 
 # Advanced search
 $use_advanced_search = true;
