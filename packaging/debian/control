@@ -7,8 +7,8 @@ Standards-Version: 3.8.3
 Homepage: http://ltb-project.org/wiki/documentation/white-pages
 
 Package: white-pages
-Depends: php5|php, php5-ldap|php-ldap, smarty3, php5-gd|php-gd
+Depends: php, php-ldap, smarty3, php-gd
 Architecture: all
 Description: LDAP white pages web interface
  White Pages is a PHP application that allows users to search and display data stored in an LDAP directory. 
- White Pages is provided by LDAP Tool Box project: http://ltb-project.org
+ White Pages is provided by LDAP Tool Box project: https://ltb-project.org
