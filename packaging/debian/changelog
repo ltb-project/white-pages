@@ -1,3 +1,9 @@
+ltb-project-white-pages (0.2-2) unstable; urgency=low
+
+    * Restore PHP 5 dependencies
+
+ -- Clement Oudot <clem@ltb-project.org>  Mon, 16 Apr 2018 12:00:00 +0200
+
 ltb-project-white-pages (0.2-1) unstable; urgency=low
 
     * gh#4: Italian language file
