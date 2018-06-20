@@ -20,10 +20,13 @@ function wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw) 
         $bind = ldap_bind($ldap);
     }
 
-    $errno = ldap_errno($ldap);
-
-    if ( $errno ) {
-        error_log("LDAP - Bind error $errno  (".ldap_error($ldap).")");
+    if ( !$bind ) {
+        $errno = ldap_errno($ldap);
+        if ( $errno ) {
+            error_log("LDAP - Bind error $errno  (".ldap_error($ldap).")");
+        } else {
+            error_log("LDAP - Bind error");
+        }
         return array(false, "ldaperror");
     }
 
