@@ -28,8 +28,14 @@ if ($result === "") {
     $result = $ldap_connection[1];
 
     # Find object type
-    if ( preg_match( '/'.$ldap_group_base.'$/i', $dn) ) { $type = "group"; }
-    else { $type = "user"; }
+    if (isset($_POST['type'])) { $type = $_POST['type']; }
+    } else if (isset($ldap_user_regex)) {
+	if ( preg_match( '/'.$ldap_user_regex.'$/i', $dn) ) { $type = "user"; }
+	} else { $type = "group"; }
+    } else {
+	if ( preg_match( '/'.$ldap_user_base.'$/i', $dn) ) { $type = "user"; }
+	else { $type = "group"; }
+    }
 
     if ($ldap) {
 

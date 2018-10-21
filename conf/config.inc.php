@@ -31,6 +31,7 @@ $ldap_bindpw = "secret";
 $ldap_base = "dc=example,dc=com";
 $ldap_user_base = "ou=users,".$ldap_base;
 $ldap_user_filter = "(objectClass=inetOrgPerson)";
+$ldap_user_regex = ",ou=users,";
 $ldap_group_base = "ou=groups,".$ldap_base;
 $ldap_group_filter = "(|(objectClass=groupOfNames)(objectClass=groupOfUniqueNames))";
 $ldap_size_limit = 100;
