@@ -1,7 +1,7 @@
 <?php
 /*
- * Display an entry 
- */ 
+ * Display an entry
+ */
 
 $result = "";
 $dn = "";
@@ -28,13 +28,21 @@ if ($result === "") {
     $result = $ldap_connection[1];
 
     # Find object type
-    if (isset($_POST['type'])) { $type = $_POST['type']; }
-    else if (isset($ldap_user_regex)) {
-	if ( preg_match( $ldap_user_regex, $dn) ) { $type = "user"; }
-	else { $type = "group"; }
+    if (isset($_POST['type'])) {
+        $type = $_POST['type'];
+    } else if (isset($ldap_user_regex)) {
+        if ( preg_match( $ldap_user_regex, $dn) ) {
+            $type = "user";
+        } else {
+            $type = "group";
+        }
     } else {
-	if ( preg_match( '/'.$ldap_user_base.'$/i', $dn) ) { $type = "user"; }
-	else { $type = "group"; }
+        if ( preg_match( '/'.$ldap_user_base.'$/i', $dn) ) {
+            $type = "user";
+        }
+        else {
+            $type = "group";
+        }
     }
 
     if ($ldap) {
