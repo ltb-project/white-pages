@@ -31,16 +31,16 @@ if ($result === "") {
     if (isset($_POST['type'])) {
       $type = $_POST['type'];
     } else if (isset($ldap_user_regex)) {
-    	if ( preg_match( $ldap_user_regex, $dn) ) {
+      if ( preg_match( $ldap_user_regex, $dn) ) {
         $type = "user";
       } else {
         $type = "group";
       }
     } else {
-    	if ( preg_match( '/'.$ldap_user_base.'$/i', $dn) ) {
+      if ( preg_match( '/'.$ldap_user_base.'$/i', $dn) ) {
         $type = "user";
       }
-    	else {
+      else {
         $type = "group";
       }
     }
