@@ -112,6 +112,14 @@ $gallery_sortby = "lastname";
 $gallery_bootstrap_column_class = "col-xs-6 col-sm-4 col-md-3";
 $gallery_truncate_title_after = 25;
 
+# Groups
+$use_groups = true;
+$groups_sortby = "cn";
+$groups_items = array('cn');
+$groups_linkto = array('cn');
+$groups_show_undefined = false;
+$groups_truncate_value_after = 30;
+
 # Directory
 $use_directory = true;
 $directory_items = array('firstname', 'lastname', 'mail', 'organization');

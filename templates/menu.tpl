@@ -21,6 +21,11 @@
                   <a href="index.php?page=advancedsearch"><i class="fa fa-fw fa-search-plus"></i> {$msg_advancedsearch}</a>
                 </li>
                 {/if}
+                {if $use_groups}
+                <li {if $page=="groups"}class="active"{/if}>
+                  <a href="index.php?page=groups"><i class="fa fa-fw fa-th-list"></i> {$msg_groups}</a>
+                </li>
+                {/if}
                 {if $use_directory}
                 <li {if $page=="directory"}class="active"{/if}>
                   <a href="index.php?page=directory"><i class="fa fa-fw fa-th-list"></i> {$msg_directory}</a>

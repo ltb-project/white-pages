@@ -15,6 +15,7 @@ $messages['exactmatch'] = "Cocher la case pour rechercher exactement la valeur";
 $messages['false'] = "Non";
 $messages['fromdate'] = "Depuis le";
 $messages['directory'] = "Répertoire";
+$messages['groups'] = "Groupes";
 $messages['gallery'] = "Trombinoscope";
 $messages['group_object'] = "Groupes";
 $messages['pager_all'] = "Tout";

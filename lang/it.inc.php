@@ -15,6 +15,7 @@ $messages['exactmatch'] = "Seleziona per forzare la corrispondenza esatta del va
 $messages['false'] = "No";
 $messages['fromdate'] = "Da";
 $messages['directory'] = "Elenco";
+$messages['groups'] = "Gruppi";
 $messages['gallery'] = "Galleria";
 $messages['group_object'] = "Gruppi";
 $messages['pager_all'] = "Tutto";

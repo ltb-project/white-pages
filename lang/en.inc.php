@@ -15,6 +15,7 @@ $messages['exactmatch'] = "Check to force exact matching of the value";
 $messages['false'] = "No";
 $messages['fromdate'] = "From";
 $messages['directory'] = "Directory";
+$messages['groups'] = "Groups";
 $messages['gallery'] = "Gallery";
 $messages['group_object'] = "Groups";
 $messages['pager_all'] = "All";
