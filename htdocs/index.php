@@ -31,7 +31,7 @@ if (file_exists("../conf/$lang.inc.php")) {
 require_once(SMARTY);
 
 $smarty = new Smarty();
-
+$smarty->escape_html = true;
 $smarty->setTemplateDir('../templates/');
 $smarty->setCompileDir('../templates_c/');
 $smarty->setCacheDir('../cache/');
