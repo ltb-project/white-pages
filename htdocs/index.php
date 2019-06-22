@@ -1,6 +1,11 @@
 <?php
 
 #==============================================================================
+# Version
+#==============================================================================
+$version = 0.3;
+
+#==============================================================================
 # Configuration
 #==============================================================================
 require_once("../conf/config.inc.php");
@@ -62,6 +67,8 @@ if ($use_datatables) {
     $smarty->assign('datatables_page_length_default', $datatables_page_length_default);
     $smarty->assign('datatables_auto_print', $datatables_auto_print);
 }
+$smarty->assign('version',$version);
+$smarty->assign('display_footer',$display_footer);
 
 # Assign messages
 $smarty->assign('lang',$lang);

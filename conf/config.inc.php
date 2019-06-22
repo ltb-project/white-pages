@@ -150,6 +150,7 @@ $logo = "images/ltb-logo.png";
 $background_image = "images/unsplash-space.jpeg";
 $hover_effect = "grow";
 $custom_css = "";
+$display_footer = true;
 
 # Debug mode
 $debug = false;
