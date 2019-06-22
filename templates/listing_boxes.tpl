@@ -26,7 +26,7 @@
                 {foreach $entry.{$attribute} as $value}
                     {if $value@index eq 0}{continue}{/if}
                     <i class="fa fa-fw fa-{$faclass}"></i>
-                    {include 'value_displayer.tpl' value=$value type=$type}<br />
+                    {include 'value_displayer.tpl' value=$value type=$type}
                 {/foreach}
                 </p>
             {/foreach}
