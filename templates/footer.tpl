@@ -1,5 +1,9 @@
 </div>
 
+{if $display_footer}
+<div id="footer">LDAP Tool Box White Pages - version {$version}</div>
+{/if}
+
 <script src="vendor/jquery/js/jquery-1.10.2.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>

@@ -63,6 +63,15 @@ table.dataTable a.link-phone:hover::after {
   content: "\f095";
 }
 
+div#footer {
+  position:fixed;
+  bottom:0;
+  background-color:#fff;
+  background-color:rgba(255,255,255,0.8);
+  text-align:center;
+  padding:5px;
+  width:100%;
+}
 
 @media print {
 
