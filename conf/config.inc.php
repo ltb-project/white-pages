@@ -115,10 +115,14 @@ $gallery_truncate_title_after = 25;
 # Directory
 $use_directory = true;
 $directory_items = array('firstname', 'lastname', 'mail', 'organization');
+$directory_group_items = array('fullname', 'description');
 $directory_linkto = array('firstname', 'lastname');
+$directory_group_linkto = array('fullname');
 $directory_sortby = "lastname";
+$directory_group_sortby = "fullname";
 $directory_show_undefined = false;
 $directory_truncate_value_after = 30;
+$directory_display_search_objects = true;
 
 # CSV
 $use_csv = true;
