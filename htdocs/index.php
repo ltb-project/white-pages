@@ -42,6 +42,11 @@ $smarty->setCompileDir('../templates_c/');
 $smarty->setCacheDir('../cache/');
 $smarty->debugging = $debug;
 
+# Set debug for LDAP
+if ($debug) {
+    ldap_set_option(NULL, LDAP_OPT_DEBUG_LEVEL, 7);
+}
+
 # Default configuration values
 if (!isset($results_display_mode)) $results_display_mode = "boxes";
 if (!isset($use_datatables)) $use_datatables = true;
