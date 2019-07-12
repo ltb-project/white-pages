@@ -77,6 +77,17 @@ if ($result === "") {
             $entry = ldap_get_entries($ldap, $search);
         }
 
+        # Sort attributes values
+        foreach ($entry[0] as $attr => $values) {
+            if ( $values['count'] > 1 ) {
+                asort($values);
+            }
+            if ( isset($values['count']) ) {
+                unset($values['count']);
+            }
+            $entry[0][$attr] = $values;
+        }
+
 	if ($use_vcard and $_GET["vcard"]) {
             require_once("../lib/vcard.inc.php");
             $vcard_file = $entry[0][$attributes_map[$vcard_file_identifier]['attribute']][0].".".$vcard_file_extension;
