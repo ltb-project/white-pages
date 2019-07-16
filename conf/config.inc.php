@@ -111,6 +111,7 @@ $gallery_title = "fullname";
 $gallery_sortby = "lastname";
 $gallery_bootstrap_column_class = "col-xs-6 col-sm-4 col-md-3";
 $gallery_truncate_title_after = 25;
+#$gallery_user_filter = "(&".$ldap_user_filter."(jpegPhoto=*))";
 
 # Directory
 $use_directory = true;
