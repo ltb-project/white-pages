@@ -97,6 +97,7 @@ $smarty->registerPlugin("function", "convert_guid_value", "convert_guid_value");
 #==============================================================================
 $result = "";
 $page = "welcome";
+if (isset($default_page)) { $page = $default_page; }
 if (isset($_GET["page"]) and $_GET["page"]) { $page = $_GET["page"]; }
 if ( $page === "search" and !$use_quick_search ) { $page = "welcome"; }
 if ( $page === "advancedsearch" and !$use_advanced_search ) { $page = "welcome"; }
