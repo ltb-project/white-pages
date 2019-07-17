@@ -156,6 +156,7 @@ $background_image = "images/unsplash-space.jpeg";
 $hover_effect = "grow";
 $custom_css = "";
 $display_footer = true;
+$default_page = "welcome";
 
 # Debug mode
 $debug = false;

@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="index.php">
+              <a class="navbar-brand" href="index.php?page=welcome">
                 <img src="{$logo}" alt="{$msg_title}" class="menu-logo img-responsive" />
                 {$msg_title}
               </a>
