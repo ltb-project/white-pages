@@ -9,6 +9,7 @@ $messages['displayentry'] = "Visualizza";
 $messages['dnrequired'] = "Necessario identificativo record";
 $messages['downloadcsv'] = "Scarica i risultati come CSV";
 $messages['downloadvcard'] = "Scarica come vCard";
+$messages['editentry'] = "Modifica record";
 $messages['entriesfound'] = "records trovati";
 $messages['entryfound'] = "record trovato";
 $messages['exactmatch'] = "Seleziona per forzare la corrispondenza esatta del valore";

@@ -104,6 +104,7 @@ $display_items = array('firstname', 'lastname', 'title', 'businesscategory', 'em
 $display_title = "fullname";
 $display_show_undefined = false;
 $display_group_items = array('fullname', 'description', 'member', 'uniquemember', 'memberof');
+#$display_edit_link = "http://ldapadmin.example.com/?dn={dn}
 
 # Gallery
 $use_gallery = true;
