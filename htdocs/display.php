@@ -7,6 +7,7 @@ $result = "";
 $dn = "";
 $entry = "";
 $type = "";
+$edit_link = "";
 
 if (isset($_GET["dn"]) and $_GET["dn"]) {
     $dn = $_GET["dn"];
@@ -95,6 +96,11 @@ if ($result === "") {
             echo print_vcard($entry[0], $attributes_map, $vcard_map, $vcard_version);
             die;
         }
+
+	if ($display_edit_link) {
+		# Replace {dn} in URL
+		$edit_link = str_replace("{dn}", urlencode($dn), $display_edit_link);
+	}
     }
 }
 
@@ -104,4 +110,6 @@ $smarty->assign("card_title", $display_title);
 $smarty->assign("card_items", $search_items);
 $smarty->assign("show_undef", $display_show_undefined);
 $smarty->assign("type", $type);
+
+$smarty->assign("edit_link", $edit_link);
 ?>

@@ -9,6 +9,7 @@ $messages['displayentry'] = "Display entry";
 $messages['dnrequired'] = "Entry identifier required";
 $messages['downloadcsv'] = "Download results as CSV";
 $messages['downloadvcard'] = "Download as vCard";
+$messages['editentry'] = "Edit entry";
 $messages['entriesfound'] = "entries found";
 $messages['entryfound'] = "entry found";
 $messages['exactmatch'] = "Check to force exact matching of the value";
