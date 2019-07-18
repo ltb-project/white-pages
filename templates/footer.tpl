@@ -28,7 +28,7 @@
     {if $datatables_page_length_choices}
           "lengthMenu": [
               [ {$datatables_page_length_choices} ],
-              [ {$datatables_page_length_choices|replace:'-1':($msg_pager_all|string_format:'"%s"') } ]
+              [ {$datatables_page_length_choices} ]
           ],
     {/if}
     {if $datatables_page_length_default}
