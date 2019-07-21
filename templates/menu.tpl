@@ -31,6 +31,11 @@
                   <a href="index.php?page=gallery"><i class="fa fa-fw fa-user-circle"></i> {$msg_gallery}</a>
                 </li>
                 {/if}
+                {if $logout_link}
+                <li>
+                  <a href="{$logout_link}"><i class="fa fa-fw fa-sign-out"></i> {$msg_logout}</a>
+                </li>
+                {/if}
               </ul>
               {if $use_quick_search}
               <form class="navbar-form navbar-right" role="search" action="index.php?page=search" method="post">

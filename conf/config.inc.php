@@ -158,6 +158,7 @@ $hover_effect = "grow";
 $custom_css = "";
 $display_footer = true;
 $default_page = "welcome";
+#$logout_link = "http://auth.example.com/logout";
 
 # Debug mode
 $debug = false;
