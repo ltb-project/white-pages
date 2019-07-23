@@ -15,6 +15,26 @@ $ldap_search_filter = "";
 if (!isset($_POST["submit"])) {
     $smarty->assign('advanced_search_criteria', $advanced_search_criteria);
     $smarty->assign('advanded_search_display_search_objects', $advanded_search_display_search_objects);
+
+    # Check if an attribute is a list type and prepare the list
+    require_once("../lib/ldap.inc.php");
+
+    # Connect to LDAP
+    $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw);
+
+    $ldap = $ldap_connection[0];
+    $result = $ldap_connection[1];
+
+    if ($ldap) {
+        $item_list = array();
+        foreach ( $advanced_search_criteria as $criteria ) {
+            if ( $attributes_map[$criteria]["type"] === "list" ) {
+                $item_list[$criteria] = wp_ldap_get_list( $ldap, $attributes_list[$criteria]["base"], $attributes_list[$criteria]["filter"], $attributes_list[$criteria]["key"], $attributes_list[$criteria]["value"]  );
+            }
+        }
+        $smarty->assign('item_list', $item_list);
+    }
+
     $result = "displayform";
 }
 

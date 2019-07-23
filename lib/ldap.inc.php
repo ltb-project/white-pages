@@ -33,4 +33,29 @@ function wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw) 
     return array($ldap, false);
 }
 
+function wp_ldap_get_list($ldap, $ldap_base, $ldap_filter, $key, $value) {
+
+    $return = array();
+
+    if ($ldap) {
+
+        # Search entry
+        $search = ldap_search($ldap, $ldap_base, $ldap_filter, array($key, $value) );
+
+        $errno = ldap_errno($ldap);
+
+        if ( $errno ) {
+            error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
+        } else {
+            $entries = ldap_get_entries($ldap, $search);
+            for ($i=0; $i<$entries["count"]; $i++) {
+                if(isset($entries[$i][$key][0])) {
+                    $return[$entries[$i][$key][0]] = isset($entries[$i][$value][0]) ? $entries[$i][$value][0] : $entries[$i][$key][0];
+                }
+            }
+        }
+    }
+
+    return $return;
+}
 ?>

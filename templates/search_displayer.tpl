@@ -16,6 +16,14 @@
             <input type="text" class="form-control" id="{$item}to" name="{$item}to" data-provide="datepicker" data-date-language="{$lang}">
             {elseif $type eq 'guid' or $type eq 'dn_link' or $type eq 'group_dn_link' or $type eq 'usergroup_dn_link' }
             <input type="text" class="form-control" id="{$item}" name="{$item}" placeholder="{$label}">
+            {elseif $type eq 'list'}
+            <select class="form-control" id="{$item}" name="{$item}" placeholder="{$label}">
+                <option></option>
+                {foreach $list as $value}
+                <option value="{$value@key}">{$value}</option>
+                {/foreach}
+            </select>
+            <span class="input-group-addon"><input type="checkbox" name="{$item}match" value="exact" data-toggle="popover" data-content="{$msg_exactmatch}"></span>
             {else}
             <input type="text" class="form-control" id="{$item}" name="{$item}" placeholder="{$label}">
             <span class="input-group-addon"><input type="checkbox" name="{$item}match" value="exact" data-toggle="popover" data-content="{$msg_exactmatch}"></span>
