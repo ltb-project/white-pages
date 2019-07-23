@@ -24,7 +24,7 @@ if ($ldap) {
     $attributes[] = $attributes_map[$gallery_sortby]['attribute'];
 
     # Search for users
-    $gallery_filter = $ldap_user_fiter;
+    $gallery_filter = $ldap_user_filter;
     if (isset($gallery_user_filter) ) {
         $gallery_filter = $gallery_user_filter;
     }
