@@ -71,6 +71,8 @@ $attributes_map = array(
     'uniquemember' => array( 'attribute' => 'uniquemember', 'faclass' => 'user', 'type' => 'usergroup_dn_link' ),
 );
 
+$attributes_list = array();
+
 # Quick search
 $use_quick_search = true;
 $quick_search_attributes = array('uid', 'cn', 'mail');

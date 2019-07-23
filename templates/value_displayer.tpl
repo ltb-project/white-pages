@@ -43,3 +43,7 @@
 {if $type eq 'guid'}
     {convert_guid_value($value)|truncate:{$truncate_value_after}}<br />
 {/if}
+
+{if $type eq 'list'}
+    {$value|truncate:{$truncate_value_after}}<br />
+{/if}
