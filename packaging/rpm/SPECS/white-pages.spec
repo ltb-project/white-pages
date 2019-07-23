@@ -12,10 +12,10 @@
 #=================================================
 # Variables
 #=================================================
-%define wp_name	    white-pages
-%define wp_realname	ltb-project-%{name}
-%define wp_version	0.2
-%define wp_destdir  /usr/share/%{name}
+%define wp_name      white-pages
+%define wp_realname  ltb-project-%{name}
+%define wp_version   0.3
+%define wp_destdir   /usr/share/%{name}
 
 #=================================================
 # Header
@@ -108,6 +108,31 @@ rm -rf %{buildroot}
 # Changelog
 #=================================================
 %changelog
+* Tue Jul 23 2019 - Clement Oudot <clem@ltb-project.org> - 0.3-1
+- gh#42: add dropdown list to advanced search criteria
+- gh#47: Do not display not found groups/users
+- gh#48: Check ldap_bind return code instead of ldap_errorno
+- gh#49: Add url link to web ldap editor tool for each users entrie
+- gh#50: Provide a way to know the installed version
+- gh#51: No information is displayed when opening user details in a multi-organizational DIT
+- gh#52: fix(display): introducing optional `$ldap_user_regex`
+- gh#54: Hide photo box if there is no picture
+- gh#55: Can we get a list of all groups
+- gh#58: XSS protection added
+- gh#60: Sort group members
+- gh#61: Adapt other templates to changes in value_displayer.tpl (ltb-project#47)
+- gh#62: Set version in code and display it in footer (ltb-project#50)
+- gh#63: Add buttons in directory page to switch between users and groups (ltb-project#55)
+- gh#64: Set LDAP debug if $debug is set
+- gh#65: Enable debug in php-ldap (ltb-project#64)
+- gh#66: Sort values when displaying entry (ltb-project#60)
+- gh#68: Possibility to set a specific filter for gallery (ltb-project#54)
+- gh#69: Configure default page
+- gh#70: Bad quote escaping in advanced search page
+- gh#71: Option to add an edit link in entry display page (ltb-project#49)
+- gh#72: Sorting and paging regression
+- gh#73: Option to display a logout link in the menu
+- gh#74: Provide a new type (list)
 * Mon Apr 16 2018 - Clement Oudot <clem@ltb-project.org> - 0.2-1
 - gh#4: Italian language file
 - gh#5: Feature request : add export to CSV
