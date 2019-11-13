@@ -3,6 +3,7 @@
     <tr>
         <th class="hidden-print nosort">&nbsp;</th>
         {foreach $listing_columns as $item}<th>{$msg_label_{$item}}</th>{/foreach}
+        <th>{$msg_gallery}</th>
     </tr>
 </thead>
 <tbody>
@@ -33,6 +34,7 @@
         {/if}
         </td>
     {/foreach}
+        <td><a href="index.php?page=gallery&dn={$entry.dn|escape:'url'}">{$msg_gallery}</a></td>
     </tr>
 {/foreach}
 </tbody>

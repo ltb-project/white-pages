@@ -23,8 +23,14 @@ if ($ldap) {
     $attributes[] = $attributes_map[$gallery_title]['attribute'];
     $attributes[] = $attributes_map[$gallery_sortby]['attribute'];
 
+    # Search for users in group
+    if (isset($_GET['dn'])) {
+        $gallery_user_filter = substr($ldap_user_filter, 0, -1).'(memberOf='.$_GET['dn'].'))';
+    } else {
+        $gallery_filter = $ldap_user_filter;
+    }
+
     # Search for users
-    $gallery_filter = $ldap_user_filter;
     if (isset($gallery_user_filter) ) {
         $gallery_filter = $gallery_user_filter;
     }
