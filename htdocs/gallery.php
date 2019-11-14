@@ -28,6 +28,11 @@ if ($ldap) {
     if (isset($gallery_user_filter) ) {
         $gallery_filter = $gallery_user_filter;
     }
+    # Search for users in group
+    if (isset($_GET['groupdn'])) {
+        $gallery_filter = "(&".$gallery_filter."(memberOf=".$_GET['groupdn']."))";
+    }
+
     $search = ldap_search($ldap, $ldap_user_base, $gallery_filter, $attributes, 0, $ldap_size_limit);
 
     $errno = ldap_errno($ldap);
