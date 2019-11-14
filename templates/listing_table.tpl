@@ -3,16 +3,21 @@
     <tr>
         <th class="hidden-print nosort">&nbsp;</th>
         {foreach $listing_columns as $item}<th>{$msg_label_{$item}}</th>{/foreach}
-        <th>{$msg_gallery}</th>
     </tr>
 </thead>
 <tbody>
+{$ldap_object_type=$type}
 {foreach $entries as $entry}
     <tr{if ! $listing_linkto|is_array} class="clickable" title="{$msg_displayentry}"{/if}>
         <th class="hidden-print">
             <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}" class="btn btn-info btn-sm{if $listing_linkto===false} hidden{/if}" role="button" title="{$msg_displayentry}">
                 <i class="fa fa-fw fa-id-card"></i>
             </a>
+            {if $ldap_object_type==='group'}
+            <a href="index.php?page=gallery&groupdn={$entry.dn|escape:'url'}" class="btn btn-info btn-sm{if $listing_linkto===false} hidden{/if}" role="button" title="{$msg_gallery}">
+                <i class="fa fa-fw fa-address-book"></i>
+            </a>
+            {/if}
         </th>
     {foreach $listing_columns as $column}
         <td>
@@ -34,7 +39,6 @@
         {/if}
         </td>
     {/foreach}
-        <td><a href="index.php?page=gallery&dn={$entry.dn|escape:'url'}">{$msg_gallery}</a></td>
     </tr>
 {/foreach}
 </tbody>
