@@ -141,6 +141,7 @@ $vcard_version = "4.0";
 $vcard_map = array('FN' => 'fullname', 'N' => 'fullname', 'EMAIL' => 'mail', 'CATEGORIES' => 'businesscategory', 'ORG' => 'organization', 'ROLE' => 'employeetype', 'TEL;TYPE=work,voice;VALUE=uri:tel' => 'phone', 'TEL;TYPE=cell,voice;VALUE=uri:tel' => 'mobile', 'UID' => 'identifier');
 
 # Photo
+$use_gravatar = false;
 $default_photo = "images/240px-PICA.jpg";
 $photo_ldap_attribute = "jpegPhoto";
 $photo_fixed_width = 240;

@@ -23,6 +23,7 @@ if ($result === "") {
     if (!isset($photo_ldap_attribute)) { $photo_ldap_attribute = "jpegPhoto"; }
     $photo_attributes[] = $photo_ldap_attribute;
     if (isset($photo_local_ldap_attribute)) { $photo_attributes[] = $photo_local_ldap_attribute; }
+    if ($use_gravatar) { array_push($photo_attributes, 'mail'); }
 
     # Connect to LDAP
     $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw);
@@ -42,16 +43,25 @@ if ($result === "") {
             error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
         } else {
             $entry = ldap_get_entries($ldap, $search);
-            if ( !isset($entry[0][strtolower($photo_ldap_attribute)]) ) {
-                if ( $photo_local_ldap_attribute and isset($entry[0][strtolower($photo_local_ldap_attribute)]) ) {
-                    $filephoto = $photo_local_directory . $entry[0][strtolower($photo_local_ldap_attribute)][0] . $photo_local_extension;
-                    if ( file_exists($filephoto) ) {
-                        $photo = imagecreatefromjpeg($filephoto);
+            if ($use_gravatar) {    // If using gravatar
+                $url = "https://www.gravatar.com/avatar/".md5($entry[0]['mail'][0]).".jpg?s=240&d=404";
+                $img = @file_get_contents($url);    // Ignore warning (404)
+
+                if (!empty($img))
+                    $photo = imagecreatefromstring($img);
+            }
+            if (!$photo) {
+                if ( !isset($entry[0][strtolower($photo_ldap_attribute)]) ) {
+                    if ( $photo_local_ldap_attribute and isset($entry[0][strtolower($photo_local_ldap_attribute)]) ) {
+                        $filephoto = $photo_local_directory . $entry[0][strtolower($photo_local_ldap_attribute)][0] . $photo_local_extension;
+                        if ( file_exists($filephoto) ) {
+                            $photo = imagecreatefromjpeg($filephoto);
+                        }
                     }
+                } else {
+                    $ldapphoto = $entry[0][strtolower($photo_ldap_attribute)][0];
+                    $photo = imagecreatefromstring($ldapphoto);
                 }
-            } else {
-                $ldapphoto = $entry[0][strtolower($photo_ldap_attribute)][0];
-                $photo = imagecreatefromstring($ldapphoto);
             }
         }
     }
