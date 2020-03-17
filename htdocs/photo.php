@@ -47,8 +47,9 @@ if ($result === "") {
                 $url = "https://www.gravatar.com/avatar/".md5($entry[0]['mail'][0]).".jpg?s=240&d=404";
                 $img = @file_get_contents($url);    // Ignore warning (404)
 
-                if (!empty($img))
+                if (!empty($img)) {
                     $photo = imagecreatefromstring($img);
+                }
             }
             if (!$photo) {
                 if ( !isset($entry[0][strtolower($photo_ldap_attribute)]) ) {
