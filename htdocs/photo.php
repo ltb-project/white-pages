@@ -44,7 +44,11 @@ if ($result === "") {
         } else {
             $entry = ldap_get_entries($ldap, $search);
             if ($use_gravatar) {    // If using gravatar
-                $url = "https://www.gravatar.com/avatar/".md5($entry[0]['mail'][0]).".jpg?s=240&d=404";
+                $size = 240;
+                if ($photo_fixed_width) {
+                    $size = $photo_fixed_width;
+                }
+                $url = "https://www.gravatar.com/avatar/".md5($entry[0]['mail'][0]).".jpg?s=$size&d=404";
                 $img = @file_get_contents($url);    // Ignore warning (404)
 
                 if (!empty($img)) {
