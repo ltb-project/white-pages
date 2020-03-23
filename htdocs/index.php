@@ -42,8 +42,10 @@ $smarty->setCompileDir('../templates_c/');
 $smarty->setCacheDir('../cache/');
 $smarty->debugging = $debug;
 
-# Set debug for LDAP
+error_reporting(0);
 if ($debug) {
+    error_reporting(E_ALL);
+    # Set debug for LDAP
     ldap_set_option(NULL, LDAP_OPT_DEBUG_LEVEL, 7);
 }
 
