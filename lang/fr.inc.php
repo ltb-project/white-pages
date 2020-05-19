@@ -36,6 +36,7 @@ $messages['label_identifier'] = "Identifiant";
 $messages['label_l'] = "Ville";
 $messages['label_lastname'] = "Nom";
 $messages['label_mail'] = "Courriel";
+$messages['label_mailquota'] = "Quota messagerie";
 $messages['label_manager'] = "Responsable";
 $messages['label_member'] = "Membres";
 $messages['label_memberof'] = "Membre des groupes";
