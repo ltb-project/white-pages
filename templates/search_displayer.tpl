@@ -24,6 +24,8 @@
                 {/foreach}
             </select>
             <span class="input-group-addon"><input type="checkbox" name="{$item}match" value="exact" data-toggle="popover" data-content="{$msg_exactmatch}"></span>
+            {elseif $type eq 'bytes'}
+            <input type="number" class="form-control" id="{$item}" name="{$item}" placeholder="{$label}">
             {else}
             <input type="text" class="form-control" id="{$item}" name="{$item}" placeholder="{$label}">
             <span class="input-group-addon"><input type="checkbox" name="{$item}match" value="exact" data-toggle="popover" data-content="{$msg_exactmatch}"></span>

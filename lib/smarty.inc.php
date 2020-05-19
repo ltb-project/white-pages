@@ -3,6 +3,7 @@
 
 require_once("ldap.inc.php");
 require_once("date.inc.php");
+require_once("filesize.inc.php");
 
 function get_attribute($params) {
 
@@ -56,6 +57,12 @@ function convert_guid_value($binary) {
 
     $unpacked = unpack('Va/v2b/n2c/Nd', $binary);
     return sprintf('%08X-%04X-%04X-%04X-%04X%08X', $unpacked['a'], $unpacked['b1'], $unpacked['b2'], $unpacked['c1'], $unpacked['c2'], $unpacked['d']);
+
+}
+
+function convert_bytes($bytes) {
+
+    return FileSizeConvert( $bytes );
 
 }
 
