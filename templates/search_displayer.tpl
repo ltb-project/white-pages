@@ -16,6 +16,8 @@
             <input type="text" class="form-control" id="{$item}to" name="{$item}to" data-provide="datepicker" data-date-language="{$lang}">
             {elseif $type eq 'guid' or $type eq 'dn_link' or $type eq 'group_dn_link' or $type eq 'usergroup_dn_link' }
             <input type="text" class="form-control" id="{$item}" name="{$item}" placeholder="{$label}">
+            <span class="input-group-addon btn-info"><input type="checkbox" name="{$item}match" value="exact" data-toggle="popover" data-content="{$msg_exactmatch}"></span>
+            <span class="input-group-addon btn-danger"><input type="checkbox" name="{$item}negates" value="true" data-toggle="popover" data-content="{$msg_negates}"></span>
             {elseif $type eq 'list'}
             <select class="form-control" id="{$item}" name="{$item}" placeholder="{$label}">
                 <option></option>
@@ -23,12 +25,16 @@
                 <option value="{$value@key}">{$value}</option>
                 {/foreach}
             </select>
-            <span class="input-group-addon"><input type="checkbox" name="{$item}match" value="exact" data-toggle="popover" data-content="{$msg_exactmatch}"></span>
+            <span class="input-group-addon btn-info"><input type="checkbox" name="{$item}match" value="exact" data-toggle="popover" data-content="{$msg_exactmatch}"></span>
+            <span class="input-group-addon btn-danger"><input type="checkbox" name="{$item}negates" value="true" data-toggle="popover" data-content="{$msg_negates}"></span>
             {elseif $type eq 'bytes'}
             <input type="number" class="form-control" id="{$item}" name="{$item}" placeholder="{$label}">
+            <span class="input-group-addon btn-info"><input type="checkbox" name="{$item}match" value="exact" data-toggle="popover" data-content="{$msg_exactmatch}"></span>
+            <span class="input-group-addon btn-danger"><input type="checkbox" name="{$item}negates" value="true" data-toggle="popover" data-content="{$msg_negates}"></span>
             {else}
             <input type="text" class="form-control" id="{$item}" name="{$item}" placeholder="{$label}">
-            <span class="input-group-addon"><input type="checkbox" name="{$item}match" value="exact" data-toggle="popover" data-content="{$msg_exactmatch}"></span>
+            <span class="input-group-addon btn-info"><input type="checkbox" name="{$item}match" value="exact" data-toggle="popover" data-content="{$msg_exactmatch}"></span>
+            <span class="input-group-addon btn-danger"><input type="checkbox" name="{$item}negates" value="true" data-toggle="popover" data-content="{$msg_negates}"></span>
             {/if}
         </div>
     </div>

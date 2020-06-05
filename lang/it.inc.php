@@ -57,6 +57,7 @@ $messages['ldaperror'] = "Errore di comunicazione con LDAP";
 $messages['logout'] = "Esci";
 $messages['noentriesfound'] = "Nessun record trovato";
 $messages['notdefined'] = "Non definito";
+$messages['negates'] = "Check to negates this value";
 $messages['search'] = "Cerca";
 $messages['search_object'] = "Oggetti da cercare";
 $messages['searchrequired'] = "Inserisci il termine di ricerca";

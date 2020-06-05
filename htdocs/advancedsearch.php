@@ -100,7 +100,13 @@ if ($result === "") {
                     } else {
                         $value = '*' . ldap_escape($value, "", LDAP_ESCAPE_FILTER) . '*';
                     }
+                    if (isset($_POST[$item."negates"]) and ($_POST[$item."negates"] == 'true')) {
+                        $ldap_filter .= "(!";
+                    }
                     $ldap_filter .= "($attribute=$value)";
+                    if (isset($_POST[$item."negates"]) and ($_POST[$item."negates"] == 'true')) {
+                        $ldap_filter .= ")";
+                    }
                 }
             }
         }
