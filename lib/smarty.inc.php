@@ -15,9 +15,10 @@ function get_attribute($params) {
     $ldap_binddn = $params["ldap_binddn"];
     $ldap_bindpw = $params["ldap_bindpw"];
     $ldap_filter = $params["ldap_filter"];
+    $ldap_network_timeout = $params["ldap_network_timeout"];
 
     # Connect to LDAP
-    $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw);
+    $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
 
     $ldap = $ldap_connection[0];
     $result = $ldap_connection[1];

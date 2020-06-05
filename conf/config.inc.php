@@ -35,6 +35,7 @@ $ldap_user_filter = "(objectClass=inetOrgPerson)";
 $ldap_group_base = "ou=groups,".$ldap_base;
 $ldap_group_filter = "(|(objectClass=groupOfNames)(objectClass=groupOfUniqueNames))";
 $ldap_size_limit = 100;
+#$ldap_network_timeout = 10;
 
 # How display attributes
 $attributes_map = array(
