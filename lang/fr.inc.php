@@ -57,6 +57,7 @@ $messages['ldaperror'] = "Erreur de communication avec l'annuaire LDAP";
 $messages['logout'] = "Déconnexion";
 $messages['noentriesfound'] = "Aucune entrée trouvée";
 $messages['notdefined'] = "Non renseigné";
+$messages['negates'] = "Cocher la case pour nier la valeur";
 $messages['search'] = "Rechercher";
 $messages['search_object'] = "Objets à rechercher";
 $messages['searchrequired'] = "Veuillez saisir votre recherche";
