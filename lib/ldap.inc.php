@@ -1,12 +1,15 @@
 <?php
 # LDAP Functions 
 
-function wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw) {
+function wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout) {
 
     # Connect to LDAP
     $ldap = ldap_connect($ldap_url);
     ldap_set_option($ldap, LDAP_OPT_PROTOCOL_VERSION, 3);
     ldap_set_option($ldap, LDAP_OPT_REFERRALS, 0);
+    if ( isset($ldap_network_timeout) ) {
+        ldap_set_option($ldap, LDAP_OPT_NETWORK_TIMEOUT, $ldap_network_timeout);
+    }
 
     if ( $ldap_starttls && !ldap_start_tls($ldap) ) {
         error_log("LDAP - Unable to use StartTLS");
