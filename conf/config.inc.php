@@ -153,7 +153,7 @@ $photo_fixed_height = 240;
 #$photo_local_extension = ".jpg";
 
 # Language
-$lang ="en";
+$lang ="en-GB";
 $date_specifiers = "%Y-%m-%d %H:%M:%S (%Z)";
 
 # Graphics
