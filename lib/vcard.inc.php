@@ -10,6 +10,7 @@ function print_vcard($entry, $attributes_map, $vcard_map, $vcard_version) {
    echo "VERSION:$vcard_version\n";
    foreach ($vcard_map as $id => $item) {
      if ($id == "MEMBER") {
+       echo "KIND:group\n";
        if (isset($entry['member_mailto'])) {
 	 foreach ($entry['member_mailto'] as $mbr) {
 	   echo $id.":".$mbr."\n";
