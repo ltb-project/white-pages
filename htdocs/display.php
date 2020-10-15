@@ -94,6 +94,7 @@ if ($result === "") {
             $vcard_file = $entry[0][$attributes_map[$vcard_file_identifier]['attribute']][0].".".$vcard_file_extension;
             download_vcard_send_headers($vcard_file);
 	    if ($type == "group") {
+		$vcard_map = $vcard_group_map;
 		$attributes = array();
 		$attributes[] = $attributes_map['mail']['attribute'];
 		$ldap_filter = "(".$attributes_map['memberof']['attribute']."=".$entry[0]['dn'].")";
@@ -124,6 +125,8 @@ if ($result === "") {
 		    }
 		    $entry[0]['member_mailto'] = $members;
 		}
+	    } else {
+		$vcard_map = $vcard_user_map;
 	    }
             echo print_vcard($entry[0], $attributes_map, $vcard_map, $vcard_version);
             die;
