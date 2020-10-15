@@ -97,12 +97,12 @@ if ($result === "") {
 		$vcard_map = $vcard_group_map;
 		$attributes = array();
 		$attributes[] = $attributes_map['mail']['attribute'];
+		$attributes[] = $attributes_map['phone']['attribute'];
 		$ldap_filter = "(".$attributes_map['memberof']['attribute']."=".$entry[0]['dn'].")";
 		$search = ldap_search($ldap, $ldap_user_base, $ldap_filter, $attributes, 0, $ldap_size_limit);
 		$errno = ldap_errno($ldap);
 		if ( $errno == 4 ) {
-		    $size_limit_reached = true;
-		    //silent ignore / don't corrupt vcard download
+		    error_log("LDAP - VCard download hit page size limit");
 		}
 		if ( $errno != 0 and $errno != 4 ) {
 		    error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
@@ -120,6 +120,8 @@ if ($result === "") {
 			    }
 			    if (isset($item[$attributes_map['mail']['attribute']])) {
 				$members[] = 'mailto:'.$item[$attributes_map['mail']['attribute']][0];
+			    } else if (isset($item[$attributes_map['phone']['attribute']])) {
+				$members[] = 'tel:'.$item[$attributes_map['phone']['attribute']][0];
 			    }
 			}
 		    }
