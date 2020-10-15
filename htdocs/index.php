@@ -76,7 +76,7 @@ if ($use_datatables) {
 }
 $smarty->assign('version',$version);
 $smarty->assign('display_footer',$display_footer);
-$smarty->assign('logout_link',$logout_link);
+$smarty->assign('logout_link', (isset($logout_link) ? $logout_link : false));
 
 # Assign messages
 $smarty->assign('lang',$lang);

@@ -40,6 +40,8 @@ if (!isset($_POST["submit"])) {
 
 if (isset($_POST["type"])) {
     $type = $_POST["type"];
+} else if (isset($_GET["type"])) {
+    $type = $_GET["type"];
 }
 
 if ( $type === "user" ) {
@@ -183,7 +185,7 @@ if ($result === "") {
                 $smarty->assign("nb_entries", $nb_entries);
                 $smarty->assign("entries", $entries);
                 $smarty->assign("size_limit_reached", $size_limit_reached);
-                $smarty->assign("type", $type);
+                $smarty->assign("objecttype", $type);
 
                 if ($results_display_mode == 'table') {
                     $columns = $result_items;

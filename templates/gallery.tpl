@@ -12,7 +12,7 @@
     <div class="gallery {$bootstrap_column_class}{if $hover_effect} hvr-{$hover_effect}{/if}">
         <div class="panel panel-info">
             <div class="panel-body">
-                <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}">
+                <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&type={$objecttype}&search={$search}">
                     <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$card_title}.attribute}.0}" class="img-responsive img-thumbnail center-block" />
                 </a>
             </div>

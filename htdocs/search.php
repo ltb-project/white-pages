@@ -81,6 +81,7 @@ if ($result === "") {
                 $smarty->assign("nb_entries", $nb_entries);
                 $smarty->assign("entries", $entries);
                 $smarty->assign("size_limit_reached", $size_limit_reached);
+		$smarty->assign("objecttype", "user");
 
                 if ($results_display_mode == 'table') {
                     $columns = $search_result_items;

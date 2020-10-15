@@ -31,6 +31,8 @@ if ($result === "") {
     # Find object type
     if (isset($_POST['type'])) {
         $type = $_POST['type'];
+    } else if (isset($_GET["type"])) {
+	$type = $_GET["type"];
     } else if (isset($ldap_user_regex)) {
         if ( preg_match( $ldap_user_regex, $dn) ) {
             $type = "user";
@@ -40,8 +42,7 @@ if ($result === "") {
     } else {
         if ( preg_match( '/'.$ldap_user_base.'$/i', $dn) ) {
             $type = "user";
-        }
-        else {
+        } else {
             $type = "group";
         }
     }
@@ -58,7 +59,7 @@ if ($result === "") {
         }
         $attributes[] = $attributes_map[$display_title]['attribute'];
 
-        if ($use_vcard and $_GET["vcard"] and $vcard_file_identifier) {
+        if ($use_vcard and isset($_GET["vcard"]) and $vcard_file_identifier) {
             $attributes[] = $attributes_map[$vcard_file_identifier]['attribute'];
 	}
 
@@ -89,7 +90,7 @@ if ($result === "") {
             $entry[0][$attr] = $values;
         }
 
-	if ($use_vcard and $_GET["vcard"]) {
+	if ($use_vcard and isset($_GET["vcard"])) {
             require_once("../lib/vcard.inc.php");
             $vcard_file = $entry[0][$attributes_map[$vcard_file_identifier]['attribute']][0].".".$vcard_file_extension;
             download_vcard_send_headers($vcard_file);
@@ -109,7 +110,7 @@ $smarty->assign("entry", $entry[0]);
 $smarty->assign("card_title", $display_title);
 $smarty->assign("card_items", $search_items);
 $smarty->assign("show_undef", $display_show_undefined);
-$smarty->assign("type", $type);
+$smarty->assign("objecttype", $type);
 
 $smarty->assign("edit_link", $edit_link);
 ?>
