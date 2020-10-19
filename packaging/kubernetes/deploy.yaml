@@ -12,7 +12,7 @@ stringData:
     $ldap_binddn = "cn=white-pages,ou=services,".$ldap_base;
     $ldap_bindpw = "secret";
     $ldap_group_base = "ou=groups,".$ldap_base;
-    $ldap_group_filter = "(|(objectClass=groupOfNames)(objectClass=groupOfUniqueNames)(objectClass=groupOfURLs)";
+    $ldap_group_filter = "(|(objectClass=groupOfNames)(objectClass=groupOfUniqueNames)(objectClass=groupOfURLs))";
     $ldap_size_limit = 100;
     $ldap_starttls = false;
     $ldap_url = "ldap://openldap:1389";
