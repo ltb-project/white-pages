@@ -1,0 +1,210 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: white-pages-demo
+  namespace: NAMESPACE
+stringData:
+  config.php: |
+    <?php
+    $debug = false;
+    $ldap_base = "dc=demo,dc=local";
+    $ldap_binddn = "cn=white-pages,ou=services,".$ldap_base;
+    $ldap_bindpw = "secret";
+    $ldap_group_base = "ou=groups,".$ldap_base;
+    $ldap_group_filter = "(|(objectClass=groupOfNames)(objectClass=groupOfUniqueNames)(objectClass=groupOfURLs)";
+    $ldap_size_limit = 100;
+    $ldap_starttls = false;
+    $ldap_url = "ldap://openldap:1389";
+    $ldap_user_base = "ou=users,".$ldap_base;
+    $ldap_user_filter = "(objectClass=inetOrgPerson)";
+    $ldap_user_regex = "/,ou=users,/i";
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: white-pages-demo
+  namespace: NAMESPACE
+data:
+  virtualhost.conf: |
+    Listen 8080
+    ServerName white-pages.DOMAIN
+    <VirtualHost *:8080>
+      ServerName white-pages.DOMAIN
+      ServerAdmin webmaster@localhost
+      DocumentRoot /var/www/html
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog /dev/stdout common
+      Alias /favicon.ico /var/www/html/images/favicon.ico
+      DirectoryIndex index.php
+      <Directory /var/www/html>
+        AllowOverride None
+        Require all granted
+      </Directory>
+    </VirtualHost>
+  apache2.conf: |
+    DefaultRuntimeDir ${APACHE_RUN_DIR}
+    PidFile ${APACHE_PID_FILE}
+    Timeout 300
+    KeepAlive On
+    MaxKeepAliveRequests 100
+    KeepAliveTimeout 5
+    User ${APACHE_RUN_USER}
+    Group ${APACHE_RUN_GROUP}
+    HostnameLookups Off
+    ErrorLog /dev/stderr
+    LogLevel warn
+    IncludeOptional mods-enabled/*.load
+    IncludeOptional mods-enabled/*.conf
+    <Directory />
+      Options FollowSymLinks
+      AllowOverride None
+      Require all denied
+    </Directory>
+    <Directory /usr/share>
+      AllowOverride None
+      Require all granted
+    </Directory>
+    <Directory /var/www/>
+      Options Indexes FollowSymLinks
+      AllowOverride None
+      Require all granted
+    </Directory>
+    AccessFileName .htaccess
+    <FilesMatch "^\.ht">
+      Require all denied
+    </FilesMatch>
+    LogFormat "%v:%p %h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" vhost_combined
+    LogFormat "%h %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" combined
+    LogFormat "%h %l %u %t \"%r\" %>s %O" common
+    LogFormat "%{Referer}i -> %U" referer
+    LogFormat "%{User-agent}i" agent
+    IncludeOptional conf-enabled/*.conf
+    IncludeOptional sites-enabled/*.conf
+    TransferLog /dev/stdout
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: white-pages-demo
+  namespace: NAMESPACE
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      name: white-pages-demo
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name: white-pages-demo
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: name
+                operator: In
+                values:
+                - white-pages-demo
+            topologyKey: kubernetes.io/hostname
+      containers:
+      - image: IMAGEADDRESS
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 15
+          httpGet:
+            path: /
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 20
+          successThreshold: 1
+          timeoutSeconds: 8
+        name: white-pages
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 4
+        resources:
+          limits:
+            cpu: 100m
+            memory: 320Mi
+          requests:
+            cpu: 50m
+            memory: 256Mi
+        volumeMounts:
+        - mountPath: /etc/apache2/apache2.conf
+          name: apache-config
+          subPath: apache2.conf
+        - mountPath: /etc/apache2/sites-enabled/000-default.conf
+          name: apache-config
+          subPath: virtualhost.conf
+        - mountPath: /run/apache2
+          name: tmp
+          subPath: run
+        - mountPath: /var/log/apache2
+          name: tmp
+          subPath: logs
+        - mountPath: /var/www/conf/config.inc.local.php
+          name: white-pages-config
+          subPath: config.php
+        - mountPath: /var/www/templates_c
+          name: tmp
+          subPath: site
+      securityContext:
+        runAsUser: 1000
+      volumes:
+      - emptyDir: {}
+        name: tmp
+      - configMap:
+          name: white-pages-demo
+        name: apache-config
+      - secret:
+          secretName: white-pages-demo
+        name: white-pages-config
+      - configMap:
+          name: white-pages-demo
+          defaultMode: 0777
+        name: white-pages-scripts
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: white-pages-demo
+  namespace: NAMESPACE
+spec:
+  ports:
+  - name: tcp-8080
+    port: 8080
+  selector:
+    name: white-pages-demo
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: white-pages-demo
+  namespace: NAMESPACE
+spec:
+  rules:
+  - host: white-pages.DOMAIN
+    http:
+      paths:
+      - backend:
+          serviceName: white-pages-demo
+          servicePort: 8080
