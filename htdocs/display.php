@@ -8,6 +8,8 @@ $dn = "";
 $entry = "";
 $type = "";
 $edit_link = "";
+$vcard_file_identifier = "";
+$vcard_map = "";
 
 if (isset($_GET["dn"]) and $_GET["dn"]) {
     $dn = $_GET["dn"];
@@ -58,9 +60,11 @@ if ($result === "") {
         }
         $attributes[] = $attributes_map[$display_title]['attribute'];
 
-        if ($use_vcard and $_GET["vcard"] and $vcard_file_identifier) {
+        if ($use_vcard and $_GET["vcard"]) {
+            if ( $type == "user" ) { $vcard_file_identifier = $vcard_file_user_identifier; }
+            if ( $type == "group" ) { $vcard_file_identifier = $vcard_file_group_identifier; }
             $attributes[] = $attributes_map[$vcard_file_identifier]['attribute'];
-	}
+        }
 
         # Search entry
         $ldap_filter = $ldap_user_filter;

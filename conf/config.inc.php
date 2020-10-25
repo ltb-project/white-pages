@@ -138,10 +138,11 @@ $csv_items = array('firstname', 'lastname', 'mail','organization');
 # vCard
 $use_vcard = true;
 $vcard_file_extension = "vcf";
-$vcard_file_identifier = "identifier";
+$vcard_file_user_identifier = "identifier";
+$vcard_file_group_identifier = "fullname";
 $vcard_version = "4.0";
 $vcard_user_map = array('FN' => 'fullname', 'N' => 'fullname', 'EMAIL' => 'mail', 'CATEGORIES' => 'businesscategory', 'ORG' => 'organization', 'ROLE' => 'employeetype', 'TEL;TYPE=work,voice;VALUE=uri:tel' => 'phone', 'TEL;TYPE=cell,voice;VALUE=uri:tel' => 'mobile', 'UID' => 'identifier');
-$vcard_group_map = array('FN' => 'fullname', 'N' => 'fullname', 'EMAIL' => 'mail', 'CATEGORIES' => 'businesscategory', 'MEMBER' => 'member', 'ORG' => 'organization', 'ROLE' => 'employeetype', 'TEL;TYPE=work,voice;VALUE=uri:tel' => 'phone', 'TEL;TYPE=cell,voice;VALUE=uri:tel' => 'mobile', 'UID' => 'identifier');
+$vcard_group_map = array('FN' => 'fullname', 'N' => 'fullname', 'EMAIL' => 'mail', 'CATEGORIES' => 'businesscategory', 'MEMBER' => 'member', 'ORG' => 'organization', 'ROLE' => 'employeetype', 'TEL;TYPE=work,voice;VALUE=uri:tel' => 'phone', 'TEL;TYPE=cell,voice;VALUE=uri:tel' => 'mobile' );
 
 # Photo
 $use_gravatar = false;
