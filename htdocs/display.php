@@ -137,13 +137,50 @@ if ($result === "") {
 		require_once("../lib/vcard.inc.php");
 		$vcard_file = $entry[0][$attributes_map[$vcard_file_identifier]['attribute']][0].".".$vcard_file_extension;
 		download_vcard_send_headers($vcard_file);
+		if ($type == "group") {
+		    $vcard_map = $vcard_group_map;
+		    $attributes = array();
+		    $attributes[] = $attributes_map['mail']['attribute'];
+		    $attributes[] = $attributes_map['phone']['attribute'];
+		    $ldap_filter = "(".$attributes_map['memberof']['attribute']."=".$entry[0]['dn'].")";
+		    $search = ldap_search($ldap, $ldap_user_base, $ldap_filter, $attributes, 0, $ldap_size_limit);
+		    $errno = ldap_errno($ldap);
+		    if ( $errno == 4 ) {
+			error_log("LDAP - VCard download hit page size limit");
+		    }
+		    if ( $errno != 0 and $errno != 4 ) {
+			error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
+		    } else {
+			# Get search results
+			$nb_entries = ldap_count_entries($ldap, $search);
+			$members = array();
+			if ($nb_entries > 0) {
+			    $entries = ldap_get_entries($ldap, $search);
+			    foreach ($entries as $item) {
+				foreach ($item as $a => $v) {
+				    if ( $v['count'] > 1 ) { asort($v); }
+				    if ( isset($v['count']) ) { unset($v['count']); }
+				    $item[$a] = $v;
+				}
+				if (isset($item[$attributes_map['mail']['attribute']])) {
+				    $members[] = 'mailto:'.$item[$attributes_map['mail']['attribute']][0];
+				} else if (isset($item[$attributes_map['phone']['attribute']])) {
+				    $members[] = 'tel:'.$item[$attributes_map['phone']['attribute']][0];
+				}
+			    }
+			}
+			$entry[0]['member_mailto'] = $members;
+		    }
+		} else {
+		    $vcard_map = $vcard_user_map;
+		}
 		echo print_vcard($entry[0], $attributes_map, $vcard_map, $vcard_version);
 		die;
 	    }
 
 	    if ($display_edit_link) {
-		    # Replace {dn} in URL
-		    $edit_link = str_replace("{dn}", urlencode($dn), $display_edit_link);
+		# Replace {dn} in URL
+		$edit_link = str_replace("{dn}", urlencode($dn), $display_edit_link);
 	    }
 	}
     }

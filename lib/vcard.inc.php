@@ -9,9 +9,18 @@ function print_vcard($entry, $attributes_map, $vcard_map, $vcard_version) {
    echo "BEGIN:VCARD\n";
    echo "VERSION:$vcard_version\n";
    foreach ($vcard_map as $id => $item) {
-     $attribute = $attributes_map[$item]["attribute"];
-     if (isset($entry[$attribute])) {
-       echo $id.":".$entry[$attribute][0]."\n";
+     if ($id == "MEMBER") {
+       echo "KIND:group\n";
+       if (isset($entry['member_mailto'])) {
+	 foreach ($entry['member_mailto'] as $mbr) {
+	   echo $id.":".$mbr."\n";
+	 }
+       }
+     } else {
+       $attribute = $attributes_map[$item]["attribute"];
+       if (isset($entry[$attribute])) {
+	 echo $id.":".$entry[$attribute][0]."\n";
+       }
      }
    }
    echo "END:VCARD\n";
