@@ -64,6 +64,7 @@ if ($ldap) {
 }
 
 $smarty->assign("nb_entries", $nb_entries);
+$smarty->assign("objecttype", "user");
 $smarty->assign("entries", $entries);
 $smarty->assign("size_limit_reached", $size_limit_reached);
 
