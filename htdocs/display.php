@@ -82,7 +82,7 @@ if ($result === "") {
 		    }
 		    $guess_entry[0][$attr] = $values;
 		}
-		foreach ([ "groupOfName", "groupOfURLs", "groupOfUniqueNames" ] as $matchGroup) {
+		foreach ($display_group_objectclasses as $matchGroup) {
 		    if (strlen(array_search(strtolower($matchGroup),
 			    array_map('strtolower', $guess_entry[0]['objectClass']))) > 0) {
 			$type = "group";
