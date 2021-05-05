@@ -36,17 +36,25 @@
                   <a href="{$logout_link}"><i class="fa fa-fw fa-sign-out"></i> {$msg_logout}</a>
                 </li>
                 {/if}
+                {if $use_authentification}
+                <li>
+                  <a href="index.php?page=login"><i class="fa fa-fw fa-key"></i> Authentification</a>
+                </li>
+                {/if}
+                <li>
+                  {if $use_quick_search}
+                    <form class="navbar-form navbar-right" role="search" action="index.php?page=search" method="post">
+                      <div class="input-group" >
+                        <input type="text" class="form-control" placeholder="{$msg_search}" name="search" value="{$search}" style="width:8em"/>
+                        <span class="input-group-btn">
+                          <button class="btn btn-default" type="submit">&nbsp;<i class="fa fa-fw fa-search"></i></button>
+                        </span>
+                      </div>
+                    </form>
+                    {/if}
+                </li>
               </ul>
-              {if $use_quick_search}
-              <form class="navbar-form navbar-right" role="search" action="index.php?page=search" method="post">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="{$msg_search}" name="search" value="{$search}" />
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit">&nbsp;<i class="fa fa-fw fa-search"></i></button>
-                  </span>
-                </div>
-              </form>
-              {/if}
+              
             </div>
           </div>
         </div>

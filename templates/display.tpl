@@ -53,8 +53,8 @@
 {if {$use_vcard}}
                 <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}&vcard=1" class="btn btn-info" role="button"><i class="fa fa-fw fa-download"></i> {$msg_downloadvcard}</a>
 {/if}
-{if {$edit_link}}
-                <a href="{$edit_link}" class="btn btn-info" role="button"><i class="fa fa-fw fa-edit"></i> {$msg_editentry}</a>
+{if {$use_authentification}}
+                <a href="index.php?page=login&dn={$entry.dn}" class="btn btn-info" role="button"><i class="fa fa-fw fa-edit"></i> {$msg_editentry}</a>
 {/if}
             </div>
 
