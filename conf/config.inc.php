@@ -31,11 +31,14 @@ $ldap_bindpw = "secret";
 $ldap_base = "dc=example,dc=com";
 $ldap_user_base = "ou=users,".$ldap_base;
 $ldap_user_filter = "(objectClass=inetOrgPerson)";
-#$ldap_user_regex = "/,ou=users,/i";
+$ldap_user_regex = "/,ou=users,/i";
 $ldap_group_base = "ou=groups,".$ldap_base;
 $ldap_group_filter = "(|(objectClass=groupOfNames)(objectClass=groupOfUniqueNames))";
 $ldap_size_limit = 100;
-#$ldap_network_timeout = 10;
+
+# To allow users to connect and modify the AD, you must add an admin account to bind with it. The Admin account has just the rights to modify infos on the AD
+$addn = "adminID";
+$adpwd = 'password';
 
 # How display attributes
 $attributes_map = array(
@@ -54,7 +57,6 @@ $attributes_map = array(
     'l' => array( 'attribute' => 'l', 'faclass' => 'globe', 'type' => 'text' ),
     'lastname' => array( 'attribute' => 'sn', 'faclass' => 'user-o', 'type' => 'text' ),
     'mail' => array( 'attribute' => 'mail', 'faclass' => 'envelope-o', 'type' => 'mailto' ),
-    'mailquota' => array( 'attribute' => 'gosamailquota', 'faclass' => 'pie-chart', 'type' => 'bytes' ),
     'manager' => array( 'attribute' => 'manager', 'faclass' => 'user-circle-o', 'type' => 'dn_link' ),
     'member' => array( 'attribute' => 'member', 'faclass' => 'user', 'type' => 'usergroup_dn_link' ),
     'memberof' => array( 'attribute' => 'memberof', 'faclass' => 'users', 'type' => 'group_dn_link' ),
@@ -85,6 +87,9 @@ $use_advanced_search = true;
 $advanced_search_criteria = array('firstname', 'lastname', 'mail', 'title', 'businesscategory', 'employeetype', 'created', 'modified');
 $advanded_search_display_search_objects = true;
 
+# Authentification     Ajout de l'authentification dans la barre de navigation
+$use_authentification = true;
+
 # Results display
 $results_display_mode = "boxes";  // boxes or table
 $search_result_items = array('mail', 'phone', 'mobile');
@@ -104,11 +109,11 @@ $datatables_page_length_default = 10;
 $datatables_auto_print = true;
 
 # Full display
-$display_items = array('firstname', 'lastname', 'title', 'businesscategory', 'employeenumber', 'employeetype', 'mail', 'mailquota', 'phone', 'mobile', 'fax', 'postaladdress', 'street', 'postalcode', 'l', 'state', 'manager', 'secretary', 'organizationalunit', 'organization', 'description', 'memberof');
+$display_items = array('firstname', 'lastname', 'title', 'businesscategory', 'employeenumber', 'employeetype', 'mail', 'phone', 'mobile', 'fax', 'postaladdress', 'street', 'postalcode', 'l', 'state', 'manager', 'secretary', 'organizationalunit', 'organization', 'description', 'memberof');
 $display_title = "fullname";
 $display_show_undefined = false;
 $display_group_items = array('fullname', 'description', 'member', 'uniquemember', 'memberof');
-#$display_edit_link = "http://ldapadmin.example.com/?dn={dn}";
+#$display_edit_link = "http://ldapadmin.example.com/?dn={dn}
 
 # Gallery
 $use_gallery = true;
@@ -140,11 +145,9 @@ $use_vcard = true;
 $vcard_file_extension = "vcf";
 $vcard_file_identifier = "identifier";
 $vcard_version = "4.0";
-$vcard_user_map = array('FN' => 'fullname', 'N' => 'fullname', 'EMAIL' => 'mail', 'CATEGORIES' => 'businesscategory', 'ORG' => 'organization', 'ROLE' => 'employeetype', 'TEL;TYPE=work,voice;VALUE=uri:tel' => 'phone', 'TEL;TYPE=cell,voice;VALUE=uri:tel' => 'mobile', 'UID' => 'identifier');
-$vcard_group_map = array('FN' => 'fullname', 'N' => 'fullname', 'EMAIL' => 'mail', 'CATEGORIES' => 'businesscategory', 'MEMBER' => 'member', 'ORG' => 'organization', 'ROLE' => 'employeetype', 'TEL;TYPE=work,voice;VALUE=uri:tel' => 'phone', 'TEL;TYPE=cell,voice;VALUE=uri:tel' => 'mobile', 'UID' => 'identifier');
+$vcard_map = array('FN' => 'fullname', 'N' => 'fullname', 'EMAIL' => 'mail', 'CATEGORIES' => 'businesscategory', 'ORG' => 'organization', 'ROLE' => 'employeetype', 'TEL;TYPE=work,voice;VALUE=uri:tel' => 'phone', 'TEL;TYPE=cell,voice;VALUE=uri:tel' => 'mobile', 'UID' => 'identifier');
 
 # Photo
-$use_gravatar = false;
 $default_photo = "images/240px-PICA.jpg";
 $photo_ldap_attribute = "jpegPhoto";
 $photo_fixed_width = 240;
@@ -169,14 +172,12 @@ $default_page = "welcome";
 # Debug mode
 $debug = false;
 
+# Smarty
+define("SMARTY", "/usr/share/php/smarty3/Smarty.class.php");
+
 # Allow to override current settings with local configuration
 if (file_exists (dirname (__FILE__) . '/config.inc.local.php')) {
     include dirname (__FILE__) . '/config.inc.local.php';
-}
-
-# Smarty
-if (!defined("SMARTY")) {
-    define("SMARTY", "/usr/share/php/smarty3/Smarty.class.php");
 }
 
 ?>
