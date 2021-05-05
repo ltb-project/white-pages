@@ -42,10 +42,8 @@ $smarty->setCompileDir('../templates_c/');
 $smarty->setCacheDir('../cache/');
 $smarty->debugging = $debug;
 
-error_reporting(0);
+# Set debug for LDAP
 if ($debug) {
-    error_reporting(E_ALL);
-    # Set debug for LDAP
     ldap_set_option(NULL, LDAP_OPT_DEBUG_LEVEL, 7);
 }
 
@@ -54,7 +52,7 @@ if (!isset($results_display_mode)) $results_display_mode = "boxes";
 if (!isset($use_datatables)) $use_datatables = true;
 
 # Assign configuration variables
-$smarty->assign('ldap_params',array('ldap_url' => $ldap_url, 'ldap_starttls' => $ldap_starttls, 'ldap_binddn' => $ldap_binddn, 'ldap_bindpw' => $ldap_bindpw, 'ldap_user_base' => $ldap_user_base, 'ldap_user_filter' => $ldap_user_filter, 'ldap_group_filter' => $ldap_group_filter, 'ldap_network_timeout' => $ldap_network_timeout));
+$smarty->assign('ldap_params',array('ldap_url' => $ldap_url, 'ldap_starttls' => $ldap_starttls, 'ldap_binddn' => $ldap_binddn, 'ldap_bindpw' => $ldap_bindpw, 'ldap_user_base' => $ldap_user_base, 'ldap_user_filter' => $ldap_user_filter, 'ldap_group_filter' => $ldap_group_filter));
 $smarty->assign('logo',$logo);
 $smarty->assign('background_image',$background_image);
 $smarty->assign('hover_effect',$hover_effect);
@@ -65,6 +63,7 @@ $smarty->assign('use_quick_search',$use_quick_search);
 $smarty->assign('use_advanced_search',$use_advanced_search);
 $smarty->assign('use_gallery',$use_gallery);
 $smarty->assign('use_directory',$use_directory);
+$smarty->assign('use_authentification',$use_authentification);
 $smarty->assign('use_csv',$use_csv);
 $smarty->assign('use_vcard',$use_vcard);
 $smarty->assign('use_datatables', $use_datatables);
@@ -76,21 +75,13 @@ if ($use_datatables) {
 }
 $smarty->assign('version',$version);
 $smarty->assign('display_footer',$display_footer);
-$smarty->assign('logout_link',isset($logout_link) ? $logout_link : false);
+$smarty->assign('logout_link',$logout_link);
 
 # Assign messages
 $smarty->assign('lang',$lang);
 foreach ($messages as $key => $message) {
     $smarty->assign('msg_'.$key,$message);
 }
-
-# Adapt lang for datepicker
-if (file_exists("./vendor/bootstrap-datepicker/locales/bootstrap-datepicker.$lang.min.js")) {
-    $lang_datepicker = $lang;
-} else {
-    $lang_datepicker = "en-GB";
-}
-$smarty->assign('lang_datepicker',$lang_datepicker);
 
 # Other assignations
 $search = "";
@@ -102,7 +93,6 @@ require_once("../lib/smarty.inc.php");
 $smarty->registerPlugin("function", "get_attribute", "get_attribute");
 $smarty->registerPlugin("function", "convert_ldap_date", "convert_ldap_date");
 $smarty->registerPlugin("function", "convert_guid_value", "convert_guid_value");
-$smarty->registerPlugin("function", "convert_bytes", "convert_bytes");
 
 #==============================================================================
 # Route to page

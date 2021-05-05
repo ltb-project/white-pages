@@ -12,7 +12,7 @@ require_once("../conf/config.inc.php");
 require_once("../lib/ldap.inc.php");
 
 # Connect to LDAP
-$ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
+$ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw);
 
 $ldap = $ldap_connection[0];
 $result = $ldap_connection[1];
@@ -28,11 +28,6 @@ if ($ldap) {
     if (isset($gallery_user_filter) ) {
         $gallery_filter = $gallery_user_filter;
     }
-    # Search for users in group
-    if (isset($_GET['groupdn'])) {
-        $gallery_filter = "(&".$gallery_filter."(memberOf=".$_GET['groupdn']."))";
-    }
-
     $search = ldap_search($ldap, $ldap_user_base, $gallery_filter, $attributes, 0, $ldap_size_limit);
 
     $errno = ldap_errno($ldap);

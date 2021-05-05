@@ -20,7 +20,7 @@ if (!isset($_POST["submit"])) {
     require_once("../lib/ldap.inc.php");
 
     # Connect to LDAP
-    $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
+    $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw);
 
     $ldap = $ldap_connection[0];
     $result = $ldap_connection[1];
@@ -61,7 +61,7 @@ if ($result === "") {
     require_once("../lib/date.inc.php");
 
     # Connect to LDAP
-    $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
+    $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw);
 
     $ldap = $ldap_connection[0];
     $result = $ldap_connection[1];
@@ -100,13 +100,7 @@ if ($result === "") {
                     } else {
                         $value = '*' . ldap_escape($value, "", LDAP_ESCAPE_FILTER) . '*';
                     }
-                    if (isset($_POST[$item."negates"]) and ($_POST[$item."negates"] == 'true')) {
-                        $ldap_filter .= "(!";
-                    }
                     $ldap_filter .= "($attribute=$value)";
-                    if (isset($_POST[$item."negates"]) and ($_POST[$item."negates"] == 'true')) {
-                        $ldap_filter .= ")";
-                    }
                 }
             }
         }

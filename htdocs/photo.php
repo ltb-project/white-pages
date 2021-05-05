@@ -14,6 +14,11 @@ $photo = "";
 if (isset($_GET["dn"]) and $_GET["dn"]) { $dn = $_GET["dn"]; }
  else { $result = "dnrequired"; }
 
+if(isset($_GET["local"]) and $_GET["local"]){
+    $photo = imagecreatefromjpeg($_GET["local"]);
+    $result = "localimage"; 
+}
+
 if ($result === "") {
 
     require_once("../conf/config.inc.php");
@@ -23,18 +28,19 @@ if ($result === "") {
     if (!isset($photo_ldap_attribute)) { $photo_ldap_attribute = "jpegPhoto"; }
     $photo_attributes[] = $photo_ldap_attribute;
     if (isset($photo_local_ldap_attribute)) { $photo_attributes[] = $photo_local_ldap_attribute; }
-    if ($use_gravatar) { array_push($photo_attributes, 'mail'); }
 
     # Connect to LDAP
-    $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
+    $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw);
 
     $ldap = $ldap_connection[0];
     $result = $ldap_connection[1];
 
     if ($ldap) {
 
+        $ldap_filter = "(&(objectCategory=Person))";
+
         # Search entry
-        $search = ldap_read($ldap, $dn, $ldap_user_filter, $photo_attributes);
+        $search = ldap_read($ldap, $dn, $ldap_filter, $photo_attributes);
 
         $errno = ldap_errno($ldap);
 
@@ -43,30 +49,16 @@ if ($result === "") {
             error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
         } else {
             $entry = ldap_get_entries($ldap, $search);
-            if ($use_gravatar) {    // If using gravatar
-                $size = 240;
-                if ($photo_fixed_width) {
-                    $size = $photo_fixed_width;
-                }
-                $url = "https://www.gravatar.com/avatar/".md5($entry[0]['mail'][0]).".jpg?s=$size&d=404";
-                $img = @file_get_contents($url);    // Ignore warning (404)
-
-                if (!empty($img)) {
-                    $photo = imagecreatefromstring($img);
-                }
-            }
-            if (!$photo) {
-                if ( !isset($entry[0][strtolower($photo_ldap_attribute)]) ) {
-                    if ( $photo_local_ldap_attribute and isset($entry[0][strtolower($photo_local_ldap_attribute)]) ) {
-                        $filephoto = $photo_local_directory . $entry[0][strtolower($photo_local_ldap_attribute)][0] . $photo_local_extension;
-                        if ( file_exists($filephoto) ) {
-                            $photo = imagecreatefromjpeg($filephoto);
-                        }
+            if ( !isset($entry[0][strtolower($photo_ldap_attribute)]) ) {
+                if ( $photo_local_ldap_attribute and isset($entry[0][strtolower($photo_local_ldap_attribute)]) ) {
+                    $filephoto = $photo_local_directory . $entry[0][strtolower($photo_local_ldap_attribute)][0] . $photo_local_extension;
+                    if ( file_exists($filephoto) ) {
+                        $photo = imagecreatefromjpeg($filephoto);
                     }
-                } else {
-                    $ldapphoto = $entry[0][strtolower($photo_ldap_attribute)][0];
-                    $photo = imagecreatefromstring($ldapphoto);
                 }
+            } else {
+                $ldapphoto = $entry[0][strtolower($photo_ldap_attribute)][0];
+                $photo = imagecreatefromstring($ldapphoto);
             }
         }
     }
