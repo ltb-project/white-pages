@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 /*
  * Allow edition of an entry
  */
@@ -26,9 +28,8 @@ $modify_state = "";
 $submit_state = "";
 $readonly = "";
 
-// Profile picture check
+// Checking photo
 if($_FILES['thumbnailPhoto']['size'] != 0) {    
-
 
     if($_FILES["thumbnailPhoto"]['size'] > 100000){ // Size
         $errProfilePicture = "L'image est trop volumineuse, elle ne doit pas dépasser 100ko. ";
@@ -41,19 +42,18 @@ if($_FILES['thumbnailPhoto']['size'] != 0) {
         $errProfilePicture += "Mauvais format utilisé, l'image doit être au format jpg ou jpeg.";
     }
 
-    if($errProfilePicture === ""){      // If there is no error, get the picture
+    if($errProfilePicture === ""){      // If no error get the photo
 
         $profilePicture = file_get_contents($_FILES['thumbnailPhoto']['tmp_name']);
     }
-    
 }
 
 
 
-if(isset($_POST["submitedit"])) {   // Data saving
+if(isset($_POST["submitedit"])) {   // Saving datas
 
-    $distname = $_POST["distname"]; // Get infos
-    $psswrd = $_POST["psswrd"];
+    $distname = $_SESSION['distname']; // Get infos
+    $psswrd = $_SESSION['password'];
     $sn = $_POST["sn"];
     $givenname = $_POST["givenname"];
     $mail = $_POST["mail"];
@@ -66,8 +66,7 @@ if(isset($_POST["submitedit"])) {   // Data saving
 
         $errors = array(); 
         
-        $errors[] = ldap_bind($ldap, $addn, $adpwd);
-        
+        $errors[] = ldap_bind($ldap, $distname, $psswrd);
 
         foreach($entry_attributes as $attribute => $value){
 
@@ -82,17 +81,20 @@ if(isset($_POST["submitedit"])) {   // Data saving
             $entry_attributes['thumbnailphoto'] = $profilePicture;
         }
 
-        $errors[] = ldap_modify($ldap, $distname, $entry_attributes);   // Modify values
+        $errors[] = ldap_modify($ldap, $distname, $entry_attributes);   // Modify data
 
         $modify_state = "visibility:block;";    // Checking mode
         $submit_state = "visibility:hidden;";
         $readonly = "readonly";
         $thumbnailPhoto_state = "disabled";
+
+        
     }
 }
 else{
 
-    $psswrd = $password;    // Get the infos after authentication
+    $_SESSION['password'] = $password;    // Get infos after authentication
+    $_SESSION['distname'] = $dn;
     $distname = $dn;
     $sn = $entry[0]["sn"][0];
     $givenname = $entry[0]["givenname"][0];
@@ -103,8 +105,7 @@ else{
         $entry_attributes[$attribute] = $entry[0][$attribute][0];
 
     }
-    
-    
+
     $modify_state = "visibility:hidden;";
     $submit_state = "visibility:block;";
     $readonly = "";
@@ -120,7 +121,6 @@ $smarty->assign("submit_state", $submit_state);
 $smarty->assign("readonly", $readonly);
 
 $smarty->assign("distname", $distname);
-$smarty->assign("psswrd", $psswrd);
 
 $smarty->assign("thumbnailPhoto_state", $thumbnailPhoto_state);
 
