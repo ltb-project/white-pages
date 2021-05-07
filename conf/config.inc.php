@@ -36,10 +36,6 @@ $ldap_group_base = "ou=groups,".$ldap_base;
 $ldap_group_filter = "(|(objectClass=groupOfNames)(objectClass=groupOfUniqueNames))";
 $ldap_size_limit = 100;
 
-# To allow users to connect and modify the AD, you must add an admin account to bind with it. The Admin account has just the rights to modify infos on the AD
-$addn = "adminID";
-$adpwd = 'password';
-
 # How display attributes
 $attributes_map = array(
     'businesscategory' => array( 'attribute' => 'businesscategory', 'faclass' => 'briefcase', 'type' => 'text' ),
