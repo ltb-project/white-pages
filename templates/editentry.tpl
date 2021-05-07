@@ -96,9 +96,6 @@
                                     <td> <input type="text" class="form-control" placeholder="Description" id="description" name="description" value="{$description}" {$readonly} /> </td>
                                 </tr>
 
-                                <td> <input type="hidden" class="form-control" name="distname" value="{$distname}"/> </td>
-                                <td> <input type="hidden" class="form-control" name="psswrd" value="{$psswrd}"/> </td>
-
                             </table>
                         </div>
                       
