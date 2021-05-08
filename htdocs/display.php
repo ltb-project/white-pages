@@ -80,10 +80,10 @@ if ($result === "") {
 
         # Sort attributes values
         foreach ($entry[0] as $attr => $values) {
-            if ( $values['count'] > 1 ) {
-                asort($values);
-            }
             if ( isset($values['count']) ) {
+		if ( $values['count'] > 1 ) {
+		    asort($values);
+		}
                 unset($values['count']);
             }
             $entry[0][$attr] = $values;
