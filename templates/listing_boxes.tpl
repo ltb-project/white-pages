@@ -11,7 +11,7 @@
             <div class="panel-body">
             <div class="row">
             <div class="col-sm-4">
-                {if {$type}==="user"}<img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$card_title}.attribute}.0}" class="img-responsive img-thumbnail center-block" />{/if}
+                {if {$objecttype}==="user"}<img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$card_title}.attribute}.0}" class="img-responsive img-thumbnail center-block" />{/if}
             </div>
             <div class="col-sm-8">
             {foreach $card_items as $item}
@@ -34,7 +34,7 @@
             </div>
             </div>
             <div class="panel-footer text-center">
-                <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}" class="btn btn-info" role="button"><i class="fa fa-fw fa-id-card"></i> {$msg_displayentry}</a>
+                <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&type={$objecttype}&search={$search}" class="btn btn-info" role="button"><i class="fa fa-fw fa-id-card"></i> {$msg_displayentry}</a>
             </div>
         </div>
     </div>

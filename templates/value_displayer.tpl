@@ -20,7 +20,7 @@
 {if $type eq 'group_dn_link'}
     {assign var="link" value="{{get_attribute dn="{$value}" attribute="cn,description" ldap_url="{$ldap_params.ldap_url}" ldap_starttls="{$ldap_params.ldap_starttls}" ldap_binddn="{$ldap_params.ldap_binddn}" ldap_bindpw="{$ldap_params.ldap_bindpw}" ldap_filter="{$ldap_params.ldap_group_filter}" ldap_network_timeout="{$ldap_params.ldap_network_timeout}"}|truncate:{$truncate_value_after}}"}
     {if $link}
-    <a href="index.php?page=display&dn={$value|escape:'url'}&search={$search}">{$link}</a><br />
+    <a href="index.php?page=display&dn={$value|escape:'url'}&type=group&search={$search}">{$link}</a><br />
     {/if}
 {/if}
 

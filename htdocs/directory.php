@@ -17,7 +17,9 @@ $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $lda
 $ldap = $ldap_connection[0];
 $result = $ldap_connection[1];
 
-if (isset($_GET["type"])) {
+if (isset($_POST['type'])) {
+    $type = $_POST['type'];
+} else if (isset($_GET["type"])) {
     $type = $_GET["type"];
 } else {
     $type = "user";
@@ -86,6 +88,6 @@ $smarty->assign("listing_sortby", array_search($result_sortby, $result_items));
 $smarty->assign("show_undef", $directory_show_undefined);
 $smarty->assign("truncate_value_after", $directory_truncate_value_after);
 
-$smarty->assign("type", $type);
+$smarty->assign("objecttype", $type);
 $smarty->assign("directory_display_search_objects", $directory_display_search_objects)
 ?>

@@ -6,14 +6,13 @@
     </tr>
 </thead>
 <tbody>
-{$ldap_object_type=$type}
 {foreach $entries as $entry}
     <tr{if ! $listing_linkto|is_array} class="clickable" title="{$msg_displayentry}"{/if}>
         <th class="hidden-print">
-            <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}" class="btn btn-info btn-sm{if $listing_linkto===false} hidden{/if}" role="button" title="{$msg_displayentry}">
+            <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&type={$objecttype}&search={$search}" class="btn btn-info btn-sm{if $listing_linkto===false} hidden{/if}" role="button" title="{$msg_displayentry}">
                 <i class="fa fa-fw fa-id-card"></i>
             </a>
-            {if $ldap_object_type==='group'}
+            {if $objecttype==='group'}
             <a href="index.php?page=gallery&groupdn={$entry.dn|escape:'url'}" class="btn btn-info btn-sm{if $listing_linkto===false} hidden{/if}" role="button" title="{$msg_gallery}">
                 <i class="fa fa-fw fa-address-book"></i>
             </a>
@@ -24,7 +23,7 @@
         {$attribute=$attributes_map.{$column}.attribute}
         {if ({$entry.$attribute.0})}
             {if $listing_linkto|is_array && in_array($column, $listing_linkto)}
-                 <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}" title="{$msg_displayentry}">
+                 <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&type={$objecttype}&search={$search}" title="{$msg_displayentry}">
             {/if}
             {foreach $entry.{$attribute} as $value}
                 {if $value@index eq 0}{continue}{/if}

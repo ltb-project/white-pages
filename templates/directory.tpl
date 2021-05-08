@@ -9,8 +9,8 @@
 
 {if {$directory_display_search_objects}}
 <div class="btn-group" role="group">
-  <a type="button" href="index.php?page=directory&type=user" class="btn btn-default{if {$type}==="user"} active{/if}"><i class="fa fa-user"></i> {$msg_user_object}</a>
-  <a type="button" href="index.php?page=directory&type=group" class="btn btn-default{if {$type}==="group"} active{/if}"><i class="fa fa-group"></i> {$msg_group_object}</a>
+  <a type="button" href="index.php?page=directory&type=user" class="btn btn-default{if {$objecttype}==="user"} active{/if}"><i class="fa fa-user"></i> {$msg_user_object}</a>
+  <a type="button" href="index.php?page=directory&type=group" class="btn btn-default{if {$objecttype}==="group"} active{/if}"><i class="fa fa-group"></i> {$msg_group_object}</a>
 </div>
 <hr />
 {/if}

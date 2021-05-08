@@ -40,6 +40,8 @@ if (!isset($_POST["submit"])) {
 
 if (isset($_POST["type"])) {
     $type = $_POST["type"];
+} else if (isset($_GET["type"])) {
+    $type = $_GET["type"];
 }
 
 if ( $type === "user" ) {
@@ -72,8 +74,8 @@ if ($result === "") {
         $ldap_filter = "(&".$ldap_search_filter."(&";
         foreach ($advanced_search_criteria as $item) {
             $attribute = $attributes_map[$item]['attribute'];
-            $type = $attributes_map[$item]['type'];
-            if ( $type == "date") {
+            $kind = $attributes_map[$item]['type'];
+            if ( $kind == "date") {
                 if (isset($_POST[$item."from"]) and $_POST[$item."from"]) {
                     $value = string2ldapDate($_POST[$item."from"]);
                     $value = ldap_escape($value, null, LDAP_ESCAPE_FILTER);
@@ -85,7 +87,7 @@ if ($result === "") {
                     $ldap_filter .= "($attribute<=$value)";
                 }
             }
-            elseif ( $type == "boolean") {
+            elseif ( $kind == "boolean") {
                 if (isset($_POST[$item]) and $_POST[$item]) {
                     $value = $_POST[$item];
                     $value = ldap_escape($value, null, LDAP_ESCAPE_FILTER);
@@ -183,7 +185,7 @@ if ($result === "") {
                 $smarty->assign("nb_entries", $nb_entries);
                 $smarty->assign("entries", $entries);
                 $smarty->assign("size_limit_reached", $size_limit_reached);
-                $smarty->assign("type", $type);
+                $smarty->assign("objecttype", $type);
 
                 if ($results_display_mode == 'table') {
                     $columns = $result_items;
