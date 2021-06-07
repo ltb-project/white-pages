@@ -2,7 +2,7 @@ LDAP Tool Box White-Pages documentation
 ========================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
    presentation.rst
@@ -16,3 +16,4 @@ LDAP Tool Box White-Pages documentation
    advancedsearch.rst
    entriesdisplay.rst
    fulldisplay.rst
+   directorymenu.rst
