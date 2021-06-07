@@ -19,3 +19,4 @@ LDAP Tool Box White-Pages documentation
    directorymenu.rst
    gallerymenu.rst
    csvexport.rst
+   vcardexport.rst
