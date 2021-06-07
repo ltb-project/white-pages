@@ -8,3 +8,4 @@ LDAP Tool Box White-Pages documentation
    presentation.rst
    installation.rst
    configuration-apache.rst
+   general-parameters.rst
