@@ -135,4 +135,19 @@ Install the package:
 
    yum localinstall white-pages-VERSION.noarch.rpm
 
-Dependencies should be installed automatically by yum. 
+Dependencies should be installed automatically by yum.
+
+Upgrade Notes
+-------------
+
+If you upgrade from an older version, read the following instructions:
+
+LDAP user regex
+
+The 0.3 release adds a new parameter: `$ldap_user_regex`.
+
+If the default value does not fit your LDAP directory configuration, you must unset the default value, or adapt it. To unset it, put in your config.inc.local.php:
+
+```unset($ldap_user_regex);```
+
+See also the ldap parameters page.
