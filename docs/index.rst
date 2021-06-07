@@ -13,3 +13,4 @@ LDAP Tool Box White-Pages documentation
    attributes.rst
    photos.rst
    quicksearch.rst
+   advancedsearch.rst
