@@ -12,3 +12,4 @@ LDAP Tool Box White-Pages documentation
    ldap-parameters.rst
    attributes.rst
    photos.rst
+   quicksearch.rst
