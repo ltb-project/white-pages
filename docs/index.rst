@@ -14,3 +14,4 @@ LDAP Tool Box White-Pages documentation
    photos.rst
    quicksearch.rst
    advancedsearch.rst
+   entriesdisplay.rst
