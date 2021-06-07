@@ -15,3 +15,4 @@ LDAP Tool Box White-Pages documentation
    quicksearch.rst
    advancedsearch.rst
    entriesdisplay.rst
+   fulldisplay.rst
