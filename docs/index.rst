@@ -17,3 +17,5 @@ LDAP Tool Box White-Pages documentation
    entriesdisplay.rst
    fulldisplay.rst
    directorymenu.rst
+   gallerymenu.rst
+   csvexport.rst
