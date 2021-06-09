@@ -1,8 +1,6 @@
 Photos
 ======
 
-.. note:: Configuration file: ``white-pages/conf/config.inc.local.php``
-
 Default photo
 -------------
 

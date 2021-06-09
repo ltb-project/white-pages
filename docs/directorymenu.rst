@@ -1,8 +1,6 @@
 Directory menu
 ==============
 
-.. note:: Configuration file: ``white-pages/conf/config.inc.local.php``
-
 The directory feature list all results in a table form.
 
 The directory is displayed in menu.

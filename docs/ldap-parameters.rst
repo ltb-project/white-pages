@@ -1,8 +1,6 @@
 LDAP parameters
 ===============
 
-.. note:: Configuration file: ``white-pages/conf/config.inc.local.php``
-
 Server address
 --------------
 

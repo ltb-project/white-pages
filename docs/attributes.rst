@@ -1,8 +1,6 @@
 Attributes
 ==========
 
-.. note:: Configuration file : use White-Pages local configuration file.
-
 To configure how LDAP attributes are displayed or searched, use the ``$attributes_map`` parameter which is an array of arrays, with this structure:
 
 * $attributes_map :

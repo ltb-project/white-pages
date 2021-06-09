@@ -1,7 +1,7 @@
 Presentation
 ============
 
-White-pages is a PHP application that allows users to search and display data stored in an LDAP directory.
+White Pages is a PHP application that allows users to search and display data stored in an LDAP directory.
 
 The application can be used on standard LDAPv3 directories and Active Directory, as all searched attributes can be set in configuration.
 

@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u'LDAP Tool Box white-pages'
+project = u'LDAP Tool Box White Pages'
 copyright = u'2021, LDAP Tool Box'
 author = u'LDAP Tool Box'
 

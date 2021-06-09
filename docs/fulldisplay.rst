@@ -1,8 +1,6 @@
 Full display
 ============
 
-.. note:: Configuration file: ``white-pages/conf/config.inc.local.php``
-
 This page is displayed when clicking on a search result, or directly if there is only one entry matching the search query.
 
 List which items are displayed:

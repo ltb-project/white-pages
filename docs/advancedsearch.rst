@@ -1,8 +1,6 @@
 Advanced search
 ===============
 
-.. note:: Configuration file: ``white-pages/conf/config.inc.local.php``
-
 The advanced search feature allows to search on multiple attributes (attribute1 and attribute2 and …) with a substring matching (default), an exact matching (through checkboxes) and an ordering matching (for dates).
 
 The advanced search button is displayed in menu.
