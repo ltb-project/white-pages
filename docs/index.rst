@@ -1,4 +1,4 @@
-LDAP Tool Box White-Pages documentation
+LDAP Tool Box White Pages documentation
 ========================================
 
 .. toctree::
