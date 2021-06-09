@@ -1,8 +1,6 @@
 Entries display
 ===============
 
-.. note:: Configuration file: ``white-pages/conf/config.inc.local.php``
-
 Display mode
 ------------
 

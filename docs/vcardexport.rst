@@ -1,8 +1,6 @@
 vCard export
 ============
 
-.. note:: Configuration file: ``white-pages/conf/config.inc.local.php``
-
 When displaying an entry, it is possible to export it as vCard. If the feature is activated, a new button is displayed under the other information.
 
 .. tip:: The vCard format is a standard, you can get more information here: https://en.wikipedia.org/wiki/VCard. 

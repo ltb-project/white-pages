@@ -1,8 +1,6 @@
 Gallery menu
 ============
 
-.. note:: Configuration file: ``white-pages/conf/config.inc.local.php``
-
 The gallery feature list all photos with the user's names.
 
 The gallery is displayed in menu. 
