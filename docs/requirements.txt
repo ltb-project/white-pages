@@ -1,0 +1,2 @@
+sphinx-prompt
+sphinx-rtd-theme
