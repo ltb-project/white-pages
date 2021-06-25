@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="{$lang}">
 <head>
     <title>{$msg_title}</title>
@@ -20,8 +19,8 @@
 {if $custom_css}
     <link rel="stylesheet" type="text/css" href="{$custom_css}" />
 {/if}
-    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
-    <link href="images/favicon.ico" rel="shortcut icon" />
+    <link href="images/phone.ico" rel="icon" type="image/x-icon" />
+    <link href="images/phone.ico" rel="shortcut icon" />
 {if $background_image}
      <style>
        html, body {
@@ -30,6 +29,8 @@
        }
   </style>
 {/if}
+
+
 
 </head>
 <body>
