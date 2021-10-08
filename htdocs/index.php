@@ -15,15 +15,8 @@ require_once("../conf/config.inc.php");
 #==============================================================================
 require_once("../lib/detectbrowserlanguage.php");
 # Available languages
-$languages = array();
-if ($handle = opendir('../lang')) {
-    while (false !== ($entry = readdir($handle))) {
-        if ($entry != "." && $entry != "..") {
-             array_push($languages, str_replace(".inc.php", "", $entry));
-        }
-    }
-    closedir($handle);
-}
+$files = glob("../lang/*.php");
+$languages = str_replace(".inc.php", "", $files);
 $lang = detectLanguage($lang, $languages);
 require_once("../lang/$lang.inc.php");
 if (file_exists("../conf/$lang.inc.php")) {
