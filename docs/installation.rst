@@ -50,7 +50,7 @@ Import repository key:
 
 .. prompt:: bash #
 
-    wget -O - https://ltb-project.org/wiki/lib/RPM-GPG-KEY-LTB-project | sudo apt-key add -
+    wget -O - https://ltb-project.org/documentation/_static/RPM-GPG-KEY-LTB-project | sudo apt-key add -
 
 Then update:
 
@@ -111,7 +111,7 @@ Import repository key:
 
 .. prompt:: bash #
 
-    rpm --import https://ltb-project.org/wiki/lib/RPM-GPG-KEY-LTB-project
+    rpm --import https://ltb-project.org/documentation/_static/RPM-GPG-KEY-LTB-project
 
 You are now ready to install:
 
@@ -127,7 +127,7 @@ You should import LTB GPG key first:
 
 .. prompt:: bash #
 
-   rpm --import http://ltb-project.org/wiki/lib/RPM-GPG-KEY-LTB-project
+   rpm --import http://ltb-project.org/documentation/_static/RPM-GPG-KEY-LTB-project
 
 Install the package:
 
