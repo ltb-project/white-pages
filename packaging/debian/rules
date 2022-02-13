@@ -6,7 +6,11 @@ export DH_COMPAT=9
 %:
 	dh $@
 
+override_dh_install:
+	dh_install
+	debian/replace_cache_dirs
+
 override_dh_fixperms:
 	dh_fixperms
-	chown www-data:www-data debian/white-pages/usr/share/white-pages/cache
-	chown www-data:www-data debian/white-pages/usr/share/white-pages/templates_c
+	chown www-data:www-data debian/white-pages/var/cache/white-pages/cache
+	chown www-data:www-data debian/white-pages/var/cache/white-pages/templates_c

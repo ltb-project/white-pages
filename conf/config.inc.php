@@ -169,6 +169,10 @@ $default_page = "welcome";
 # Debug mode
 $debug = false;
 
+# Cache directory
+#$smarty_compile_dir = "/var/cache/white-pages/templates_c";
+#$smarty_cache_dir = "/var/cache/white-pages/cache";
+
 # Allow to override current settings with local configuration
 if (file_exists (dirname (__FILE__) . '/config.inc.local.php')) {
     include dirname (__FILE__) . '/config.inc.local.php';

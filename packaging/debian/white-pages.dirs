@@ -1,2 +1,2 @@
-/usr/share/white-pages/cache
-/usr/share/white-pages/templates_c
+/var/cache/white-pages/cache
+/var/cache/white-pages/templates_c
