@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sed -i 's:^#$smarty_cache_dir.*:$smarty_cache_dir = "/var/cache/white-pages/cache";:' debian/white-pages/usr/share/white-pages/conf/config.inc.php
+sed -i 's:^#$smarty_compile_dir.*:$smarty_compile_dir = "/var/cache/white-pages/templates_c";:' debian/white-pages/usr/share/white-pages/conf/config.inc.php
