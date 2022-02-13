@@ -16,6 +16,7 @@
 %define wp_realname  ltb-project-%{name}
 %define wp_version   0.3
 %define wp_destdir   /usr/share/%{name}
+%define wp_cachedir  /var/cache/%{name}
 
 #=================================================
 # Header
@@ -55,13 +56,13 @@ rm -rf %{buildroot}
 
 # Create directories
 mkdir -p %{buildroot}/%{wp_destdir}
-mkdir -p %{buildroot}/%{wp_destdir}/cache
+mkdir -p %{buildroot}/%{wp_cachedir}/cache
 mkdir -p %{buildroot}/%{wp_destdir}/conf
 mkdir -p %{buildroot}/%{wp_destdir}/htdocs
 mkdir -p %{buildroot}/%{wp_destdir}/lang
 mkdir -p %{buildroot}/%{wp_destdir}/lib
 mkdir -p %{buildroot}/%{wp_destdir}/templates
-mkdir -p %{buildroot}/%{wp_destdir}/templates_c
+mkdir -p %{buildroot}/%{wp_cachedir}/templates_c
 mkdir -p %{buildroot}/etc/httpd/conf.d
 
 # Copy files
@@ -77,8 +78,10 @@ install -m 644 templates/*    %{buildroot}/%{wp_destdir}/templates
 ## Apache configuration
 install -m 644 %{SOURCE1}     %{buildroot}/etc/httpd/conf.d/white-pages.conf
 
-# Adapt Smarty path
+# Adapt Smarty paths
 sed -i 's:/usr/share/php/smarty3:/usr/share/php/Smarty:' %{buildroot}%{wp_destdir}/conf/config.inc.php
+sed -i 's:^#$smarty_cache_dir.*:$smarty_cache_dir = "'%{wp_cachedir}/cache'";:' %{buildroot}%{wp_destdir}/conf/config.inc.php
+sed -i 's:^#$smarty_compile_dir.*:$smarty_compile_dir = "'%{wp_cachedir}/templates_c'";:' %{buildroot}%{wp_destdir}/conf/config.inc.php
 
 %post
 #=================================================
@@ -86,8 +89,8 @@ sed -i 's:/usr/share/php/smarty3:/usr/share/php/Smarty:' %{buildroot}%{wp_destdi
 #=================================================
 
 # Change owner
-/bin/chown apache:apache %{wp_destdir}/cache
-/bin/chown apache:apache %{wp_destdir}/templates_c
+/bin/chown apache:apache %{wp_cachedir}/cache
+/bin/chown apache:apache %{wp_cachedir}/templates_c
 
 #=================================================
 # Cleaning
@@ -103,6 +106,7 @@ rm -rf %{buildroot}
 %config(noreplace) %{wp_destdir}/conf/config.inc.php
 %config(noreplace) /etc/httpd/conf.d/white-pages.conf
 %{wp_destdir}
+%{wp_cachedir}
 
 #=================================================
 # Changelog
