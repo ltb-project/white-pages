@@ -45,7 +45,7 @@
 {/if}
 
 {if $type eq 'list'}
-    {$value|truncate:{$truncate_value_after}}<br />
+    {{get_list_value value=$value ldap_url="{$ldap_params.ldap_url}" ldap_starttls="{$ldap_params.ldap_starttls}" ldap_binddn="{$ldap_params.ldap_binddn}" ldap_bindpw="{$ldap_params.ldap_bindpw}" ldap_network_timeout="{$ldap_params.ldap_network_timeout}" list_base="{$attributes_list.{$item}.base}" list_filter="{$attributes_list.{$item}.filter}" list_key="{$attributes_list.{$item}.key}" list_value="{$attributes_list.{$item}.value}" }|truncate:{$truncate_value_after}}<br />
 {/if}
 
 {if $type eq 'bytes'}

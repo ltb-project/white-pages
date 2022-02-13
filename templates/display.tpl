@@ -36,7 +36,7 @@
                         <td>
                         {if ({$entry.$attribute.0})}
                             {foreach $entry.{$attribute} as $value}
-                            {include 'value_displayer.tpl' value=$value type=$type truncate_value_after=10000}
+                            {include 'value_displayer.tpl' item=$item value=$value type=$type truncate_value_after=10000}
                             {/foreach}
                         {else}
                             <i>{$msg_notdefined}</i><br />
