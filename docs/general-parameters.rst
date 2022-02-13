@@ -125,4 +125,11 @@ You need to define where Smarty is installed:
 
     define("SMARTY", "/usr/share/php/smarty3/Smarty.class.php");
 
+You can also configure cache directories:
 
+.. code-block:: php
+
+    $smarty_compile_dir = "/var/cache/white-pages/templates_c";
+    $smarty_cache_dir = "/var/cache/white-pages/cache";
+
+.. tip:: These directories must be writable by system user running the php code.
