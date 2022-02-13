@@ -28,11 +28,14 @@ if (file_exists("../conf/$lang.inc.php")) {
 #==============================================================================
 require_once(SMARTY);
 
+$compile_dir = $smarty_compile_dir ? $smarty_compile_dir : "../templates_c/";
+$cache_dir = $smarty_cache_dir ? $smarty_cache_dir : "../cache/";
+
 $smarty = new Smarty();
 $smarty->escape_html = true;
 $smarty->setTemplateDir('../templates/');
-$smarty->setCompileDir('../templates_c/');
-$smarty->setCacheDir('../cache/');
+$smarty->setCompileDir($compile_dir);
+$smarty->setCacheDir($cache_dir);
 $smarty->debugging = $debug;
 
 error_reporting(0);
