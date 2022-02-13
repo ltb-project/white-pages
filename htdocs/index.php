@@ -70,6 +70,7 @@ if ($use_datatables) {
 $smarty->assign('version',$version);
 $smarty->assign('display_footer',$display_footer);
 $smarty->assign('logout_link',isset($logout_link) ? $logout_link : false);
+$smarty->assign('attributes_list',$attributes_list);
 
 # Assign messages
 $smarty->assign('lang',$lang);
@@ -96,6 +97,7 @@ $smarty->registerPlugin("function", "get_attribute", "get_attribute");
 $smarty->registerPlugin("function", "convert_ldap_date", "convert_ldap_date");
 $smarty->registerPlugin("function", "convert_guid_value", "convert_guid_value");
 $smarty->registerPlugin("function", "convert_bytes", "convert_bytes");
+$smarty->registerPlugin("function", "get_list_value", "get_list_value");
 
 #==============================================================================
 # Route to page
