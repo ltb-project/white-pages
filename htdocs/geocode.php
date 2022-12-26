@@ -9,9 +9,7 @@ $hashed_address = "geocode_" . hash('sha256', $q);
 
 if (extension_loaded("APCu")) {
     if (apcu_exists($hashed_address)) {
-        header('Content-Type: application/json; charset=UTF-8');
-        print(apcu_fetch($hashed_address));
-        print("\n");
+        header('Content-Type: application/json; charset=UTF-8');
         exit(0);
     }
 }
@@ -31,7 +29,7 @@ $json = file_get_contents($URL, false, $context);
 
 if ($json === false) {
     if ($map_no_location_show_on_default) {
-        header('Content-Type: application/json; charset=UTF-8');
+        header('Content-Type: application/json; charset=UTF-8');
         print($default_location);
         exit(0);
     } else {
@@ -44,7 +42,7 @@ if ($json === false) {
 if (extension_loaded("APCu")) {
     apcu_store($hashed_address, $json);
 }
-header('Content-Type: application/json; charset=UTF-8');
+header('Content-Type: application/json; charset=UTF-8');
 print($json);
 print("\n");
 ?>

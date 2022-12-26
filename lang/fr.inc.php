@@ -55,6 +55,7 @@ $messages['label_title'] = "Titre";
 $messages['label_uniquemember'] = "Membres";
 $messages['ldaperror'] = "Erreur de communication avec l'annuaire LDAP";
 $messages['logout'] = "Déconnexion";
+$messages['map'] = "Carte";
 $messages['noentriesfound'] = "Aucune entrée trouvée";
 $messages['notdefined'] = "Non renseigné";
 $messages['negates'] = "Cocher la case pour nier la valeur";

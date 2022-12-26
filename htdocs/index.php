@@ -61,6 +61,7 @@ $smarty->assign('use_quick_search',$use_quick_search);
 $smarty->assign('use_advanced_search',$use_advanced_search);
 $smarty->assign('use_gallery',$use_gallery);
 $smarty->assign('use_directory',$use_directory);
+$smarty->assign('use_map',$use_map);
 $smarty->assign('use_csv',$use_csv);
 $smarty->assign('use_vcard',$use_vcard);
 $smarty->assign('use_datatables', $use_datatables);
@@ -113,6 +114,7 @@ if ( $page === "search" and !$use_quick_search ) { $page = "welcome"; }
 if ( $page === "advancedsearch" and !$use_advanced_search ) { $page = "welcome"; }
 if ( $page === "directory" and !$use_directory ) { $page = "welcome"; }
 if ( $page === "gallery" and !$use_gallery ) { $page = "welcome"; }
+if ( $page === "map" and !$use_map ) { $page = "welcome"; }
 if ( file_exists($page.".php") ) { require_once($page.".php"); }
 $smarty->assign('page',$page);
 
