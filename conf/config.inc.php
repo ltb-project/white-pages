@@ -130,6 +130,13 @@ $directory_show_undefined = false;
 $directory_truncate_value_after = 30;
 $directory_display_search_objects = true;
 
+# Map
+$map_geocode_url = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&q=%s';
+# Place someone with no adddress info in ldap entry to a default location
+$map_no_location_show_on_default = false;
+$map_default_location_lat = 48.6882405;
+$map_default_location_long = -32.6412127;
+
 # CSV
 $use_csv = true;
 $csv_filename = "white_pages_export_" . date("Y-m-d") . ".csv";
