@@ -16,7 +16,23 @@ Enable or disable this feature :
 
 .. warning:: You should not enable this feature on a large directory as all (or a lot of) entries are displayed.
 
-You should also install PHP APCu extension for better map performance and address geocoding cache.
+.. warning:: You should install PHP APCu extension for better map performance and address geocoding cache.
+
+To avoid hitting rate limit on geocoding api, you can use cli script ``bin/map_preload_geocoding_cache.php`` to gocode all addresses and
+preload cache with a 1 second delay between each geocoding call. This way the geocoding cache will be preloaded and only changed addresses will
+be requested to the geocoding API on map display, leading to faster map rendering.
+This should be done each time your php process is restarted, so the best way is to add it to cron.
+
+.. code-block::
+
+    $ bin/map_preload_geocoding_cache.php
+    . geocode and store address if needed: 20 W 34th St. New York, NY 10001 United States of America
+    . geocode and store address if needed: 400 Broad St. Seattle, WA 98109 United States of America
+    . geocode and store address if needed: 5905 Wilshire Blvd. Los Angeles, CA 90036 United States of America
+    . geocode and store address if needed: 1007 York Street Denver, CO 80206 United States of America
+    . geocode and store address if needed: 1007 York Street Denver, CO 80206 United States of America
+      . Already in cache, skipping rate limit wait
+
 
 Map tiles and geocoding API
 ---------------------------

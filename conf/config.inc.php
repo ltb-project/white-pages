@@ -23,6 +23,9 @@
 # All the default values are kept here, you should not modify it but use
 # config.inc.local.php file instead to override the settings from here.
 #==============================================================================
+# HTTP
+$http_url = "http://localhost/wp";
+
 # LDAP
 $ldap_url = "ldap://localhost";
 $ldap_starttls = false;
