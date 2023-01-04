@@ -1,0 +1,61 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "9dd090eac2a2a93942b06e57234dd9d5",
+    "packages": [
+        {
+            "name": "ltb-project/ldap",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ltb-project/ltb-ldap.git",
+                "reference": "a75d960a303d45bd3cb1004356045fea60e32a20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ltb-project/ltb-ldap/zipball/a75d960a303d45bd3cb1004356045fea60e32a20",
+                "reference": "a75d960a303d45bd3cb1004356045fea60e32a20",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ldap": ">=7.4",
+                "php": ">=7.4"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ltb\\": "src/Ltb"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Ltb\\": "tests/Ltb"
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "description": "ldap common tools for ltb-project self-service-password service-desk and white-pages white-pages.",
+            "support": {
+                "source": "https://github.com/ltb-project/ltb-ldap/tree/main",
+                "issues": "https://github.com/ltb-project/ltb-ldap/issues"
+            },
+            "time": "2023-01-04T13:11:34+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "ltb-project/ldap": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}
