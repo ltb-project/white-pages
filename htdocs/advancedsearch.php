@@ -17,7 +17,7 @@ if (!isset($_POST["submit"])) {
     $smarty->assign('advanded_search_display_search_objects', $advanded_search_display_search_objects);
 
     # Check if an attribute is a list type and prepare the list
-    require __DIR__ . '/vendor/autoload.php';
+    require __DIR__ . '/../vendor/autoload.php';
 
     # Connect to LDAP
     $ldap_connection = \Ltb\Ldap::connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
@@ -57,7 +57,7 @@ if ( $type === "group" ) {
 if ($result === "") {
 
     require_once("../conf/config.inc.php");
-    require __DIR__ . '/vendor/autoload.php';
+    require __DIR__ . '/../vendor/autoload.php';
     require_once("../lib/date.inc.php");
 
     # Connect to LDAP

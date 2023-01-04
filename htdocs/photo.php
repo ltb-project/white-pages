@@ -17,7 +17,7 @@ if (isset($_GET["dn"]) and $_GET["dn"]) { $dn = $_GET["dn"]; }
 if ($result === "") {
 
     require_once("../conf/config.inc.php");
-    require __DIR__ . '/vendor/autoload.php';
+    require __DIR__ . '/../vendor/autoload.php';
 
     # Defauft value for LDAP photo attribute
     if (!isset($photo_ldap_attribute)) { $photo_ldap_attribute = "jpegPhoto"; }

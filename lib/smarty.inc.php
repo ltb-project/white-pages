@@ -1,7 +1,7 @@
 <?php
 # Smarty functions
 
-require __DIR__ . '/../html/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 require_once("date.inc.php");
 require_once("filesize.inc.php");
 
