@@ -46,7 +46,7 @@ RUN rmdir /var/www/html && \
     mkdir -p /var/www/templates_c && \
     chown -R www-data: /var/www/templates_c
 COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
-RUN /usr/bin/composer install
+RUN cd /var/www && /usr/bin/composer install
 RUN buildDeps="${BUILDDEP}" \
     && apt-get purge -y --auto-remove $buildDeps \
     && rm -r /var/lib/apt/lists/*
