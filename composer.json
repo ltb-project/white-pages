@@ -6,6 +6,6 @@
         }
     ],
     "require": {
-        "ltb/ldap": "@dev"
+        "ltb-project/ldap": "@dev"
     }
 }
