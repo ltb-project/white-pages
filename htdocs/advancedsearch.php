@@ -17,10 +17,10 @@ if (!isset($_POST["submit"])) {
     $smarty->assign('advanded_search_display_search_objects', $advanded_search_display_search_objects);
 
     # Check if an attribute is a list type and prepare the list
-    require_once("../lib/ldap.inc.php");
+    require __DIR__ . '/vendor/autoload.php';
 
     # Connect to LDAP
-    $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
+    $ldap_connection = \Ltb\Ldap::connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
 
     $ldap = $ldap_connection[0];
     $result = $ldap_connection[1];
@@ -29,7 +29,7 @@ if (!isset($_POST["submit"])) {
         $item_list = array();
         foreach ( $advanced_search_criteria as $criteria ) {
             if ( $attributes_map[$criteria]["type"] === "list" ) {
-                $item_list[$criteria] = wp_ldap_get_list( $ldap, $attributes_list[$criteria]["base"], $attributes_list[$criteria]["filter"], $attributes_list[$criteria]["key"], $attributes_list[$criteria]["value"]  );
+                $item_list[$criteria] = \Ltb\Ldap::get_list( $ldap, $attributes_list[$criteria]["base"], $attributes_list[$criteria]["filter"], $attributes_list[$criteria]["key"], $attributes_list[$criteria]["value"]  );
             }
         }
         $smarty->assign('item_list', $item_list);
@@ -57,11 +57,11 @@ if ( $type === "group" ) {
 if ($result === "") {
 
     require_once("../conf/config.inc.php");
-    require_once("../lib/ldap.inc.php");
+    require __DIR__ . '/vendor/autoload.php';
     require_once("../lib/date.inc.php");
 
     # Connect to LDAP
-    $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
+    $ldap_connection = \Ltb\Ldap::connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
 
     $ldap = $ldap_connection[0];
     $result = $ldap_connection[1];

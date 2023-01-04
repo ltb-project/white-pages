@@ -1,7 +1,7 @@
 FROM php:7.4-apache
 # Install PHP extensions
 ENV DEBIAN_FRONTEND=noninteractive
-RUN buildDeps=" \
+ENV BUILDDEP=" \
 	libbz2-dev \
 	libcurl4-gnutls-dev \
 	libfreetype6-dev \
@@ -13,7 +13,10 @@ RUN buildDeps=" \
 	libsasl2-dev \
 	libwebp-dev \
 	gnupg2 \
-    " \
+        git \
+        zip \
+    "
+RUN buildDeps="${BUILDDEP}" \
     runtimeDeps=" \
 	curl \
 	ldap-utils \
@@ -31,17 +34,22 @@ RUN buildDeps=" \
     && docker-php-ext-install intl gd ldap \
     && echo en_US.UTF-8 UTF-8 >/etc/locale.gen \
     && /usr/sbin/locale-gen \
-    && apt-get purge -y --auto-remove $buildDeps \
-    && rm -r /var/lib/apt/lists/* \
     && a2enmod rewrite
 RUN mkdir -p /usr/share/php/smarty3/ && \
     curl -Lqs https://github.com/smarty-php/smarty/archive/v3.1.35.tar.gz | \
     tar xzf - -C /usr/share/php/smarty3/ --strip-components=2
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+RUN echo "log_errors = On\nerror_log = /dev/stderr\n" >>  "$PHP_INI_DIR/php.ini"
 COPY . /var/www
 RUN rmdir /var/www/html && \
     mv /var/www/htdocs /var/www/html && \
     mkdir -p /var/www/templates_c && \
     chown -R www-data: /var/www/templates_c
+COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
+RUN /usr/bin/composer install
+RUN buildDeps="${BUILDDEP}" \
+    && apt-get purge -y --auto-remove $buildDeps \
+    && rm -r /var/lib/apt/lists/*
+
 ENV LC_CTYPE=en_US.UTF-8
 EXPOSE 80
