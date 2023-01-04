@@ -33,6 +33,11 @@
                   <a href="index.php?page=gallery"><i class="fa fa-fw fa-user-circle"></i> {$msg_gallery}</a>
                 </li>
                 {/if}
+                {if $use_map}
+                <li {if $page=="map"}class="active"{/if}>
+                  <a href="index.php?page=map"><i class="fa fa-fw fa-globe"></i> {$msg_map}</a>
+                </li>
+                {/if}
                 {if $logout_link}
                 <li>
                   <a href="{$logout_link}"><i class="fa fa-fw fa-sign-out"></i> {$msg_logout}</a>

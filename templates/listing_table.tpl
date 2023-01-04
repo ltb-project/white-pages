@@ -14,9 +14,16 @@
                 <i class="fa fa-fw fa-id-card"></i>
             </a>
             {if $ldap_object_type==='group'}
+              {if $use_gallery}
             <a href="index.php?page=gallery&groupdn={$entry.dn|escape:'url'}" class="btn btn-info btn-sm{if $listing_linkto===false} hidden{/if}" role="button" title="{$msg_gallery}">
                 <i class="fa fa-fw fa-address-book"></i>
             </a>
+              {/if}
+              {if $use_map}
+            <a href="index.php?page=map&groupdn={$entry.dn|escape:'url'}" class="btn btn-info btn-sm{if $listing_linkto===false} hidden{/if}" role="button" title="{$msg_map}">
+                <i class="fa fa-fw fa-globe"></i>
+            </a>
+              {/if}
             {/if}
         </th>
     {foreach $listing_columns as $column}

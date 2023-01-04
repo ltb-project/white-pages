@@ -16,6 +16,11 @@
 {if $hover_effect}
     <link rel="stylesheet" type="text/css" href="vendor/hover/css/hover-min.css" />
 {/if}
+{if $with_leaflet}
+    <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="vendor/leaflet.markercluster/MarkerCluster.css" />
+    <link rel="stylesheet" href="vendor/leaflet.markercluster/MarkerCluster.Default.css" />
+{/if}
     <link rel="stylesheet" type="text/css" href="css/white-pages.css" />
 {if $custom_css}
     <link rel="stylesheet" type="text/css" href="{$custom_css}" />

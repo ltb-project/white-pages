@@ -23,6 +23,9 @@
 # All the default values are kept here, you should not modify it but use
 # config.inc.local.php file instead to override the settings from here.
 #==============================================================================
+# HTTP
+$http_url = "http://localhost/wp";
+
 # LDAP
 $ldap_url = "ldap://localhost";
 $ldap_starttls = false;
@@ -129,6 +132,24 @@ $directory_group_sortby = "fullname";
 $directory_show_undefined = false;
 $directory_truncate_value_after = 30;
 $directory_display_search_objects = true;
+
+# Map
+$use_map = false;
+#$map_user_filter = "(&".$ldap_user_filter."(jpegPhoto=*))";
+$map_tileserver = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+$map_attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+$map_fullname_items = array('firstname', 'lastname');
+# Additional items to show below name in map popup
+$map_additional_items = array('title');
+# Address display format is an array, one item per line. If a line is an array, it will include multiple items separated by a space.
+$map_address_format = array('street', array('l', 'postalcode'), 'state');
+$map_display_photos_as_marker = true;
+# Geocoding API. Use %s as the address to geocode. API should return a json list of {lat, lon} objects
+$map_geocode_url = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&q=%s';
+# Place someone with no adddress info in ldap entry to a default location
+$map_no_location_show_on_default = false;
+$map_default_location_lat = 48.6882405;
+$map_default_location_long = -32.6412127;
 
 # CSV
 $use_csv = true;
