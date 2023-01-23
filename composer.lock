@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ltb-project/ltb-ldap.git",
-                "reference": "a75d960a303d45bd3cb1004356045fea60e32a20"
+                "reference": "df1f57a5f8d4b129fccf12096cf4995e6a2a5b7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ltb-project/ltb-ldap/zipball/a75d960a303d45bd3cb1004356045fea60e32a20",
-                "reference": "a75d960a303d45bd3cb1004356045fea60e32a20",
+                "url": "https://api.github.com/repos/ltb-project/ltb-ldap/zipball/df1f57a5f8d4b129fccf12096cf4995e6a2a5b7a",
+                "reference": "df1f57a5f8d4b129fccf12096cf4995e6a2a5b7a",
                 "shasum": ""
             },
             "require": {
@@ -44,7 +44,7 @@
                 "source": "https://github.com/ltb-project/ltb-ldap/tree/main",
                 "issues": "https://github.com/ltb-project/ltb-ldap/issues"
             },
-            "time": "2023-01-04T13:11:34+00:00"
+            "time": "2023-01-23T15:14:33+00:00"
         }
     ],
     "packages-dev": [],
