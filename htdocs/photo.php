@@ -11,13 +11,12 @@ $dn = "";
 $entry = "";
 $photo = "";
 
-if (isset($_GET["dn"]) and $_GET["dn"]) { $dn = $_GET["dn"]; }
- else { $result = "dnrequired"; }
-
-if ($result === "") {
-
+if (isset($_GET["dn"]) and $_GET["dn"])
+{
     require_once("../conf/config.inc.php");
     require __DIR__ . '/../vendor/autoload.php';
+
+    $dn = $_GET["dn"];
 
     # Defauft value for LDAP photo attribute
     if (!isset($photo_ldap_attribute)) { $photo_ldap_attribute = "jpegPhoto"; }
@@ -70,6 +69,9 @@ if ($result === "") {
             }
         }
     }
+}
+else {
+    $result = "dnrequired";
 }
 
 # Display default photo if any error

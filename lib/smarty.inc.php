@@ -95,11 +95,11 @@ function get_list_value($params) {
 
         if ( $errno ) {
             error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
-	} else {
+        } else {
             $entry = ldap_get_entries($ldap, $search);
             if ( isset ($entry[0][$list_value]) ) {
                 $return = $entry[0][$list_value][0];
-	    }
+            }
         }
     }
 
