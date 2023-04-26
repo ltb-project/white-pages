@@ -106,5 +106,10 @@ function get_list_value($params) {
     return $return;
 }
 
+function split_value($value,$separator) {
+
+    return explode( $separator, $value );
+
+}
 
 ?>

@@ -51,3 +51,9 @@
 {if $type eq 'bytes'}
     {convert_bytes($value)|truncate:{$truncate_value_after}}<br />
 {/if}
+
+{if $type eq 'address'}
+    {foreach split_value($value,'$') as $fragment}
+    {$fragment|truncate:{$truncate_value_after}}<br />
+    {/foreach}
+{/if}
