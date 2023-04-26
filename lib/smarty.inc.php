@@ -1,7 +1,7 @@
 <?php
 # Smarty functions
 
-require_once("ldap.inc.php");
+require __DIR__ . '/../vendor/autoload.php';
 require_once("date.inc.php");
 require_once("filesize.inc.php");
 
@@ -18,7 +18,7 @@ function get_attribute($params) {
     $ldap_network_timeout = $params["ldap_network_timeout"];
 
     # Connect to LDAP
-    $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
+    $ldap_connection = \Ltb\Ldap::connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
 
     $ldap = $ldap_connection[0];
     $result = $ldap_connection[1];
@@ -81,7 +81,7 @@ function get_list_value($params) {
     $return = $value;
 
     # Connect to LDAP
-    $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
+    $ldap_connection = \Ltb\Ldap::connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
 
     $ldap = $ldap_connection[0];
     $result = $ldap_connection[1];
@@ -95,11 +95,11 @@ function get_list_value($params) {
 
         if ( $errno ) {
             error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
-	} else {
+        } else {
             $entry = ldap_get_entries($ldap, $search);
             if ( isset ($entry[0][$list_value]) ) {
                 $return = $entry[0][$list_value][0];
-	    }
+            }
         }
     }
 
