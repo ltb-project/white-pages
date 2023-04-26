@@ -56,10 +56,12 @@ const addMarkerOnMap = async (point) => {
   let marker = L.marker(new L.LatLng(point.location.lat, point.location.lon), opts)
 
   // Add popup to marker
-  let popupContent = `<b>${point.fullname}</b><br />
+  let popupContent = `<p class="text-center"><b>${point.fullname}</b></p>
     ${point.additional_items.join('<br />')}${point.additional_items.length !== 0 ? '<br />' : ''}
+    <a href="index.php?page=display&dn=${encodeURI(point.dn)}" >
     <img src="photo.php?dn=${encodeURI(point.dn)}" width=150px></img>
-    <i>${point.display_address}</i>`
+    </a>
+    <p><i>${point.display_address}</i></p>`
   marker.bindPopup(popupContent)
 
   // Add marker to groups
