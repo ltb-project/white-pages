@@ -8,7 +8,7 @@ $entries = array();
 $size_limit_reached = false;
 
 require_once("../conf/config.inc.php");
-require_once("../lib/ldap.inc.php");
+require __DIR__ . '/../vendor/autoload.php';
 
 function array_flatten($arr, $flat = [])
 {
@@ -23,7 +23,7 @@ function array_flatten($arr, $flat = [])
 }
 
 # Connect to LDAP
-$ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
+$ldap_connection = \Ltb\Ldap::connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
 
 $ldap = $ldap_connection[0];
 $result = $ldap_connection[1];
