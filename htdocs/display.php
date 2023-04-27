@@ -28,25 +28,38 @@ if ($result === "") {
     $ldap = $ldap_connection[0];
     $result = $ldap_connection[1];
 
-    # Find object type
-    if (isset($_POST['type'])) {
-        $type = $_POST['type'];
-    } else if (isset($ldap_user_regex)) {
-        if ( preg_match( $ldap_user_regex, $dn) ) {
-            $type = "user";
-        } else {
-            $type = "group";
-        }
-    } else {
-        if ( preg_match( '/'.$ldap_user_base.'$/i', $dn) ) {
-            $type = "user";
-        }
-        else {
-            $type = "group";
-        }
-    }
-
     if ($ldap) {
+
+        # Find object type
+        # 1. Check type parameter
+        if (isset($_POST['type'])) {
+            $type = $_POST['type'];
+        }
+        # 2. Use ldap_user_regex
+        else if (isset($ldap_user_regex)) {
+            if ( preg_match( $ldap_user_regex, $dn) ) {
+                $type = "user";
+            } else {
+                $type = "group";
+            }
+        }
+        # 3. Check LDAP filter on object
+        else {
+            $user_search = ldap_read($ldap, $dn, $ldap_user_filter, array('1.1'));
+            $errno = ldap_errno($ldap);
+            if ( $errno ) {
+                error_log("LDAP - Object type search error $errno  (".ldap_error($ldap).")");
+            } else if ( ldap_count_entries($ldap, $user_search) ) {
+                $type = "user";
+            }
+            $group_search = ldap_read($ldap, $dn, $ldap_group_filter, array('1.1'));
+            $errno = ldap_errno($ldap);
+            if ( $errno ) {
+                error_log("LDAP - Object type earch error $errno  (".ldap_error($ldap).")");
+            } else if ( ldap_count_entries($ldap, $group_search) ) {
+                $type = "group";
+            }
+        }
 
         # Search attributes
         $attributes = array();
@@ -60,7 +73,7 @@ if ($result === "") {
 
         if ($use_vcard and $_GET["vcard"] and $vcard_file_identifier) {
             $attributes[] = $attributes_map[$vcard_file_identifier]['attribute'];
-	}
+        }
 
         # Search entry
         $ldap_filter = $ldap_user_filter;
@@ -90,9 +103,9 @@ if ($result === "") {
         }
 
 	if ($use_vcard and $_GET["vcard"]) {
-            require_once("../lib/vcard.inc.php");
-            $vcard_file = $entry[0][$attributes_map[$vcard_file_identifier]['attribute']][0].".".$vcard_file_extension;
-            download_vcard_send_headers($vcard_file);
+        require_once("../lib/vcard.inc.php");
+        $vcard_file = $entry[0][$attributes_map[$vcard_file_identifier]['attribute']][0].".".$vcard_file_extension;
+        download_vcard_send_headers($vcard_file);
 	    if ($type == "group") {
 		$vcard_map = $vcard_group_map;
 		$attributes = array();
