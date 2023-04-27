@@ -72,7 +72,7 @@ When an entry is displayed, to help the software to determine if this is a user,
 
     $ldap_user_regex = "/,ou=users,/i";
 
-.. tip:: If you don't set this value, the software will use the search base: if the entry DN is inside the user search base, then it is a user. But this method can be useless depending of your LDAP directory organization.
+.. tip:: If you don't set this value, the software will use the LDAP filters: if the entry can be found with the user filter, it is a user object, if it can be found with the group filter, it is a group.
 
 
 Group search parameters

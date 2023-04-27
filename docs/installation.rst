@@ -142,9 +142,15 @@ Upgrade Notes
 
 If you upgrade from an older version, read the following instructions:
 
-LDAP user regex
+Version 0.4
+~~~~~~~~~~~
 
-The 0.3 release adds a new parameter: `$ldap_user_regex`.
+* Parameter `$ldap_user_regex` is now disbaled by default, means that the object type detection is done with configured LDAP filters.
+
+Version 0.3
+~~~~~~~~~~~
+
+There is a new parameter: `$ldap_user_regex`.
 
 If the default value does not fit your LDAP directory configuration, you must unset the default value, or adapt it. To unset it, put in your config.inc.local.php:
 
