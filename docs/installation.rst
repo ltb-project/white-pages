@@ -147,6 +147,8 @@ Version 0.4
 
 * Parameter `$ldap_user_regex` is now disbaled by default, means that the object type detection is done with configured LDAP filters.
 
+* The new map feature is disabled by default, as it requires to request de OpenStreetMap API. Check the documentation before enabling it.
+
 Version 0.3
 ~~~~~~~~~~~
 
