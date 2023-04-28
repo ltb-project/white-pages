@@ -26,16 +26,16 @@ Check [Star Pages](http://ltb-project.org/star-pages/), an online demonstration 
 
 ## Prerequisite
 
-* PHP >= 5.6 (for ldap_escape function)
+* PHP >= 7.4
 * PHP extensions required:
   * php-ldap
   * php-gd
-* Smarty 3
+* Smarty >= 3
 
 ## Documentation
 
-Documentation is available on http://ltb-project.org/wiki/documentation/white-pages
+Documentation is available on https://ltb-project.org/documentation/white-pages.html
 
 ## Download
 
-Tarballs and packages for Debian and Red Hat are available on http://ltb-project.org/wiki/download#white_pages
+Tarballs and packages for Debian and Red Hat are available on https://ltb-project.org/download.html
