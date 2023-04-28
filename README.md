@@ -1,7 +1,5 @@
 # White Pages
 
-[![Build Status](https://travis-ci.org/ltb-project/white-pages.svg?branch=master)](https://travis-ci.org/ltb-project/white-pages)
-
 ## Presentation
 
 White Pages is a PHP application that allows users to search and display data stored in an LDAP directory.
