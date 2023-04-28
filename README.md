@@ -1,5 +1,7 @@
 # White Pages
 
+[![Documentation Status](https://readthedocs.org/projects/white-pages/badge/?version=latest)](https://white-pages.readthedocs.io/en/latest/)
+
 ## Presentation
 
 White Pages is a PHP application that allows users to search and display data stored in an LDAP directory.
