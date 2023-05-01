@@ -4,7 +4,15 @@ Installation
 From tarball
 ------------
 
-Tarball can be downloaded from this page. Choose the file with the .tar.gz extension.
+Prerequisites:
+
+* php (version 7.4 or higher)
+* php-ldap
+* php-gd
+* Smarty (version 3 or higher)
+* composer
+
+Tarball can be downloaded from `LTB project website<https://ltb-project.org/download.html>__`.
 
 Uncompress and unarchive the tarball: 
 
@@ -12,26 +20,25 @@ Uncompress and unarchive the tarball:
 
    tar zxvf ltb-project-white-pages-VERSION.tar.gz
 
-Install files in ``/usr/local/`` (or wherever you choose):
+Run composer:
 
 .. prompt:: bash #
 
-   mv ltb-project-white-pages-VERSION /usr/local/white-pages
+   cd ltb-project-white-pages-VERSION/
+   composer update
+
+Install files in ``/usr/share/white-pages`` (or wherever you choose):
+
+.. prompt:: bash #
+
+   mv * /usr/share/white-pages
 
 Adapt ownership of Smarty cache repositories so Apache user can write into them. For example: 
 
 .. prompt:: bash #
 
-   chown apache:apache /usr/local/white-pages/cache
-   chown apache:apache /usr/local/white-pages/templates_c
-
-You need to install these prerequisites:
-
-* Apache or another web server
-* php (version 5.6 or higher)
-* php-ldap
-* php-gd
-* Smarty (version 3)
+   chown apache:apache /usr/share/white-pages/cache
+   chown apache:apache /usr/share/white-pages/templates_c
 
 Debian / Ubuntu
 ---------------
