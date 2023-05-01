@@ -12,7 +12,7 @@ Prerequisites:
 * Smarty (version 3 or higher)
 * composer
 
-Tarball can be downloaded from `LTB project website<https://ltb-project.org/download.html>__`.
+Tarball can be downloaded from `LTB project website <https://ltb-project.org/download.html>`_.
 
 Uncompress and unarchive the tarball: 
 
@@ -43,6 +43,20 @@ Adapt ownership of Smarty cache repositories so Apache user can write into them.
 Debian / Ubuntu
 ---------------
 
+.. warning:: You need to install first the package `smarty3`_. If you face the error ``syntax error, unexpected token "class"``, try to install a newer version of the package:
+
+   ``# wget http://ftp.us.debian.org/debian/pool/main/s/smarty3/smarty3_3.1.47-2_all.deb``
+
+   ``# dpkg -i smarty3_3.1.47-2_all.deb``
+
+.. _smarty3: https://packages.debian.org/sid/smarty3
+
+Import repository key:
+
+.. prompt:: bash #
+
+    curl https://ltb-project.org/documentation/_static/RPM-GPG-KEY-LTB-project | gpg --dearmor > /usr/share/keyrings/ltb-project-openldap-archive-keyring.gpg
+
 Configure the repository:
 
 .. prompt:: bash #
@@ -51,13 +65,7 @@ Configure the repository:
 
 .. code-block:: ini
 
-    deb [arch=amd64] https://ltb-project.org/debian/stable stable main
-
-Import repository key:
-
-.. prompt:: bash #
-
-    wget -O - https://ltb-project.org/documentation/_static/RPM-GPG-KEY-LTB-project | sudo apt-key add -
+    deb [arch=amd64 signed-by=/usr/share/keyrings/ltb-project-openldap-archive-keyring.gpg] https://ltb-project.org/debian/stable stable main
 
 Then update:
 
@@ -71,26 +79,10 @@ You are now ready to install:
 
     apt install white-pages
 
-You can also do it manually :
-
-Debian package can be downloaded from this page. Choose the file with the .deb extension. : https://ltb-project.org/download#white-pages
-
-Install it:
-
-.. prompt:: bash #
-
-   dpkg -i white-pages_VERSION_all.deb
-
-You will maybe be asked to install dependencies before: 
-
-.. prompt:: bash #
-
-   apt install apache2 php php-ldap php-gd smarty3
-
 CentOS / RedHat
 ---------------
 
-.. warning:: You may need to install first the package `php-Smarty`_ which is not in official repositories.
+.. warning:: You need to install first the package `php-Smarty`_ which is not in official repositories.
 
 .. _php-Smarty: https://pkgs.org/download/php-Smarty
 
@@ -99,6 +91,7 @@ Configure the yum repository:
 .. prompt:: bash #
 
     vi /etc/yum.repos.d/ltb-project.repo
+
 .. code-block:: ini
 
     [ltb-project-noarch]
@@ -126,24 +119,6 @@ You are now ready to install:
 
     yum install white-pages
 
-You can also do it manually :
-
-RPM can be downloaded from this page. Choose the file with the .rpm extension: https://ltb-project.org/download#white-pages
-
-You should import LTB GPG key first: 
-
-.. prompt:: bash #
-
-   rpm --import http://ltb-project.org/documentation/_static/RPM-GPG-KEY-LTB-project
-
-Install the package:
-
-.. prompt:: bash #
-
-   yum localinstall white-pages-VERSION.noarch.rpm
-
-Dependencies should be installed automatically by yum.
-
 Upgrade Notes
 -------------
 
@@ -154,7 +129,7 @@ Version 0.4
 
 * Parameter `$ldap_user_regex` is now disbaled by default, means that the object type detection is done with configured LDAP filters.
 
-* The new map feature is disabled by default, as it requires to request de OpenStreetMap API. Check the documentation before enabling it.
+* The new map feature is disabled by default, as it requires to request OpenStreetMap API. Check the documentation before enabling it.
 
 Version 0.3
 ~~~~~~~~~~~
