@@ -23,9 +23,6 @@
 # All the default values are kept here, you should not modify it but use
 # config.inc.local.php file instead to override the settings from here.
 #==============================================================================
-# HTTP
-$http_url = "http://localhost/wp";
-
 # LDAP
 $ldap_url = "ldap://localhost";
 $ldap_starttls = false;
@@ -150,6 +147,9 @@ $map_geocode_url = 'https://nominatim.openstreetmap.org/search?format=json&limit
 $map_no_location_show_on_default = false;
 $map_default_location_lat = 48.6882405;
 $map_default_location_long = -32.6412127;
+
+# HTTP
+$http_url = "http://localhost/wp";
 
 # CSV
 $use_csv = true;
