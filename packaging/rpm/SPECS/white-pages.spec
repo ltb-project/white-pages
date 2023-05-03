@@ -29,14 +29,14 @@ License: GPL
 BuildArch: noarch
 
 Group: Applications/Web
-URL: http://ltb-project.org
+URL: https://ltb-project.org
 
 Source: %{wp_realname}-%{wp_version}.tar.gz
 Source1: white-pages-apache.conf
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 Prereq: coreutils
-Requires: php, php-ldap, php-Smarty, php-gd
+Requires: php, php-ldap, php-gd
 
 %description
 White Pages is a PHP application that allows users to search and display data stored in an LDAP directory. 
@@ -63,6 +63,7 @@ mkdir -p %{buildroot}/%{wp_destdir}/lang
 mkdir -p %{buildroot}/%{wp_destdir}/lib
 mkdir -p %{buildroot}/%{wp_destdir}/templates
 mkdir -p %{buildroot}/%{wp_cachedir}/templates_c
+mkdir -p %{buildroot}/%{wp_destdir}/vendor
 mkdir -p %{buildroot}/etc/httpd/conf.d
 
 # Copy files
@@ -75,6 +76,7 @@ cp -a          htdocs/vendor  %{buildroot}/%{wp_destdir}/htdocs
 install -m 644 lang/*         %{buildroot}/%{wp_destdir}/lang
 install -m 644 lib/*          %{buildroot}/%{wp_destdir}/lib
 install -m 644 templates/*    %{buildroot}/%{wp_destdir}/templates
+cp -a          vendor/*       %{buildroot}/%{wp_destdir}/vendor
 ## Apache configuration
 install -m 644 %{SOURCE1}     %{buildroot}/etc/httpd/conf.d/white-pages.conf
 
