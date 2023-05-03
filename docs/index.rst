@@ -1,6 +1,8 @@
 LDAP Tool Box White Pages documentation
 ========================================
 
+.. image:: images/wp_0_1_full_display.png
+
 .. toctree::
    :maxdepth: 1
    :caption: Contents:
