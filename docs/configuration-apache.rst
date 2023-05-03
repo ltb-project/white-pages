@@ -42,8 +42,8 @@ You can also configure White Pages in the default virtual host:
 
 .. code-block:: apache
 
-    Alias /wp /usr/local/white-pages/htdocs
-    <Directory /usr/local/white-pages/htdocs>
+    Alias /wp /usr/share/white-pages/htdocs
+    <Directory /usr/share/white-pages/htdocs>
            DirectoryIndex index.php
            AllowOverride None
            <IfVersion >= 2.3>
