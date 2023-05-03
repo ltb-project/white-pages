@@ -11,6 +11,7 @@ It has the following features:
 * Advanced search: a full form to search on several attributes
 * Directory : display of all entries in a table form
 * Gallery: display of all entries with their photo
+* Map: display entries on world map
 * Search and display groups and members
 * Export results as CSV
 * Export entry as vCard
