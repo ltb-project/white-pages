@@ -4,6 +4,7 @@
 ../lang/*      usr/share/white-pages/lang/
 ../lib/*       usr/share/white-pages/lib/
 ../templates/* usr/share/white-pages/templates/
+../vendor/*    usr/share/white-pages/vendor/
 
 # Apache configuration
 debian/conf/* etc/apache2/sites-available/
