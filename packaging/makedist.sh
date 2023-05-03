@@ -25,6 +25,7 @@ mkdir -p $NAME-$VERSION/lang
 mkdir -p $NAME-$VERSION/lib
 mkdir -p $NAME-$VERSION/templates
 mkdir -p $NAME-$VERSION/templates_c
+mkdir -p $NAME-$VERSION/vendor
 
 # Copy files
 cp    ../AUTHORS     $NAME-$VERSION
@@ -35,6 +36,11 @@ cp -a ../htdocs/*    $NAME-$VERSION/htdocs
 cp -a ../lang/*      $NAME-$VERSION/lang
 cp -a ../lib/*       $NAME-$VERSION/lib
 cp -a ../templates/* $NAME-$VERSION/templates
+
+# Download composer dependencies
+cp ../composer* $NAME-$VERSION
+composer -d $NAME-$VERSION update
+rm $NAME-$VERSION/composer*
 
 # Create archive
 tar -cf $NAME-$VERSION.tar $NAME-$VERSION/
