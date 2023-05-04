@@ -119,6 +119,19 @@ You are now ready to install:
 
     yum install white-pages
 
+Docker
+------
+
+Prepare a local configuration file for White Pages, for example ``/home/test/whitepages.conf.php``.
+
+Start container, mounting that configuration file:
+
+.. prompt:: bash #
+
+    docker run -p 80:80 \
+        -v /home/test/whitepages.conf.php:/var/www/conf/config.inc.local.php \
+        -it docker.io/ltbproject/white-pages:latest
+
 Upgrade Notes
 -------------
 
