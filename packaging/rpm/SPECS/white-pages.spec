@@ -5,8 +5,8 @@
 #
 # GPL License
 #
-# Copyright (C) 2009-2016 Clement OUDOT
-# Copyright (C) 2009-2016 LTB-project
+# Copyright (C) 2009-2023 Clement OUDOT
+# Copyright (C) 2009-2023 LTB-project
 #=================================================
 
 #=================================================
@@ -14,7 +14,7 @@
 #=================================================
 %define wp_name      white-pages
 %define wp_realname  ltb-project-%{name}
-%define wp_version   0.3
+%define wp_version   0.4
 %define wp_destdir   /usr/share/%{name}
 %define wp_cachedir  /var/cache/%{name}
 
@@ -114,6 +114,43 @@ rm -rf %{buildroot}
 # Changelog
 #=================================================
 %changelog
+* Thu May 04 2023 - Clement Oudot <clem@ltb-project.org> - 0.4-1
+- gh#75: Display account : empty result
+- gh#76: add a option to change timeout of ldap connexion
+- gh#77: Gallery by group
+- gh#79: Add gallery by group
+- gh#80: Add possibility to use gravatar as photo
+- gh#81: Disable PHP errors (error_reporting) if debug is not set
+- gh#82: Disable error reporting if debug is false
+- gh#84: Manage "bytes" attributes
+- gh#85: New type "bytes"
+- gh#87: Possibility to negates value in search
+- gh#88: Move documentation in sources
+- gh#89: Add ldap_network_timeout option
+- gh#92: Allow the Smarty path to be set in conf.inc.local.php
+- gh#93: Configure cache dir and template cache dir
+- gh#95: feat(docker): sample docker image & kubernetes deployment
+- gh#97: Groups Vcard
+- gh#98: Patch datepicker lang
+- gh#104: Fix undefined warnings
+- gh#106: Issue 88 & Small Fixes
+- gh#107: Fixes on online doc
+- gh#108: Bad value displayed when attribute type is a list
+- gh#109: Backup files are loaded as config in lang/
+- gh#110: Restrict languages to php files
+- gh#112: Display list value
+- gh#113: Manage cache dirs
+- gh#115: WP incompatible with PHP 8+ (ldap_sort)
+- gh#116: Split debug and debug_smarty
+- gh#117: Provide CSS map files for minified version
+- gh#118: New feature: Map
+- gh#119: Use LTB LDAP common lib
+- gh#120: Factorize search
+- gh#121: Displayer for address
+- gh#122: Address displayer (issue #121)
+- gh#123: Smarty debug (issue #116)
+- gh#124: Bug in group display in user and group base are the same
+- gh#125: Group rendering
 * Tue Jul 23 2019 - Clement Oudot <clem@ltb-project.org> - 0.3-1
 - gh#42: add dropdown list to advanced search criteria
 - gh#47: Do not display not found groups/users
