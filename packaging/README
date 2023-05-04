@@ -43,7 +43,7 @@ You should have a ~/.rpmmacros like this:
 Copy packaging files from current directory to build directory:
 $ cp -Ra rpm/* /home/clement/build
 
-Copy Self Service Archive to SOURCES/:
+Copy archive to SOURCES/:
 $ cp ltb-project-white-pages-VERSION.tar.gz /home/clement/build/SOURCES
 
 Go in build directory and build package:
@@ -52,3 +52,9 @@ $ rpmbuild -ba SPECS/white-pages.spec
 
 Sign RPM:
 $ rpm --addsign RPMS/noarch/white-pages*
+
+# 4 - Docker
+#==============================================================================
+
+From current directory, do:
+$ docker build -t white-pages -f ./docker/Dockerfile ../
