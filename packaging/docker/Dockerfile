@@ -35,16 +35,17 @@ RUN buildDeps="${BUILDDEP}" \
     && echo en_US.UTF-8 UTF-8 >/etc/locale.gen \
     && /usr/sbin/locale-gen \
     && a2enmod rewrite
-RUN mkdir -p /usr/share/php/smarty3/ && \
-    curl -Lqs https://github.com/smarty-php/smarty/archive/v3.1.35.tar.gz | \
-    tar xzf - -C /usr/share/php/smarty3/ --strip-components=2
+RUN mkdir -p /usr/share/php/smarty4/ && \
+    curl -Lqs https://github.com/smarty-php/smarty/archive/v4.3.1.tar.gz | \
+    tar xzf - -C /usr/share/php/smarty4/ --strip-components=2
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 RUN echo "log_errors = On\nerror_log = /dev/stderr\n" >>  "$PHP_INI_DIR/php.ini"
 COPY . /var/www
 RUN rmdir /var/www/html && \
     mv /var/www/htdocs /var/www/html && \
     mkdir -p /var/www/templates_c && \
-    chown -R www-data: /var/www/templates_c
+    chown -R www-data: /var/www/templates_c && \
+    sed -i 's/smarty3/smarty4/' /var/www/conf/config.inc.php
 COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
 RUN cd /var/www && /usr/bin/composer install
 RUN buildDeps="${BUILDDEP}" \
