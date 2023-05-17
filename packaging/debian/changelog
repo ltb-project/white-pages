@@ -1,3 +1,9 @@
+ltb-project-white-pages (0.4-2) unstable; urgency=low
+
+    * gh#126: Missing bin/ directory in packages
+
+ -- Clement Oudot <clem@ltb-project.org>  Wed, 17 May 2023 12:00:00 +0200
+
 ltb-project-white-pages (0.4-1) unstable; urgency=low
 
     * gh#75: Display account : empty result

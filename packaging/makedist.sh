@@ -18,6 +18,7 @@ rm -f $NAME*
 
 # Create dist dir
 mkdir -p $NAME-$VERSION
+mkdir -p $NAME-$VERSION/bin
 mkdir -p $NAME-$VERSION/cache
 mkdir -p $NAME-$VERSION/conf
 mkdir -p $NAME-$VERSION/htdocs
@@ -31,6 +32,7 @@ mkdir -p $NAME-$VERSION/vendor
 cp    ../AUTHORS     $NAME-$VERSION
 cp    ../LICENCE     $NAME-$VERSION
 cp    ../README.md   $NAME-$VERSION
+cp -a ../bin/*       $NAME-$VERSION/bin
 cp -a ../conf/*      $NAME-$VERSION/conf
 cp -a ../htdocs/*    $NAME-$VERSION/htdocs
 cp -a ../lang/*      $NAME-$VERSION/lang

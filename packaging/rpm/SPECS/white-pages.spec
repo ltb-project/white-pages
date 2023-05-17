@@ -24,7 +24,7 @@
 Summary: LDAP white pages web interface
 Name: %{wp_name}
 Version: %{wp_version}
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPL
 BuildArch: noarch
 
@@ -56,6 +56,7 @@ rm -rf %{buildroot}
 
 # Create directories
 mkdir -p %{buildroot}/%{wp_destdir}
+mkdir -p %{buildroot}/%{wp_destdir}/bin
 mkdir -p %{buildroot}/%{wp_cachedir}/cache
 mkdir -p %{buildroot}/%{wp_destdir}/conf
 mkdir -p %{buildroot}/%{wp_destdir}/htdocs
@@ -68,6 +69,7 @@ mkdir -p %{buildroot}/etc/httpd/conf.d
 
 # Copy files
 ## Program
+install -m 755 bin/*          %{buildroot}/%{wp_destdir}/bin
 install -m 644 conf/*         %{buildroot}/%{wp_destdir}/conf
 install -m 644 htdocs/*.php   %{buildroot}/%{wp_destdir}/htdocs
 cp -a          htdocs/css     %{buildroot}/%{wp_destdir}/htdocs
@@ -114,6 +116,8 @@ rm -rf %{buildroot}
 # Changelog
 #=================================================
 %changelog
+* Wed May 17 2023 - Clement Oudot <clem@ltb-project.org> - 0.4-2
+- gh#126: Missing bin/ directory in packages
 * Thu May 04 2023 - Clement Oudot <clem@ltb-project.org> - 0.4-1
 - gh#75: Display account : empty result
 - gh#76: add a option to change timeout of ldap connexion
