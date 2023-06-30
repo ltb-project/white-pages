@@ -71,6 +71,14 @@ To manage a list, you need to define how keys and values are searched in LDAP di
 
 The attribute set in ``key`` will be used as select key, and the attribute set in ``value`` will be used as select value.
 
+It is also possible to configure which attribute is displayed as value on ``dn_link``, ``group_dn_link``, ``usergroup_dn_link`` types. For each type, an array is defined, and the first attribute found is used:
+
+.. code-block:: php
+
+    $dn_link_label_attributes = array("cn");
+    $group_dn_link_label_attributes = array("description","cn");
+    $usergroup_dn_link_label_attributes = array("description","cn");
+
 .. tip:: 
 
     You can translate attribute label by defining the ``label_item`` messages in custom lang file, for example :
