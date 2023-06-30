@@ -19,6 +19,40 @@ White Pages default configuration file is ``white-pages/conf/config.inc.php``. I
   Do not copy ``config.inc.php`` into ``config.inc.local.php``, as the first one includes the second.
   You would then create an infinite loop and crash your application.
 
+Multi tenancy
+-------------
+
+You can load a specific configuration file by passing a HTTP header.
+This feature is disabled by default. To enable it:
+
+.. code-block:: php
+
+   $header_name_extra_config = "WP-Extra-Config";
+
+Then if you send the header ``WP-Extra-Config: domain1``, the file
+``conf/config.inc.domain1.php`` will be loaded.
+
+Using Apache, we may set such header using the following:
+
+.. code-block:: apache
+
+    <VirtualHost *:80>
+       ServerName wp.domain1.com
+       RequestHeader setIfEmpty WP-Extra-Config domain1
+       [...]
+    </VirtualHost>
+
+Using Nginx, we could use instead:
+
+.. code-block:: nginx
+
+   server {
+       [...]
+       location ~ \.php {
+           fastcgi_param WP-Extra-Config domain1;
+           [...]
+       }
+
 Language
 --------
 
