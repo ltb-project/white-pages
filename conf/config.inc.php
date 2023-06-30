@@ -74,6 +74,9 @@ $attributes_map = array(
 );
 
 $attributes_list = array();
+$dn_link_label_attributes = array("cn");
+$group_dn_link_label_attributes = array("description","cn");
+$usergroup_dn_link_label_attributes = array("description","cn");
 
 # Quick search
 $use_quick_search = true;
