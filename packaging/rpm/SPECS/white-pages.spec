@@ -73,6 +73,7 @@ install -m 755 bin/*          %{buildroot}/%{wp_destdir}/bin
 install -m 644 conf/*         %{buildroot}/%{wp_destdir}/conf
 install -m 644 htdocs/*.php   %{buildroot}/%{wp_destdir}/htdocs
 cp -a          htdocs/css     %{buildroot}/%{wp_destdir}/htdocs
+cp -a          htdocs/js      %{buildroot}/%{wp_destdir}/htdocs
 cp -a          htdocs/images  %{buildroot}/%{wp_destdir}/htdocs
 cp -a          htdocs/vendor  %{buildroot}/%{wp_destdir}/htdocs
 install -m 644 lang/*         %{buildroot}/%{wp_destdir}/lang
