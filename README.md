@@ -1,5 +1,6 @@
 # White Pages
 
+[![Build Status](https://github.com/ltb-project/white-pages/actions/workflows/ci.yml/badge.svg)](https://github.com/ltb-project/white-pages/actions/workflows/ci.yml)
 [![Documentation Status](https://readthedocs.org/projects/white-pages/badge/?version=latest)](https://white-pages.readthedocs.io/en/latest/)
 
 ## Presentation
