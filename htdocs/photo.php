@@ -74,8 +74,14 @@ else {
     $result = "dnrequired";
 }
 
-# Display default photo if any error
 if ( !$photo ) {
+    # If `no_fallback` in GET parameters, fail with 404
+    if(isset($_GET['no_fallback'])) {
+        http_response_code(404);
+        die();
+    }
+
+    # Else, display default photo if any error
     $photo = imagecreatefromjpeg($default_photo);
 }
 
