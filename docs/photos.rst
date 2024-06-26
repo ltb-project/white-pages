@@ -10,6 +10,14 @@ Configure which file is used as default photo :
 
     $default_photo = "images/240px-PICA.jpg";
 
+Photo endpoint
+--------------
+
+A user's photo can be queried on ``/photo.php?dn=[user's DN]``. An additionnal
+``no_fallback`` parameter can be passed to avoid falling back to a default
+picture and returning 404: ``/photo.php?no_fallback&dn=[user's DN]``. This is
+useful to eg. use an application's internal fallback image instead.
+
 LDAP attribute
 --------------
 
