@@ -72,6 +72,12 @@ Available languages are:
 
 .. tip:: You can override messages by creating lang files in ``conf/``, for example ``conf/en.inc.php``.
 
+In order to restrict languages to a specific set add ``$allowed_lang`` array as follows:
+
+.. code-block:: php
+
+   $allowed_lang = array("en");
+
 Dates
 -----
 
