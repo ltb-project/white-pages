@@ -1,3 +1,4 @@
 templates_c/*
 cache/*
 /vendor/
+composer.lock
