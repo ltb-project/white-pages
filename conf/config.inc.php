@@ -179,6 +179,7 @@ $photo_fixed_height = 240;
 
 # Language
 $lang ="en";
+$allowed_lang = array("");
 $date_specifiers = "%Y-%m-%d %H:%M:%S (%Z)";
 
 # Graphics
