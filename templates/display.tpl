@@ -2,9 +2,9 @@
     <div class="col-md-2 hidden-xs"></div>
     <div class="display col-md-8 col-xs-12">
 
-        <div class="panel panel-info">
-            <div class="panel-heading text-center">
-                <p class="panel-title">
+        <div class="card mb-3 shadow card-info">
+            <div class="card-header text-center">
+                <p class="card-title">
                     <i class="fa fa-fw fa-{$attributes_map.{$card_title}.faclass}"></i>
                     {$entry.{$attributes_map.{$card_title}.attribute}.0}
                 </p>

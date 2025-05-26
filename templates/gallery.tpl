@@ -10,7 +10,7 @@
 {foreach $entries as $entry}
 
     <div class="gallery {$bootstrap_column_class}{if $hover_effect} hvr-{$hover_effect}{/if}">
-        <div class="panel panel-info">
+        <div class="card mb-3 shadow card-info">
             <div class="panel-body">
                 <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}">
                     <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$card_title}.attribute}.0}" class="img-responsive img-thumbnail center-block" />

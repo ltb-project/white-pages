@@ -1,9 +1,9 @@
 {foreach $entries as $entry}
 
     <div class="search-result {$bootstrap_column_class}{if $hover_effect} hvr-{$hover_effect}{/if}">
-        <div class="panel panel-info">
-            <div class="panel-heading text-center">
-                <p class="panel-title">
+        <div class="card mb-3 shadow card-info">
+            <div class="card-header text-center">
+                <p class="card-title">
                     <i class="fa fa-fw fa-{$attributes_map.{$card_title}.faclass}"></i>
                     {$entry.{$attributes_map.{$card_title}.attribute}.0|truncate:{$truncate_title_after}}
                 </p>
