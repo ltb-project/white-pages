@@ -13,7 +13,7 @@
         <div class="card mb-3 shadow card-info">
             <div class="card-body">
                 <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}">
-                    <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$card_title}.attribute}.0}" class="img-responsive img-thumbnail center-block" />
+                    <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$card_title}.attribute}.0}" class="img-fluid mx-auto d-block" />
                 </a>
             </div>
             <div class="card-footer text-center">
