@@ -1,7 +1,7 @@
 {include file="header.tpl"}
 
-<div class="panel panel-success">
-<div class="panel-body">
+<div class="card mb-3 shadow card-success">
+<div class="card-body">
 
 {include file="menu.tpl"}
 

@@ -11,12 +11,12 @@
 
     <div class="gallery {$bootstrap_column_class}{if $hover_effect} hvr-{$hover_effect}{/if}">
         <div class="card mb-3 shadow card-info">
-            <div class="panel-body">
+            <div class="card-body">
                 <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}">
                     <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$card_title}.attribute}.0}" class="img-responsive img-thumbnail center-block" />
                 </a>
             </div>
-            <div class="panel-footer text-center">
+            <div class="card-footer text-center">
                 {$entry.{$attributes_map.{$card_title}.attribute}.0|truncate:{$truncate_title_after}}
             </div>
         </div>

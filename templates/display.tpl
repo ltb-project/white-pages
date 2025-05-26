@@ -10,7 +10,7 @@
                 </p>
             </div>
 
-            <div class="panel-body">
+            <div class="card-body">
 
                 {if $type === "user"}
                 <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$card_title}.attribute}.0}" class="img-responsive img-thumbnail center-block" />
@@ -49,7 +49,7 @@
 
             </div>
 {if {$use_vcard} || {$edit_link}}
-            <div class="panel-footer text-center">
+            <div class="card-footer text-center">
 {if {$use_vcard}}
                 <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}&vcard=1" class="btn btn-info" role="button"><i class="fa fa-fw fa-download"></i> {$msg_downloadvcard}</a>
 {/if}
