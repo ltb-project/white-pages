@@ -1,5 +1,4 @@
 templates_c/*
 cache/*
 /vendor/
-/htdocs/vendor/bootstrap/
 composer.lock
