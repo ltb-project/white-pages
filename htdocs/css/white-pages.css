@@ -59,6 +59,10 @@ img.menu-logo {
   font-weight: normal;
 }
 
+table.dataTable {
+  display: none;
+}
+
 table.dataTable thead .sorting::after,
 table.dataTable thead .sorting_asc::after,
 table.dataTable thead .sorting_desc::after,
