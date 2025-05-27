@@ -17,33 +17,20 @@ function get_attribute($params) {
     $ldap_filter = $params["ldap_filter"];
     $ldap_network_timeout = $params["ldap_network_timeout"];
 
-    # Connect to LDAP
-    #$ldap_connection = \Ltb\Ldap::connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
+    $ldapInstance = new \Ltb\Ldap(
+                                 $ldap_url,
+                                 $ldap_starttls,
+                                 isset($ldap_binddn) ? $ldap_binddn : null,
+                                 isset($ldap_bindpw) ? $ldap_bindpw : null,
+                                 isset($ldap_network_timeout) ? $ldap_network_timeout : null,
+                                 $dn,
+                                 null,
+                                 isset($ldap_krb5ccname) ? $ldap_krb5ccname : null
+                             );
 
-    #$ldap = $ldap_connection[0];
-    #$result = $ldap_connection[1];
+    $ldap_connection = $ldapInstance->connect();
 
-    if ($ldap) {
-
-        # Search entry
-	[$ldap,$result,$nb_entries,$entries,$size_limit_reached] = $ldapInstance->search($ldap_search_filter, array(), $attributes_map, $search_result_title, $search_result_sortby, $result_items);
-
-        $errno = ldap_errno($ldap);
-
-        if ( $errno ) {
-            error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
-        } else {
-            $entry = ldap_get_entries($ldap, $search);
-
-	    # Loop over attribute
-	    foreach ( explode(",", $attribute) as $ldap_attribute ) {
-                if ( isset ($entry[0][$ldap_attribute]) ) {
-		     $return = $entry[0][$ldap_attribute][0];
-		     break;
-	        }
-	    }
-        }
-    }
+    $return = $ldapInstance->get_first_value($dn, "base", $ldap_filter, $attribute);
 
     return $return;
 }
@@ -68,6 +55,7 @@ function convert_bytes($bytes) {
 }
 
 function get_list_value($params) {
+
     $value = $params["value"];
     $ldap_url = $params["ldap_url"];
     $ldap_starttls = $params["ldap_starttls"];
@@ -80,22 +68,21 @@ function get_list_value($params) {
     $list_value = $params['list_value'];
     $return = $value;
 
-    if ($ldapInstance->connect()[0]) {
-        # Search entry
-	$filter = "(&".$list_filter."(".$list_key."=$value))";
-        [$ldap,$result,$nb_entries,$entries,$size_limit_reached] = $ldapInstance->search($ldap_search_filter, $attributes_list, $attributes_map, $search_result_title, $search_result_sortby, $result_items);
+    $ldapInstance = new \Ltb\Ldap(
+                                 $ldap_url,
+                                 $ldap_starttls,
+                                 isset($ldap_binddn) ? $ldap_binddn : null,
+                                 isset($ldap_bindpw) ? $ldap_bindpw : null,
+                                 isset($ldap_network_timeout) ? $ldap_network_timeout : null,
+                                 $dn,
+                                 null,
+                                 isset($ldap_krb5ccname) ? $ldap_krb5ccname : null
+                             );
 
-        $errno = ldap_errno($ldap);
+    $ldap_connection = $ldapInstance->connect();
 
-        if ( $errno ) {
-            error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
-        } else {
-            $entry = ldap_get_entries($ldap, $search);
-            if ( isset ($entry[0][$list_value]) ) {
-                $return = $entry[0][$list_value][0];
-            }
-        }
-    }
+    $filter = "(&".$list_filter."(".$list_key."=$value))";
+    $return = $ldapInstance->get_first_value($dn, "sub", $filter, $list_value);
 
     return $return;
 }
