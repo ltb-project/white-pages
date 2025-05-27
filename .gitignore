@@ -2,4 +2,6 @@ templates_c/*
 cache/*
 /vendor/
 /htdocs/vendor/bootstrap/
+/htdocs/vendor/font-awesome/
+/htdocs/vendor/jquery/
 composer.lock
