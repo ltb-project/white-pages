@@ -25,7 +25,7 @@
     <div class="row mb-3">
         <div class="offset-sm-3 col-sm-9">
             <button type="submit" name="submit" value="search" class="btn btn-success"><i class="fa fa-fw fa-search"></i> {$msg_search}</button>
-            {if {$use_csv}}<button type="submit" name="submit" value="csv" class="btn btn-info"><i class="fa fa-fw fa-download"></i> {$msg_downloadcsv}</button>{/if}
+            {if {$use_csv}}<button type="submit" name="submit" value="csv" class="btn btn-secondary"><i class="fa fa-fw fa-download"></i> {$msg_downloadcsv}</button>{/if}
         </div>
     </div>
 </form>
