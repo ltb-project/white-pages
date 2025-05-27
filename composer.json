@@ -1,5 +1,28 @@
 {
     "require": {
-        "ltb-project/ltb-common": "v0.1.0"
+        "components/jquery": "v3.7.1",
+        "fortawesome/font-awesome": "v6.5.2",
+        "ltb-project/ltb-common": "v0.1.0",
+        "twbs/bootstrap": "v5.3.6"
+    },
+    "scripts": {
+        "post-update-cmd": [
+
+            "rm -rf htdocs/vendor/bootstrap",
+            "cp -R vendor/twbs/bootstrap/dist htdocs/vendor/bootstrap",
+            "rm -rf htdocs/vendor/bootstrap/site htdocs/vendor/bootstrap/js/bootstrap.esm* htdocs/vendor/bootstrap/js/bootstrap.js*  htdocs/vendor/bootstrap/package-lock.json htdocs/vendor/bootstrap/scss",
+            "rm -rf vendor/twbs/bootstrap",
+
+            "rm -f htdocs/vendor/jquery/js/*",
+            "mkdir -p htdocs/vendor/jquery/js",
+            "cp vendor/components/jquery/jquery.min.* htdocs/vendor/jquery/js/",
+            "rm -rf vendor/components/jquery",
+
+            "rm -rf htdocs/vendor/font-awesome/*",
+            "cp -R vendor/fortawesome/font-awesome/css htdocs/vendor/font-awesome",
+            "cp -R vendor/fortawesome/font-awesome/webfonts htdocs/vendor/font-awesome",
+            "rm -rf vendor/fortawesome/font-awesome"
+
+        ]
     }
 }

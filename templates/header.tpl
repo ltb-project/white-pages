@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="LDAP Tool Box" />
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap-datepicker/css/bootstrap-datepicker3.standalone.min.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/all.min.css" />
+    <!-- include v4-shims.min.css for compatibility with older icon names, typically: fa-check-square-o -->
+    <link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/v4-shims.min.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/datatables/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/datatables/buttons.bootstrap5.min.css" />
 {if $use_datatables}
     <link rel="stylesheet" type="text/css" href="vendor/datatables/datatables.min.css" />
 {/if}

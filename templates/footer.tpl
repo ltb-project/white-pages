@@ -4,10 +4,8 @@
 <div id="footer">LDAP Tool Box White Pages - version {$version}</div>
 {/if}
 
-<script src="vendor/jquery/js/jquery-1.10.2.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-<script src="vendor/bootstrap-datepicker/locales/bootstrap-datepicker.{$lang_datepicker}.min.js"></script>
+<script src="vendor/jquery/js/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 {if $use_datatables}
 <script src="vendor/datatables/datatables.min.js"></script>
 {/if}
@@ -41,8 +39,8 @@
             "<'row dt-foot'<'col-sm-6'i><'col-sm-6'p>>" +
             "<'row dt-foot'<'col-sm-12'B>>",
           "buttons": [
-            { extend: 'print', autoPrint: {/literal}{if $datatables_auto_print}true{else}false{/if}{literal}, text: "{/literal}<i class=\"fa fa-print\"></i> {$msg_print_all}{literal}", className: "btn-info" },
-            { extend: 'print', autoPrint: {/literal}{if $datatables_auto_print}true{else}false{/if}{literal}, exportOptions: {modifier:{page: 'current'}}, text: "{/literal}<i class=\"fa fa-print\"></i> {$msg_print_page}{literal}", className: "btn-info" },
+            { extend: 'print', autoPrint: {/literal}{if $datatables_auto_print}true{else}false{/if}{literal}, text: "{/literal}<i class=\"fa fa-print\"></i> {$msg_print_all}{literal}", className: "btn-secondary" },
+            { extend: 'print', autoPrint: {/literal}{if $datatables_auto_print}true{else}false{/if}{literal}, exportOptions: {modifier:{page: 'current'}}, text: "{/literal}<i class=\"fa fa-print\"></i> {$msg_print_page}{literal}", className: "btn-secondary" },
           ],
           "order": [
             [ {/literal}{$listing_sortby|default:0 + 1}{literal}, "asc" ]
@@ -64,7 +62,7 @@
     </script>
     <script>
     $(document).ready(function(){
-        $('[data-toggle="popover"]').popover({
+        $('[data-bs-toggle="popover"]').popover({
             trigger: 'hover',
             placement: 'bottom',
             container: 'body'

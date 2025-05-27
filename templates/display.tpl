@@ -2,18 +2,18 @@
     <div class="col-md-2 hidden-xs"></div>
     <div class="display col-md-8 col-xs-12">
 
-        <div class="panel panel-info">
-            <div class="panel-heading text-center">
-                <p class="panel-title">
+        <div class="card mb-3 shadow card-info">
+            <div class="card-header text-center">
+                <p class="card-title">
                     <i class="fa fa-fw fa-{$attributes_map.{$card_title}.faclass}"></i>
                     {$entry.{$attributes_map.{$card_title}.attribute}.0}
                 </p>
             </div>
 
-            <div class="panel-body">
+            <div class="card-body">
 
                 {if $type === "user"}
-                <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$card_title}.attribute}.0}" class="img-responsive img-thumbnail center-block" />
+                <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$card_title}.attribute}.0}" class="img-fluid mx-auto d-block" />
                 {/if}
 
                 <div class="table-responsive">
@@ -49,12 +49,12 @@
 
             </div>
 {if {$use_vcard} || {$edit_link}}
-            <div class="panel-footer text-center">
+            <div class="card-footer text-center">
 {if {$use_vcard}}
-                <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}&vcard=1" class="btn btn-info" role="button"><i class="fa fa-fw fa-download"></i> {$msg_downloadvcard}</a>
+                <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}&vcard=1" class="btn btn-secondary" role="button"><i class="fa fa-fw fa-download"></i> {$msg_downloadvcard}</a>
 {/if}
 {if {$edit_link}}
-                <a href="{$edit_link}" class="btn btn-info" role="button"><i class="fa fa-fw fa-edit"></i> {$msg_editentry}</a>
+                <a href="{$edit_link}" class="btn btn-secondary" role="button"><i class="fa fa-fw fa-edit"></i> {$msg_editentry}</a>
 {/if}
             </div>
 

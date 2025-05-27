@@ -1,12 +1,12 @@
 {include file="header.tpl"}
 
-<div class="panel panel-success">
-<div class="panel-body">
+<div class="card mb-3 shadow card-success">
+<div class="card-body">
 
 {include file="menu.tpl"}
 
 {if $error}
-<div class="alert alert-danger">
+<div class="alert shadow alert-danger">
     <i class="fa fa-fw fa-exclamation-circle"></i> {$error}
 </div>
 {else}

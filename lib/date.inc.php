@@ -82,3 +82,14 @@ function string2ldapDate($string) {
 
     return $ldapdate;
 }
+
+function htmlDate2ldapDate($string) {
+    $values = explode("-",$string);
+    $day = $values[2];
+    $month = $values[1];
+    $year = $values[0];
+
+    $ldapdate = $year.$month.$day."000000Z";
+
+    return $ldapdate;
+}

@@ -1,6 +1,6 @@
 
 {if {$size_limit_reached}}
-<div class="alert alert-warning"><i class="fa fa-fw fa-exclamation-triangle"></i> {$msg_sizelimit}</div>
+<div class="alert shadow alert-warning"><i class="fa fa-fw fa-exclamation-triangle"></i> {$msg_sizelimit}</div>
 {/if}
 
 <div class="row" style="height: calc(100vh - 200px); margin-left: 5px; margin-right: 5px;">
