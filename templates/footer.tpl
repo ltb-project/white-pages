@@ -7,53 +7,50 @@
 <script src="vendor/jquery/js/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 {if $use_datatables}
-<script src="vendor/datatables/datatables.min.js"></script>
+<script src="vendor/datatables/dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap5.min.js"></script>
+<script src="vendor/datatables/dataTables.buttons.min.js"></script>
+<script src="vendor/datatables/buttons.colVis.min.js"></script>
+<script src="vendor/datatables/buttons.html5.min.js"></script>
+<script src="vendor/datatables/buttons.print.min.js"></script>
+<script src="vendor/datatables/buttons.bootstrap5.min.js"></script>
 {/if}
 
 {literal}
     <script type="text/javascript">
       $(document).ready( function() {
 {/literal}
-{if $use_datatables}
-    {literal}
-        var itemlist = $('table.dataTable').DataTable({
-          "stateSave":    true,
-          "searching":    true,
-          "paging":       true,
-          "info":         true,
-          "processing":   true,
-    {/literal}
-    {if $datatables_page_length_choices}
-          "lengthMenu": [
-              [ {$datatables_page_length_choices} ],
-              [ {$datatables_page_length_choices|replace:'-1':($msg_pager_all|string_format:'"%s"') nofilter} ]
-          ],
-    {/if}
-    {if $datatables_page_length_default}
-          "pageLength": {$datatables_page_length_default},
-    {/if}
-    {literal}
-          "dom":
-            "<'row ft-head'<'col-sm-3'{/literal}{if $datatables_page_length_choices}l{/if}{literal}><'col-sm-3'f><'col-sm-6'p>>" +
-            "<'row dt-main'<'col-sm-12'tr>>" +
-            "<'row dt-foot'<'col-sm-6'i><'col-sm-6'p>>" +
-            "<'row dt-foot'<'col-sm-12'B>>",
-          "buttons": [
-            { extend: 'print', autoPrint: {/literal}{if $datatables_auto_print}true{else}false{/if}{literal}, text: "{/literal}<i class=\"fa fa-print\"></i> {$msg_print_all}{literal}", className: "btn-secondary" },
-            { extend: 'print', autoPrint: {/literal}{if $datatables_auto_print}true{else}false{/if}{literal}, exportOptions: {modifier:{page: 'current'}}, text: "{/literal}<i class=\"fa fa-print\"></i> {$msg_print_page}{literal}", className: "btn-secondary" },
-          ],
-          "order": [
-            [ {/literal}{$listing_sortby|default:0 + 1}{literal}, "asc" ]
-          ],
-          "aoColumnDefs": [
-            { "bSortable": false, "aTargets": ['nosort'] },
-          ],
-          "language": {
-            "url": "vendor/datatables/i18n/{/literal}{$lang|default:'en'}{literal}.json"
+{literal}
+    var itemlist = $('table.dataTable').DataTable({
+      layout: {
+        topStart: {
+{/literal}
+{if $datatables_page_length_choices}
+          pageLength: {
+            menu: [ {$datatables_page_length_choices nofilter} ]
           }
-        });
-    {/literal}
 {/if}
+        },
+        bottom2Start: {
+            buttons: [
+{if $datatables_print_all}
+                { extend: 'print', text: '{$msg_print_all}', exportOptions: { columns: ':not(.hidden-print)' }, autoPrint: {if $datatables_auto_print}true{else}false{/if} },
+{/if}
+{if $datatables_print_page}
+                { extend: 'print', text: '{$msg_print_page}', exportOptions: { columns: ':not(.hidden-print)', modifier: { page: 'current' } }, autoPrint: {if $datatables_auto_print}true{else}false{/if} },
+{/if}
+            ]
+        }
+      },
+{if $datatables_page_length_default}
+      pageLength: {$datatables_page_length_default},
+{/if}
+{literal}
+      language: {
+        url: "vendor/datatables/i18n/{/literal}{$lang|default:'en'}{literal}.json"
+      }
+    });
+{/literal}
 {literal}
         $('table tr.clickable').click(function() {
           document.location.href = $(this).find('[href]').attr('href');

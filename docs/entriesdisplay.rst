@@ -33,8 +33,8 @@ Enable or disable the DataTables JS component in application :
 
     $use_datatables = true;
 
-Configuration
-^^^^^^^^^^^^^
+Pagination
+^^^^^^^^^^
 
 Define pagination values in dropdown :
 
@@ -50,9 +50,22 @@ Set default pagination for results (can also be used to force the length without
 
     $datatables_page_length_default = 10;
 
-Enable or disable autoPrint_ feature :
+Print
+~~~~~
 
-.. _autoPrint: https://datatables.net/extensions/buttons/examples/print/autoPrint
+Show "print all" button:
+
+.. code-block:: php
+
+    $datatables_print_all = true;
+
+Show "print page" button:
+
+.. code-block:: php
+
+    $datatables_print_page = true;
+
+Enable autoPrint feature (will launch print dialog directly when cliking on print buttons):
 
 .. code-block:: php
 

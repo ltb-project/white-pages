@@ -10,10 +10,9 @@
     <link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/all.min.css" />
     <!-- include v4-shims.min.css for compatibility with older icon names, typically: fa-check-square-o -->
     <link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/v4-shims.min.css" />
+{if $use_datatables}
     <link rel="stylesheet" type="text/css" href="vendor/datatables/dataTables.bootstrap5.min.css" />
     <link rel="stylesheet" type="text/css" href="vendor/datatables/buttons.bootstrap5.min.css" />
-{if $use_datatables}
-    <link rel="stylesheet" type="text/css" href="vendor/datatables/datatables.min.css" />
 {/if}
 {if $hover_effect}
     <link rel="stylesheet" type="text/css" href="vendor/hover/css/hover-min.css" />
