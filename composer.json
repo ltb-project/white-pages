@@ -1,6 +1,8 @@
 {
     "require": {
         "components/jquery": "v3.7.1",
+        "datatables.net/datatables.net-bs5": "2.0.8",
+        "datatables.net/datatables.net-buttons-bs5": "3.0.2",
         "fortawesome/font-awesome": "v6.5.2",
         "ltb-project/ltb-common": "v0.1.0",
         "twbs/bootstrap": "v5.3.6"
@@ -17,6 +19,18 @@
             "mkdir -p htdocs/vendor/jquery/js",
             "cp vendor/components/jquery/jquery.min.* htdocs/vendor/jquery/js/",
             "rm -rf vendor/components/jquery",
+
+            "rm -f htdocs/vendor/datatables/*.js htdocs/vendor/datatables/*.css",
+            "cp vendor/datatables.net/datatables.net/js/dataTables.min.js htdocs/vendor/datatables/",
+            "cp vendor/datatables.net/datatables.net-bs5/css/dataTables.bootstrap5.min.css htdocs/vendor/datatables/",
+            "cp vendor/datatables.net/datatables.net-bs5/js/dataTables.bootstrap5.min.js htdocs/vendor/datatables/",
+            "cp vendor/datatables.net/datatables.net-buttons/js/dataTables.buttons.min.js htdocs/vendor/datatables/",
+            "cp vendor/datatables.net/datatables.net-buttons/js/buttons.colVis.min.js htdocs/vendor/datatables/",
+            "cp vendor/datatables.net/datatables.net-buttons/js/buttons.html5.min.js htdocs/vendor/datatables/",
+            "cp vendor/datatables.net/datatables.net-buttons/js/buttons.print.min.js htdocs/vendor/datatables/",
+            "cp vendor/datatables.net/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css htdocs/vendor/datatables/",
+            "cp vendor/datatables.net/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js htdocs/vendor/datatables/",
+            "rm -rf vendor/datatables.net",
 
             "rm -rf htdocs/vendor/font-awesome/*",
             "cp -R vendor/fortawesome/font-awesome/css htdocs/vendor/font-awesome",

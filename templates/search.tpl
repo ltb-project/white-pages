@@ -10,6 +10,7 @@
 
 
 {if isset($listing_columns)}
+{include 'spinner.tpl'}
 <table id="search-listing" class="table table-striped table-hover table-condensed dataTable">
     {include 'listing_table.tpl'}
 </table>
