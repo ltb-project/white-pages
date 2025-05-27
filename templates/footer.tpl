@@ -62,7 +62,7 @@
     </script>
     <script>
     $(document).ready(function(){
-        $('[data-toggle="popover"]').popover({
+        $('[data-bs-toggle="popover"]').popover({
             trigger: 'hover',
             placement: 'bottom',
             container: 'body'
