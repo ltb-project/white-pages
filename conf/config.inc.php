@@ -104,6 +104,8 @@ $search_result_truncate_title_after = 30;
 $use_datatables = true;
 $datatables_page_length_choices = array(10, 25, 50, 100, -1);
 $datatables_page_length_default = 10;
+$datatables_print_all = true;
+$datatables_print_page = true;
 $datatables_auto_print = true;
 
 # Full display

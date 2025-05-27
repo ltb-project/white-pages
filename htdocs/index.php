@@ -83,9 +83,16 @@ $smarty->assign('use_csv',$use_csv);
 $smarty->assign('use_vcard',$use_vcard);
 $smarty->assign('use_datatables', $use_datatables);
 if ($use_datatables) {
-    if (is_array($datatables_page_length_choices)) $datatables_page_length_choices = implode(', ', $datatables_page_length_choices);
+    if (is_array($datatables_page_length_choices)) {
+        if ( $all = array_search('-1', $datatables_page_length_choices)) {
+            $datatables_page_length_choices[$all] = '{"value":"-1","label":"'.$messages["pager_all"].'"}';
+        }
+        $datatables_page_length_choices = implode(', ', $datatables_page_length_choices);
+    }
     $smarty->assign('datatables_page_length_choices', $datatables_page_length_choices);
     $smarty->assign('datatables_page_length_default', $datatables_page_length_default);
+    $smarty->assign('datatables_print_all', $datatables_print_all);
+    $smarty->assign('datatables_print_page', $datatables_print_page);
     $smarty->assign('datatables_auto_print', $datatables_auto_print);
 }
 $smarty->assign('version',$version);
