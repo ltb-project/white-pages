@@ -11,9 +11,9 @@
             </select>
             {elseif $type eq 'date'}
             <span class="input-group-text">{$msg_fromdate}</span>
-            <input type="text" class="form-control" id="{$item}from" name="{$item}from" data-provide="datepicker" data-date-language="{$lang}">
+            <input type="date" class="form-control" id="{$item}from" name="{$item}from">
             <span class="input-group-text">{$msg_todate}</span>
-            <input type="text" class="form-control" id="{$item}to" name="{$item}to" data-provide="datepicker" data-date-language="{$lang}">
+            <input type="date" class="form-control" id="{$item}to" name="{$item}to">
             {elseif $type eq 'guid' or $type eq 'dn_link' or $type eq 'group_dn_link' or $type eq 'usergroup_dn_link' }
             <input type="text" class="form-control" id="{$item}" name="{$item}" placeholder="{$label}">
             <span class="input-group-text bg-info"><input type="checkbox" name="{$item}match" value="exact" data-bs-toggle="popover" data-bs-content="{$msg_exactmatch}"></span>

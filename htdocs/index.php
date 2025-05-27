@@ -87,14 +87,6 @@ foreach ($messages as $key => $message) {
     $smarty->assign('msg_'.$key,$message);
 }
 
-# Adapt lang for datepicker
-if (file_exists("./vendor/bootstrap-datepicker/locales/bootstrap-datepicker.$lang.min.js")) {
-    $lang_datepicker = $lang;
-} else {
-    $lang_datepicker = "en-GB";
-}
-$smarty->assign('lang_datepicker',$lang_datepicker);
-
 # Other assignations
 $search = "";
 if (isset($_REQUEST["search"]) and $_REQUEST["search"]) { $search = htmlentities($_REQUEST["search"]); }

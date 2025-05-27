@@ -75,12 +75,12 @@ if ($result === "") {
             $type = $attributes_map[$item]['type'];
             if ( $type == "date") {
                 if (isset($_POST[$item."from"]) and $_POST[$item."from"]) {
-                    $value = string2ldapDate($_POST[$item."from"]);
+                    $value = htmlDate2ldapDate($_POST[$item."from"]);
                     $value = ldap_escape($value, null, LDAP_ESCAPE_FILTER);
                     $ldap_filter .= "($attribute>=$value)";
                 }
                 if (isset($_POST[$item."to"]) and $_POST[$item."to"]) {
-                    $value = string2ldapDate($_POST[$item."to"]);
+                    $value = htmlDate2ldapDate($_POST[$item."to"]);
                     $value = ldap_escape($value, null, LDAP_ESCAPE_FILTER);
                     $ldap_filter .= "($attribute<=$value)";
                 }
