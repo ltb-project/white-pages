@@ -19,9 +19,6 @@ if (!isset($_POST["submit"])) {
     # Check if an attribute is a list type and prepare the list
     require __DIR__ . '/../vendor/autoload.php';
 
-    # Connect to LDAP
-    $ldap_connection = \Ltb\Ldap::connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
-
     $ldap = $ldap_connection[0];
     $result = $ldap_connection[1];
 
@@ -60,13 +57,7 @@ if ($result === "") {
     require __DIR__ . '/../vendor/autoload.php';
     require_once("../lib/date.inc.php");
 
-    # Connect to LDAP
-    $ldap_connection = \Ltb\Ldap::connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
-
-    $ldap = $ldap_connection[0];
-    $result = $ldap_connection[1];
-
-    if ($ldap) {
+    if ($ldapInstance->connect()[0]) {
 
         # Search filter
         $ldap_filter = "(&".$ldap_search_filter."(&";
@@ -127,7 +118,7 @@ if ($result === "") {
         }
 
         # Search for users
-        $search = ldap_search($ldap, $ldap_search_base, $ldap_filter, $attributes, 0, $ldap_size_limit);
+        [$ldap,$result,$nb_entries,$entries,$size_limit_reached] = $ldapInstance->search($ldap_search_filter, $attributes_list, $attributes_map, $search_result_title, $search_result_sortby, $result_items);
 
         $errno = ldap_errno($ldap);
 
@@ -139,12 +130,12 @@ if ($result === "") {
             error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
         } else {
 
-            if (isset($search_result_sortby)) {
-                $sortby = $attributes_map[$search_result_sortby]['attribute'];
-            }
+            #if (isset($search_result_sortby)) {
+            #    $sortby = $attributes_map[$search_result_sortby]['attribute'];
+            #}
 
             # Get search results
-            $nb_entries = ldap_count_entries($ldap, $search);
+            #$nb_entries = ldap_count_entries($ldap, $search);
 
             # CSV
             if ( $use_csv and $_POST["submit"] == "csv" and $nb_entries >0 ) {
@@ -152,9 +143,9 @@ if ($result === "") {
                 $entries = ldap_get_entries($ldap, $search);
 
                 # Sort entries
-                if (isset($sortby)) {
-                    \Ltb\Ldap::ldapSort($entries, $sortby);
-                }
+                #if (isset($sortby)) {
+                #    \Ltb\Ldap::ldapSort($entries, $sortby);
+                #}
 
                 unset($entries["count"]);
                 $csv_headers_label = array();
@@ -176,18 +167,18 @@ if ($result === "") {
 
             if ($nb_entries === 0) {
                 $result = "noentriesfound";
-            } elseif ($nb_entries === 1) {
+	    } elseif ($nb_entries === 1) {
                 $entries = ldap_get_entries($ldap, $search);
                 $entry_dn = $entries[0]["dn"];
                 $page = "display";
                 include("display.php");
             } else {
-                $entries = ldap_get_entries($ldap, $search);
+                #$entries = ldap_get_entries($ldap, $search);
 
                 # Sort entries
-                if (isset($sortby)) {
-                    \Ltb\Ldap::ldapSort($entries, $sortby);
-                }
+                #if (isset($sortby)) {
+                #    \Ltb\Ldap::ldapSort($entries, $sortby);
+                #}
 
                 unset($entries["count"]);
                 $smarty->assign("nb_entries", $nb_entries);

@@ -2,7 +2,7 @@
     "require": {
         "components/jquery": "v3.7.1",
         "fortawesome/font-awesome": "v6.5.2",
-        "ltb-project/ltb-common": "v0.1.0",
+        "ltb-project/ltb-common": "v0.5.0",
         "twbs/bootstrap": "v5.3.6"
     },
     "scripts": {

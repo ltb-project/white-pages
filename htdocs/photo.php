@@ -5,6 +5,7 @@
 
 
 require_once("../conf/config.inc.php");
+require __DIR__ . '/../vendor/autoload.php';
 
 $result = "";
 $dn = "";
@@ -13,9 +14,6 @@ $photo = "";
 
 if (isset($_GET["dn"]) and $_GET["dn"])
 {
-    require_once("../conf/config.inc.php");
-    require __DIR__ . '/../vendor/autoload.php';
-
     $dn = $_GET["dn"];
 
     # Defauft value for LDAP photo attribute
@@ -25,12 +23,12 @@ if (isset($_GET["dn"]) and $_GET["dn"])
     if ($use_gravatar) { array_push($photo_attributes, 'mail'); }
 
     # Connect to LDAP
-    $ldap_connection = \Ltb\Ldap::connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
+    [$ldap,$result,$nb_entries,$entries,$size_limit_reached] = $ldapInstance->search($ldap_search_filter, $attributes_list, $attributes_map, $search_result_title, $search_result_sortby, $result_items);
 
     $ldap = $ldap_connection[0];
     $result = $ldap_connection[1];
 
-    if ($ldap) {
+    if ($ldapInstance->connect()[0]) {
 
         # Search entry
         $search = ldap_read($ldap, $dn, $ldap_user_filter, $photo_attributes);

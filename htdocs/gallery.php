@@ -11,13 +11,7 @@ $size_limit_reached = false;
 require_once("../conf/config.inc.php");
 require __DIR__ . '/../vendor/autoload.php';
 
-# Connect to LDAP
-$ldap_connection = \Ltb\Ldap::connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
-
-$ldap = $ldap_connection[0];
-$result = $ldap_connection[1];
-
-if ($ldap) {
+if ($ldapInstance->connect()[0]) {
 
     # Search attributes
     $attributes[] = $attributes_map[$gallery_title]['attribute'];
@@ -32,8 +26,7 @@ if ($ldap) {
     if (isset($_GET['groupdn'])) {
         $gallery_filter = "(&".$gallery_filter."(memberOf=".$_GET['groupdn']."))";
     }
-
-    $search = ldap_search($ldap, $ldap_user_base, $gallery_filter, $attributes, 0, $ldap_size_limit);
+    [$ldap,$result,$nb_entries,$entries,$size_limit_reached] = $ldapInstance->search($gallery_filter, $attributes_list, $attributes_map, $search_result_title, $search_result_sortby, $result_items);
 
     $errno = ldap_errno($ldap);
 
@@ -45,20 +38,9 @@ if ($ldap) {
         error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
     } else {
 
-        # Get search results
-        $nb_entries = ldap_count_entries($ldap, $search);
-
         if ($nb_entries === 0) {
             $result = "noentriesfound";
         } else {
-            $entries = ldap_get_entries($ldap, $search);
-
-            # Sort entries
-            if (isset($search_result_sortby)) {
-                $sortby = $attributes_map[$gallery_sortby]['attribute'];
-                \Ltb\Ldap::ldapSort($entries, $sortby);
-            }
-
             unset($entries["count"]);
         }
     }

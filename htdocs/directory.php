@@ -2,20 +2,8 @@
 /*
  * Display all entries in a table list
  */
-
-$result = "";
-$nb_entries = 0;
-$entries = array();
-$size_limit_reached = false;
-
 require_once("../conf/config.inc.php");
 require __DIR__ . '/../vendor/autoload.php';
-
-# Connect to LDAP
-$ldap_connection = \Ltb\Ldap::connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
-
-$ldap = $ldap_connection[0];
-$result = $ldap_connection[1];
 
 if (isset($_GET["type"])) {
     $type = $_GET["type"];
@@ -39,38 +27,25 @@ if ( $type === "group" ) {
     $result_linkto = $directory_group_linkto;
 }
 
-if ($ldap) {
+if ($ldapInstance->connect()[0]) {
 
     # Search attributes
     foreach ($result_items as $item) $attributes[] = $attributes_map[$item]['attribute'];
 
     # Search for entries
-    $search = ldap_search($ldap, $ldap_search_base, $ldap_search_filter, $attributes, 0, $ldap_size_limit);
+    [$ldap,$result,$nb_entries,$entries,$size_limit_reached] = $ldapInstance->search($ldap_search_filter, $attributes_list, $attributes_map, $search_result_title, $search_result_sortby, $result_items);
 
-    $errno = ldap_errno($ldap);
-
-    if ( $errno == 4) {
+    if ( $result == 4) {
         $size_limit_reached = true;
     }
-    if ( $errno != 0 and $errno != 4 ) {
+    if ( $result != 0 and $result != 4 ) {
         $result = "ldaperror";
-        error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
+        error_log("LDAP - Search error $result  (".ldap_error($ldap).")");
     } else {
-
-        # Get search results
-        $nb_entries = ldap_count_entries($ldap, $search);
 
         if ($nb_entries === 0) {
             $result = "noentriesfound";
         } else {
-            $entries = ldap_get_entries($ldap, $search);
-
-            # Sort entries
-            if (isset($search_result_sortby)) {
-                $sortby = $attributes_map[$result_sortby]['attribute'];
-                \Ltb\Ldap::ldapSort($entries, $sortby);
-            }
-
             unset($entries["count"]);
         }
     }

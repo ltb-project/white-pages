@@ -22,13 +22,7 @@ if ($result === "") {
     require_once("../conf/config.inc.php");
     require __DIR__ . '/../vendor/autoload.php';
 
-    # Connect to LDAP
-    $ldap_connection = \Ltb\Ldap::connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
-
-    $ldap = $ldap_connection[0];
-    $result = $ldap_connection[1];
-
-    if ($ldap) {
+    if ($ldapInstance->connect()[0]) {
 
         # Find object type
         # 1. Check type parameter
