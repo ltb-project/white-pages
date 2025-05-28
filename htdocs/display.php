@@ -19,10 +19,13 @@ if (isset($_GET["dn"]) and $_GET["dn"]) {
 
 if ($result === "") {
 
-    require_once("../conf/config.inc.php");
-    require __DIR__ . '/../vendor/autoload.php';
+    # Connect to LDAP
+    $ldap_connection = $ldapInstance->connect();
 
-    if ($ldapInstance->connect()[0]) {
+    $ldap = $ldap_connection[0];
+    $result = $ldap_connection[1];
+
+    if ($ldap) {
 
         # Find object type
         # 1. Check type parameter
