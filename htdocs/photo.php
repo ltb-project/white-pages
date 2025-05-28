@@ -5,8 +5,19 @@
 
 
 require_once("../conf/config.inc.php");
-require __DIR__ . '/../vendor/autoload.php';
+require_once("../vendor/autoload.php");
 
+$ldapInstance = new \Ltb\Ldap(
+                                 $ldap_url,
+                                 $ldap_starttls,
+                                 isset($ldap_binddn) ? $ldap_binddn : null,
+                                 isset($ldap_bindpw) ? $ldap_bindpw : null,
+                                 isset($ldap_network_timeout) ? $ldap_network_timeout : null,
+                                 $ldap_base,
+                                 isset($ldap_size_limit) ? $ldap_size_limit : 0,
+                                 isset($ldap_krb5ccname) ? $ldap_krb5ccname : null,
+                                 isset($ldap_page_size) ? $ldap_page_size : 0
+                             );
 $result = "";
 $dn = "";
 $entry = "";
@@ -23,7 +34,7 @@ if (isset($_GET["dn"]) and $_GET["dn"])
     if ($use_gravatar) { array_push($photo_attributes, 'mail'); }
 
     # Connect to LDAP
-    [$ldap,$result,$nb_entries,$entries,$size_limit_reached] = $ldapInstance->search($ldap_search_filter, $attributes_list, $attributes_map, $search_result_title, $search_result_sortby, $result_items);
+    $ldap_connection = $ldapInstance->connect();
 
     $ldap = $ldap_connection[0];
     $result = $ldap_connection[1];
