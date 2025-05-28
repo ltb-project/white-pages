@@ -7,9 +7,6 @@ $result = "";
 $entries = array();
 $size_limit_reached = false;
 
-require_once("../conf/config.inc.php");
-require __DIR__ . '/../vendor/autoload.php';
-
 function array_flatten($arr, $flat = [])
 {
     if (is_array($arr)) {
@@ -23,12 +20,11 @@ function array_flatten($arr, $flat = [])
 }
 
 # Connect to LDAP
-$ldap_connection = \Ltb\Ldap::connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
+$ldap_connection = $ldapInstance->connect();
 
 $ldap = $ldap_connection[0];
 $result = $ldap_connection[1];
 
-$ldap_search_base = $ldap_user_base;
 $ldap_search_filter = $ldap_user_filter;
 if (isset($map_user_filter)) {
     $ldap_search_filter = $map_user_filter;
@@ -46,26 +42,10 @@ if ($ldap) {
         $attributes[] = $attributes_map[$item]['attribute'];
 
     # Search for entries
-    $search = ldap_search($ldap, $ldap_search_base, $ldap_search_filter, $attributes, 0, $ldap_size_limit);
+    [$ldap, $result, $nb_entries, $entries, $size_limit_reached] = $ldapInstance->search($ldap_search_filter, $attributes, $attributes_map, null, null, $result_items);
 
-    $errno = ldap_errno($ldap);
-
-    if ($errno == 4) {
-        $size_limit_reached = true;
-    }
-    if ($errno != 0 and $errno != 4) {
-        $result = "ldaperror";
-        error_log("LDAP - Search error $errno  (" . ldap_error($ldap) . ")");
-    } else {
-        # Get search results
-        if (ldap_count_entries($ldap, $search) === 0) {
-            $result = "noentriesfound";
-        } else {
-            $entries = ldap_get_entries($ldap, $search);
-            unset($entries["count"]);
-        }
-    }
 }
+
 $interestPoints = array();
 foreach ($entries as $entry) {
 

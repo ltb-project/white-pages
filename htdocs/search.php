@@ -1,19 +1,18 @@
 <?php
+require_once("../conf/config.inc.php");
+require __DIR__ . '/../vendor/autoload.php';
+
 /*
  * Search entries in LDAP directory
- */ 
-
+ */
 if (isset($_POST["search"]) and $_POST["search"]) {
-
-    $result="";
-
-    require_once("../conf/config.inc.php");
-    require __DIR__ . '/../vendor/autoload.php';
 
     $filter_escape_chars = null;
     if (!$quick_search_use_substring_match) { $filter_escape_chars = "*"; }
 
     $search_query = ldap_escape($_POST["search"], $filter_escape_chars, LDAP_ESCAPE_FILTER);
+
+    $result_items = $directory_items;
 
     # Search filter
     $ldap_filter = "(&".$ldap_user_filter."(|";
@@ -26,10 +25,7 @@ if (isset($_POST["search"]) and $_POST["search"]) {
     }
     $ldap_filter .= "))";
 
-    # Search attributes
-    $attributes = array();
-
-    [$ldap,$result,$nb_entries,$entries,$size_limit_reached]=\Ltb\LtbUtil::search($ldap_filter,$attributes);
+    [$ldap,$result,$nb_entries,$entries,$size_limit_reached] = $ldapInstance->search($ldap_filter, $attributes_list, $attributes_map, $search_result_title, $search_result_sortby, $result_items);
 
     if ( ! empty($entries) )
     {
