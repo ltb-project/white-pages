@@ -3,6 +3,18 @@
  * Display all entries in a table list
  */
 
+$result = "";
+$nb_entries = 0;
+$entries = array();
+$size_limit_reached = false;
+
+# Connect to LDAP
+$ldap_connection = $ldapInstance->connect();
+
+$ldap = $ldap_connection[0];
+$result = $ldap_connection[1];
+
+
 if (isset($_GET["type"])) {
     $type = $_GET["type"];
 } else {
@@ -24,12 +36,6 @@ if ( $type === "group" ) {
     $result_sortby = $directory_group_sortby;
     $result_linkto = $directory_group_linkto;
 }
-
-# Connect to LDAP
-$ldap_connection = $ldapInstance->connect();
-
-$ldap = $ldap_connection[0];
-$result = $ldap_connection[1];
 
 if ($ldap) {
 
