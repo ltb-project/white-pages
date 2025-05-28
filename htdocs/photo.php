@@ -39,7 +39,7 @@ if (isset($_GET["dn"]) and $_GET["dn"])
     $ldap = $ldap_connection[0];
     $result = $ldap_connection[1];
 
-    if ($ldapInstance->connect()[0]) {
+    if ($ldap) {
 
         # Search entry
         $search = ldap_read($ldap, $dn, $ldap_user_filter, $photo_attributes);
