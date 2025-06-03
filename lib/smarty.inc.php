@@ -74,7 +74,7 @@ function get_list_value($params) {
                                  isset($ldap_binddn) ? $ldap_binddn : null,
                                  isset($ldap_bindpw) ? $ldap_bindpw : null,
                                  isset($ldap_network_timeout) ? $ldap_network_timeout : null,
-                                 $dn,
+                                 $list_base,
                                  null,
                                  isset($ldap_krb5ccname) ? $ldap_krb5ccname : null
                              );
@@ -82,7 +82,7 @@ function get_list_value($params) {
     $ldap_connection = $ldapInstance->connect();
 
     $filter = "(&".$list_filter."(".$list_key."=$value))";
-    $return = $ldapInstance->get_first_value($dn, "sub", $filter, $list_value);
+    $return = $ldapInstance->get_first_value($list_base, "sub", $filter, $list_value);
 
     return $return;
 }
