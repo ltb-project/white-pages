@@ -8,14 +8,12 @@ $nb_entries = 0;
 $entries = array();
 $size_limit_reached = false;
 
-require_once("../conf/config.inc.php");
-require __DIR__ . '/../vendor/autoload.php';
-
 # Connect to LDAP
-$ldap_connection = \Ltb\Ldap::connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw, $ldap_network_timeout);
+$ldap_connection = $ldapInstance->connect();
 
 $ldap = $ldap_connection[0];
 $result = $ldap_connection[1];
+
 
 if (isset($_GET["type"])) {
     $type = $_GET["type"];
@@ -24,7 +22,7 @@ if (isset($_GET["type"])) {
 }
 
 if ( $type === "user" ) {
-    $ldap_search_base = $ldap_user_base;
+    $ldapInstance->ldap_user_base = $ldap_user_base;
     $ldap_search_filter = $ldap_user_filter;
     $result_items = $directory_items;
     $result_sortby = $directory_sortby;
@@ -32,7 +30,7 @@ if ( $type === "user" ) {
 }
 
 if ( $type === "group" ) {
-    $ldap_search_base = $ldap_group_base;
+    $ldapInstance->ldap_user_base = $ldap_group_base;
     $ldap_search_filter = $ldap_group_filter;
     $result_items = $directory_group_items;
     $result_sortby = $directory_group_sortby;
@@ -45,35 +43,8 @@ if ($ldap) {
     foreach ($result_items as $item) $attributes[] = $attributes_map[$item]['attribute'];
 
     # Search for entries
-    $search = ldap_search($ldap, $ldap_search_base, $ldap_search_filter, $attributes, 0, $ldap_size_limit);
+    [$ldap, $result, $nb_entries, $entries, $size_limit_reached] = $ldapInstance->search($ldap_search_filter, $attributes, $attributes_map, $search_result_title, $result_sortby, $result_items);
 
-    $errno = ldap_errno($ldap);
-
-    if ( $errno == 4) {
-        $size_limit_reached = true;
-    }
-    if ( $errno != 0 and $errno != 4 ) {
-        $result = "ldaperror";
-        error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
-    } else {
-
-        # Get search results
-        $nb_entries = ldap_count_entries($ldap, $search);
-
-        if ($nb_entries === 0) {
-            $result = "noentriesfound";
-        } else {
-            $entries = ldap_get_entries($ldap, $search);
-
-            # Sort entries
-            if (isset($search_result_sortby)) {
-                $sortby = $attributes_map[$result_sortby]['attribute'];
-                \Ltb\Ldap::ldapSort($entries, $sortby);
-            }
-
-            unset($entries["count"]);
-        }
-    }
 }
 
 $smarty->assign("nb_entries", $nb_entries);

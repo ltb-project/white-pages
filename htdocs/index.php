@@ -11,6 +11,11 @@ $version = 0.4;
 require_once("../conf/config.inc.php");
 
 #==============================================================================
+# Includes
+#==============================================================================
+require_once("../vendor/autoload.php");
+
+#==============================================================================
 # Language
 #==============================================================================
 require_once("../lib/detectbrowserlanguage.php");
@@ -23,6 +28,21 @@ require_once("../lang/$lang.inc.php");
 if (file_exists("../conf/$lang.inc.php")) { 
     require_once("../conf/$lang.inc.php");
 }
+
+#==============================================================================
+# LDAP Config
+#==============================================================================
+$ldapInstance = new \Ltb\Ldap(
+                                 $ldap_url,
+                                 $ldap_starttls,
+                                 isset($ldap_binddn) ? $ldap_binddn : null,
+                                 isset($ldap_bindpw) ? $ldap_bindpw : null,
+                                 isset($ldap_network_timeout) ? $ldap_network_timeout : null,
+                                 $ldap_base,
+                                 isset($ldap_size_limit) ? $ldap_size_limit : 0,
+                                 isset($ldap_krb5ccname) ? $ldap_krb5ccname : null,
+                                 isset($ldap_page_size) ? $ldap_page_size : 0
+                             );
 
 #==============================================================================
 # Smarty
