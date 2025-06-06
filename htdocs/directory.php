@@ -22,7 +22,6 @@ if (isset($_GET["type"])) {
 }
 
 if ( $type === "user" ) {
-    $ldapInstance->ldap_user_base = $ldap_user_base;
     $ldap_search_filter = $ldap_user_filter;
     $result_items = $directory_items;
     $result_sortby = $directory_sortby;
@@ -30,7 +29,6 @@ if ( $type === "user" ) {
 }
 
 if ( $type === "group" ) {
-    $ldapInstance->ldap_user_base = $ldap_group_base;
     $ldap_search_filter = $ldap_group_filter;
     $result_items = $directory_group_items;
     $result_sortby = $directory_group_sortby;
