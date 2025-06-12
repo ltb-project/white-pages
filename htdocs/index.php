@@ -18,12 +18,11 @@ require_once("../vendor/autoload.php");
 #==============================================================================
 # Language
 #==============================================================================
-require_once("../lib/detectbrowserlanguage.php");
 # Available languages
 $files = glob("../lang/*.php");
 $languages = str_replace(".inc.php", "", $files);
 $languages = str_replace("../lang/", "", $languages);
-$lang = detectLanguage($lang, $allowed_lang ? array_intersect($languages,$allowed_lang) : $languages);
+$lang = \Ltb\Language::detect_language($lang, $allowed_lang ? array_intersect($languages,$allowed_lang) : $languages);
 require_once("../lang/$lang.inc.php");
 if (file_exists("../conf/$lang.inc.php")) { 
     require_once("../conf/$lang.inc.php");
