@@ -55,6 +55,7 @@ if ($result === "") {
     require_once("../lib/date.inc.php");
 
     $ldap_connection = $ldapInstance->connect();
+    $ldapInstance->ldap_user_base = $ldap_search_base;
     $ldap = $ldap_connection[0];
     $result = $ldap_connection[1];
 
