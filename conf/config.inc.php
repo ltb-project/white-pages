@@ -23,6 +23,13 @@
 # All the default values are kept here, you should not modify it but use
 # config.inc.local.php file instead to override the settings from here.
 #==============================================================================
+
+# Authentication
+$require_auth = false;
+$auth_type = "ldap"; # "ldap" or "header"
+#$auth_ldap_require_group = "wp";
+#$auth_header_name_user = "Auth-User";
+
 # LDAP
 $ldap_url = "ldap://localhost";
 $ldap_starttls = false;
@@ -31,7 +38,10 @@ $ldap_bindpw = "secret";
 $ldap_base = "dc=example,dc=com";
 $ldap_user_base = "ou=users,".$ldap_base;
 $ldap_user_filter = "(objectClass=inetOrgPerson)";
+$ldap_login_attribute = "uid";
+$ldap_login_filter = "(&$ldap_user_filter($ldap_login_attribute={login}))";
 #$ldap_user_regex = "/,ou=users,/i";
+$ldap_scope = "sub"; # possible values: sub, one, base
 $ldap_group_base = "ou=groups,".$ldap_base;
 $ldap_group_filter = "(|(objectClass=groupOfNames)(objectClass=groupOfUniqueNames))";
 $ldap_size_limit = 100;

@@ -127,6 +127,9 @@ $smarty->registerPlugin("function", "convert_bytes", "convert_bytes");
 $smarty->registerPlugin("function", "get_list_value", "get_list_value");
 $smarty->registerPlugin("function", "split_value", "split_value");
 
+
+
+
 #==============================================================================
 # Route to page
 #==============================================================================
@@ -139,6 +142,23 @@ if ( $page === "advancedsearch" and !$use_advanced_search ) { $page = "welcome";
 if ( $page === "directory" and !$use_directory ) { $page = "welcome"; }
 if ( $page === "gallery" and !$use_gallery ) { $page = "welcome"; }
 if ( $page === "map" and !$use_map ) { $page = "welcome"; }
+if ( $page === "login" and !$require_auth ) { $page = "welcome"; }
+
+#==============================================================================
+# Authentication
+#==============================================================================
+if ($require_auth) {
+    session_start();
+    if (!isset($_SESSION["userdn"]) and $page !== "login") {
+        $login_url = "index.php?page=login&return_page=$page";
+        header('Location: '.$login_url);
+        exit;
+    }
+}
+
+#==============================================================================
+# Load page
+#==============================================================================
 if ( file_exists($page.".php") ) { require_once($page.".php"); }
 $smarty->assign('page',$page);
 

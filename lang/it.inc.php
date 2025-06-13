@@ -5,6 +5,7 @@
 #==============================================================================
 
 $messages['advancedsearch'] = "Ricerca avanzata";
+$messages['authenticate'] = "Please authenticate yourself";
 $messages['displayentry'] = "Visualizza";
 $messages['dnrequired'] = "Necessario identificativo record";
 $messages['downloadcsv'] = "Scarica i risultati come CSV";
