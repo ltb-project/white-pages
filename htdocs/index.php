@@ -127,9 +127,6 @@ $smarty->registerPlugin("function", "convert_bytes", "convert_bytes");
 $smarty->registerPlugin("function", "get_list_value", "get_list_value");
 $smarty->registerPlugin("function", "split_value", "split_value");
 
-
-
-
 #==============================================================================
 # Route to page
 #==============================================================================

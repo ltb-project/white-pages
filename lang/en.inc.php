@@ -5,6 +5,7 @@
 #==============================================================================
 
 $messages['advancedsearch'] = "Advanced search";
+$messages['auth_sso_fail'] = "Authentication failed";
 $messages['authenticate'] = "Please authenticate yourself";
 $messages['displayentry'] = "Display entry";
 $messages['dnrequired'] = "Entry identifier required";

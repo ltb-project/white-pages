@@ -1,13 +1,16 @@
 <?php
 
+$ldap = "";
 $result = "";
 $login = "";
 $password = "";
 $userdn = "";
+$action = "";
 
-$page = "welcome";
-if (isset($_GET["return_page"]) and $_GET["return_page"]) { $page = $_GET["page"]; }
-$return_url = "index.php?page=".$page;
+$return_page = "welcome";
+if (isset($_REQUEST["return_page"]) and $_REQUEST["return_page"]) { $return_page = $_REQUEST["return_page"]; }
+if (isset($_POST["action"]) and $_POST["action"]) { $action = $_POST["action"]; }
+$return_url = "index.php?page=".$return_page;
 
 # If already authenticated
 if (isset($_SESSION["userdn"])) {
@@ -24,24 +27,26 @@ if ($auth_type === "header") {
 
     if (!$login) {
         $result = "auth_sso_fail";
-        error_log("SSO authentication requested but no value found in  $auth_header_name_user HTTP header");
+        error_log("SSO authentication requested but no value found in $auth_header_name_user HTTP header");
     }
 
 }
 
-# LDAP
-$ldap_connection = $ldapInstance->connect();
+# Start LDAP connection if needed
+if (($auth_type === "header" and $result == "") or ($auth_type === "ldap" and $action === "login")) {
+    $ldap_connection = $ldapInstance->connect();
+    $ldap = $ldap_connection[0];
+    $result = $ldap_connection[1];
+}
 
-$ldap = $ldap_connection[0];
-$result = $ldap_connection[1];
-
-if ($auth_type === "ldap") {
-    if (isset($_POST["login"]) and $_POST["login"]) { $login = $_POST["user"]; }
-    if (isset($_POST["password"]) and $_POST["password"]) { $password = $_POST["user"]; }
+# Get form data
+if ($auth_type === "ldap" and $action === "login") {
+    if (isset($_POST["login"]) and $_POST["login"]) { $login = $_POST["login"]; }
+    if (isset($_POST["password"]) and $_POST["password"]) { $password = $_POST["password"]; }
 }
 
 # Search for user
-if ($result == "") {
+if ($result == "" and ($auth_type === "header" or ($auth_type === "ldap" and $action === "login"))) {
 
     $search_login = ldap_escape($login, "", LDAP_ESCAPE_FILTER);
     $ldap_filter = str_replace("{login}", $search_login, $ldap_login_filter);
@@ -65,10 +70,21 @@ if ($result == "") {
     }
 }
 
+# Authenticate user
+if ($result == "" and $action === "login" and $auth_type === "ldap") {
+    $bind = ldap_bind($ldap, $userdn, $password);
+    if (!$bind) {
+        $result = "passwordinvalid";
+    }
+}
+
 # Create session
-if ($result == "") {
+if ($result == "" and $userdn) {
     $_SESSION["userdn"] = $userdn;
     header("Location: $return_url");
 }
+
+# Display login form
+$smarty->assign("return_page", $return_page);
 
 ?>

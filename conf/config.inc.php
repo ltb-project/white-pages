@@ -27,7 +27,6 @@
 # Authentication
 $require_auth = false;
 $auth_type = "ldap"; # "ldap" or "header"
-#$auth_ldap_require_group = "wp";
 #$auth_header_name_user = "Auth-User";
 
 # LDAP
