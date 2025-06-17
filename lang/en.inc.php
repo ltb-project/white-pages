@@ -61,6 +61,7 @@ $messages['map'] = "Map";
 $messages['noentriesfound'] = "No entries found";
 $messages['notdefined'] = "Not defined";
 $messages['negates'] = "Check to negates this value";
+$messages['passwordinvalid'] = "Login or password incorrect";
 $messages['search'] = "Search";
 $messages['search_object'] = "Objects to search";
 $messages['searchrequired'] = "Please enter your search";

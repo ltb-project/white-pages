@@ -60,6 +60,7 @@ $messages['logout'] = "Déconnexion";
 $messages['map'] = "Carte";
 $messages['noentriesfound'] = "Aucune entrée trouvée";
 $messages['notdefined'] = "Non renseigné";
+$messages['passwordinvalid'] = "Identifiant ou mot de passe incorrect";
 $messages['negates'] = "Cocher la case pour nier la valeur";
 $messages['search'] = "Rechercher";
 $messages['search_object'] = "Objets à rechercher";

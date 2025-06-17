@@ -75,6 +75,7 @@ if ($result == "" and $action === "login" and $auth_type === "ldap") {
     $bind = ldap_bind($ldap, $userdn, $password);
     if (!$bind) {
         $result = "passwordinvalid";
+        error_log("LDAP - Bind error for $userdn)");
     }
 }
 

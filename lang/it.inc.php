@@ -61,6 +61,7 @@ $messages['map'] = "Carta";
 $messages['noentriesfound'] = "Nessun record trovato";
 $messages['notdefined'] = "Non definito";
 $messages['negates'] = "Check to negates this value";
+$messages['passwordinvalid'] = "Login or password incorrect";
 $messages['search'] = "Cerca";
 $messages['search_object'] = "Oggetti da cercare";
 $messages['searchrequired'] = "Inserisci il termine di ricerca";
