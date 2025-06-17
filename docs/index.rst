@@ -9,6 +9,7 @@ LDAP Tool Box White Pages documentation
 
    presentation.rst
    installation.rst
+   authentication.rst
    configuration-apache.rst
    general-parameters.rst
    ldap-parameters.rst
