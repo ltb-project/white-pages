@@ -48,13 +48,13 @@
                 </div>
 
             </div>
-{if {$use_vcard} || {$edit_link}}
+{if {$use_vcard} || {$use_updateinfos and $dn == $userdn}}
             <div class="card-footer text-center">
 {if {$use_vcard}}
                 <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}&vcard=1" class="btn btn-secondary" role="button"><i class="fa fa-fw fa-download"></i> {$msg_downloadvcard}</a>
 {/if}
-{if {$edit_link}}
-                <a href="{$edit_link}" class="btn btn-secondary" role="button"><i class="fa fa-fw fa-edit"></i> {$msg_editentry}</a>
+{if {$use_updateinfos and $dn == $userdn}}
+                <a href="index.php?page=updateinfos" class="btn btn-secondary" role="button"><i class="fa fa-fw fa-edit"></i> {$msg_editentry}</a>
 {/if}
             </div>
 

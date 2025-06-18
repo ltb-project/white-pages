@@ -83,6 +83,7 @@ $smarty->assign('use_advanced_search',$use_advanced_search);
 $smarty->assign('use_gallery',$use_gallery);
 $smarty->assign('use_directory',$use_directory);
 $smarty->assign('use_map',$use_map);
+$smarty->assign('use_updateinfos',$use_updateinfos);
 $smarty->assign('use_csv',$use_csv);
 $smarty->assign('use_vcard',$use_vcard);
 $smarty->assign('use_datatables', $use_datatables);
