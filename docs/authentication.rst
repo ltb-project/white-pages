@@ -44,3 +44,16 @@ Define the name of HTTP header containing the user login:
 .. code-block:: php
 
    $auth_header_name_user = "Auth-User";
+
+Logout
+------
+
+Authenticated users will see a logout link in the menu.
+
+To redirect them after logout on a specific URL:
+
+.. code-block:: php
+
+   $logout_link = "https://auth.example.com/logout";
+
+If authentication is not enabled and this parameter is configured, then all users will see a logout link that will redirect them to this URL.

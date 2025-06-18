@@ -141,6 +141,7 @@ if ( $page === "directory" and !$use_directory ) { $page = "welcome"; }
 if ( $page === "gallery" and !$use_gallery ) { $page = "welcome"; }
 if ( $page === "map" and !$use_map ) { $page = "welcome"; }
 if ( $page === "login" and !$require_auth ) { $page = "welcome"; }
+if ( $page === "logout" and !$require_auth ) { $page = "welcome"; }
 
 #==============================================================================
 # Authentication
