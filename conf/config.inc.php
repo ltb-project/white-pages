@@ -162,6 +162,11 @@ $map_no_location_show_on_default = false;
 $map_default_location_lat = 48.6882405;
 $map_default_location_long = -32.6412127;
 
+# Update infos (requires authentication)
+$use_updateinfos = false;
+$update_items = array('firstname', 'lastname', 'mail', 'phone', 'mobile');
+$update_items_macros = array('fullname' => '%firstname% %lastname%');
+
 # HTTP
 $http_url = "http://localhost/wp";
 
