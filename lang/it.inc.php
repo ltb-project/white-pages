@@ -7,6 +7,7 @@
 $messages['advancedsearch'] = "Ricerca avanzata";
 $messages['auth_sso_fail'] = "Authentication failed";
 $messages['authenticate'] = "Please authenticate yourself";
+$messages['cancelbacktoentry'] = "Cancel and go back to entry";
 $messages['displayentry'] = "Visualizza";
 $messages['dnrequired'] = "Necessario identificativo record";
 $messages['downloadcsv'] = "Scarica i risultati come CSV";
@@ -68,6 +69,7 @@ $messages['search'] = "Cerca";
 $messages['search_object'] = "Oggetti da cercare";
 $messages['searchrequired'] = "Inserisci il termine di ricerca";
 $messages['sizelimit'] = "Limite dimensioni raggiunto, alcuni record non saranno visualizzati";
+$messages['submit'] = "Submit";
 $messages['title'] = "White Pages";
 $messages['title_search'] = "Risultato di ricerca:";
 $messages['title_directory'] = "Contenuto della directory:";
