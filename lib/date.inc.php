@@ -93,3 +93,9 @@ function htmlDate2ldapDate($string) {
 
     return $ldapdate;
 }
+
+function adDate2phpDate($string) {
+    $winSecs = (int)($string / 10000000); // divide by 10 000 000 to get seconds
+    $unixTimestamp = ($winSecs - 11644473600); // 1.1.1600 -> 1.1.1970 difference in seconds
+    return date(DateTime::RFC822, $unixTimestamp);
+}

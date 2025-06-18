@@ -41,6 +41,12 @@ function convert_ldap_date($date) {
 
 }
 
+function convert_ad_date($date) {
+
+    return adDate2phpDate( $date );
+
+}
+
 function convert_guid_value($binary) {
 
     $unpacked = unpack('Va/v2b/n2c/Nd', $binary);

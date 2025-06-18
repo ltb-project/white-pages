@@ -123,6 +123,7 @@ $smarty->assign('search',$search);
 require_once("../lib/smarty.inc.php");
 $smarty->registerPlugin("function", "get_attribute", "get_attribute");
 $smarty->registerPlugin("function", "convert_ldap_date", "convert_ldap_date");
+$smarty->registerPlugin("function", "convert_ad_date", "convert_ad_date");
 $smarty->registerPlugin("function", "convert_guid_value", "convert_guid_value");
 $smarty->registerPlugin("function", "convert_bytes", "convert_bytes");
 $smarty->registerPlugin("function", "get_list_value", "get_list_value");
@@ -142,6 +143,7 @@ if ( $page === "gallery" and !$use_gallery ) { $page = "welcome"; }
 if ( $page === "map" and !$use_map ) { $page = "welcome"; }
 if ( $page === "login" and !$require_auth ) { $page = "welcome"; }
 if ( $page === "logout" and !$require_auth ) { $page = "welcome"; }
+if ( $page === "updateinfos" and !($require_auth and $use_updateinfos) ) { $page = "welcome"; }
 
 #==============================================================================
 # Authentication
