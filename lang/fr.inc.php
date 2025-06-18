@@ -5,6 +5,8 @@
 #==============================================================================
 
 $messages['advancedsearch'] = "Recherche avancée";
+$messages['auth_sso_fail'] = "L'authentification a échoué";
+$messages['authenticate'] = "Veuillez vous authentifier";
 $messages['displayentry'] = "Afficher l'entrée";
 $messages['dnrequired'] = "L'identifiant de l'entrée est requis";
 $messages['downloadcsv'] = "Télécharger les résultats en CSV";
@@ -54,10 +56,13 @@ $messages['label_street'] = "Voie";
 $messages['label_title'] = "Titre";
 $messages['label_uniquemember'] = "Membres";
 $messages['ldaperror'] = "Erreur de communication avec l'annuaire LDAP";
+$messages['login'] = "Identifiant";
 $messages['logout'] = "Déconnexion";
 $messages['map'] = "Carte";
 $messages['noentriesfound'] = "Aucune entrée trouvée";
 $messages['notdefined'] = "Non renseigné";
+$messages['password'] = "Mot de passe";
+$messages['passwordinvalid'] = "Identifiant ou mot de passe incorrect";
 $messages['negates'] = "Cocher la case pour nier la valeur";
 $messages['search'] = "Rechercher";
 $messages['search_object'] = "Objets à rechercher";

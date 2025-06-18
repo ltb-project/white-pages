@@ -5,6 +5,8 @@
 #==============================================================================
 
 $messages['advancedsearch'] = "Advanced search";
+$messages['auth_sso_fail'] = "Authentication failed";
+$messages['authenticate'] = "Please authenticate yourself";
 $messages['displayentry'] = "Display entry";
 $messages['dnrequired'] = "Entry identifier required";
 $messages['downloadcsv'] = "Download results as CSV";
@@ -54,11 +56,14 @@ $messages['label_street'] = "Street";
 $messages['label_title'] = "Title";
 $messages['label_uniquemember'] = "Members";
 $messages['ldaperror'] = "LDAP communication error";
+$messages['login'] = "Login";
 $messages['logout'] = "Logout";
 $messages['map'] = "Map";
 $messages['noentriesfound'] = "No entries found";
 $messages['notdefined'] = "Not defined";
 $messages['negates'] = "Check to negates this value";
+$messages['password'] = "Password";
+$messages['passwordinvalid'] = "Login or password incorrect";
 $messages['search'] = "Search";
 $messages['search_object'] = "Objects to search";
 $messages['searchrequired'] = "Please enter your search";
