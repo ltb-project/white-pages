@@ -13,6 +13,8 @@
               </button>
 
             <div class="navbar-collapse collapse" id="navbarSupportedContent">
+
+              {if ($require_auth and $userdn) or !$require_auth}
               <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
 
                 {if $use_advanced_search}
@@ -48,6 +50,8 @@
                   <button class="btn btn-default btn-outline-secondary" type="submit">&nbsp;<i class="fa fa-fw fa-search"></i></button>
                 </div>
               </form>
+              {/if}
+
               {/if}
             </div>
           </div>

@@ -106,6 +106,7 @@ $smarty->assign('attributes_list',$attributes_list);
 $smarty->assign('dn_link_label_attributes',implode(",",$dn_link_label_attributes));
 $smarty->assign('group_dn_link_label_attributes',implode(",",$group_dn_link_label_attributes));
 $smarty->assign('usergroup_dn_link_label_attributes',implode(",",$usergroup_dn_link_label_attributes));
+$smarty->assign('require_auth',$require_auth);
 
 # Assign messages
 $smarty->assign('lang',$lang);
@@ -151,6 +152,7 @@ if ($require_auth) {
         header('Location: '.$login_url);
         exit;
     }
+    $smarty->assign('userdn',$_SESSION["userdn"]);
 }
 
 #==============================================================================
