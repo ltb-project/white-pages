@@ -1,6 +1,4 @@
 <?php
-require_once("../conf/config.inc.php");
-require __DIR__ . '/../vendor/autoload.php';
 
 /*
  * Search entries in LDAP directory
@@ -25,6 +23,7 @@ if (isset($_POST["search"]) and $_POST["search"]) {
     }
     $ldap_filter .= "))";
 
+    $attributes_list = array();
     [$ldap,$result,$nb_entries,$entries,$size_limit_reached] = $ldapInstance->search($ldap_filter, $attributes_list, $attributes_map, $search_result_title, $search_result_sortby, $result_items);
 
     if ( ! empty($entries) )
