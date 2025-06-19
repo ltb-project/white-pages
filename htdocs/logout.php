@@ -1,6 +1,6 @@
 <?php
 
-$return_url = $logout_link ? $logout_link : "index.php?page=welcome";
+$return_url = $logout_link ? $logout_link : "index.php";
 
 $_SESSION = array();
 session_destroy();
