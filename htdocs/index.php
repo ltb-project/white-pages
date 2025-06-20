@@ -83,6 +83,7 @@ $smarty->assign('use_advanced_search',$use_advanced_search);
 $smarty->assign('use_gallery',$use_gallery);
 $smarty->assign('use_directory',$use_directory);
 $smarty->assign('use_map',$use_map);
+$smarty->assign('use_updateinfos',$use_updateinfos);
 $smarty->assign('use_csv',$use_csv);
 $smarty->assign('use_vcard',$use_vcard);
 $smarty->assign('use_datatables', $use_datatables);
@@ -107,6 +108,7 @@ $smarty->assign('dn_link_label_attributes',implode(",",$dn_link_label_attributes
 $smarty->assign('group_dn_link_label_attributes',implode(",",$group_dn_link_label_attributes));
 $smarty->assign('usergroup_dn_link_label_attributes',implode(",",$usergroup_dn_link_label_attributes));
 $smarty->assign('require_auth',$require_auth);
+$smarty->assign('display_myaccount_menu',$display_myaccount_menu);
 
 # Assign messages
 $smarty->assign('lang',$lang);
@@ -123,6 +125,7 @@ $smarty->assign('search',$search);
 require_once("../lib/smarty.inc.php");
 $smarty->registerPlugin("function", "get_attribute", "get_attribute");
 $smarty->registerPlugin("function", "convert_ldap_date", "convert_ldap_date");
+$smarty->registerPlugin("function", "convert_ad_date", "convert_ad_date");
 $smarty->registerPlugin("function", "convert_guid_value", "convert_guid_value");
 $smarty->registerPlugin("function", "convert_bytes", "convert_bytes");
 $smarty->registerPlugin("function", "get_list_value", "get_list_value");
@@ -141,7 +144,9 @@ if ( $page === "directory" and !$use_directory ) { $page = "welcome"; }
 if ( $page === "gallery" and !$use_gallery ) { $page = "welcome"; }
 if ( $page === "map" and !$use_map ) { $page = "welcome"; }
 if ( $page === "login" and !$require_auth ) { $page = "welcome"; }
+if ( $page === "myaccount" and !$require_auth ) { $page = "welcome"; }
 if ( $page === "logout" and !$require_auth ) { $page = "welcome"; }
+if ( $page === "updateinfos" and !($require_auth and $use_updateinfos) ) { $page = "welcome"; }
 
 #==============================================================================
 # Authentication
@@ -154,6 +159,18 @@ if ($require_auth) {
         exit;
     }
     $smarty->assign('userdn',$_SESSION["userdn"]);
+}
+
+#==============================================================================
+# Route to API
+#==============================================================================
+if (isset($_POST["apiendpoint"])) {
+    $data = array();
+    if (file_exists('api/'.$_POST["apiendpoint"].'.php')) {
+        require_once('api/'.$_POST["apiendpoint"].'.php');
+    }
+    echo json_encode($data);
+    exit(0);
 }
 
 #==============================================================================

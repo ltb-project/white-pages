@@ -144,19 +144,14 @@ if ($result === "") {
             die;
         }
 
-	if ($display_edit_link) {
-		# Replace {dn} in URL
-		$edit_link = str_replace("{dn}", urlencode($dn), $display_edit_link);
-	}
     }
 }
 
 $smarty->assign("entry", $entry[0]);
+$smarty->assign("dn", $dn);
 
 $smarty->assign("card_title", $display_title);
 $smarty->assign("card_items", $search_items);
 $smarty->assign("show_undef", $display_show_undefined);
 $smarty->assign("type", $type);
-
-$smarty->assign("edit_link", $edit_link);
 ?>

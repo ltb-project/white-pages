@@ -122,7 +122,6 @@ $display_items = array('firstname', 'lastname', 'title', 'businesscategory', 'em
 $display_title = "fullname";
 $display_show_undefined = false;
 $display_group_items = array('fullname', 'description', 'member', 'uniquemember', 'memberof');
-#$display_edit_link = "http://ldapadmin.example.com/?dn={dn}";
 
 # Gallery
 $use_gallery = true;
@@ -161,6 +160,11 @@ $map_geocode_url = 'https://nominatim.openstreetmap.org/search?format=json&limit
 $map_no_location_show_on_default = false;
 $map_default_location_lat = 48.6882405;
 $map_default_location_long = -32.6412127;
+
+# Update infos (requires authentication)
+$use_updateinfos = false;
+$update_items = array('firstname', 'lastname', 'mail', 'phone', 'mobile');
+$update_items_macros = array('fullname' => '%firstname% %lastname%');
 
 # HTTP
 $http_url = "http://localhost/wp";
@@ -201,6 +205,7 @@ $custom_css = "";
 $display_footer = true;
 $default_page = "welcome";
 #$logout_link = "http://auth.example.com/logout";
+$display_myaccount_menu = false;
 
 # Customized template directory: to override some templates files
 $custom_tpl_dir = "";

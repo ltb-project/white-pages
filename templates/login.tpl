@@ -2,21 +2,23 @@
 
 <div class="row mt-5 pb-3">
 <div class="col-md-3"></div>
-<div class="col-md-6 card">
+<div class="col-md-6 card shadow">
 
   <div class="card-body">
 
   <form method="post" action="index.php?page=login">
 
-  <div class="row mb-3">
-    <label for="inputLogin" class="col-sm-3 col-form-label">{$msg_login}</label>
-    <div class="col-sm-9">
+  <div class="mb-3">
+    <label for="inputLogin" class="form-label">{$msg_login}</label>
+    <div class="input-group">
+      <span class="input-group-text"><i class="fa fa-user"></i></span>
       <input type="text" class="form-control" id="inputLogin" name="login" required />
     </div>
   </div>
-  <div class="row mb-3">
-    <label for="inputPassword" class="col-sm-3 col-form-label">{$msg_password}</label>
-    <div class="col-sm-9">
+  <div class="mb-3">
+    <label for="inputPassword" class="form-label">{$msg_password}</label>
+    <div class="input-group">
+      <span class="input-group-text"><i class="fa fa-lock"></i></span>
       <input type="password" class="form-control" id="inputPassword" name="password" required />
     </div>
   </div>

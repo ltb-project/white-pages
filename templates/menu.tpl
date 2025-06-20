@@ -37,6 +37,11 @@
                   <a class="nav-link{if $page=="map"} active{/if}"  href="index.php?page=map"><i class="fa fa-fw fa-globe"></i> {$msg_map}</a>
                 </li>
                 {/if}
+                {if $require_auth and $userdn and $display_myaccount_menu}
+                <li class="nav-item">
+                  <a class="nav-link" href="index.php?page=myaccount"><i class="fa fa-fw fa-user"></i> {$msg_myaccount}</a>
+                </li>
+                {/if}
                 {if (!$require_auth and $logout_link) or ($require_auth and $userdn)}
                 <li class="nav-item">
                   <a class="nav-link" href="{if $require_auth}index.php?page=logout{else}{$logout_link}{/if}"><i class="fa fa-fw fa-sign-out"></i> {$msg_logout}</a>

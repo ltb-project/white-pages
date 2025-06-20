@@ -28,11 +28,3 @@ Display or not undefined values in full display :
 .. code-block:: php
 
     $display_show_undefined = false;
-
-Add an “edit” button to link to another application that can modify the entry :
-
-.. code-block:: php
-
-    $display_edit_link = "http://ldapadmin.example.com/?dn={dn}
-
-.. tip:: Use ``{dn}`` to pass entry DN as parameter

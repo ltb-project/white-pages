@@ -7,10 +7,9 @@ $password = "";
 $userdn = "";
 $action = "";
 
-$return_page = "welcome";
-if (isset($_REQUEST["return_page"]) and $_REQUEST["return_page"]) { $return_page = $_REQUEST["return_page"]; }
+$return_url = "index.php";
+if (isset($_REQUEST["return_page"]) and $_REQUEST["return_page"]) { $return_url = "index.php?page=".$_REQUEST["return_page"]; }
 if (isset($_POST["action"]) and $_POST["action"]) { $action = $_POST["action"]; }
-$return_url = "index.php?page=".$return_page;
 
 # If already authenticated
 if (isset($_SESSION["userdn"])) {

@@ -15,6 +15,9 @@
 <script src="vendor/datatables/buttons.print.min.js"></script>
 <script src="vendor/datatables/buttons.bootstrap5.min.js"></script>
 {/if}
+{if $use_updateinfos}
+<script src="js/update.js"></script>
+{/if}
 
 {literal}
     <script type="text/javascript">
