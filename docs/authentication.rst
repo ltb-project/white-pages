@@ -57,3 +57,12 @@ To redirect them after logout on a specific URL:
    $logout_link = "https://auth.example.com/logout";
 
 If authentication is not enabled and this parameter is configured, then all users will see a logout link that will redirect them to this URL.
+
+My account menu
+---------------
+
+To add a menu item to let user display its own entry:
+
+.. code-block:: php
+
+   $display_myaccount_menu = true;

@@ -60,6 +60,7 @@ $messages['ldaperror'] = "Erreur de communication avec l'annuaire LDAP";
 $messages['login'] = "Identifiant";
 $messages['logout'] = "Déconnexion";
 $messages['map'] = "Carte";
+$messages['myaccount'] = "Mon compte";
 $messages['noentriesfound'] = "Aucune entrée trouvée";
 $messages['notdefined'] = "Non renseigné";
 $messages['password'] = "Mot de passe";

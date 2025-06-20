@@ -60,6 +60,7 @@ $messages['ldaperror'] = "LDAP communication error";
 $messages['login'] = "Login";
 $messages['logout'] = "Logout";
 $messages['map'] = "Map";
+$messages['myaccount'] = "My account";
 $messages['noentriesfound'] = "No entries found";
 $messages['notdefined'] = "Not defined";
 $messages['negates'] = "Check to negates this value";

@@ -205,6 +205,7 @@ $custom_css = "";
 $display_footer = true;
 $default_page = "welcome";
 #$logout_link = "http://auth.example.com/logout";
+$display_myaccount_menu = false;
 
 # Customized template directory: to override some templates files
 $custom_tpl_dir = "";

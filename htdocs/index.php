@@ -108,6 +108,7 @@ $smarty->assign('dn_link_label_attributes',implode(",",$dn_link_label_attributes
 $smarty->assign('group_dn_link_label_attributes',implode(",",$group_dn_link_label_attributes));
 $smarty->assign('usergroup_dn_link_label_attributes',implode(",",$usergroup_dn_link_label_attributes));
 $smarty->assign('require_auth',$require_auth);
+$smarty->assign('display_myaccount_menu',$display_myaccount_menu);
 
 # Assign messages
 $smarty->assign('lang',$lang);
