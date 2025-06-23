@@ -56,5 +56,37 @@ $ rpm --addsign RPMS/noarch/white-pages*
 # 4 - Docker
 #==============================================================================
 
-From current directory, do:
-$ docker build -t white-pages -f ./docker/Dockerfile ../
+Pre-requisites:
+
+* docker / podman
+* if docker: a version with buildkit (included by default in Docker Engine
+  as of version 23.0, but can be enabled in previous versions with
+  DOCKER_BUILDKIT=1 in build command line)
+
+From "packaging" directory, do:
+
+``` 
+DOCKER_BUILDKIT=1 docker build -t white-pages -f ./docker/Dockerfile ../
+```
+
+You can also build with podman:
+
+```
+podman build --no-cache -t white-pages -f ./docker/Dockerfile ../
+```
+
+For Alpine linux image :
+
+```
+DOCKER_BUILDKIT=1 docker build -t white-pages-alpine -f ./docker/Dockerfile.alpine ../
+```
+
+Tag the defautl and alpine images with the major and minor version, for example:
+
+```
+docker tag white-pages:latest ltbproject/white-pages:0.5.1
+docker tag white-pages:latest ltbproject/white-pages:0.5
+docker tag white-pages:latest ltbproject/white-pages:latest
+docker tag white-pages-alpine:latest ltbproject/white-pages:alpine-0.5.1
+docker tag white-pages-alpine:latest ltbproject/white-pages:alpine-0.5
+docker tag white-pages-alpine:latest ltbproject/white-pages:alpine-latest
