@@ -15,7 +15,7 @@
 %undefine __brp_mangle_shebangs
 
 Name: white-pages
-Version: 0.5
+Version: 0.5^20250107
 Release: 1%{?dist}
 Summary: LDAP Tool Box White Pages web interface
 License: GPL
@@ -23,7 +23,7 @@ URL: https://ltb-project.org
 
 BuildArch: noarch
 
-Source0: %https://ltb-project.org/archives/{wp_realname}-%{wp_version}.tar.gz
+Source0: https://ltb-project.org/archives/%{wp_realname}-%{version}.tar.gz
 Source1: white-pages-apache.conf
 
 %{?fedora:BuildRequires: phpunit9}
@@ -73,7 +73,7 @@ White Pages is provided by LDAP Tool Box project: https://ltb-project.org
 # Source preparation
 #=================================================
 %prep
-%setup -q -n %{wp_realname}-%{wp_version}
+%setup -q -n %{wp_realname}-%{version}
 # Clean hidden files in bundled php libs
 find . \
   \( -name .gitignore -o -name .travis.yml -o -name .pullapprove.yml \) \
@@ -171,7 +171,7 @@ rm -rf %{wp_cachedir}/{cache,templates_c}/*
 %attr(-,apache,apache) %{wp_cachedir}/templates_c
 
 %changelog
-* Tue Jul 01 2025 - Clement Oudot <clem@ltb-project.org> - 0.5-1
+* Tue Jul 01 2025 - Clement Oudot <clem@ltb-project.org> - 0.5^20250107-1
 - WIP, insert changelog here
 * Wed May 17 2023 - Clement Oudot <clem@ltb-project.org> - 0.4-2
 - gh#126: Missing bin/ directory in packages
