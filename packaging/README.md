@@ -5,12 +5,12 @@
 Update version in following files:
 
 * htdocs/index.php
-* packaging/rpm/SPECS/service-desk.spec
+* packaging/rpm/SPECS/white-pages.spec
 * packaging/debian/changelog
 
 ## Update dependencies and run tests
 
-From the service-desk root directory, run:
+From the white-pages root directory, run:
 
 ```
 composer update
