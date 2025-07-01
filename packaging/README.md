@@ -55,7 +55,6 @@ $ dpkg-buildpackage -b -us -uc
 ```
 
 # 2 - RPM (RHEL, CentOS, Fedora, ...)
-#==============================================================================
 
 Prepare your build environment, for example in /home/clement/build.
 You should have a ~/.rpmmacros like this:
