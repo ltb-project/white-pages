@@ -30,7 +30,7 @@ mkdir -p $NAME-$VERSION/vendor
 
 # Copy files
 cp    ../AUTHORS     $NAME-$VERSION
-cp    ../LICENCE     $NAME-$VERSION
+cp    ../LICENSE     $NAME-$VERSION
 cp    ../README.md   $NAME-$VERSION
 cp -a ../bin/*       $NAME-$VERSION/bin
 cp -a ../conf/*      $NAME-$VERSION/conf
