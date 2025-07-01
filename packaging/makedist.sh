@@ -41,7 +41,7 @@ cp -a ../templates/* $NAME-$VERSION/templates
 
 # Download composer dependencies
 cp ../composer* $NAME-$VERSION
-composer -d $NAME-$VERSION update
+composer -d $NAME-$VERSION update --no-dev
 rm $NAME-$VERSION/composer*
 
 # Create archive
