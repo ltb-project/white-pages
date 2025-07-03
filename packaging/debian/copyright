@@ -19,7 +19,7 @@ Files: htdocs/vendor/jquery
 Copyright: 2005, 2013 jQuery Foundation, Inc.
 
 Files: *
-Copyright: 2009-2016 LTB-Project, Clement Oudot
+Copyright: 2009-2025 LTB-Project, Worteks, Clement Oudot, David Coutadeur
 
 License: GPL
     This program is free software; you can redistribute it and/or modify

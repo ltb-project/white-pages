@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Move old configuration to /etc/white-pages
+for file in $( find /etc/white-pages -name "*.save" -type f );
+do
+    # move previously created *.save file into its equivalent without .save
+    mv ${file} ${file%.save}
+done
+
+# Migrate to smarty4 if smarty4 is installed
+if [[ -f /usr/share/php/smarty4/Smarty.class.php ]]; then
+    sed -i \
+        -e 's#/usr/share/php/smarty3/Smarty\.class\.php#/usr/share/php/smarty4/Smarty.class.php#' \
+        /etc/white-pages/config.inc.php
+fi
+
+# Enable apache2 php-fpm conf by default if apache2 is installed
+if which apache2 >/dev/null 2>&1 ; then
+    # If php-fpm conf is not already enabled
+    if ! ls -1 /etc/apache2/conf-enabled/php*-fpm.conf >/dev/null 2>&1 ; then
+        echo "Enabling apache2 php-fpm configuration by default"
+        a2enmod proxy_fcgi setenvif
+        a2enconf php*-fpm.conf
+    fi
+fi
+
+# Clean cache
+rm -rf /var/cache/white-pages/{cache,templates_c}/*

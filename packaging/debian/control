@@ -7,9 +7,41 @@ Standards-Version: 3.8.3
 Homepage: https://ltb-project.org/documentation/white-pages.html
 
 Package: white-pages
-Depends: php, php-ldap, php-gd
+Depends: php-ldap, php-gd, php-fpm (>= 7.3), smarty4 | smarty3
 Suggests: php-apcu
 Architecture: all
 Description: LDAP white pages web interface
  White Pages is a PHP application that allows users to search and display data stored in an LDAP directory. 
  White Pages is provided by LDAP Tool Box project: https://ltb-project.org
+ White Pages bundles some dependencies:
+ - js-bootstrap = v5.3.6
+ - js-jquery = v3.7.1
+ - js-datatables.net-datatables.net = 2.1.2
+ - js-datatables.net-datatables.net-bs5 = 2.0.8
+ - js-datatables.net-datatables.net-buttons = 3.1.0
+ - js-datatables.net-datatables.net-buttons-bs5 = 3.0.2
+ - fontawesome-fonts = 6.5.2
+ - php-ltb-project-ltb-common = 0.3.0
+ - php-bjeavons-zxcvbn-php = 1.3.1
+ - php-guzzlehttp-guzzle = 7.8.1
+ - php-guzzlehttp-promises = 2.0.2
+ - php-guzzlehttp-psr7 = 2.6.2
+ - php-mxrxdxn-pwned-passwords = 2.1.0
+ - php-phpmailer = 6.9.1
+ - php-psr-http-client = 1.0.3
+ - php-psr-http-factory = 1.0.2
+ - php-psr-http-message = 2.0
+ - php-ralouphie-getallheaders = 3.0.3
+ - php-symfony-deprecation-contracts = 2.5.1
+ - php-symfony-finder = 7.0.0
+ - php-symfony-polyfill = v1.31.0
+ - php-symfony-deprecation-contracts = v2.5.3
+ - php-symfony-var-exporter = v5.4.40
+ - php-psr-container = 1.1.2
+ - php-symfony-service-contracts = v2.5.3
+ - php-psr-cache = 1.0.1
+ - php-symfony-cache-contracts = v2.5.3
+ - php-psr-log = 1.1.4
+ - php-symfony-cache = v5.4.42
+ - php-predis-predis = v2.2.2
+
