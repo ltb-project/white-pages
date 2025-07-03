@@ -113,7 +113,7 @@ $smarty->assign('display_myaccount_menu',$display_myaccount_menu);
 # Assign custom template variables
 foreach (get_defined_vars() as $key => $value) {
     if (preg_match('/^tpl_(.+)/', $key, $matches)) {
-        $smarty->assign($matches[0], $value);
+        $smarty->assign($matches[1], $value);
     }
 }
 
