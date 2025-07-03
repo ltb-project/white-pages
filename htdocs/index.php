@@ -110,6 +110,13 @@ $smarty->assign('usergroup_dn_link_label_attributes',implode(",",$usergroup_dn_l
 $smarty->assign('require_auth',$require_auth);
 $smarty->assign('display_myaccount_menu',$display_myaccount_menu);
 
+# Assign custom template variables
+foreach (get_defined_vars() as $key => $value) {
+    if (preg_match('/^tpl_(.+)/', $key, $matches)) {
+        $smarty->assign($matches[0], $value);
+    }
+}
+
 # Assign messages
 $smarty->assign('lang',$lang);
 foreach ($messages as $key => $message) {
