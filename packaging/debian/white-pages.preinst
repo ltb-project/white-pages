@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Backup old configuration to /etc/white-pages
+for file in $( find /usr/share/white-pages/conf -name "*.php" -type f ! -name 'config.inc.php' -printf "%f\n" 2>/dev/null );
+do
+    # move conf file to /etc/white-pages/*.save
+    mkdir -p /etc/white-pages
+    mv /usr/share/white-pages/conf/${file} /etc/white-pages/${file}.save
+done
+
+if [[ -f "/usr/share/white-pages/conf/config.inc.php"  ]]; then
+    # move specific file config.inc.php to /etc/white-pages/*.bak
+    mkdir -p /etc/white-pages
+    mv /usr/share/white-pages/conf/config.inc.php \
+       /etc/white-pages/config.inc.php.bak
+fi

@@ -9,68 +9,95 @@
 # Copyright (C) 2009-2023 LTB-project
 #=================================================
 
-#=================================================
-# Variables
-#=================================================
-%define wp_name      white-pages
+%global wp_destdir   %{_datadir}/%{name}
+%global wp_cachedir  %{_localstatedir}/cache/%{name}
 %define wp_realname  ltb-project-%{name}
-%define wp_version   0.4
-%define wp_destdir   /usr/share/%{name}
-%define wp_cachedir  /var/cache/%{name}
+%undefine __brp_mangle_shebangs
 
-#=================================================
-# Header
-#=================================================
-Summary: LDAP white pages web interface
-Name: %{wp_name}
-Version: %{wp_version}
-Release: 2%{?dist}
+Name: white-pages
+Version: 0.5^20250107
+Release: 1%{?dist}
+Summary: LDAP Tool Box White Pages web interface
 License: GPL
-BuildArch: noarch
-
-Group: Applications/Web
 URL: https://ltb-project.org
 
-Source: %{wp_realname}-%{wp_version}.tar.gz
-Source1: white-pages-apache.conf
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+BuildArch: noarch
 
-Prereq: coreutils
-Requires: php, php-ldap, php-gd
+Source0: https://ltb-project.org/archives/%{wp_realname}-%{version}.tar.gz
+Source1: white-pages-apache.conf
+
+%{?fedora:BuildRequires: phpunit9}
+Requires:  coreutils
+Requires:  php(language) >= 7.3
+Requires:  php-ldap
+Requires:  php-Smarty
+Requires:  php-fpm
+%{!?el7:%global __requires_exclude /usr/bin/python}
+
+Provides:  bundled(js-bootstrap) = v5.3.6
+Provides:  bundled(js-jquery) = v3.7.1
+Provides:  bundled(js-datatables.net-datatables.net) = 2.1.2
+Provides:  bundled(js-datatables.net-datatables.net-bs5) = 2.0.8
+Provides:  bundled(js-datatables.net-datatables.net-buttons) = 3.1.0
+Provides:  bundled(js-datatables.net-datatables.net-buttons-bs5) = 3.0.2
+Provides:  bundled(fontawesome-fonts) = 6.5.2
+Provides:  bundled(php-ltb-project-ltb-common) = 0.3.0
+Provides:  bundled(php-bjeavons-zxcvbn-php) = 1.3.1
+Provides:  bundled(php-guzzlehttp-guzzle) = 7.8.1
+Provides:  bundled(php-guzzlehttp-promises) = 2.0.2
+Provides:  bundled(php-guzzlehttp-psr7) = 2.6.2
+Provides:  bundled(php-mxrxdxn-pwned-passwords) = 2.1.0
+Provides:  bundled(php-phpmailer) = 6.9.1
+Provides:  bundled(php-psr-http-client) = 1.0.3
+Provides:  bundled(php-psr-http-factory) = 1.0.2
+Provides:  bundled(php-psr-http-message) = 2.0
+Provides:  bundled(php-ralouphie-getallheaders) = 3.0.3
+Provides:  bundled(php-symfony-deprecation-contracts) = 3.4.0
+Provides:  bundled(php-symfony-finder) = 7.0.0
+Provides:  bundled(php-symfony-polyfill) = v1.31.0
+Provides:  bundled(php-symfony-deprecation-contracts) = v2.5.3
+Provides:  bundled(php-symfony-var-exporter) = v5.4.40
+Provides:  bundled(php-psr-container) = 1.1.2
+Provides:  bundled(php-symfony-service-contracts) = v2.5.3
+Provides:  bundled(php-psr-cache) = 1.0.1
+Provides:  bundled(php-symfony-cache-contracts) = v2.5.3
+Provides:  bundled(php-psr-log) = 1.1.4
+Provides:  bundled(php-symfony-cache) = v5.4.42
+Provides:  bundled(php-predis-predis) = v2.2.2
 
 %description
-White Pages is a PHP application that allows users to search and display data stored in an LDAP directory. 
+White Pages is a PHP application that allows users to search and display data stored in an LDAP directory.
 White Pages is provided by LDAP Tool Box project: https://ltb-project.org
 
 #=================================================
 # Source preparation
 #=================================================
 %prep
-%setup -n %{wp_realname}-%{wp_version}
+%setup -q -n %{wp_realname}-%{version}
+# Clean hidden files in bundled php libs
+find . \
+  \( -name .gitignore -o -name .travis.yml -o -name .pullapprove.yml \) \
+  -delete
 
 #=================================================
 # Installation
 #=================================================
 %install
-rm -rf %{buildroot}
-
 # Create directories
 mkdir -p %{buildroot}/%{wp_destdir}
 mkdir -p %{buildroot}/%{wp_destdir}/bin
-mkdir -p %{buildroot}/%{wp_cachedir}/cache
 mkdir -p %{buildroot}/%{wp_destdir}/conf
 mkdir -p %{buildroot}/%{wp_destdir}/htdocs
 mkdir -p %{buildroot}/%{wp_destdir}/lang
 mkdir -p %{buildroot}/%{wp_destdir}/lib
 mkdir -p %{buildroot}/%{wp_destdir}/templates
-mkdir -p %{buildroot}/%{wp_cachedir}/templates_c
 mkdir -p %{buildroot}/%{wp_destdir}/vendor
-mkdir -p %{buildroot}/etc/httpd/conf.d
+mkdir -p %{buildroot}/%{wp_cachedir}/cache
+mkdir -p %{buildroot}/%{wp_cachedir}/templates_c
 
 # Copy files
 ## Program
 install -m 755 bin/*          %{buildroot}/%{wp_destdir}/bin
-install -m 644 conf/*         %{buildroot}/%{wp_destdir}/conf
 install -m 644 htdocs/*.php   %{buildroot}/%{wp_destdir}/htdocs
 cp -a          htdocs/css     %{buildroot}/%{wp_destdir}/htdocs
 cp -a          htdocs/js      %{buildroot}/%{wp_destdir}/htdocs
@@ -80,43 +107,72 @@ install -m 644 lang/*         %{buildroot}/%{wp_destdir}/lang
 install -m 644 lib/*          %{buildroot}/%{wp_destdir}/lib
 install -m 644 templates/*    %{buildroot}/%{wp_destdir}/templates
 cp -a          vendor/*       %{buildroot}/%{wp_destdir}/vendor
+
 ## Apache configuration
-install -m 644 %{SOURCE1}     %{buildroot}/etc/httpd/conf.d/white-pages.conf
+mkdir -p %{buildroot}/%{_sysconfdir}/httpd/conf.d
+install -m 644 %{SOURCE1} \
+  %{buildroot}/%{_sysconfdir}/httpd/conf.d/white-pages.conf
 
 # Adapt Smarty paths
-sed -i 's:/usr/share/php/smarty3:/usr/share/php/Smarty:' %{buildroot}%{wp_destdir}/conf/config.inc.php
-sed -i 's:^#$smarty_cache_dir.*:$smarty_cache_dir = "'%{wp_cachedir}/cache'";:' %{buildroot}%{wp_destdir}/conf/config.inc.php
-sed -i 's:^#$smarty_compile_dir.*:$smarty_compile_dir = "'%{wp_cachedir}/templates_c'";:' %{buildroot}%{wp_destdir}/conf/config.inc.php
+sed -i \
+  -e 's:/usr/share/php/smarty3:/usr/share/php/Smarty:' \
+  -e 's:^#$smarty_cache_dir.*:$smarty_cache_dir = "'%{wp_cachedir}/cache'";:' \
+  -e 's:^#$smarty_compile_dir.*:$smarty_compile_dir = "'%{wp_cachedir}/templates_c'";:' \
+  conf/config.inc.php
+
+# Move conf file to %%_sysconfdir
+mkdir -p %{buildroot}/%{_sysconfdir}/%{name}
+install -p -m 644 conf/config.inc.php \
+  %{buildroot}/%{_sysconfdir}/%{name}/
+
+# Load configuration files from /etc/white-pages/
+for file in $( grep -r -l -E "\([^(]+\/conf\/[^)]+\)" %{buildroot}/%{wp_destdir} ) ; do
+  sed -i -e \
+    's#([^(]\+/conf/\([^")]\+\)")#("%{_sysconfdir}/%{name}/\1")#' \
+    ${file}
+done
+
+%pre
+# Backup old configuration to /etc/white-pages
+for file in $( find %{wp_destdir}/conf -name "*.php" -type f ! -name 'config.inc.php' -printf "%f\n" 2>/dev/null );
+do
+    # move conf file to /etc/white-pages/*.save
+    mkdir -p %{_sysconfdir}/%{name}
+    mv %{wp_destdir}/conf/${file} %{_sysconfdir}/%{name}/${file}.save
+done
+# Move specific file config.inc.php to /etc/white-pages/config.inc.php.bak
+if [[ -f "%{wp_destdir}/conf/config.inc.php"  ]]; then
+    mkdir -p %{_sysconfdir}/%{name}
+    mv %{wp_destdir}/conf/config.inc.php \
+       %{_sysconfdir}/%{name}/config.inc.php.bak
+fi
+
 
 %post
-#=================================================
-# Post Installation
-#=================================================
+# Move old configuration to /etc/self-service-password
+for file in $( find %{_sysconfdir}/%{name} -name "*.save" -type f );
+do
+    # move previously created *.save file into its equivalent without .save
+    mv ${file} ${file%.save}
+done
+# Clean cache
+rm -rf %{wp_cachedir}/{cache,templates_c}/*
 
-# Change owner
-/bin/chown apache:apache %{wp_cachedir}/cache
-/bin/chown apache:apache %{wp_cachedir}/templates_c
 
-#=================================================
-# Cleaning
-#=================================================
-%clean
-rm -rf %{buildroot}
-
-#=================================================
-# Files
-#=================================================
 %files
-%defattr(-, root, root, 0755)
-%config(noreplace) %{wp_destdir}/conf/config.inc.php
-%config(noreplace) /etc/httpd/conf.d/white-pages.conf
+%license LICENSE
+%doc AUTHORS README.md
+%dir %{_sysconfdir}/%{name}
+%config %{_sysconfdir}/%{name}/config.inc.php
+%config(noreplace) %{_sysconfdir}/httpd/conf.d/white-pages.conf
 %{wp_destdir}
-%{wp_cachedir}
+%dir %{wp_cachedir}
+%attr(-,apache,apache) %{wp_cachedir}/cache
+%attr(-,apache,apache) %{wp_cachedir}/templates_c
 
-#=================================================
-# Changelog
-#=================================================
 %changelog
+* Tue Jul 01 2025 - Clement Oudot <clem@ltb-project.org> - 0.5^20250107-1
+- WIP, insert changelog here
 * Wed May 17 2023 - Clement Oudot <clem@ltb-project.org> - 0.4-2
 - gh#126: Missing bin/ directory in packages
 * Thu May 04 2023 - Clement Oudot <clem@ltb-project.org> - 0.4-1

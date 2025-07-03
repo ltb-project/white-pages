@@ -1,35 +1,65 @@
-#==============================================================================
 # Some notes on packaging White Pages
-#==============================================================================
 
-# 1 - Archive tar.gz
-#==============================================================================
+## Version update
+
+Update version in following files:
+
+* htdocs/index.php
+* packaging/rpm/SPECS/white-pages.spec
+* packaging/debian/changelog
+
+## Update dependencies and run tests
+
+From the white-pages root directory, run:
+
+```
+composer update
+```
+
+Run tests:
+
+```
+XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-text --configuration tests/phpunit.xml
+```
+
+After the tests, remove the useless dependencies:
+
+```
+composer update --no-dev
+```
+
+## Archive tar.gz
 
 From current directory, do:
+```
 $ ./makedist VERSION
+```
 
 with VERSION the current verion of the package
 
 For example:
+```
 $ ./makedist 0.4
+```
 
-
-# 2 - Debian
-#==============================================================================
+## Debian
 
 Form current directory, do:
+```
 $ dpkg-buildpackage -b -kLTB
+```
 
 If you do not have LTB GPG secret key, do:
+```
 $ dpkg-buildpackage -b -us -uc
+```
 
 # 2 - RPM (RHEL, CentOS, Fedora, ...)
-#==============================================================================
 
 Prepare your build environment, for example in /home/clement/build.
 You should have a ~/.rpmmacros like this:
 
-----
+```
 %_topdir /home/clement/build
 %dist .el5
 %distribution .el5
@@ -38,23 +68,30 @@ You should have a ~/.rpmmacros like this:
 %_gpgbin /usr/bin/gpg
 %packager Clement OUDOT <clem.oudot@gmail.com>
 %vendor LTB-project
-----
+```
 
 Copy packaging files from current directory to build directory:
+```
 $ cp -Ra rpm/* /home/clement/build
+```
 
 Copy archive to SOURCES/:
+```
 $ cp ltb-project-white-pages-VERSION.tar.gz /home/clement/build/SOURCES
+```
 
 Go in build directory and build package:
+```
 $ cd /home/clement/build
 $ rpmbuild -ba SPECS/white-pages.spec
+```
 
 Sign RPM:
+```
 $ rpm --addsign RPMS/noarch/white-pages*
+```
 
-# 4 - Docker
-#==============================================================================
+## Docker
 
 Pre-requisites:
 

@@ -1,4 +1,18 @@
 #!/bin/sh
 
-sed -i 's:^#$smarty_cache_dir.*:$smarty_cache_dir = "/var/cache/white-pages/cache";:' debian/white-pages/usr/share/white-pages/conf/config.inc.php
-sed -i 's:^#$smarty_compile_dir.*:$smarty_compile_dir = "/var/cache/white-pages/templates_c";:' debian/white-pages/usr/share/white-pages/conf/config.inc.php
+sed -i \
+  -e 's:^#$smarty_cache_dir.*:$smarty_cache_dir = "/var/cache/white-pages/cache";:' \
+  -e 's:^#$smarty_compile_dir.*:$smarty_compile_dir = "/var/cache/white-pages/templates_c";:' \
+  debian/white-pages/etc/white-pages/config.inc.php
+
+# Load configuration files from /etc/white-pages/
+for file in $( grep -r -l -E "\([^(]+\/conf\/[^)]+\)" debian/white-pages ) ; do
+  sed -i -e \
+    's#([^(]\+/conf/\([^")]\+\)")#("/etc/white-pages/\1")#' \
+    ${file}
+done
+
+# Clean hidden files in bundled php libs
+find debian/white-pages/usr/share/white-pages \
+  \( -name .gitignore -o -name .travis.yml -o -name .pullapprove.yml \) \
+  -delete

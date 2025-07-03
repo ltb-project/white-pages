@@ -30,7 +30,7 @@ mkdir -p $NAME-$VERSION/vendor
 
 # Copy files
 cp    ../AUTHORS     $NAME-$VERSION
-cp    ../LICENCE     $NAME-$VERSION
+cp    ../LICENSE     $NAME-$VERSION
 cp    ../README.md   $NAME-$VERSION
 cp -a ../bin/*       $NAME-$VERSION/bin
 cp -a ../conf/*      $NAME-$VERSION/conf
@@ -41,7 +41,7 @@ cp -a ../templates/* $NAME-$VERSION/templates
 
 # Download composer dependencies
 cp ../composer* $NAME-$VERSION
-composer -d $NAME-$VERSION update
+composer -d $NAME-$VERSION update --no-dev
 rm $NAME-$VERSION/composer*
 
 # Create archive

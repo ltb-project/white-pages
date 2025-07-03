@@ -1,6 +1,6 @@
 # Program files
+../conf/*      etc/white-pages/
 ../bin/*       usr/share/white-pages/bin/
-../conf/*      usr/share/white-pages/conf/
 ../htdocs/*    usr/share/white-pages/htdocs/
 ../lang/*      usr/share/white-pages/lang/
 ../lib/*       usr/share/white-pages/lib/
