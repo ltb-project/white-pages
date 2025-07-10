@@ -17,6 +17,13 @@
 
                 {if $type === "user"}
                 <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$card_title}.attribute}.0}" class="img-fluid mx-auto d-block" />
+                    {if $update_photo}
+                    <div class="d-grid gap-2 col-md-4 mx-auto my-3">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updatePhotoModal">
+                      <i class="fa fa-fw fa-file-image"></i> {$msg_update_photo}
+                    </button>
+                    </div>
+                    {/if}
                 {/if}
 
                 <div class="table-responsive">
@@ -76,3 +83,31 @@
     </div>
     <div class="col-md-2"></div>
 </div>
+
+{if $update_photo}
+<div class="modal fade" id="updatePhotoModal" tabindex="-1" aria-labelledby="updatePhotoModalLabel" aria-hidden="true">
+  <form method="post" enctype="multipart/form-data">
+  <input type="hidden" name="dn" value="{$dn}"/>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="updatePhotoModalLabel">{$msg_update_photo}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label for="formFile" class="form-label">{$msg_select_photo}</label>
+        <input class="form-control" type="file" id="formFile" name="photo">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <i class="fa fa-fw fa-cancel"></i> {$msg_cancel}
+        </button>
+        <button type="submit" class="btn btn-success">
+          <i class="fa fa-fw fa-check-square-o"></i> {$msg_submit}
+        </button>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+{/if}
