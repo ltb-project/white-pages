@@ -7,6 +7,7 @@
 $messages['advancedsearch'] = "Advanced search";
 $messages['auth_sso_fail'] = "Authentication failed";
 $messages['authenticate'] = "Please authenticate yourself";
+$messages['cancel'] = "Cancel";
 $messages['cancelbacktoentry'] = "Cancel and go back to entry";
 $messages['displayentry'] = "Display entry";
 $messages['dnrequired'] = "Entry identifier required";
@@ -69,6 +70,7 @@ $messages['passwordinvalid'] = "Login or password incorrect";
 $messages['search'] = "Search";
 $messages['search_object'] = "Objects to search";
 $messages['searchrequired'] = "Please enter your search";
+$messages['select_photo'] = "Select a file and send it";
 $messages['sizelimit'] = "Size limit has been reached, some entries could not be displayed";
 $messages['submit'] = "Submit";
 $messages['title'] = "White Pages";
@@ -78,6 +80,7 @@ $messages['todate'] = "To";
 $messages['tooltip_emailto'] = "Send an email";
 $messages['tooltip_phoneto'] = "Dial this number";
 $messages['true'] = "Yes";
+$messages['update_photo'] = "Update photo";
 $messages['user_object'] = "Users";
 $messages['welcome'] = "Welcome to LDAP Tool Box White Pages";
 

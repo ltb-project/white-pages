@@ -9,6 +9,9 @@ $type = "";
 
 if (isset($_POST["dn"]) and $_POST["dn"]) {
     $action = "updateentry";
+    if (isset($_FILES['photo'])) {
+      $action = "updatephoto";
+    }
 }
 
 if (!$dn) {
@@ -108,6 +111,16 @@ if ($result === "") {
                     $action = "displayentry";
                 }
             }
+        }
+
+        # Update photo
+        if ($action == "updatephoto") {
+            if ( !empty($_FILES['photo']['name'])) {
+            } else {
+                $result = "nophoto";
+            }
+
+            $action = "displayform";
         }
 
         # Display form
