@@ -166,6 +166,9 @@ $use_updateinfos = false;
 $update_items = array('firstname', 'lastname', 'mail', 'phone', 'mobile');
 $update_items_macros = array('fullname' => '%firstname% %lastname%');
 $update_photo = false;
+#$update_photo_maxsize = 500000;
+$update_photo_ldap = true;
+$update_photo_directory = false;
 
 # HTTP
 $http_url = "http://localhost/wp";
