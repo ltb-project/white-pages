@@ -87,7 +87,7 @@ function get_list_value($params) {
 
     $ldap_connection = $ldapInstance->connect();
 
-    $filter = "(&".$list_filter."(".$list_key."=$value))";
+    $filter = "(&".$list_filter."(".$list_key."=" . ldap_escape($value, "", LDAP_ESCAPE_FILTER)."))";
     $return = $ldapInstance->get_first_value($list_base, "sub", $filter, $list_value);
 
     return $return;
