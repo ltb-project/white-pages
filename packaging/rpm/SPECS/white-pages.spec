@@ -99,6 +99,7 @@ mkdir -p %{buildroot}/%{wp_cachedir}/templates_c
 ## Program
 install -m 755 bin/*          %{buildroot}/%{wp_destdir}/bin
 install -m 644 htdocs/*.php   %{buildroot}/%{wp_destdir}/htdocs
+cp -a          htdocs/api     %{buildroot}/%{wp_destdir}/htdocs
 cp -a          htdocs/css     %{buildroot}/%{wp_destdir}/htdocs
 cp -a          htdocs/js      %{buildroot}/%{wp_destdir}/htdocs
 cp -a          htdocs/images  %{buildroot}/%{wp_destdir}/htdocs
