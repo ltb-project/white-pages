@@ -74,6 +74,7 @@ if (!isset($use_datatables)) $use_datatables = true;
 $smarty->assign('ldap_params',array('ldap_url' => $ldap_url, 'ldap_starttls' => $ldap_starttls, 'ldap_binddn' => $ldap_binddn, 'ldap_bindpw' => $ldap_bindpw, 'ldap_user_base' => $ldap_user_base, 'ldap_user_filter' => $ldap_user_filter, 'ldap_group_filter' => $ldap_group_filter, 'ldap_network_timeout' => $ldap_network_timeout));
 $smarty->assign('logo',$logo);
 $smarty->assign('background_image',$background_image);
+$smarty->assign('favicon',$favicon);
 $smarty->assign('hover_effect',$hover_effect);
 $smarty->assign('custom_css',$custom_css);
 $smarty->assign('attributes_map',$attributes_map);
