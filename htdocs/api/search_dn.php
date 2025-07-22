@@ -20,8 +20,16 @@ if (isset($_POST["search"]) and $_POST["search"]) {
 
     if ($nb_entries) {
         foreach($entries as $entry) {
-            $data[] = array( "dn" => $entry["dn"], "display" => $entry["cn"][0]);
+            $data["entries"][] = array( "dn" => $entry["dn"], "display" => $entry["cn"][0]);
         }
+    }
+
+    if ($result) {
+        $data["error"] = $messages[$result];
+    }
+
+    if ($size_limit_reached) {
+        $data["warning"] = $messages["sizelimit"];
     }
 }
 ?>

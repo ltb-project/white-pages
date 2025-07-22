@@ -2,15 +2,15 @@ $(document).ready(function(){
   let timer;
 
   $(".dn_link_container input[type=text]").on("keyup", function (event) {
-    // Remove value if field is emptied
-    if ($(this).val().length == 0) {
+    // Remove value if field is emptied or less than minimal characters
+    if ($(this).val().length <= 2) {
         $(this).siblings('input[type=hidden]').val('') ;
+        $(this).siblings('div.dn_link_suggestions').empty();
     }
     // Minimal search characters
     if ($(this).val().length > 2) {
       if (timer) {
         clearTimeout(timer);
-        // clear any existing list
         $(this).siblings('div.dn_link_suggestions').empty();
       }
 
@@ -18,16 +18,26 @@ $(document).ready(function(){
         $.post("index.php", { 'apiendpoint': 'search_dn', 'search': $(this).val() }, (data) => {
           // clear existing list
           $(this).siblings('div.dn_link_suggestions').empty();
-          // add entries to list
-          data.forEach( (entry) => {
-            const $elem = $(`<button type="button" class="list-group-item list-group-item-action">${entry.display}</button>`);
-            $elem.on('click', () => {
-              $(this).val(entry.display);
-              $(this).siblings('input[type=hidden]').val(entry.dn);
-              $(this).siblings('div.dn_link_suggestions').empty();
-            })
+          if (data.entries) {
+            // add entries to list
+            data.entries.forEach( (entry) => {
+              const $elem = $(`<button type="button" class="list-group-item list-group-item-action">${entry.display}</button>`);
+              $elem.on('click', () => {
+                $(this).val(entry.display);
+                $(this).siblings('input[type=hidden]').val(entry.dn);
+                $(this).siblings('div.dn_link_suggestions').empty();
+              })
+              $(this).siblings('div.dn_link_suggestions').append($elem);
+            });
+            if (data.warning) {
+              const $elem = $(`<span class="list-group-item list-group-item-warning">${data.warning}</span>`);
+              $(this).siblings('div.dn_link_suggestions').append($elem);
+            }
+          }
+          if (data.error) {
+            const $elem = $(`<span class="list-group-item list-group-item-danger">${data.error}</span>`);
             $(this).siblings('div.dn_link_suggestions').append($elem);
-          });
+          }
         }, 'json');
       }, 500);
     }
