@@ -25,11 +25,11 @@ if (isset($_POST["search"]) and $_POST["search"]) {
     }
 
     if ($result) {
-        $data["error"] = $result;
+        $data["error"] = $messages[$result];
     }
 
     if ($size_limit_reached) {
-        $data["warning"] = "size_limit_reached";
+        $data["warning"] = $messages["sizelimit"];
     }
 }
 ?>
