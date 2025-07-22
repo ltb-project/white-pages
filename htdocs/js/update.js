@@ -2,15 +2,15 @@ $(document).ready(function(){
   let timer;
 
   $(".dn_link_container input[type=text]").on("keyup", function (event) {
-    // Remove value if field is emptied
-    if ($(this).val().length == 0) {
+    // Remove value if field is emptied or less than minimal characters
+    if ($(this).val().length <= 2) {
         $(this).siblings('input[type=hidden]').val('') ;
+        $(this).siblings('div.dn_link_suggestions').empty();
     }
     // Minimal search characters
     if ($(this).val().length > 2) {
       if (timer) {
         clearTimeout(timer);
-        // clear any existing list
         $(this).siblings('div.dn_link_suggestions').empty();
       }
 
