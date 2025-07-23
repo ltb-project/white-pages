@@ -15,7 +15,7 @@ $(document).ready(function(){
       }
 
       timer = setTimeout(() => {
-        $.post("index.php", { 'apiendpoint': 'search_dn', 'search': $(this).val() }, (data) => {
+        $.post("index.php", { 'apiendpoint': 'search_dn', 'search': $(this).val(), 'search_type': 'dn_link' }, (data) => {
           // clear existing list
           $(this).siblings('div.dn_link_suggestions').empty();
           if (data.entries) {
