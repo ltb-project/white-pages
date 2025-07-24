@@ -85,6 +85,7 @@ $attributes_map = array(
 $attributes_list = array();
 $dn_link_label_attributes = array("cn");
 #$dn_link_search_display_macro = "%fullname% (%mail%)";
+$dn_link_search_min_chars = 3;
 $group_dn_link_label_attributes = array("description","cn");
 $usergroup_dn_link_label_attributes = array("description","cn");
 

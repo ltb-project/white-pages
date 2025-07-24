@@ -106,6 +106,7 @@ $smarty->assign('display_footer',$display_footer);
 $smarty->assign('logout_link',isset($logout_link) ? $logout_link : false);
 $smarty->assign('attributes_list',$attributes_list);
 $smarty->assign('dn_link_label_attributes',implode(",",$dn_link_label_attributes));
+$smarty->assign('dn_link_search_min_chars',$dn_link_search_min_chars);
 $smarty->assign('group_dn_link_label_attributes',implode(",",$group_dn_link_label_attributes));
 $smarty->assign('usergroup_dn_link_label_attributes',implode(",",$usergroup_dn_link_label_attributes));
 $smarty->assign('require_auth',$require_auth);
