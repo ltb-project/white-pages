@@ -79,6 +79,27 @@ It is also possible to configure which attribute is displayed as value on ``dn_l
     $group_dn_link_label_attributes = array("description","cn");
     $usergroup_dn_link_label_attributes = array("description","cn");
 
+The component ``dn_link`` can be used when updating an entry. In this case it is an autocomplete field that will search for entries in the directory.
+Some configuration parameters can be used:
+
+* What to display as search result label: it can be useful to use more thanone attribute to display the entry found by the search. This is possible by configuring a macro. For example to display the full name with the email in parenthesis:
+
+.. code-block:: php
+
+    $dn_link_search_display_macro = "%fullname% (%mail%)";
+
+* Minimal characters needed to launch the search (default is 3):
+
+.. code-block:: php
+
+    $dn_link_search_min_chars = 2;
+
+* Maximal number of entries to return (default is 10):
+
+.. code-block:: php
+
+    $dn_link_search_size_limit = 5;
+
 .. tip:: 
 
     You can translate attribute label by defining the ``label_item`` messages in custom lang file, for example :

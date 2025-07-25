@@ -16,11 +16,32 @@ if (isset($_POST["search"]) and $_POST["search"]) {
     # Search attributes
     $attributes = array('cn');
 
+    if (isset($_POST["search_type"]) and $_POST["search_type"] == "dn_link") {
+        $attributes = $dn_link_label_attributes;
+        if ($dn_link_search_display_macro) {
+            preg_match_all('/%(\w+)%/', $dn_link_search_display_macro, $matches);
+            foreach($matches[1] as $item) {
+                $attributes[] = $attributes_map[$item]['attribute'];
+            }
+        }
+        if (isset($dn_link_search_size_limit)) {
+            $ldapInstance->ldap_size_limit = $dn_link_search_size_limit;
+        }
+    }
+
     [$ldap,$result,$nb_entries,$entries,$size_limit_reached] = $ldapInstance->search($ldap_filter, $attributes, $attributes_map, $search_result_title, $search_result_sortby, $search_result_items, $ldap_scope);
 
     if ($nb_entries) {
         foreach($entries as $entry) {
-            $data["entries"][] = array( "dn" => $entry["dn"], "display" => $entry["cn"][0]);
+            $display = $entry["cn"][0];
+            if (isset($_POST["search_type"]) and $_POST["search_type"] == "dn_link" and $dn_link_search_display_macro) {
+                $display = preg_replace_callback('/%(\w+)%/',
+                    function ($matches) use ($entry, $attributes_map) {
+                        return $entry[ $attributes_map[$matches[1]]['attribute'] ][0];
+                    },
+                    $dn_link_search_display_macro);
+            }
+            $data["entries"][] = array( "dn" => $entry["dn"], "display" => $display);
         }
     }
 
