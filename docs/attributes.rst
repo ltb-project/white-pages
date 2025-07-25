@@ -94,6 +94,11 @@ Some configuration parameters can be used:
 
     $dn_link_search_min_chars = 2;
 
+* Maximal number of entries to return (default is 10):
+
+.. code-block:: php
+
+    $dn_link_search_size_limit = 5;
 
 .. tip:: 
 

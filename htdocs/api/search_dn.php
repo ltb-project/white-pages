@@ -24,6 +24,9 @@ if (isset($_POST["search"]) and $_POST["search"]) {
                 $attributes[] = $attributes_map[$item]['attribute'];
             }
         }
+        if (isset($dn_link_search_size_limit)) {
+            $ldapInstance->ldap_size_limit = $dn_link_search_size_limit;
+        }
     }
 
     [$ldap,$result,$nb_entries,$entries,$size_limit_reached] = $ldapInstance->search($ldap_filter, $attributes, $attributes_map, $search_result_title, $search_result_sortby, $search_result_items, $ldap_scope);
