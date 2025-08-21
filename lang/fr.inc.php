@@ -7,6 +7,7 @@
 $messages['advancedsearch'] = "Recherche avancée";
 $messages['auth_sso_fail'] = "L'authentification a échoué";
 $messages['authenticate'] = "Veuillez vous authentifier";
+$messages['cancel'] = "Annuler";
 $messages['cancelbacktoentry'] = "Annuler et revenir à l'entrée";
 $messages['displayentry'] = "Afficher l'entrée";
 $messages['dnrequired'] = "L'identifiant de l'entrée est requis";
@@ -69,6 +70,7 @@ $messages['negates'] = "Cocher la case pour nier la valeur";
 $messages['search'] = "Rechercher";
 $messages['search_object'] = "Objets à rechercher";
 $messages['searchrequired'] = "Veuillez saisir votre recherche";
+$messages['select_photo'] = "Sélectionnez un fichier puis envoyez-le";
 $messages['sizelimit'] = "La limite de recherche a été atteinte, certaines entrées n'ont pas pu être affichées";
 $messages['submit'] = "Envoyer";
 $messages['title'] = "Pages blanches";
@@ -78,6 +80,7 @@ $messages['todate'] = "Jusqu'au";
 $messages['tooltip_emailto'] = "Envoyer un email";
 $messages['tooltip_phoneto'] = "Composer ce numéro";
 $messages['true'] = "Oui";
+$messages['update_photo'] = "Modifier la photo";
 $messages['user_object'] = "Utilisateurs";
 $messages['welcome'] = "Bienvenue sur les pages blanches LDAP Tool Box";
 

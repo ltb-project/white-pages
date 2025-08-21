@@ -9,6 +9,9 @@ $type = "";
 
 if (isset($_POST["dn"]) and $_POST["dn"]) {
     $action = "updateentry";
+    if (isset($_FILES['photo'])) {
+      $action = "updatephoto";
+    }
 }
 
 if (!$dn) {
@@ -106,6 +109,33 @@ if ($result === "") {
                 } else {
                     $result = "updateok";
                     $action = "displayentry";
+                }
+            }
+        }
+
+        # Update photo
+        if ($action == "updatephoto") {
+            if ( empty($_FILES['photo']['name'])) {
+                $result = "nophoto";
+                $action = "displayform";
+            } elseif (isset($update_photo_maxsize) and (filesize($_FILES['photo']['tmp_name']) >= $update_photo_maxsize)) {
+                $result = "phototoobig";
+                $action = "displayform";
+            } else {
+
+                if ($update_photo_ldap) {
+                }
+
+                if ($update_photo_directory) {
+                    $search = ldap_read($ldap, $dn, '(objectClass=*)', array($photo_local_ldap_attribute));
+                    $entry = ldap_get_entries($ldap, $search);
+                    $photo_name = $entry[0][$photo_local_ldap_attribute][0];
+                    if (!move_uploaded_file($_FILES['photo']['tmp_name'], $photo_local_directory . $photo_name . $photo_local_extension )) {
+                        $result = "photonotuploaded";
+                        $action = "displayform";
+                    } else {
+                        $action = "displayentry";
+                    }
                 }
             }
         }
