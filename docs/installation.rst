@@ -43,6 +43,9 @@ Adapt ownership of Smarty cache repositories so Apache user can write into them.
 Debian / Ubuntu
 ---------------
 
+.. Important::
+    The GPG key for debian has been updated on August 2025. Take care to use the new one by following the instructions below.
+
 .. warning:: You need to install first the package `smarty3`_. If you face the error ``syntax error, unexpected token "class"``, try to install a newer version of the package:
 
    ``# wget http://ftp.us.debian.org/debian/pool/main/s/smarty3/smarty3_3.1.47-2_all.deb``
@@ -55,7 +58,7 @@ Import repository key:
 
 .. prompt:: bash #
 
-    curl https://ltb-project.org/documentation/_static/RPM-GPG-KEY-LTB-project | gpg --dearmor > /usr/share/keyrings/ltb-project-openldap-archive-keyring.gpg
+    curl https://ltb-project.org/documentation/_static/ltb-project-debian-keyring.gpg | gpg --dearmor > /usr/share/keyrings/ltb-project-debian-keyring.gpg
 
 Configure the repository:
 
@@ -65,7 +68,7 @@ Configure the repository:
 
 .. code-block:: ini
 
-    deb [arch=amd64 signed-by=/usr/share/keyrings/ltb-project-openldap-archive-keyring.gpg] https://ltb-project.org/debian/stable stable main
+    deb [arch=amd64 signed-by=/usr/share/keyrings/ltb-project-debian-keyring.gpg] https://ltb-project.org/debian/stable stable main
 
 Then update:
 
