@@ -24,3 +24,4 @@ LDAP Tool Box White Pages documentation
    mapmenu.rst
    csvexport.rst
    vcardexport.rst
+   updateinfos.rst
