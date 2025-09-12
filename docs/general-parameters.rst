@@ -95,7 +95,7 @@ Graphics
 Logo
 ^^^^
 
-You change the default logo with your own. Set the path to your logo in ``$logo``:
+You can change the default logo with your own. Set the path to your logo in ``$logo``:
 
 .. code-block:: php
 
@@ -104,11 +104,21 @@ You change the default logo with your own. Set the path to your logo in ``$logo`
 Background
 ^^^^^^^^^^
 
-You change the background image with your own. Set the path to image in ``$background_image``:
+You can change the background image with your own. Set the path to image in ``$background_image``:
 
 .. code-block:: php
 
      $background_image = "images/unsplash-space.jpeg";
+
+Favicon
+^^^^^^^
+
+You can change the favicon with your own. Set the path to your favicon in ``$favicon``:
+
+.. code-block:: php
+
+    $favicon = "images/favicon.ico";
+
 
 Hover effect
 ^^^^^^^^^^^^

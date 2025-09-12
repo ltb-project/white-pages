@@ -25,9 +25,9 @@
     <input type="number" name="{$item}{$itemindex}" class="form-control" value="{$value}" data-role="value" />
 {else if $type eq 'dn_link'}
     <div class="dn_link_container">
-    <input type="text" class="form-control" value="{get_attribute dn="{$value}" attribute="cn" ldap_url="{$ldap_params.ldap_url}" ldap_starttls="{$ldap_params.ldap_starttls}" ldap_binddn="{$ldap_params.ldap_binddn}" ldap_bindpw="{$ldap_params.ldap_bindpw}" ldap_filter="{$ldap_params.ldap_user_filter}" ldap_network_timeout="{$ldap_params.ldap_network_timeout}"}" data-role="display"/>
+    <input type="text" class="form-control" value="{get_attribute dn="{$value}" attribute="cn" ldap_url="{$ldap_params.ldap_url}" ldap_starttls="{$ldap_params.ldap_starttls}" ldap_binddn="{$ldap_params.ldap_binddn}" ldap_bindpw="{$ldap_params.ldap_bindpw}" ldap_filter="{$ldap_params.ldap_user_filter}" ldap_network_timeout="{$ldap_params.ldap_network_timeout}"}" data-role="display" data-conf-searchminchars="{$dn_link_search_min_chars}"/>
     <input type="hidden" name="{$item}{$itemindex}" value="{$value}" data-role="value" />
-    <div class="z-3 list-group dn_link_suggestions"></div>
+    <div class="z-3 position-absolute list-group dn_link_suggestions"></div>
     </div>
 {else}
     <input type="text" name={$item} class="form-control" value="{$value}" data-role="value" />
