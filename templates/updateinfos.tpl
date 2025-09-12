@@ -95,7 +95,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <label for="formFile" class="form-label">{$msg_select_photo}</label>
+        <div class="alert alert-warning">
+            {$msg_select_photo}
+        </div>
         <input class="form-control" type="file" id="formFile" name="photo">
       </div>
       <div class="modal-footer">
