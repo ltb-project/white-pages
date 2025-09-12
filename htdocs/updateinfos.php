@@ -135,6 +135,13 @@ if ($result === "") {
             } else {
 
                 if ($update_photo_ldap) {
+                    $update_attributes = array($photo_ldap_attribute => file_get_contents($_FILES['photo']['tmp_name']));
+                    if (!ldap_mod_replace($ldap, $dn, $update_attributes)) {
+                        $result = "photonotuploaded";
+                        $action = "displayform";
+                    } else {
+                        $action = "displayentry";
+                    }
                 }
 
                 if ($update_photo_directory) {
