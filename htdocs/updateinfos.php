@@ -115,8 +115,19 @@ if ($result === "") {
 
         # Update photo
         if ($action == "updatephoto") {
-            if ( empty($_FILES['photo']['name'])) {
-                $result = "nophoto";
+            if ( $_FILES['photo']['error'] ) {
+                switch( $_FILES['photo']['error']) {
+                case 1:
+                case 2:
+                    $result = "phototoobig";
+                    break;
+                case 4:
+                    $result = "nophoto";
+                    break;
+                default:
+                    $result = "photonotuploaded";
+                }
+                error_log("Upload photo for $dn failed with error $result (error code ".$_FILES['photo']['error'].")");
                 $action = "displayform";
             } elseif (isset($update_photo_maxsize) and (filesize($_FILES['photo']['tmp_name']) >= $update_photo_maxsize)) {
                 $result = "phototoobig";
