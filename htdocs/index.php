@@ -111,6 +111,7 @@ $smarty->assign('group_dn_link_label_attributes',implode(",",$group_dn_link_labe
 $smarty->assign('usergroup_dn_link_label_attributes',implode(",",$usergroup_dn_link_label_attributes));
 $smarty->assign('require_auth',$require_auth);
 $smarty->assign('display_myaccount_menu',$display_myaccount_menu);
+$smarty->assign('update_photo',$update_photo);
 
 # Assign custom template variables
 foreach (get_defined_vars() as $key => $value) {

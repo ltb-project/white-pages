@@ -9,6 +9,9 @@ $type = "";
 
 if (isset($_POST["dn"]) and $_POST["dn"]) {
     $action = "updateentry";
+    if (isset($_FILES['photo'])) {
+      $action = "updatephoto";
+    }
 }
 
 if (!$dn) {
@@ -106,6 +109,51 @@ if ($result === "") {
                 } else {
                     $result = "updateok";
                     $action = "displayentry";
+                }
+            }
+        }
+
+        # Update photo
+        if ($action == "updatephoto") {
+            if ( $_FILES['photo']['error'] ) {
+                switch( $_FILES['photo']['error']) {
+                case 1:
+                case 2:
+                    $result = "phototoobig";
+                    break;
+                case 4:
+                    $result = "nophoto";
+                    break;
+                default:
+                    $result = "photonotuploaded";
+                }
+                error_log("Upload photo for $dn failed with error $result (error code ".$_FILES['photo']['error'].")");
+                $action = "displayform";
+            } elseif (isset($update_photo_maxsize) and (filesize($_FILES['photo']['tmp_name']) >= $update_photo_maxsize)) {
+                $result = "phototoobig";
+                $action = "displayform";
+            } else {
+
+                if ($update_photo_ldap) {
+                    $update_attributes = array($photo_ldap_attribute => file_get_contents($_FILES['photo']['tmp_name']));
+                    if (!ldap_mod_replace($ldap, $dn, $update_attributes)) {
+                        $result = "photonotuploaded";
+                        $action = "displayform";
+                    } else {
+                        $action = "displayentry";
+                    }
+                }
+
+                if ($update_photo_directory) {
+                    $search = ldap_read($ldap, $dn, '(objectClass=*)', array($photo_local_ldap_attribute));
+                    $entry = ldap_get_entries($ldap, $search);
+                    $photo_name = $entry[0][$photo_local_ldap_attribute][0];
+                    if (!move_uploaded_file($_FILES['photo']['tmp_name'], $photo_local_directory . $photo_name . $photo_local_extension )) {
+                        $result = "photonotuploaded";
+                        $action = "displayform";
+                    } else {
+                        $action = "displayentry";
+                    }
                 }
             }
         }
