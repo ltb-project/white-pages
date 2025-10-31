@@ -6,6 +6,7 @@ $entry = "";
 $item_list = array();
 $result = "";
 $type = "";
+$photo_defined = false;
 
 if (isset($_POST["dn"]) and $_POST["dn"]) {
     $action = "updateentry";
@@ -196,6 +197,12 @@ if ($result === "") {
                 $attributes[] = $attributes_map[$item]['attribute'];
             }
             $attributes[] = $attributes_map[$display_title]['attribute'];
+            if ($update_photo and $update_photo_ldap) {
+                $attributes[] = $photo_ldap_attribute;
+            }
+            if ($update_photo and $update_photo_directory) {
+                $attributes[] = $photo_local_ldap_attribute;
+            }
 
             # Search entry
             $search = ldap_read($ldap, $dn, $ldap_user_filter, $attributes);
@@ -218,6 +225,15 @@ if ($result === "") {
                         $item_list[$item] = $ldapInstance->get_list( $attributes_list[$item]["base"], $attributes_list[$item]["filter"], $attributes_list[$item]["key"], $attributes_list[$item]["value"]  );
                     }
                 }
+
+                # Look if photo exists
+                if ($update_photo_ldap) {
+                    $photo_defined = $entry[strtolower($photo_ldap_attribute)] ? true : false;
+                }
+                if ($update_photo_directory) {
+                    $photo_name = $entry[$photo_local_ldap_attribute][0];
+                    $photo_defined = file_exists($photo_local_directory . $photo_name . $photo_local_extension);
+                }
             }
         }
     }
@@ -239,4 +255,4 @@ $smarty->assign("card_items", array_unique(array_merge($display_items, $update_i
 $smarty->assign("update_items", $update_items);
 $smarty->assign("show_undef", $display_show_undefined);
 $smarty->assign("type", $type);
-
+$smarty->assign("photo_defined", $photo_defined);

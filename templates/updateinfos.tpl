@@ -22,9 +22,11 @@
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updatePhotoModal">
                       <i class="fa fa-fw fa-file-image"></i> {$msg_update_photo}
                     </button>
+                    {if $photo_defined}
                     <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deletePhotoModal">
                       <i class="fa fa-fw fa-trash"></i> {$msg_delete_photo}
                     </button>
+                    {/if}
                     </div>
                     {/if}
                 {/if}
@@ -115,6 +117,7 @@
   </div>
   </form>
 </div>
+{if $photo_defined}
 <div class="modal fade" id="deletePhotoModal" tabindex="-1" aria-labelledby="deletePhotoModalLabel" aria-hidden="true">
   <form method="post" enctype="multipart/form-data">
   <input type="hidden" name="dn" value="{$dn}"/>
@@ -142,5 +145,5 @@
   </div>
   </form>
 </div>
-
+{/if}
 {/if}
