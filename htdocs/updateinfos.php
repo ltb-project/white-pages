@@ -12,6 +12,9 @@ if (isset($_POST["dn"]) and $_POST["dn"]) {
     if (isset($_FILES['photo'])) {
       $action = "updatephoto";
     }
+    if (isset($_POST['deletephoto']) and $_POST['deletephoto']) {
+      $action = "deletephoto";
+    }
 }
 
 if (!$dn) {
@@ -154,6 +157,31 @@ if ($result === "") {
                     } else {
                         $action = "displayentry";
                     }
+                }
+            }
+        }
+
+        # Delete photo
+        if ($action == "deletephoto") {
+            if ($update_photo_ldap) {
+                $delete_attributes = array($photo_ldap_attribute => array());
+                if (!ldap_mod_del($ldap, $dn, $delete_attributes)) {
+                    $result = "photonotdeleted";
+                    $action = "displayform";
+                } else {
+                    $action = "displayentry";
+                }
+            }
+
+            if ($update_photo_directory) {
+                $search = ldap_read($ldap, $dn, '(objectClass=*)', array($photo_local_ldap_attribute));
+                $entry = ldap_get_entries($ldap, $search);
+                $photo_name = $entry[0][$photo_local_ldap_attribute][0];
+                if (!unlink($photo_local_directory . $photo_name . $photo_local_extension)) {
+                    $result = "photonotdeleted";
+                    $action = "displayform";
+                } else {
+                    $action = "displayentry";
                 }
             }
         }

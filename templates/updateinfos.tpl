@@ -22,6 +22,9 @@
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updatePhotoModal">
                       <i class="fa fa-fw fa-file-image"></i> {$msg_update_photo}
                     </button>
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#deletePhotoModal">
+                      <i class="fa fa-fw fa-trash"></i> {$msg_delete_photo}
+                    </button>
                     </div>
                     {/if}
                 {/if}
@@ -112,4 +115,32 @@
   </div>
   </form>
 </div>
+<div class="modal fade" id="deletePhotoModal" tabindex="-1" aria-labelledby="deletePhotoModalLabel" aria-hidden="true">
+  <form method="post" enctype="multipart/form-data">
+  <input type="hidden" name="dn" value="{$dn}"/>
+  <input type="hidden" name="deletephoto" value="1"/>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="deletePhotoModalLabel">{$msg_delete_photo}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-warning">
+            {$msg_delete_photo_warning}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <i class="fa fa-fw fa-cancel"></i> {$msg_cancel}
+        </button>
+        <button type="submit" class="btn btn-success">
+          <i class="fa fa-fw fa-check-square-o"></i> {$msg_submit}
+        </button>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+
 {/if}
