@@ -24,6 +24,7 @@ $messages['fromdate'] = "Da";
 $messages['directory'] = "Elenco";
 $messages['gallery'] = "Galleria";
 $messages['group_object'] = "Gruppi";
+$messages["home"] = "Home";
 $messages['pager_all'] = "Tutto";
 $messages['print_all'] = "Stampa tutti i risultati";
 $messages['print_page'] = "Stampa questa pagina";

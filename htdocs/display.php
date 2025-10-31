@@ -15,6 +15,7 @@ if (isset($_GET["dn"]) and $_GET["dn"]) {
     $dn = $entry_dn;
 } else {
     $result = "dnrequired";
+    $page = "error";
 }
 
 if ($result === "") {
@@ -83,6 +84,7 @@ if ($result === "") {
 
         if ( $errno ) {
             $result = "ldaperror";
+            $page = "error";
             error_log("LDAP - Search error $errno  (".ldap_error($ldap).")");
         } else {
             $entry = ldap_get_entries($ldap, $search);

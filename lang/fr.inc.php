@@ -25,6 +25,7 @@ $messages['directory'] = "Répertoire";
 $messages['gallery'] = "Trombinoscope";
 $messages['group_object'] = "Groupes";
 $messages['pager_all'] = "Tout";
+$messages["home"] = "Accueil";
 $messages['print_all'] = "Imprimer tous les résultats";
 $messages['print_page'] = "Imprimer cette page";
 $messages['label_businesscategory'] = "Catégorie";

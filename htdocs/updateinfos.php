@@ -21,7 +21,7 @@ if (isset($_POST["dn"]) and $_POST["dn"]) {
 if (!$dn) {
     error_log("No user DN found, abort infos update");
     $result = "dnrequired";
-    $action = "displayentry";
+    $page = "error";
 }
 
 if ($result === "") {
