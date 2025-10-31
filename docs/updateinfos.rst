@@ -36,7 +36,7 @@ Some fields can be automatically updated:
 Photo
 -----
 
-To let user update its photo:
+To let user update or delete its photo:
 
 .. code-block:: php
 
