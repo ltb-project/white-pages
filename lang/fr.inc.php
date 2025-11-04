@@ -64,6 +64,7 @@ $messages['login'] = "Identifiant";
 $messages['logout'] = "Déconnexion";
 $messages['map'] = "Carte";
 $messages['myaccount'] = "Mon compte";
+$messages['no'] = "Non";
 $messages['noentriesfound'] = "Aucune entrée trouvée";
 $messages['nophoto'] = "Aucune photo fournie";
 $messages['notdefined'] = "Non renseigné";
@@ -89,5 +90,6 @@ $messages['true'] = "Oui";
 $messages['update_photo'] = "Modifier la photo";
 $messages['user_object'] = "Utilisateurs";
 $messages['welcome'] = "Bienvenue sur les pages blanches LDAP Tool Box";
+$messages['yes'] = "Oui";
 
 ?>

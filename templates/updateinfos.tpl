@@ -135,10 +135,10 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          <i class="fa fa-fw fa-cancel"></i> {$msg_cancel}
+          <i class="fa fa-fw fa-cancel"></i> {$msg_no}
         </button>
         <button type="submit" class="btn btn-success">
-          <i class="fa fa-fw fa-check-square-o"></i> {$msg_submit}
+          <i class="fa fa-fw fa-check-square-o"></i> {$msg_yes}
         </button>
       </div>
     </div>
