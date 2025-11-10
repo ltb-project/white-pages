@@ -26,6 +26,10 @@ if (isset($_POST["search"]) and $_POST["search"]) {
     $attributes_list = array();
     [$ldap,$result,$nb_entries,$entries,$size_limit_reached] = $ldapInstance->search($ldap_filter, $attributes_list, $attributes_map, $search_result_title, $search_result_sortby, $result_items);
 
+    if ($result == "noentriesfound") {
+        $page = "error";
+    }
+
     if ( ! empty($entries) )
     {
         if ($nb_entries === 1) {
@@ -53,9 +57,12 @@ if (isset($_POST["search"]) and $_POST["search"]) {
                 $smarty->assign("show_undef", $search_result_show_undefined);
                 $smarty->assign("truncate_value_after", $search_result_truncate_value_after);
         }
+    } else {
+        $page = "error";
     }
 } else {
     $result = "searchrequired";
+    $page = "error";
 }
 
 ?>

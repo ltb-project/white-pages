@@ -47,6 +47,10 @@ if ($ldap) {
 
 }
 
+if ($result == "ldaperror" or $result == "noentriesfound") {
+    $page = "error";
+}
+
 $smarty->assign("nb_entries", $nb_entries);
 $smarty->assign("entries", $entries);
 $smarty->assign("size_limit_reached", $size_limit_reached);

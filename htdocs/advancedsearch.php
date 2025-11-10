@@ -12,26 +12,22 @@ $type = "user";
 $ldap_search_base = "";
 $ldap_search_filter = "";
 
-if (!isset($_POST["submit"])) {
-    $smarty->assign('advanced_search_criteria', $advanced_search_criteria);
-    $smarty->assign('advanded_search_display_search_objects', $advanded_search_display_search_objects);
+$smarty->assign('advanced_search_criteria', $advanced_search_criteria);
+$smarty->assign('advanded_search_display_search_objects', $advanded_search_display_search_objects);
 
-    # Check if an attribute is a list type and prepare the list
-    $ldap_connection = $ldapInstance->connect();
-    $ldap = $ldap_connection[0];
-    $result = $ldap_connection[1];
+# Check if an attribute is a list type and prepare the list
+$ldap_connection = $ldapInstance->connect();
+$ldap = $ldap_connection[0];
+$result = $ldap_connection[1];
 
-    if ($ldap) {
-        $item_list = array();
-        foreach ( $advanced_search_criteria as $criteria ) {
-            if ( $attributes_map[$criteria]["type"] === "list" ) {
-                $item_list[$criteria] = $ldapInstance->get_list( $attributes_list[$criteria]["base"], $attributes_list[$criteria]["filter"], $attributes_list[$criteria]["key"], $attributes_list[$criteria]["value"]  );
-            }
+if ($ldap) {
+    $item_list = array();
+    foreach ( $advanced_search_criteria as $criteria ) {
+        if ( $attributes_map[$criteria]["type"] === "list" ) {
+            $item_list[$criteria] = $ldapInstance->get_list( $attributes_list[$criteria]["base"], $attributes_list[$criteria]["filter"], $attributes_list[$criteria]["key"], $attributes_list[$criteria]["value"]  );
         }
-        $smarty->assign('item_list', $item_list);
     }
-
-    $result = "displayform";
+    $smarty->assign('item_list', $item_list);
 }
 
 if (isset($_POST["type"])) {
@@ -50,14 +46,13 @@ if ( $type === "group" ) {
     $result_items = $search_result_group_items;
 }
 
-if ($result === "") {
+if (!isset($_POST["submit"])) {
+     $result = "displayform";
+}
+
+if ($result == "") {
 
     require_once("../lib/date.inc.php");
-
-    $ldap_connection = $ldapInstance->connect();
-    $ldapInstance->ldap_user_base = $ldap_search_base;
-    $ldap = $ldap_connection[0];
-    $result = $ldap_connection[1];
 
     if ($ldap) {
 
@@ -176,6 +171,8 @@ if ($result === "") {
                 $page = "search";
             }
         }
+    } else {
+        $page = "error";
     }
 }
 

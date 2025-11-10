@@ -27,6 +27,7 @@ if ($auth_type === "header") {
     if (!$login) {
         $result = "auth_sso_fail";
         error_log("SSO authentication requested but no value found in $auth_header_name_user HTTP header");
+        $page = "error";
     }
 
 }
@@ -61,7 +62,7 @@ if ($result == "" and ($auth_type === "header" or ($auth_type === "ldap" and $ac
         $entry = ldap_first_entry($ldap, $search);
 
         if( !$entry ) {
-            $result = "badcredentials";
+            $result = "passwordinvalid";
             error_log("LDAP - User $login not found");
         } else { 
             $userdn = ldap_get_dn($ldap, $entry);

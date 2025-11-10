@@ -25,6 +25,7 @@ $messages['directory'] = "Directory";
 $messages['gallery'] = "Gallery";
 $messages['group_object'] = "Groups";
 $messages['pager_all'] = "All";
+$messages["home"] = "Home";
 $messages['print_all'] = "Print all results";
 $messages['print_page'] = "Print this page";
 $messages['label_businesscategory'] = "Business category";
