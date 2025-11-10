@@ -195,6 +195,12 @@ You can turn on debug mode with ``$debug``:
 
     $debug = true;
 
+You can adjust the debug level by using PHP predefined constants in ``$debug_level``:
+
+.. code-block:: php
+
+    $debug_level = E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED;
+
 .. tip:: Debug messages will be printed in server logs.
 
 This is also possible to enable Smarty debug, for web interface issues:
