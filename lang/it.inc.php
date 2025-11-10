@@ -65,6 +65,7 @@ $messages['login'] = "Login";
 $messages['logout'] = "Esci";
 $messages['map'] = "Carta";
 $messages['myaccount'] = "My account";
+$messages['no'] = "No";
 $messages['noentriesfound'] = "Nessun record trovato";
 $messages['nophoto'] = "No photo provided";
 $messages['notdefined'] = "Non definito";
@@ -90,5 +91,6 @@ $messages['true'] = "Si";
 $messages['update_photo'] = "Update photo";
 $messages['user_object'] = "Utenti";
 $messages['welcome'] = "Benvenuto in LDAP Tool Box White Pages";
+$messages['yes'] = "Si";
 
 ?>
