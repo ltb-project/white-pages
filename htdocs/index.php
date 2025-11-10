@@ -163,7 +163,7 @@ if ( $page === "updateinfos" and !($require_auth and $use_updateinfos) ) { $page
 #==============================================================================
 if ($require_auth) {
     session_start();
-    if (!isset($_SESSION["userdn"]) and $page !== "login") {
+    if (!isset($_SESSION["userdn"]) and $page !== "login" and $page !=="logout" and $page !== "error") {
         $login_url = "index.php?page=login&return_page=$page";
         header('Location: '.$login_url);
         exit;
