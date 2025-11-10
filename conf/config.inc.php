@@ -220,6 +220,7 @@ $custom_tpl_dir = "";
 
 # Debug mode
 $debug = false;
+$debug_level = E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED;
 
 # Cache directory
 #$smarty_compile_dir = "/var/cache/white-pages/templates_c";

@@ -61,7 +61,7 @@ $smarty->debugging = $smarty_debug;
 
 error_reporting(0);
 if ($debug) {
-    error_reporting(E_ALL);
+    error_reporting($debug_level);
     # Set debug for LDAP
     ldap_set_option(NULL, LDAP_OPT_DEBUG_LEVEL, 7);
 }
