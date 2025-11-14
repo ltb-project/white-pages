@@ -68,7 +68,7 @@ if (isset($_GET["dn"]) and $_GET["dn"])
                     if ( $photo_local_ldap_attribute and isset($entry[0][strtolower($photo_local_ldap_attribute)]) ) {
                         $filephoto = $photo_local_directory . $entry[0][strtolower($photo_local_ldap_attribute)][0] . $photo_local_extension;
                         if ( file_exists($filephoto) ) {
-                            $photo = imagecreatefromjpeg($filephoto);
+                            $photo = imagecreatefromstring(readfile($filephoto));
                         }
                     }
                 } else {
