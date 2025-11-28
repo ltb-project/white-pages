@@ -157,6 +157,7 @@ if ( $page === "login" and !$require_auth ) { $page = "welcome"; }
 if ( $page === "myaccount" and !$require_auth ) { $page = "welcome"; }
 if ( $page === "logout" and !$require_auth ) { $page = "welcome"; }
 if ( $page === "updateinfos" and !($require_auth and $use_updateinfos) ) { $page = "welcome"; }
+if ( !preg_match("/^[\w-]+$/", $page) ) { $page = "welcome"; }
 
 #==============================================================================
 # Authentication
@@ -186,6 +187,7 @@ if (isset($_POST["apiendpoint"])) {
 #==============================================================================
 # Load page
 #==============================================================================
+
 if ( file_exists($page.".php") ) { require_once($page.".php"); }
 $smarty->assign('page',$page);
 
