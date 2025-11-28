@@ -75,6 +75,7 @@ $messages['passwordinvalid'] = "Login or password incorrect";
 $messages['photonotdeleted'] = "Photo deletion failed";
 $messages['photonotuploaded'] = "Photo upload failed";
 $messages['phototoobig'] = "File is too big";
+$messages['photo_file_is_not_an_image'] = "File is not an image";
 $messages['search'] = "Search";
 $messages['search_object'] = "Objects to search";
 $messages['searchrequired'] = "Please enter your search";

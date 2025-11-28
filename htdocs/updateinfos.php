@@ -105,6 +105,9 @@ if ($result === "") {
             } elseif (isset($update_photo_maxsize) and (filesize($_FILES['photo']['tmp_name']) >= $update_photo_maxsize)) {
                 $result = "phototoobig";
                 $action = "displayform";
+            } elseif (!@is_array(getimagesize($_FILES['photo']['tmp_name']))) {
+                $result = "photo_file_is_not_an_image";
+                $action = "displayform";
             } else {
 
                 if ($update_photo_ldap) {

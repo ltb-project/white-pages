@@ -103,7 +103,7 @@
         <div class="alert alert-warning">
             {$msg_select_photo}
         </div>
-        <input class="form-control" type="file" id="formFile" name="photo">
+        <input class="form-control" type="file" id="formFile" name="photo" accept="image/*">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
