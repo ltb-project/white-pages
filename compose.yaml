@@ -1,0 +1,39 @@
+# This compose file starts a LDAP directory and a Web server
+#
+services:
+  ldap:
+    build:
+      context: .
+      dockerfile: ./packaging/docker/dev/Dockerfile.ldap
+    ports:
+      - ${LDAP_PORT:-3890}:389
+    volumes:
+      - ldap-data:/var/lib/ldap
+    ulimits:
+      nofile: 1024
+
+  composer:
+    build:
+      context: .
+      dockerfile: ./packaging/docker/Dockerfile
+      target: develop
+    volumes:
+      - ./:/app
+    working_dir: /app/
+    command: composer update
+
+  app:
+    build:
+      context: .
+      dockerfile: ./packaging/docker/Dockerfile
+      target: develop
+    ports:
+      - ${APP_PORT:-8080}:80
+    volumes:
+      - ./htdocs/:/var/www/htdocs/
+      - ./conf/:/var/www/conf/
+      - ./templates/:/var/www/templates/
+      - ./vendor/:/var/www/vendor/
+
+volumes:
+  ldap-data:

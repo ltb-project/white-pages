@@ -1,0 +1,10 @@
+FROM debian:12
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+RUN echo slapd slapd/internal/generated_adminpw password password | debconf-set-selections
+RUN echo slapd slapd/password2 password password | debconf-set-selections
+RUN echo slapd slapd/internal/adminpw password password | debconf-set-selections
+RUN echo slapd slapd/password1 password password | debconf-set-selections
+RUN echo slapd slapd/domain string example.com | debconf-set-selections
+RUN echo slapd shared/organization string example.com | debconf-set-selections
+RUN apt-get update && apt-get install -y --no-install-recommends slapd ldap-utils && rm -rf /var/lib/apt/lists/*
+ENTRYPOINT ["bash", "-c", "mkdir -p /run/slapd && /usr/sbin/slapd -d -1 -h 'ldap:///'"]
