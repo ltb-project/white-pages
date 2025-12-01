@@ -33,7 +33,7 @@ cp    ../AUTHORS     $NAME-$VERSION
 cp    ../LICENSE     $NAME-$VERSION
 cp    ../README.md   $NAME-$VERSION
 cp -a ../bin/*       $NAME-$VERSION/bin
-cp -a ../conf/*      $NAME-$VERSION/conf
+cp -a ../conf/*      $NAME-$VERSION/conf && ([ -e $NAME-$VERSION/conf/config.inc.local.php ] && rm $NAME-$VERSION/conf/config.inc.local.php)
 cp -a ../htdocs/*    $NAME-$VERSION/htdocs
 cp -a ../lang/*      $NAME-$VERSION/lang
 cp -a ../lib/*       $NAME-$VERSION/lib
