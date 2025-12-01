@@ -8,3 +8,4 @@ cache/*
 /htdocs/vendor/jquery/
 composer.lock
 tests/.phpunit.result.cache
+conf/config.inc.local.php

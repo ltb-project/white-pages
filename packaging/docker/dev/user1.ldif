@@ -1,0 +1,6 @@
+dn: uid=user1,dc=example,dc=com
+objectClass: inetOrgPerson
+uid: user1
+cn: User
+sn: One
+userPassword:: cGFzc3dvcmQ=

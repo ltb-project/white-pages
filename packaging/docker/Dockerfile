@@ -120,6 +120,20 @@ RUN --mount=type=cache,target=/root/.composer \
     sed -e "s#/var/www/html#/var/www/htdocs#g" -i /rootfs/etc/apache2/sites-available/*; \
     :;
 
+FROM base AS develop
+
+COPY --from=composer /composer /usr/bin/composer
+COPY --from=build /rootfs /
+
+RUN ln -s /usr/share/php/smarty4  /usr/share/php/smarty3
+RUN --mount=type=cache,target=/var/lib/apt/lists \
+	apt-get update; \
+	apt-get install -y --no-install-recommends build-essential git unzip; \
+	pecl install xdebug-3.4.1; \
+	docker-php-ext-enable xdebug
+
+WORKDIR /var/www/htdocs
+
 FROM base
 
 ARG VERSION

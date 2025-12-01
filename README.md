@@ -40,3 +40,32 @@ Documentation is available on https://ltb-project.org/documentation/white-pages.
 ## Download
 
 Tarballs and packages for Debian and Red Hat are available on https://ltb-project.org/download.html
+
+## Development
+
+This repository provides a `compose.yaml` file to ease the development process.
+
+```sh
+# Build images
+docker compose build
+
+# Create local configuration
+cp ./packaging/docker/dev/config.inc.local.php ./conf/
+
+# Start dev. environment
+docker compose up -d
+
+# Create user account into LDAP
+docker compose exec -T ldap ldapadd -H ldap://localhost -D cn=admin,dc=example,dc=com -w password <packaging/docker/dev/user1.ldif
+```
+
+You can now connect to the following :
+
+- application (HTTP):
+  - port:     8080
+  - login:    user1
+  - password: password
+- directory (LDAP):
+  - port:     3890
+  - dn:       cn=admin,dc=example,dc=com
+  - password: password
