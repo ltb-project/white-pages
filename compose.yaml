@@ -33,7 +33,9 @@ services:
       - ./htdocs/:/var/www/htdocs/
       - ./conf/:/var/www/conf/
       - ./templates/:/var/www/templates/
-      - ./vendor/:/var/www/vendor/
+      - ./lang/:/var/www/lang/
+      - vendor:/var/www/vendor/
 
 volumes:
   ldap-data:
+  vendor:
