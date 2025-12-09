@@ -145,6 +145,7 @@ $smarty->registerPlugin("function", "split_value", "split_value");
 # Route to page
 #==============================================================================
 $result = "";
+$allowed_pages = array("advancedsearch", "directory", "display", "gallery", "login", "logout", "map", "myaccount", "search", "updateinfos", "welcome");
 $page = "welcome";
 if (isset($default_page)) { $page = $default_page; }
 if (isset($_GET["page"]) and $_GET["page"]) { $page = $_GET["page"]; }
@@ -158,6 +159,7 @@ if ( $page === "myaccount" and !$require_auth ) { $page = "welcome"; }
 if ( $page === "logout" and !$require_auth ) { $page = "welcome"; }
 if ( $page === "updateinfos" and !($require_auth and $use_updateinfos) ) { $page = "welcome"; }
 if ( !preg_match("/^[\w-]+$/", $page) ) { $page = "welcome"; }
+if ( !in_array($page, $allowed_pages) ) { $page = "welcome"; }
 
 #==============================================================================
 # Authentication
