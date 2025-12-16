@@ -1,0 +1,97 @@
+<?php
+
+#==============================================================================
+# Japanese
+#==============================================================================
+
+$messages['advancedsearch'] = "拡張検索";
+$messages['auth_sso_fail'] = "認証に失敗しました";
+$messages['authenticate'] = "あなた自身を認証してください";
+$messages['cancel'] = "キャンセル";
+$messages['cancelbacktoentry'] = "キャンセルしてエントリに戻る";
+$messages['displayentry'] = "エントリの表示";
+$messages['dnrequired'] = "エントリのIDが必要";
+$messages['delete_photo'] = "写真の削除";
+$messages['delete_photo_warning'] = "あなたはこの写真の削除を認めますか?";
+$messages['downloadcsv'] = "結果をCSV形式でダウンロード";
+$messages['downloadvcard'] = "vCard形式でダウンロード";
+$messages['editentry'] = "エントリの編集";
+$messages['entriesfound'] = "エントリーがみつかりました";
+$messages['entryfound'] = "エントリーがみつかりました";
+$messages['exactmatch'] = "確認してこの値に正確にマッチするか強制する";
+$messages['false'] = "いいえ";
+$messages['fromdate'] = "から";
+$messages['directory'] = "ディレクトリ";
+$messages['gallery'] = "ギャラリー";
+$messages['group_object'] = "グループ";
+$messages['pager_all'] = "すべて";
+$messages["home"] = "ホーム";
+$messages['print_all'] = "すべての結果を印刷";
+$messages['print_page'] = "このページを印刷";
+$messages['label_businesscategory'] = "ビジネスカテゴリ";
+$messages['label_carlicense'] = "自動車の免許証";
+$messages["label_created"] = "作成";
+$messages['label_description'] = "説明";
+$messages['label_displayname'] = "表示名";
+$messages['label_employeenumber'] = "従業員の人数";
+$messages['label_employeetype'] = "従業員の種類";
+$messages['label_fax'] = "Fax";
+$messages['label_firstname'] = "名前";
+$messages['label_fullname'] = "姓名";
+$messages['label_guid'] = "オブジェクトGUID";
+$messages['label_identifier'] = "ID";
+$messages['label_l'] = "地域";
+$messages['label_lastname'] = "苗字";
+$messages['label_mail'] = "メール";
+$messages['label_mailquota'] = "メールクォート";
+$messages['label_manager'] = "マネージャー";
+$messages['label_member'] = "メンバー";
+$messages['label_memberof'] = "グループメンバー";
+$messages['label_mobile'] = "スマートフォン";
+$messages["label_modified"] = "修正";
+$messages['label_organization'] = "組織";
+$messages['label_organizationalunit'] = "組織の単位";
+$messages['label_pager'] = "ページャー";
+$messages['label_phone'] = "電話番号";
+$messages['label_postaladdress'] = "住所";
+$messages['label_postalcode'] = "郵便番号";
+$messages['label_secretary'] = "秘書";
+$messages['label_state'] = "都道府県";
+$messages['label_street'] = "番地";
+$messages['label_title'] = "タイトル";
+$messages['label_uniquemember'] = "メンバー";
+$messages['ldaperror'] = "LDAP通信エラー";
+$messages['login'] = "ログイン";
+$messages['logout'] = "ログアウト";
+$messages['map'] = "地図";
+$messages['myaccount'] = "私のアカウント";
+$messages['no'] = "いいえ";
+$messages['noentriesfound'] = "エントリがみつかりません";
+$messages['nophoto'] = "写真が提供されていません";
+$messages['notdefined'] = "未定義";
+$messages['negates'] = "クリックしてこの値を否定";
+$messages['password'] = "パスワード";
+$messages['passwordinvalid'] = "ログインまたはパスワードが正しくありません";
+$messages['photonotdeleted'] = "写真の削除に失敗しました";
+$messages['photonotuploaded'] = "写真のアップロードに失敗しました";
+$messages['phototoobig'] = "ファイルが大きすぎです";
+$messages['photo_file_is_not_an_image'] = "ファイルがイメージではありません";
+$messages['search'] = "検索";
+$messages['search_object'] = "検索するオブジェクト";
+$messages['searchrequired'] = "あなたの検索ワートを入力してください";
+$messages['select_photo'] = "ファイルを選択して送信";
+$messages['sizelimit'] = "サイズ制限に到達しました。いくつかのエントリーは表示されません";
+$messages['submit'] = "送信";
+$messages['title'] = "ホワイトページ";
+$messages['title_search'] = "検索結果:";
+$messages['title_directory'] = "ディレクトリのエントリ:";
+$messages['todate'] = "まで";
+$messages['tooltip_emailto'] = "メールを送信";
+$messages['tooltip_phoneto'] = "ダイアル番号";
+$messages['true'] = "はい";
+$messages['update_photo'] = "写真の更新";
+$messages['user_object'] = "ユーザー";
+$messages['welcome'] = "LDAP Tool Box ホワイトページへようこそ";
+$messages['yes'] = "はい";
+
+?>
