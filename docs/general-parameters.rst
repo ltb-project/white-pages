@@ -69,6 +69,7 @@ Available languages are:
 * English (en)
 * French (fr)
 * Italian (it)
+* Japanese (ja)
 
 .. tip:: You can override messages by creating lang files in ``conf/``, for example ``conf/en.inc.php``.
 
