@@ -8,6 +8,7 @@ To configure how LDAP attributes are displayed or searched, use the ``$attribute
   * item : item identifier
 
     * ``attribute`` : name of LDAP attribute, in lower case
+    * ``mandatory``: indicate if the attribute is mandatory. mandatory is an array with one possible value for now: ``update``
     * ``faclass`` : name of Font Awesome icon class
     * ``type`` : type of attribute (see below)
 
