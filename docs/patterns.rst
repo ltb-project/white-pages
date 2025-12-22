@@ -7,13 +7,13 @@ By default no patterns are defined. You can create one by adding a property in a
 
 For example to add a pattern on phone item:
 
-* Edit or create ``/etc/service-desk/config.local.inc.php``:
+* Edit or create ``/etc/white-pages/config.local.inc.php``:
 
 .. code-block:: php
 
    $attributes_map['phone']['pattern'] = "\+33 [0-9] [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}";
 
-* Edit or create ``/etc/service-desk/fr.inc.php``:
+* Edit or create ``/etc/white-pages/fr.inc.php``:
 
 .. code-block:: php
 
