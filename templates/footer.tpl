@@ -15,6 +15,10 @@
 <script src="vendor/datatables/buttons.print.min.js"></script>
 <script src="vendor/datatables/buttons.bootstrap5.min.js"></script>
 {/if}
+<script>
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
 {if $use_updateinfos}
 <script src="js/update.js"></script>
 {/if}

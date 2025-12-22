@@ -55,6 +55,7 @@
                         </th>
                         <th class="d-none d-sm-table-cell">
                             {$msg_label_{$item}}
+                            {if $msg_tooltip_{$item}}<span data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="{$msg_tooltip_{$item}}"><i class="fa fa-fw fa-regular fa-circle-question"></i></span>{/if}
                         </th>
                         <td>
                             {if $item|in_array:$update_items}
