@@ -15,7 +15,7 @@
 %undefine __brp_mangle_shebangs
 
 Name: white-pages
-Version: 0.5^20250107
+Version: 0.5
 Release: 1%{?dist}
 Summary: LDAP Tool Box White Pages web interface
 License: GPL
@@ -172,8 +172,73 @@ rm -rf %{wp_cachedir}/{cache,templates_c}/*
 %attr(-,apache,apache) %{wp_cachedir}/templates_c
 
 %changelog
-* Tue Jul 01 2025 - Clement Oudot <clem@ltb-project.org> - 0.5^20250107-1
-- WIP, insert changelog here
+* Tue Dec 23 2025 - Clement Oudot <clem@ltb-project.org> - 0.5-1
+- gh#83: Only display white pages to authenticated LDAP users
+- gh#128: Add multi-tenancy feature
+- gh#129: Possibility to configure attribute displayed in a DN link
+- gh#130: Multi tenancy
+- gh#132: Configure values for DN links
+- gh#133: New map feature incorrectly deployed : missing map.js
+- gh#134: fix missing map.js (#133)
+- gh#135: Set phpunit in CI
+- gh#137: Encoding issue whith dn_link
+- gh#138: Fix HTML escaping in dn_link
+- gh#139: Use latest ltb-common
+- gh#140: Photo.php: add no_fallback parameter
+- gh#141: Add allowed_lang configuration parameter
+- gh#142: Update bootstrap library
+- gh#143: Remove duplicate detectLanguage code
+- gh#144: Restrict allowed languages
+- gh#146: update ltb-ldap library name to ltb-common
+- gh#147: update ltb-ldap library name to ltb-common (#146)
+- gh#149: Let the user modify some of its attributes
+- gh#150: Prerequisites install
+- gh#151: Customized templates
+- gh#152: Customized templates
+- gh#153: Update bootstrap / jquery / fontawesome library
+- gh#154: Delete composer dependencies
+- gh#155: Upgrading ltb-common to v0.5
+- gh#156: dataTables migration
+- gh#157: Use lang detect method from ltb-common
+- gh#158: Authentication system
+- gh#160: Upgrade Docker packaging files
+- gh#161: Update packaging for 0.5 version
+- gh#162: Packaging cleaning for 0.5 version
+- gh#163: Possibility to update photo
+- gh#164: Inject configuration variables in templates
+- gh#165: Inject configuration variables in templates
+- gh#166: Update photo feature
+- gh#167: Value with parenthesis is not displayed with type list
+- gh#169: Configure the dn_list editor
+- gh#170: Syntax checker for attribute edition
+- gh#171: Tooltips for attributes
+- gh#172: Add configuration for favicon
+- gh#173: Configuration for favicon
+- gh#174: Manage error and warning messages in dn_list editor
+- gh#175: New configuration settings for dn_link component
+- gh#176: Update repository deb822 format
+- gh#177: Errors should be displayed on current page
+- gh#178: Configure the log level
+- gh#180: Entrypoint no more available in Docker image
+- gh#181: fix entrypoint no more available (#180)
+- gh#183: Possibility to delete photo
+- gh#184: update doc with deb822 repository format (#176)
+- gh#187: Adapt conf directory in documentation
+- gh#188: Add debug_level
+- gh#189: Do not require photo to be jpeg format
+- gh#190: Control file type when uploading a photo
+- gh#191: Local file inclusion via "page" GET param
+- gh#193: Check page name before any inclusion
+- gh#194: feat: development environment
+- gh#195: fix: missing volume for lang file & local changes to working dir
+- gh#196: Use ltb-common 0.6.2
+- gh#197: Add Japanese language support for messages
+- gh#198: Define mandatory attributes
+- gh#199: Allow to configure mandatory attributes
+- gh#200: Tooltips for attributes
+- gh#201: Patterns for attributes
+- gh#202: Do not use tables when not needed
+- gh#204: Improve responsiveness
 * Wed May 17 2023 - Clement Oudot <clem@ltb-project.org> - 0.4-2
 - gh#126: Missing bin/ directory in packages
 * Thu May 04 2023 - Clement Oudot <clem@ltb-project.org> - 0.4-1
