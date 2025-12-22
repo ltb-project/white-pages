@@ -1,8 +1,6 @@
 Quick search
 ============
 
-.. note:: Configuration file: ``white-pages/conf/config.inc.local.php``
-
 The quick search feature allows to search on multiple attributes (attribute1 or attribute2 or …) with a substring matching (attribute=*query*) by default or an exact matching, see $quick_search_use_substring_match below. The quick search input is located in menu bar.
 
 Activation

@@ -4,7 +4,7 @@ General parameters
 Configuration files
 -------------------
 
-To configure White Pages, you need to create a local configuration file named ``config.inc.local.php`` in ``white-pages/conf``. For example : 
+To configure White Pages, you need to create a local configuration file named ``config.inc.local.php`` in ``/etc/white-pages/``. For example:
 
 .. code-block:: php
 
@@ -13,7 +13,7 @@ To configure White Pages, you need to create a local configuration file named ``
 
     ?>
 
-White Pages default configuration file is ``white-pages/conf/config.inc.php``. It includes ``config.inc.local.php``. Consequently, you can override all parameters in ``config.inc.local.php``. This prevents you to be disturbed by an upgrade.
+White Pages default configuration file is ``/etc/white-pages/config.inc.php``. It includes ``config.inc.local.php``. Consequently, you can override all parameters in ``config.inc.local.php``. This prevents you to be disturbed by an upgrade.
 
 .. warning:: 
   Do not copy ``config.inc.php`` into ``config.inc.local.php``, as the first one includes the second.
@@ -30,7 +30,7 @@ This feature is disabled by default. To enable it:
    $header_name_extra_config = "WP-Extra-Config";
 
 Then if you send the header ``WP-Extra-Config: domain1``, the file
-``conf/config.inc.domain1.php`` will be loaded.
+``/etc/white-pages/config.inc.domain1.php`` will be loaded.
 
 Using Apache, we may set such header using the following:
 
@@ -71,7 +71,7 @@ Available languages are:
 * Italian (it)
 * Japanese (ja)
 
-.. tip:: You can override messages by creating lang files in ``conf/``, for example ``conf/en.inc.php``.
+.. tip:: You can override messages by creating lang files in ``/etc/white-pages/``, for example ``/etc/white-pages/en.inc.php``.
 
 In order to restrict languages to a specific set add ``$allowed_lang`` array as follows:
 
