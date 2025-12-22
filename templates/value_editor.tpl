@@ -1,11 +1,11 @@
 <div class="value_editor_container {$type} my-1 row">
   <div class="value_editor_field col-10">
 {if $type eq 'text'}
-    <input type="text" name="{$item}{$itemindex}" class="form-control {if $required}border border-danger-subtle{/if}" value="{$value}" data-role="value" {if $required}required{/if} />
+    <input type="text" name="{$item}{$itemindex}" class="form-control {if $required}border border-danger-subtle{/if}" {if $pattern}pattern="{$pattern}"{if $msg_pattern_{$item}} title="{$msg_pattern_{$item}}"{/if}{/if} value="{$value}" data-role="value" {if $required}required{/if} />
 {else if $type eq 'mailto'}
-    <input type="email" name="{$item}{$itemindex}" class="form-control {if $required}border border-danger-subtle{/if}" value="{$value}" data-role="value" {if $required}required{/if} />
+    <input type="email" name="{$item}{$itemindex}" class="form-control {if $required}border border-danger-subtle{/if}" {if $pattern}pattern="{$pattern}"{if $msg_pattern_{$item}} title="{$msg_pattern_{$item}}"{/if}{/if} value="{$value}" data-role="value" {if $required}required{/if} />
 {else if $type eq 'tel'}
-    <input type="tel" name="{$item}{$itemindex}" class="form-control {if $required}border border-danger-subtle{/if}" value="{$value}" data-role="value" {if $required}required{/if} />
+    <input type="tel" name="{$item}{$itemindex}" class="form-control {if $required}border border-danger-subtle{/if}" {if $pattern}pattern="{$pattern}"{if $msg_pattern_{$item}} title="{$msg_pattern_{$item}}"{/if}{/if} value="{$value}" data-role="value" {if $required}required{/if} />
 {else if $type eq 'boolean'}
     <div class="form-check form-switch">
         <input class="form-check-input" type="checkbox" role="switch" name="{$item}{$itemindex}" {if $value eq 'TRUE'} checked{/if} value="TRUE" data-role="value" />
@@ -30,7 +30,7 @@
     <div class="z-3 position-absolute list-group dn_link_suggestions"></div>
     </div>
 {else}
-    <input type="text" name={$item} class="form-control {if $required}border border-danger-subtle{/if}" value="{$value}" data-role="value" {if $required}required{/if} />
+    <input type="text" name={$item} class="form-control {if $required}border border-danger-subtle{/if}" {if $pattern}pattern="{$pattern}"{if $msg_pattern_{$item}} title="{$msg_pattern_{$item}}"{/if}{/if} value="{$value}" data-role="value" {if $required}required{/if} />
 {/if}
   </div>
   <div class="value_editor_button col-2">
