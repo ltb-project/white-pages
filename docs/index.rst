@@ -26,3 +26,4 @@ LDAP Tool Box White Pages documentation
    vcardexport.rst
    updateinfos.rst
    tooltips.rst
+   patterns.rst
