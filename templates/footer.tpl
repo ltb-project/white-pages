@@ -10,10 +10,12 @@
 <script src="vendor/datatables/dataTables.min.js"></script>
 <script src="vendor/datatables/dataTables.bootstrap5.min.js"></script>
 <script src="vendor/datatables/dataTables.buttons.min.js"></script>
+<script src="vendor/datatables/dataTables.responsive.min.js"></script>
 <script src="vendor/datatables/buttons.colVis.min.js"></script>
 <script src="vendor/datatables/buttons.html5.min.js"></script>
 <script src="vendor/datatables/buttons.print.min.js"></script>
 <script src="vendor/datatables/buttons.bootstrap5.min.js"></script>
+<script src="vendor/datatables/responsive.bootstrap5.min.js"></script>
 {/if}
 <script>
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
@@ -56,6 +58,7 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
       language: {
         url: "vendor/datatables/i18n/{/literal}{$lang|default:'en'}{literal}.json"
       },
+      responsive: true,
       initComplete: function () {
         $("#spinner").hide();
         $('table.dataTable').show();

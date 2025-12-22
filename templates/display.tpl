@@ -16,24 +16,26 @@
                 <img src="photo.php?dn={$entry.dn|escape:'url'}" alt="{$entry.{$attributes_map.{$card_title}.attribute}.0}" class="img-fluid mx-auto d-block" />
                 {/if}
 
-                <div class="table-responsive">
-                <table class="table table-striped table-hover">
+                <div class="container-fluid">
+                {assign var="modulo" value=0}
                 {foreach $card_items as $item}
                 {$attribute=$attributes_map.{$item}.attribute}
                 {$type=$attributes_map.{$item}.type}
                 {$faclass=$attributes_map.{$item}.faclass}
 
                 {if !({$entry.$attribute.0}) && ! $show_undef}
+                    {if $modulo==0}{assign var="modulo" value=1}{else}{assign var="modulo" value=0}{/if}
                     {continue}
                 {/if}
-                    <tr>
-                        <th class="text-center">
+
+                <div class="row align-items-center p-2{if $smarty.foreach.items.iteration % 2 == $modulo} bg-white{/if}">
+                        <div class="col-1 px-1">
                             <i class="fa fa-fw fa-{$faclass}"></i>
-                        </th>
-                        <th class="hidden-xs">
+                        </div>
+                        <div class="col-11 col-sm-3 px-1 fw-semibold">
                             {$msg_label_{$item}}
-                        </th>
-                        <td>
+                        </div>
+                        <div class="col-sm px-1">
                         {if ({$entry.$attribute.0})}
                             {foreach $entry.{$attribute} as $value}
                             {include 'value_displayer.tpl' item=$item value=$value type=$type truncate_value_after=10000}
@@ -41,10 +43,9 @@
                         {else}
                             <i>{$msg_notdefined}</i><br />
                         {/if}
-                        </td>
-                    </tr>
+                        </div>
+                  </div>
                 {/foreach}
-                </table>
                 </div>
 
             </div>
