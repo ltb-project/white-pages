@@ -38,6 +38,7 @@
                 {$type=$attributes_map.{$item}.type}
                 {$faclass=$attributes_map.{$item}.faclass}
                 {$multivalued=$attributes_map.{$item}.multivalued}
+                {$pattern=$attributes_map.{$item}.pattern}
                 {$required=0}
                 {if ($attributes_map.{$item}.mandatory|is_array)}
                 {if in_array('all',$attributes_map.{$item}.mandatory) or in_array('update',$attributes_map.{$item}.mandatory)}
@@ -60,10 +61,10 @@
                         <td>
                             {if $item|in_array:$update_items}
                                 {if !({$entry.$attribute.0})}
-                                {include 'value_editor.tpl' item=$item itemindex=0 value="" type=$type list=$item_list.$item multivalued=$multivalued required=$required truncate_value_after=10000}
+                                {include 'value_editor.tpl' item=$item itemindex=0 value="" type=$type list=$item_list.$item multivalued=$multivalued pattern=$pattern required=$required truncate_value_after=10000}
                                 {else}
                                     {foreach from=$entry.{$attribute} item=$value name=updatevalue}
-                                        {include 'value_editor.tpl' item=$item itemindex=$smarty.foreach.updatevalue.index multivalued=$multivalued required=$required value=$value type=$type list=$item_list.$item truncate_value_after=10000}
+                                        {include 'value_editor.tpl' item=$item itemindex=$smarty.foreach.updatevalue.index multivalued=$multivalued pattern=$pattern required=$required value=$value type=$type list=$item_list.$item truncate_value_after=10000}
                                     {/foreach}
                                 {/if}
                             {else}
