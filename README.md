@@ -20,6 +20,7 @@ It has the following features:
 * Search and display groups and members
 * Export results as CSV
 * Export entry as vCard
+* User can update its own information in the directory
 
 ## Demonstration
 
