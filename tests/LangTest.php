@@ -19,6 +19,7 @@ class LangTest extends PHPUnit\Framework\TestCase
             closedir($handle);
 	}
 
+        require(__DIR__ . "/../conf/config.inc.php");
         require(__DIR__ . "/../lang/en.inc.php");
         $reference = $messages;
         $error = '';

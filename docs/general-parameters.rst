@@ -39,7 +39,7 @@ Using Apache, we may set such header using the following:
     <VirtualHost *:80>
        ServerName wp.domain1.com
        RequestHeader setIfEmpty WP-Extra-Config domain1
-       [...]
+       # ...
     </VirtualHost>
 
 Using Nginx, we could use instead:
@@ -47,11 +47,12 @@ Using Nginx, we could use instead:
 .. code-block:: nginx
 
    server {
-       [...]
+       # ...
        location ~ \.php {
            fastcgi_param WP-Extra-Config domain1;
-           [...]
+           # ...
        }
+   }
 
 Language
 --------
@@ -71,7 +72,12 @@ Available languages are:
 * Italian (it)
 * Japanese (ja)
 
-.. tip:: You can override messages by creating lang files in ``/etc/white-pages/``, for example ``/etc/white-pages/en.inc.php``.
+.. tip:: You can override messages by creating lang files in configuration directory:
+
+* ``conf/`` directory for white-pages archive
+* ``/etc/white-pages`` directory for rpm/deb packages
+
+For example, you can create a customized file: ``/etc/white-pages/en.inc.php``.
 
 In order to restrict languages to a specific set add ``$allowed_lang`` array as follows:
 

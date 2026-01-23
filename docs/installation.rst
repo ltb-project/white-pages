@@ -6,11 +6,11 @@ From tarball
 
 Prerequisites:
 
-* php (version 7.4 or higher)
 * php-ldap
 * php-gd
-* Smarty (version 3 or higher)
 * composer
+* php-fpm
+* smarty (version 3 or 4)
 
 Tarball can be downloaded from `LTB project website <https://ltb-project.org/download.html>`_.
 
@@ -94,10 +94,12 @@ You are now ready to install:
 
     apt install white-pages
 
+You should now proceed to :ref:`webserver installation and configuration <apache_configuration>`
+
 CentOS / RedHat
 ---------------
 
-.. warning:: You need to install first the package `php-Smarty`_ which is not in official repositories.
+.. warning::  You must install the package `php-Smarty`_. You can get it from EPEL repositories.
 
 .. _php-Smarty: https://pkgs.org/download/php-Smarty
 
@@ -120,7 +122,7 @@ Then update:
 
 .. prompt:: bash #
 
-    yum update
+    dnf update
 
 Import repository key:
 
@@ -132,7 +134,9 @@ You are now ready to install:
 
 .. prompt:: bash #
 
-    yum install white-pages
+    dnf install white-pages
+
+You should now proceed to :ref:`webserver installation and configuration <apache_configuration>`
 
 Docker
 ------
@@ -147,25 +151,3 @@ Start container, mounting that configuration file:
         -v /home/test/whitepages.conf.php:/var/www/conf/config.inc.local.php \
         -it docker.io/ltbproject/white-pages:latest
 
-Upgrade Notes
--------------
-
-If you upgrade from an older version, read the following instructions:
-
-Version 0.4
-~~~~~~~~~~~
-
-* Parameter `$ldap_user_regex` is now disbaled by default, means that the object type detection is done with configured LDAP filters.
-
-* The new map feature is disabled by default, as it requires to request OpenStreetMap API. Check the documentation before enabling it.
-
-Version 0.3
-~~~~~~~~~~~
-
-There is a new parameter: `$ldap_user_regex`.
-
-If the default value does not fit your LDAP directory configuration, you must unset the default value, or adapt it. To unset it, put in your config.inc.local.php:
-
-```unset($ldap_user_regex);```
-
-See also the ldap parameters page.
