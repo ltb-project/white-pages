@@ -4,22 +4,25 @@ Maintainer: Clement Oudot <clem@ltb-project.org>
 Source: http://ltb-project.org/wiki/documentation/white-pages
 
 Files: htdocs/vendor/bootstrap
-Copyright: 2011-2014 Twitter, Inc.
+Copyright: Copyright (c) 2011-2024 The Bootstrap Authors
 
 Files: htdocs/vendor/bootstrap-datepicker
 Copyright: 2012 Stefan Petre
 
 Files: htdocs/vendor/font-awesome
-Copyright: @davegandy - http://fontawesome.io - @fontawesome
+Copyright: Font Awesome by Dave Gandy - http://fontawesome.io
 
 Files: htdocs/vendor/hover
 Copyright: 2014 Ian Lunn
 
 Files: htdocs/vendor/jquery
-Copyright: 2005, 2013 jQuery Foundation, Inc.
+Copyright: Copyright OpenJS Foundation and other contributors, https://openjsf.org/
+
+Files: htdocs/vendor/datatables
+Copyright: Copyright (C) 2008-2024, SpryMedia Ltd.
 
 Files: *
-Copyright: 2009-2025 LTB-Project, Worteks, Clement Oudot, David Coutadeur
+Copyright: 2009-2026 LTB-Project, Worteks, Clement Oudot, David Coutadeur
 
 License: GPL
     This program is free software; you can redistribute it and/or modify
