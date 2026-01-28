@@ -36,42 +36,38 @@ Requires:  php-fpm
 
 Provides:  bundled(js-bootstrap) = v5.3.6
 Provides:  bundled(js-jquery) = v3.7.1
-Provides:  bundled(js-datatables.net-datatables.net) = 2.1.2
+Provides:  bundled(js-datatables.net-datatables.net) = 2.3.6
 Provides:  bundled(js-datatables.net-datatables.net-bs5) = 2.0.8
-Provides:  bundled(js-datatables.net-datatables.net-buttons) = 3.1.0
+Provides:  bundled(js-datatables.net-datatables.net-buttons) = 3.2.6
 Provides:  bundled(js-datatables.net-datatables.net-buttons-bs5) = 3.0.2
 Provides:  bundled(fontawesome-fonts) = 6.5.2
-Provides:  bundled(php-ltb-project-ltb-common) = 0.3.0
-Provides:  bundled(php-bjeavons-zxcvbn-php) = 1.3.1
-Provides:  bundled(php-guzzlehttp-guzzle) = 7.8.1
-Provides:  bundled(php-guzzlehttp-promises) = 2.0.2
-Provides:  bundled(php-guzzlehttp-psr7) = 2.6.2
+Provides:  bundled(php-ltb-project-ltb-common) = 0.6.2
+Provides:  bundled(php-bjeavons-zxcvbn-php) = 1.4.2
+Provides:  bundled(php-guzzlehttp-guzzle) = 7.10.0
+Provides:  bundled(php-guzzlehttp-promises) = 2.3.0
+Provides:  bundled(php-guzzlehttp-psr7) = 2.8.0
 Provides:  bundled(php-mxrxdxn-pwned-passwords) = 2.1.0
-Provides:  bundled(php-phpmailer) = 6.9.1
+Provides:  bundled(php-phpmailer) = 6.12.0
 Provides:  bundled(php-psr-http-client) = 1.0.3
-Provides:  bundled(php-psr-http-factory) = 1.0.2
+Provides:  bundled(php-psr-http-factory) = 1.1.0
 Provides:  bundled(php-psr-http-message) = 2.0
 Provides:  bundled(php-ralouphie-getallheaders) = 3.0.3
-Provides:  bundled(php-symfony-deprecation-contracts) = 3.4.0
-Provides:  bundled(php-symfony-finder) = 7.0.0
-Provides:  bundled(php-symfony-polyfill) = v1.31.0
-Provides:  bundled(php-symfony-deprecation-contracts) = v2.5.3
-Provides:  bundled(php-symfony-var-exporter) = v5.4.40
+Provides:  bundled(php-symfony-deprecation-contracts) = 2.5.4
+Provides:  bundled(php-symfony-polyfill) = v1.33.0
+Provides:  bundled(php-symfony-var-exporter) = v5.4.45
 Provides:  bundled(php-psr-container) = 1.1.2
-Provides:  bundled(php-symfony-service-contracts) = v2.5.3
+Provides:  bundled(php-symfony-service-contracts) = v2.5.4
 Provides:  bundled(php-psr-cache) = 1.0.1
-Provides:  bundled(php-symfony-cache-contracts) = v2.5.3
+Provides:  bundled(php-symfony-cache-contracts) = v2.5.4
 Provides:  bundled(php-psr-log) = 1.1.4
-Provides:  bundled(php-symfony-cache) = v5.4.42
-Provides:  bundled(php-predis-predis) = v2.2.2
+Provides:  bundled(php-symfony-cache) = v5.4.46
+Provides:  bundled(php-predis-predis) = v2.4.1
 
 %description
-White Pages is a PHP application that allows users to search and display data stored in an LDAP directory.
+White Pages is a PHP application that allows users to search and display
+data stored in an LDAP directory.
 White Pages is provided by LDAP Tool Box project: https://ltb-project.org
 
-#=================================================
-# Source preparation
-#=================================================
 %prep
 %setup -q -n %{wp_realname}-%{version}
 # Clean hidden files in bundled php libs
@@ -79,9 +75,6 @@ find . \
   \( -name .gitignore -o -name .travis.yml -o -name .pullapprove.yml \) \
   -delete
 
-#=================================================
-# Installation
-#=================================================
 %install
 # Create directories
 mkdir -p %{buildroot}/%{wp_destdir}
@@ -133,6 +126,7 @@ for file in $( grep -r -l -E "\([^(]+\/conf\/[^)]+\)" %{buildroot}/%{wp_destdir}
     ${file}
 done
 
+
 %pre
 # Backup old configuration to /etc/white-pages
 for file in $( find %{wp_destdir}/conf -name "*.php" -type f ! -name 'config.inc.php' -printf "%f\n" 2>/dev/null );
@@ -150,7 +144,7 @@ fi
 
 
 %post
-# Move old configuration to /etc/self-service-password
+# Move old configuration to /etc/white-pages
 for file in $( find %{_sysconfdir}/%{name} -name "*.save" -type f );
 do
     # move previously created *.save file into its equivalent without .save
@@ -172,7 +166,7 @@ rm -rf %{wp_cachedir}/{cache,templates_c}/*
 %attr(-,apache,apache) %{wp_cachedir}/templates_c
 
 %changelog
-* Tue Dec 23 2025 - Clement Oudot <clem@ltb-project.org> - 0.5-1
+* Tue Dec 23 2025 Clement Oudot <clem@ltb-project.org> - 0.5-1
 - gh#83: Only display white pages to authenticated LDAP users
 - gh#128: Add multi-tenancy feature
 - gh#129: Possibility to configure attribute displayed in a DN link
@@ -239,9 +233,11 @@ rm -rf %{wp_cachedir}/{cache,templates_c}/*
 - gh#201: Patterns for attributes
 - gh#202: Do not use tables when not needed
 - gh#204: Improve responsiveness
-* Wed May 17 2023 - Clement Oudot <clem@ltb-project.org> - 0.4-2
+
+* Wed May 17 2023 Clement Oudot <clem@ltb-project.org> - 0.4-2
 - gh#126: Missing bin/ directory in packages
-* Thu May 04 2023 - Clement Oudot <clem@ltb-project.org> - 0.4-1
+
+* Thu May 04 2023 Clement Oudot <clem@ltb-project.org> - 0.4-1
 - gh#75: Display account : empty result
 - gh#76: add a option to change timeout of ldap connexion
 - gh#77: Gallery by group
@@ -278,7 +274,8 @@ rm -rf %{wp_cachedir}/{cache,templates_c}/*
 - gh#123: Smarty debug (issue #116)
 - gh#124: Bug in group display in user and group base are the same
 - gh#125: Group rendering
-* Tue Jul 23 2019 - Clement Oudot <clem@ltb-project.org> - 0.3-1
+
+* Tue Jul 23 2019 Clement Oudot <clem@ltb-project.org> - 0.3-1
 - gh#42: add dropdown list to advanced search criteria
 - gh#47: Do not display not found groups/users
 - gh#48: Check ldap_bind return code instead of ldap_errorno
@@ -303,7 +300,8 @@ rm -rf %{wp_cachedir}/{cache,templates_c}/*
 - gh#72: Sorting and paging regression
 - gh#73: Option to display a logout link in the menu
 - gh#74: Provide a new type (list)
-* Mon Apr 16 2018 - Clement Oudot <clem@ltb-project.org> - 0.2-1
+
+* Mon Apr 16 2018 Clement Oudot <clem@ltb-project.org> - 0.2-1
 - gh#4: Italian language file
 - gh#5: Feature request : add export to CSV
 - gh#7: Export entry as VCard
@@ -331,5 +329,6 @@ rm -rf %{wp_cachedir}/{cache,templates_c}/*
 - gh#39: Add display for member/memberOf attributes
 - gh#40: Displaying binary data attributes
 - gh#41: Move label to title leads to misunderstanding
-* Tue Nov 22 2016 - Clement Oudot <clem@ltb-project.org> - 0.1-1
+
+* Tue Nov 22 2016 Clement Oudot <clem@ltb-project.org> - 0.1-1
 - First release

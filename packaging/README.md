@@ -44,7 +44,7 @@ $ ./makedist 0.4
 
 ## Debian
 
-Form current directory, do:
+From current directory, do:
 ```
 $ dpkg-buildpackage -b -kLTB
 ```

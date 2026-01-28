@@ -1,6 +1,5 @@
 templates_c/*
 cache/*
-/vendor/
 /htdocs/vendor/bootstrap/
 /htdocs/vendor/datatables/
 !/htdocs/vendor/datatables/i18n/
