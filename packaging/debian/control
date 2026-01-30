@@ -2,10 +2,8 @@ Source: ltb-project-white-pages
 Section: web
 Priority: extra
 Maintainer: Clement Oudot <clem@ltb-project.org>
-Build-Depends:
- debhelper (>= 7),
- dh-sequence-zz-debputy-rrr
-Rules-Requires-Root: no
+Build-Depends: debhelper (>= 7)
+Rules-Requires-Root: binary-targets
 Standards-Version: 3.8.3
 Homepage: https://ltb-project.org/documentation/white-pages.html
 
