@@ -166,7 +166,7 @@ rm -rf %{wp_cachedir}/{cache,templates_c}/*
 %attr(-,apache,apache) %{wp_cachedir}/templates_c
 
 %changelog
-* Tue Dec 23 2025 Clement Oudot <clem@ltb-project.org> - 0.5-1
+* Fri Jan 30 2026 Clement Oudot <clem@ltb-project.org> - 0.5-1
 - gh#83: Only display white pages to authenticated LDAP users
 - gh#128: Add multi-tenancy feature
 - gh#129: Possibility to configure attribute displayed in a DN link
@@ -233,6 +233,14 @@ rm -rf %{wp_cachedir}/{cache,templates_c}/*
 - gh#201: Patterns for attributes
 - gh#202: Do not use tables when not needed
 - gh#204: Improve responsiveness
+- gh#205: Debian cleanup
+- gh#206: RPM cleanup
+- gh#207: debian cleanup (#205)
+- gh#208: debian package set incorrect cache permissions
+- gh#209: rpm cleanup (#206)
+- gh#210: fix debian package incorrect cache permissions (#208)
+- gh#211: allow debian packages to be built without root permissions
+- gh#212: build package without root permissions (#211)
 
 * Wed May 17 2023 Clement Oudot <clem@ltb-project.org> - 0.4-2
 - gh#126: Missing bin/ directory in packages

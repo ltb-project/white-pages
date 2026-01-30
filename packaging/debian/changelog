@@ -66,8 +66,16 @@ ltb-project-white-pages (0.5-1) unstable; urgency=low
     * gh#201: Patterns for attributes
     * gh#202: Do not use tables when not needed
     * gh#204: Improve responsiveness
+    * gh#205: Debian cleanup
+    * gh#206: RPM cleanup
+    * gh#207: debian cleanup (#205)
+    * gh#208: debian package set incorrect cache permissions
+    * gh#209: rpm cleanup (#206)
+    * gh#210: fix debian package incorrect cache permissions (#208)
+    * gh#211: allow debian packages to be built without root permissions
+    * gh#212: build package without root permissions (#211)
 
- -- Clement Oudot <clem@ltb-project.org>  Tue, 23 Dec 2025 12:00:00 +0200
+ -- Clement Oudot <clem@ltb-project.org>  Fri, 30 Jan 2026 12:00:00 +0200
 
 ltb-project-white-pages (0.4-2) unstable; urgency=low
 
