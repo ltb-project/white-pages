@@ -24,12 +24,24 @@ if (extension_loaded("APCu")) {
     }
 }
 
-$opts = array(
-    'http' => array(
+$http_settings = array(
         # Set timeout to 5 seconds
         'timeout' => 5,
         'user_agent' => "LTB White-Pages address geocoding/1.0"
-    )
+);
+
+if ($use_proxy) {
+    $http_settings['proxy'] = "tcp://" . $proxy_host . ":" . $proxy_port;
+    if ($proxy_use_ssl) {
+        $http_settings['request_fulluri'] = true;
+    }
+    if ($proxy_auth) {
+        $http_settings['header'] = "Proxy-Authorization: Basic " . base64_encode($proxy_auth_user . ":" . $proxy_auth_pass);
+    }
+}
+
+$opts = array(
+    'http' => $http_settings
 );
 
 $context = stream_context_create($opts);

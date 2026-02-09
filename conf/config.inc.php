@@ -164,6 +164,15 @@ $map_no_location_show_on_default = false;
 $map_default_location_lat = 48.6882405;
 $map_default_location_long = -32.6412127;
 
+# Proxy settings
+$use_proxy=false;
+$proxy_host = "mysquidproxy.example.com";
+$proxy_port = 3128;
+$proxy_use_ssl = false;
+$proxy_auth = false;
+$proxy_auth_user = "user";
+$proxy_auth_pass = "password";
+
 # Update infos (requires authentication)
 $use_updateinfos = false;
 $update_items = array('firstname', 'lastname', 'mail', 'phone', 'mobile');
