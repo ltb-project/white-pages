@@ -166,12 +166,20 @@ $map_default_location_long = -32.6412127;
 
 # Proxy settings
 $use_proxy=false;
-$proxy_host = "mysquidproxy.example.com";
+$proxy_host = "squidproxy.example.com";
 $proxy_port = 3128;
-$proxy_use_ssl = false;
-$proxy_auth = false;
-$proxy_auth_user = "user";
-$proxy_auth_pass = "password";
+$proxy_request_fulluri = false;        # set to true if your proxy requires full URI in request line, false otherwise. This is required for some proxies.
+$proxy_authentication_method = "none";  # possible values: "none" or "basic".  Other authentication methods are not supported yet.
+$proxy_authentication_user = "user";
+$proxy_authentication_pass = "password";
+# SSL options for proxy connection (use only if your proxy server supports SSL connections)
+# $proxy_ssl_options = array(
+#         'verify_peer'   => true,
+#         'verify_peer_name' => true,
+#         'cafile'        => '/etc/ssl/certs/ca-certificates.crt',
+#         'verify_depth'  => 5,
+#         'allow_self_signed' => false
+# );
 
 # Update infos (requires authentication)
 $use_updateinfos = false;

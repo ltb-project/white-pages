@@ -92,3 +92,43 @@ Map page uses the default LDAP user filter. But you can override it, for example
 .. code-block:: php
 
     $map_user_filter = "(&".$ldap_user_filter."(jpegPhoto=*))";
+
+Proxy
+-----
+
+The default configuration doesn't use an HTTP Proxy to reach OpenStreetMap.org.
+
+If your server doesn't have direct access to Internet, you can set HTTP Proxy settings in ``config.inc.local.php``
+
+For a simple proxy configuration without authentication, you can just set:
+
+.. code-block:: php
+
+    $use_proxy = true;
+    $proxy_host = "mysquidproxy.example.com";
+    $proxy_port = 3128;
+
+If you have to support a proxy with authentication, you can additionally set:
+
+.. code-block:: php
+
+    $proxy_request_fulluri = true;
+    $proxy_authentication_method = "basic";
+    $proxy_auth_user = "user";
+    $proxy_auth_pass = "password
+
+.. warning:: Only basic authentication is supported for now. If your proxy requires another authentication method, you will need to implement it in ``htdocs/geocode.php`` and submit a pull request.
+
+if you have to support a proxy with SSL interception, you can additionally add a subset of the following SSL options :
+
+.. code-block:: php
+
+    $proxy_ssl_options = array(
+        'verify_peer'   => true,
+        'verify_peer_name' => true,
+        'cafile'        => '/etc/ssl/certs/ca-certificates.crt',
+        'verify_depth'  => 5,
+        'allow_self_signed' => false
+    );
+
+Check `SSL context options <https://www.php.net/manual/en/context.ssl.php>`_ for more details on available SSL options.
