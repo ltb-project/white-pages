@@ -35,18 +35,19 @@ if  (isset($use_proxy) and $use_proxy) {
         # proxy settings are valid
         $http_settings['proxy'] = "tcp://" . $proxy_host . ":" . $proxy_port;
 
-        if (isset($proxy_authentication_method)) {
-             if (isset($proxy_authentication_user) and isset($proxy_authentication_pass)){
+        #Handle proxy authentication
+        if ( isset($proxy_authentication_method) and $proxy_authentication_method != "none" ) {
+            if (isset($proxy_authentication_user) and isset($proxy_authentication_pass)) {
                 if ($proxy_authentication_method === "basic") {
                     $http_settings['header'] = "Proxy-Authorization: Basic " . base64_encode($proxy_authentication_user . ":" . $proxy_authentication_pass);
-                } else if ($proxy_authentication_method !== "none") {
+                } else {
                     error_log("Proxy authentication method '" . $proxy_authentication_method . "' is not yet supported.");
                 }
             } else {
-                error_log("Proxy authentication method is set to 'basic' but proxy authentication user and/or password is not set in config.inc.local.php.");
+                error_log("Proxy authentication is activated but user and/or password is not set for proxy authentication in config.inc.local.php.");
             } 
         }
-        
+
         if ($proxy_request_fulluri) {
             $http_settings['request_fulluri'] = true;
         }

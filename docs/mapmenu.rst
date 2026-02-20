@@ -96,11 +96,11 @@ Map page uses the default LDAP user filter. But you can override it, for example
 Proxy
 -----
 
-The default configuration doesn't use an HTTP Proxy to reach OpenStreetMap.org.
+The default configuration does not set an HTTP Proxy to reach ``OpenStreetMap.org``.
 
-If your server doesn't have direct access to Internet, you can set HTTP Proxy settings in ``config.inc.local.php``
+But if your server does not have direct access to Internet, you can configure the HTTP Proxy in ``config.inc.local.php``
 
-For a simple proxy configuration without authentication, you can just set:
+If your proxy does not require authentication, you have three settings to configure:
 
 .. code-block:: php
 
@@ -108,18 +108,18 @@ For a simple proxy configuration without authentication, you can just set:
     $proxy_host = "mysquidproxy.example.com";
     $proxy_port = 3128;
 
-If you have to support a proxy with authentication, you can additionally set:
+If you your proxy require authentication, you must add the following parameters to the previous ones:
 
 .. code-block:: php
 
     $proxy_request_fulluri = true;
     $proxy_authentication_method = "basic";
     $proxy_auth_user = "user";
-    $proxy_auth_pass = "password
+    $proxy_auth_pass = "password";
 
-.. warning:: Only basic authentication is supported for now. If your proxy requires another authentication method, you will need to implement it in ``htdocs/geocode.php`` and submit a pull request.
+.. warning:: Only basic authentication is supported for now. If your proxy requires another authentication method, like NTLM, Digest, SPNEGO or OAuth, you will need to implement it in ``htdocs/geocode.php`` and submit a pull request.
 
-if you have to support a proxy with SSL interception, you can additionally add a subset of the following SSL options :
+If you have to support a proxy with SSL interception, you can additionally add a subset of the following SSL options :
 
 .. code-block:: php
 
