@@ -104,7 +104,7 @@ If your proxy does not require authentication, you have three settings to config
 
 .. code-block:: php
 
-    $use_proxy = true;
+    $use_proxy  = true;
     $proxy_host = "mysquidproxy.example.com";
     $proxy_port = 3128;
 
@@ -112,10 +112,10 @@ If you your proxy require authentication, you must add the following parameters 
 
 .. code-block:: php
 
-    $proxy_request_fulluri = true;
+    $proxy_request_fulluri       = true;
     $proxy_authentication_method = "basic";
-    $proxy_auth_user = "user";
-    $proxy_auth_pass = "password";
+    $proxy_auth_user             = "user";
+    $proxy_auth_pass             = "password";
 
 .. warning:: Only basic authentication is supported for now. If your proxy requires another authentication method, like NTLM, Digest, SPNEGO or OAuth, you will need to implement it in ``htdocs/geocode.php`` and submit a pull request.
 
@@ -124,10 +124,10 @@ If you have to support a proxy with SSL interception, you can additionally add a
 .. code-block:: php
 
     $proxy_ssl_options = array(
-        'verify_peer'   => true,
-        'verify_peer_name' => true,
-        'cafile'        => '/etc/ssl/certs/ca-certificates.crt',
-        'verify_depth'  => 5,
+        'verify_peer'       => true,
+        'verify_peer_name'  => true,
+        'cafile'            => '/etc/ssl/certs/ca-certificates.crt',
+        'verify_depth'      => 5,
         'allow_self_signed' => false
     );
 
