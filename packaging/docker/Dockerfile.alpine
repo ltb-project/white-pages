@@ -6,8 +6,8 @@ ARG SMARTY_URL=https://github.com/smarty-php/smarty/archive/refs/tags/v${SMARTY_
 ARG COMPOSER_VERSION=lts
 ARG COMPOSER_IMAGE=composer/composer:${COMPOSER_VERSION}-bin
 
-ARG ALPINE_VERSION=3.20
-ARG PHP_VERSION=8.2
+ARG ALPINE_VERSION=3.24
+ARG PHP_VERSION=8.5
 
 ARG PHP_IMAGE=php:${PHP_VERSION}-alpine${ALPINE_VERSION}
 ARG BASE_IMAGE=httpd:alpine${ALPINE_VERSION}
@@ -165,7 +165,6 @@ RUN --mount=type=cache,target=/var/cache/apk \
         \
 # white-pages
         --enable-bcmath \
-        --enable-opcache \
         --enable-intl \
         --enable-gd --with-freetype --with-jpeg --with-webp \
         --with-bz2 \
