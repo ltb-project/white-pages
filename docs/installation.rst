@@ -10,7 +10,7 @@ Prerequisites:
 * php-gd
 * composer
 * php-fpm
-* smarty (version 3 or 4)
+* smarty4 (can still work with smarty3 on old systems)
 
 Tarball can be downloaded from `LTB project website <https://ltb-project.org/download.html>`_.
 
@@ -45,14 +45,6 @@ Debian / Ubuntu
 
 .. Important::
     The GPG key for debian has been updated on August 2025. Take care to use the new one by following the instructions below.
-
-.. warning:: You need to install first the package `smarty3`_. If you face the error ``syntax error, unexpected token "class"``, try to install a newer version of the package:
-
-   ``# wget http://ftp.us.debian.org/debian/pool/main/s/smarty3/smarty3_3.1.47-2_all.deb``
-
-   ``# dpkg -i smarty3_3.1.47-2_all.deb``
-
-.. _smarty3: https://packages.debian.org/sid/smarty3
 
 Import repository key:
 

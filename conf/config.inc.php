@@ -239,7 +239,7 @@ if (file_exists (dirname (__FILE__) . '/config.inc.local.php')) {
 
 # Smarty
 if (!defined("SMARTY")) {
-    define("SMARTY", "/usr/share/php/smarty3/Smarty.class.php");
+    define("SMARTY", "/usr/share/php/smarty4/Smarty.class.php");
 }
 
 # Allow to override current settings with an extra configuration file, whose reference is passed in HTTP_HEADER $header_name_extra_config
