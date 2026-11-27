@@ -3,6 +3,33 @@ Upgrade
 
 If you upgrade from an older version, read the following instructions:
 
+From 0.5 to 0.6
+---------------
+
+Smarty4
+~~~~~~~
+
+Smarty dependency has been upgraded to version 4.
+
+Smarty4 is widely available on most of supported linux distributions, like:
+
+* EL8
+* EL9
+* EL10
+* debian 12
+* debian 13
+
+If you are using an old distribution not owning smarty4, or if you have modified by hand the smarty library in your local configuration ``config.inc.local.php``, you must update it to the correct path:
+
+``config.inc.local.php``
+
+.. code-block:: php
+
+    if (!defined("SMARTY")) {
+        define("SMARTY", "/usr/share/php/smarty4/Smarty.class.php");
+    }
+
+
 From 0.4 to 0.5
 ---------------
 
